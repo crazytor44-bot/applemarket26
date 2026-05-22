@@ -1,0 +1,2873 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<yml_catalog date="2026-05-22 22:00">
+  <shop>
+    <name>Apple Market</name>
+    <company>Apple Market</company>
+    <url>https://applemarket26.ru</url>
+    <currencies>
+      <currency id="RUR" rate="1"/>
+    </currencies>
+    <categories>
+      <category id="1">iPhone</category>
+      <category id="2">Android</category>
+      <category id="3">AirPods</category>
+      <category id="4">Часы</category>
+      <category id="5">MacBook  /  iMac</category>
+      <category id="6">iPad</category>
+      <category id="7">Аксессуары  /  гаджеты</category>
+      <category id="8">Аудио  /  колонки</category>
+      <category id="9">Dyson</category>
+      <category id="10">Sony  /  PlayStation</category>
+    </categories>
+    <offers>
+      <offer id="1" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>47000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>13 256GB Red 🇮🇳</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="2" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>46000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>14 128GB Red 🇮🇳</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="3" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>44000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>14 128GB Starlight 🇮🇳</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="4" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>47000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>15 128GB Black 🇮🇳</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="5" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>47000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>15 128GB Blue 🇮🇳</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="6" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>55000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>15 256GB Black 🇮🇳</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="7" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>55000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>15 256GB Blue 🇮🇳</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="8" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>58500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>15 256GB Pink 🇮🇳</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="9" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>82500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>15 Pro Max 256GB Black 🇨🇳</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="10" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>47000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>16E 256GB Black 🇮🇳</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="11" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>47000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>16E 256GB White 🇮🇳</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="12" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>51000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>16 128GB Black 🇮🇳</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="13" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>52000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>16 128GB Pink 🇮🇳</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="14" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>51000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>16 128GB Teal 🇮🇳</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="15" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>51000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>16 128GB Ultramarine 🇮🇳</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="16" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>51000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>16 128GB White 🇮🇳</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="17" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>78000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>16 Pro 128GB Black 🇨🇳</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="18" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>77000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>16 Pro 128GB Desert 🇨🇳</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="19" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>75500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>16 Pro 128GB Natural 🇨🇳</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="20" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>72000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>16 Pro 128GB White 🇨🇳</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="21" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>46000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17E 256GB Black 🇯🇵</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="22" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>45000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17E 256GB Pink 🇯🇵</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="23" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>48000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17E 256GB Pink 🇮🇳</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="24" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>44500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17E 256GB White 🇯🇵</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="25" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>48000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17E 256GB White 🇮🇳</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="26" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>58500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 256GB Black 🇯🇵</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="27" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>65000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 256GB Black 🇮🇳</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="28" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>58000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 256GB Blue 🇯🇵 ✈️</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="29" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>63000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 256GB Blue 🇮🇳</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="30" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>59000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 256GB Lavender 🇯🇵</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="31" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>66500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 256GB Lavender 🇮🇳</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="32" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>59000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 256GB Sage 🇯🇵</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="33" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>65500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 256GB Sage 🇮🇳</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="34" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>58000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 256GB White 🇯🇵 ✈️</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="35" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>65000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 256GB White 🇮🇳</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="36" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>74000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 512GB Black 🇯🇵</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="37" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>86000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 512GB Black 🇮🇳</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="38" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>76000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 512GB White 🇯🇵</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="39" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>69500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>Air 256GB Black 🇯🇵 ✈️</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="40" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>69000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>Air 256GB Blue 🇯🇵</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="41" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>68000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>Air 256GB Gold 🇯🇵</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="42" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>72000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>Air 256GB White 🇯🇵</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="43" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>77000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>Air 512GB Black 🇯🇵</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="44" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>73500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>Air 512GB Blue 🇯🇵</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="45" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>76500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>Air 512GB Gold 🇯🇵</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="46" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>82500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>Air 512GB White 🇯🇵</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="47" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>88000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro 256GB Blue 🇯🇵</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="48" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>97500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro 256GB Blue 🇪🇺</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="49" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>87000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro 256GB Orange 🇯🇵</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="50" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>93000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro 256GB Orange 🇪🇺</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="51" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>88500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro 256GB Silver 🇯🇵</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="52" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>96500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro 256GB Silver 🇪🇺</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="53" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>107000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro 512GB Blue 🇯🇵</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="54" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>115000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro 512GB Blue 🇪🇺</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="55" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>102000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro 512GB Orange 🇯🇵</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="56" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>112500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro 512GB Orange 🇪🇺</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="57" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>106500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro 512GB Silver 🇯🇵</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="58" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>116000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro 512GB Silver 🇪🇺</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="59" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>118000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro 1TB Blue 🇯🇵</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="60" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>129000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro 1TB Blue 🇪🇺</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="61" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>114500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro 1TB Orange 🇯🇵</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="62" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>125500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro 1TB Orange 🇪🇺</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="63" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>119000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro 1TB Silver 🇯🇵</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="64" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>128000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro 1TB Silver 🇪🇺</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="65" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>95000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro Max 256GB Blue 🇯🇵</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="66" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>103500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro Max 256GB Blue 🇪🇺</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="67" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>95000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro Max 256GB Orange 🇯🇵</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="68" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>103500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro Max 256GB Orange 🇪🇺</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="69" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>95500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro Max 256GB Silver 🇯🇵</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="70" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>104000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro Max 256GB Silver 🇪🇺</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="71" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>117500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro Max 512GB Blue 🇯🇵</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="72" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>122500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro Max 512GB Blue 🇪🇺</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="73" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>110500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro Max 512GB Orange 🇯🇵</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="74" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>119500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro Max 512GB Orange 🇪🇺</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="75" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>117500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro Max 512GB Silver 🇯🇵 ✈️</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="76" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>123000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro Max 512GB Silver 🇪🇺 ✈️</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="77" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>125000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro Max 1TB Blue 🇯🇵</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="78" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>143000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro Max 1TB Blue 🇪🇺 ✈️</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="79" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>122000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro Max 1TB Orange 🇯🇵</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="80" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>137500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro Max 1TB Orange 🇪🇺</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="81" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>126000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro Max 1TB Silver 🇯🇵</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="82" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>143000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro Max 1TB Silver 🇪🇺</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="83" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>142500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro Max 2TB Blue 🇯🇵</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="84" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>137500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro Max 2TB Orange 🇯🇵</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="85" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>155500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>17 Pro Max 2TB Silver 🇯🇵</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="86" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>9500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>Redmi 15C 4/128GB Black 🇷🇺</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="87" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>9500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>Redmi 15C 4/128GB Blue 🇷🇺</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="88" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>9500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>Redmi 15C 4/128GB Green 🇷🇺</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="89" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>10500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>Redmi 15C 4/256GB Black 🇷🇺</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="90" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>10500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>Redmi 15C 4/256GB Blue 🇷🇺</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="91" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>10500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>Redmi 15C 4/256GB Green 🇷🇺</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="92" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>16500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>Redmi Note 14 8/256GB Green 🇪🇺</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="93" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>16500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>Redmi Note 14 8/256GB Purple 🇪🇺</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="94" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>17000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>Redmi Note 15 8/256GB Black 🇪🇺</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="95" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>17000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>Redmi Note 15 8/256GB Blue 🇪🇺</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="96" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>17000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>Redmi Note 15 8/256GB Purple 🇪🇺</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="97" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>21000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>Redmi Note 15 Pro 8/256GB Black 🇪🇺</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="98" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>21000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>Redmi Note 15 Pro 8/256GB Blue 🇪🇺</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="99" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>21000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>Redmi Note 15 Pro 8/256GB Titanium Color 🇪🇺</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="100" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>25000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>Redmi Note 15 Pro 12/512GB Blue 🇪🇺</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="101" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>29000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>Poco X8 Pro 8/512GB Black 🇪🇺</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="102" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>28500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>Poco X8 Pro 8/512GB Green 🇪🇺</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="103" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>28500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>Poco X8 Pro 8/512GB White 🇪🇺</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="104" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>17000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>Poco X4 Pro 6/128GB Blue 🇪🇺</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="105" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>18000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>A26 6/128GB Black 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="106" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>18000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>A26 6/128GB Pink 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="107" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>27500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>A37 8/256GB GrayGreen 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="108" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>27500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>A37 8/256GB Charcoal 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="109" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>27500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>A37 8/256GB Lavender 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="110" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>27500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>A37 8/256GB White 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="111" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>30500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>A56 12/256GB LightGray 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="112" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>30500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>A56 12/256GB Olive 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="113" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>31500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>A57 8/256GB Gray 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="114" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>31500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>A57 8/256GB Navy 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="115" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>31500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>A57 8/256GB IcyBlue 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="116" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>31500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>A57 8/256GB Lilac 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="117" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>34500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>A57 12/256GB Navy 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="118" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>34500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>A57 12/256GB IcyBlue 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="119" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>47500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>S25 12/256GB Navy 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="120" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>46000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>S25 12/256GB IcyBlue 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="121" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>46000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>S25 12/256GB Mint 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="122" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>47000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>S25 12/256GB SilverShadow 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="123" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>41500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>S25FE 8/256GB Navy 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="124" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>41500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>S25FE 8/256GB IcyBlue 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="125" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>41500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>S25FE 8/256GB White 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="126" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>46500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>S25FE 8/512GB JetBlack 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="127" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>46500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>S25FE 8/512GB Navy 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="128" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>65500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>S25 Ultra 12/256GB Black 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="129" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>65500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>S25 Ultra 12/256GB Gray 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="130" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>65500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>S25 Ultra 12/256GB SilverBlue 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="131" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>66500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>S25 Ultra 12/256GB WhiteSilver 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="132" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>73500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>S25 Ultra 12/512GB Black 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="133" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>73500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>S25 Ultra 12/512GB Gray 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="134" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>73500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>S25 Ultra 12/512GB SilverBlue 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="135" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>76500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>S25 Ultra 12/512GB WhiteSilver 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="136" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>77500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>S25 Ultra 12/1TB Black 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="137" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>77500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>S25 Ultra 12/1TB Gray 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="138" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>55000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>S26 12/256GB SkyBlue 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="139" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>53000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>S26 12/256GB PinkGold 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="140" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>55000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>S26 12/256GB SilverShadow 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="141" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>53000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>S26 12/256GB White 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="142" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>76000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>S26 Ultra 12/256GB Black 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="143" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>76000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>S26 Ultra 12/256GB SkyBlue 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="144" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>76000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>S26 Ultra 12/256GB Violet 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="145" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>76000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>S26 Ultra 12/256GB SilverShadow 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="146" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>76000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>S26 Ultra 12/256GB White 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="147" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>90000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>S26 Ultra 12/512GB Black 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="148" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>88000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>S26 Ultra 12/512GB SkyBlue 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="149" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>88000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>S26 Ultra 12/512GB Violet 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="150" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>106000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>S26 Ultra 16/1TB White 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="151" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>100500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>Z Fold 7 12/256 SilverShadow 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="152" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>9900</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>3</categoryId>
+        <name>AirPods 4</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="153" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>16000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>3</categoryId>
+        <name>AirPods 4 ANC</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="154" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>14900</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>3</categoryId>
+        <name>AirPods Pro 2</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="155" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>18100</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>3</categoryId>
+        <name>AirPods Pro 3</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="156" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>39500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>3</categoryId>
+        <name>AirPods Max 2024 Orange</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="157" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>39500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>3</categoryId>
+        <name>AirPods Max 2024 Purple</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="158" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>47000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>3</categoryId>
+        <name>AirPods Max 2026 Blue</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="159" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>47000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>3</categoryId>
+        <name>AirPods Max 2026 Starlight</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="160" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>48000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>3</categoryId>
+        <name>AirPods Max 2026 Purple</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="161" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>27500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <name>Watch Ultra 47mm Gray (Orange Band) 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="162" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>27500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <name>Watch Ultra 47mm Blue (Blue Band) 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="163" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>27500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <name>Watch Ultra 47mm White (White Band) 🇦🇪</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="164" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>20500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <name>SE3 40 Midnight S/M 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="165" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>20500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <name>SE3 40 Midnight M/L 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="166" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>21500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <name>SE3 40 Starlight S/M 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="167" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>22500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <name>SE3 44 Midnight S/M 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="168" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>22500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <name>SE3 44 Midnight M/L 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="169" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>23500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <name>SE3 44 Starlight S/M 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="170" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>23500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <name>SE3 44 Starlight M/L 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="171" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>18000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <name>S8 45 Starlight M/L 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="172" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>28000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <name>S11 42 Jet Black S/M 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="173" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>28500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <name>S11 42 Rose Gold Light Blush S/M 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="174" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>28000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <name>S11 42 Silver Purple Fog S/M 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="175" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>28000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <name>S11 42 Silver Purple Fog M/L 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="176" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>27500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <name>S11 42 Space Gray Black S/M 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="177" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>27500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <name>S11 42 Space Gray Black M/L 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="178" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>30500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <name>S11 46 Jet Black S/M 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="179" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>30500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <name>S11 46 Jet Black M/L 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="180" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>29500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <name>S11 46 Rose Gold Light Blush M/L 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="181" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>29500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <name>S11 46 Silver Purple Fog M/L 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="182" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>29500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <name>S11 46 Space Gray Black M/L 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="183" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>59500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <name>Ultra 3 Black Black Ocean Band 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="184" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>59000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <name>Ultra 3 Black Black Alpine Loop L 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="185" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>62500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <name>Ultra 3 Black Black Charcoal Trail Loop S/M 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="186" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>62500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <name>Ultra 3 Black Black Charcoal Trail Loop M/L 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="187" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>63500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <name>Ultra 3 Natural Anchor Blue Ocean Band 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="188" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>63000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <name>Ultra 3 Natural Blue Alpine Loop M 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="189" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>62500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <name>Ultra 3 Natural Bright Blue Trail Loop M 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="190" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>66000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <name>Ultra 3 Natural Neon Green Ocean Band 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="191" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>133000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>5</categoryId>
+        <name>iMac 24 M3 8/512GB Green MQRP3 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="192" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>54500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>5</categoryId>
+        <name>Neo 13 8/256GB Citrus MHFD4 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="193" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>53500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>5</categoryId>
+        <name>Neo 13 8/256GB Indigo MHFF4 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="194" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>57500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>5</categoryId>
+        <name>Neo 13 8/256GB Blush MHFH4 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="195" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>53500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>5</categoryId>
+        <name>Neo 13 8/256GB Silver MHFA4 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="196" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>62000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>5</categoryId>
+        <name>Neo 13 8/512GB Citrus MHFD4 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="197" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>60500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>5</categoryId>
+        <name>Neo 13 8/512GB Indigo MHFG4 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="198" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>66500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>5</categoryId>
+        <name>Neo 13 8/512GB Blush MHFJ4 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="199" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>61500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>5</categoryId>
+        <name>Neo 13 8/512GB Silver MHFC4 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="200" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>79500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>5</categoryId>
+        <name>Air 13 M4 16/256GB Midnight MW123 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="201" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>83500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>5</categoryId>
+        <name>Air 13 M4 16/512GB Blue MC6U4 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="202" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>83500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>5</categoryId>
+        <name>Air 13 M4 16/512GB Midnight MW133 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="203" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>83500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>5</categoryId>
+        <name>Air 13 M4 16/512GB Silver MW0X3 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="204" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>83500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>5</categoryId>
+        <name>Air 13 M4 16/512GB Starlight MW103 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="205" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>85500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>5</categoryId>
+        <name>Air 13 M5 16/512GB Blue MDHH4 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="206" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>85500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>5</categoryId>
+        <name>Air 13 M5 16/512GB Midnight MDHE4 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="207" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>85500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>5</categoryId>
+        <name>Air 13 M5 16/512GB Starlight MDHA4 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="208" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>86500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>5</categoryId>
+        <name>Air 15 M4 16/256GB Midnight ML1L3 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="209" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>101500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>5</categoryId>
+        <name>Air 15 M4 16/512GB Blue MC7A4 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="210" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>101500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>5</categoryId>
+        <name>Air 15 M4 16/512GB Starlight MW1K3 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="211" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>105000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>5</categoryId>
+        <name>Air 15 M5 16/512GB Blue MDVQ4 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="212" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>105000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>5</categoryId>
+        <name>Air 15 M5 16/512GB Midnight MDVH4 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="213" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>135500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>5</categoryId>
+        <name>Pro 14 M5 16/1TB Black MDE14 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="214" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>140000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>5</categoryId>
+        <name>Pro 14 M5 16/1TB Silver MDE54 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="215" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>150000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>5</categoryId>
+        <name>Pro 14 M5 24/1TB Black MDE34 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="216" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>30000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <name>iPad 11 A16 Wi-Fi 128GB Blue 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="217" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>30500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <name>iPad 11 A16 Wi-Fi 128GB Pink 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="218" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>30500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <name>iPad 11 A16 Wi-Fi 128GB Silver 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="219" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>30500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <name>iPad 11 A16 Wi-Fi 128GB Yellow 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="220" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>39500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <name>iPad 11 A16 Wi-Fi 256GB Blue 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="221" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>39000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <name>iPad 11 A16 Wi-Fi 256GB Pink 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="222" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>39500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <name>iPad 11 A16 Wi-Fi 256GB Silver 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="223" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>39000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <name>iPad 11 A16 Wi-Fi 256GB Yellow 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="224" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>54000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <name>Air 11 M3 Wi-Fi 256GB Blue 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="225" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>54000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <name>Air 11 M3 Wi-Fi 256GB Purple 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="226" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>72500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <name>Air 13 M3 Wi-Fi 256GB Blue 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="227" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>72500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <name>Air 13 M3 Wi-Fi 256GB Purple 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="228" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>72500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <name>Air 13 M3 Wi-Fi 256GB Starlight 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="229" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>47000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <name>Air 11 M4 Wi-Fi 128GB Blue 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="230" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>47500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <name>Air 11 M4 Wi-Fi 128GB Gray 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="231" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>47500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <name>Air 11 M4 Wi-Fi 128GB Purple 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="232" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>48000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <name>Air 11 M4 Wi-Fi 128GB Starlight 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="233" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>56500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <name>Air 11 M4 Wi-Fi 256GB Blue 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="234" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>57000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <name>Air 11 M4 Wi-Fi 256GB Gray 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="235" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>56500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <name>Air 11 M4 Wi-Fi 256GB Purple 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="236" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>58500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <name>Air 11 M4 Wi-Fi 256GB Starlight 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="237" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>63500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <name>Air 13 M4 Wi-Fi 128GB Blue 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="238" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>63500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <name>Air 13 M4 Wi-Fi 128GB Purple 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="239" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>67500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <name>Pro 11 M4 Wi-Fi 256GB Silver 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="240" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>76000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <name>Pro 11 M5 Wi-Fi 256GB Black 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="241" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>76500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <name>Pro 11 M5 Wi-Fi 256GB Silver 🇺🇸</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="242" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>2500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>7</categoryId>
+        <name>Power Adapter 20W USB-C (100% original)</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="243" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>4000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>7</categoryId>
+        <name>AirTag 1 pack</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="244" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>9700</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>7</categoryId>
+        <name>AirTag 4 Pack</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="245" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>7800</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>7</categoryId>
+        <name>Pencil USB-C</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="246" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>9600</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>7</categoryId>
+        <name>Pencil Pro</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="247" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>33500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>7</categoryId>
+        <name>Keyboard iPad Pro 11 М4 Black</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="248" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>27500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>7</categoryId>
+        <name>Keyboard iPad Pro 11 М4 White</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="249" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>35000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>7</categoryId>
+        <name>Keyboard iPad Pro 13 М4 Black</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="250" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>15000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>7</categoryId>
+        <name>Apple Magic Trackpad USB-C White</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="251" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>10000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>7</categoryId>
+        <name>Magic Mouse 3 Black</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="252" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>8500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>7</categoryId>
+        <name>Magic Mouse 3 White</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="253" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>23000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>7</categoryId>
+        <name>One 5.0 Sensor</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="254" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>32500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>7</categoryId>
+        <name>Life MG Sensor</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="255" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>92500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>7</categoryId>
+        <name>Mark 3 G7X Silver</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="256" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>28500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>7</categoryId>
+        <name>RW4010 Shiny Chalky Gray/Transitions Sapphire S52 *распак</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="257" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>28000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>7</categoryId>
+        <name>RW4010 Shiny Black/Green S52</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="258" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>28000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>7</categoryId>
+        <name>RW4010 Shine Black/Transitions Cerulean Blue S52</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="259" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>37000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>7</categoryId>
+        <name>RW4012 Matte Black Polar/Gradient Graphite S53</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="260" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>39000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>7</categoryId>
+        <name>RW4012 Shiny Black/Transitions Graphite Green S50</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="261" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>41500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>7</categoryId>
+        <name>RW4012 Matte Black/Transitions Graphite Gray S53</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="262" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>39500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>7</categoryId>
+        <name>RW4012 Shiny Cosmic Blue/Transitions Sapphire S50</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="263" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>38000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>7</categoryId>
+        <name>RW4012 Matte Black/Clear S50</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="264" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>48000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>7</categoryId>
+        <name>AI Glasses Color Change Black</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="265" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>27000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>7</categoryId>
+        <name>LABUBU Zimomo I Found You</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="266" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>8500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>Marshall Major 5 Black</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="267" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>8500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>Marshall Major 5 Blue</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="268" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>8500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>Marshall Major 5 Brown</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="269" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>8500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>Marshall Major 5 Cream</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="270" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>24000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>Marshall Monitor 3 ANC Black</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="271" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>4500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>JBL Go 3 Green</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="272" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>4500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>JBL Go 3 Squad</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="273" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>4800</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>JBL Go 4 Purple</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="274" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>4800</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>JBL Go 4 White</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="275" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>5500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>JBL Clip 4 Black</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="276" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>5500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>JBL Clip 4 Blue</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="277" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>5500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>JBL Clip 4 Blue/Pink</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="278" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>6200</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>JBL Clip 5 Black</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="279" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>6200</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>JBL Clip 5 Blue</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="280" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>6200</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>JBL Clip 5 Purple</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="281" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>6200</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>JBL Clip 5 Red</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="282" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>6200</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>JBL Clip 5 Squad</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="283" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>6200</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>JBL Clip 5 White</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="284" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>9000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>JBL Flip 6 Blue</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="285" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>9000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>JBL Flip 6 Gray</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="286" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>9000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>JBL Flip 6 Green</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="287" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>9000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>JBL Flip 6 Pink</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="288" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>9000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>JBL Flip 6 Squad</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="289" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>10000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>JBL Flip 7 Blue</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="290" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>10000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>JBL Flip 7 Squad</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="291" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>10000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>JBL Flip 7 White</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="292" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>12000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>JBL Charge 5 Pink</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="293" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>12000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>JBL Charge 5 Red</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="294" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>12000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>JBL Charge 5 Squad</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="295" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>12000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>JBL Charge 5 Teal</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="296" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>23000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>JBL Pulse 5 Black</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="297" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>8500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>Станция Мини 3 Бирюзовая</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="298" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>8500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>Станция Мини 3 Фиолетовая</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="299" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>8500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>Станция Мини 3 Серая</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="300" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>8500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>Станция Мини 3 Черная</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="301" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>14000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>Станция Миди Изумрудная</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="302" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>14000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>Станция Миди Малиновая</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="303" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>14000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>Станция Миди Оранжевая</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="304" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>14500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>Станция Миди Серая</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="305" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>14500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>Станция Миди Черная</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="306" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>30500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>Станция Макс с Zigbee Бежевая</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="307" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>29500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>Станция Макс с Zigbee Зеленая</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="308" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>30500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>Станция Макс с Zigbee Черная</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="309" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>13000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>Станция Стрит Черная</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="310" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>10500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>Buds 4 Black</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="311" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>10500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>8</categoryId>
+        <name>Buds 4 White</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="312" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>34000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>9</categoryId>
+        <name>HT01 Amber Silk (with case)</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="313" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>33000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>9</categoryId>
+        <name>HT01 Ceramic Pink</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="314" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>36000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>9</categoryId>
+        <name>HT01 Jasper Plum (with case)</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="315" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>33000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>9</categoryId>
+        <name>HT01 Nickel/Copper</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="316" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>32000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>9</categoryId>
+        <name>HT01 Prussian Blue/Rich Copper</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="317" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>33500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>9</categoryId>
+        <name>HS08 Amber Silk</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="318" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>37000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>9</categoryId>
+        <name>HS08 Ceramic Patina/Topaz Orange</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="319" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>36000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>9</categoryId>
+        <name>HS08 Ceramic Pink/Rose Gold</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="320" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>40000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>9</categoryId>
+        <name>HS08 Jasper Plum</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="321" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>37000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>9</categoryId>
+        <name>HS08 Red Velvet/Gold</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="322" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>33500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>9</categoryId>
+        <name>HS08 Vinca Blue/Topaz Orange</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="323" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>47000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>9</categoryId>
+        <name>HS09 Amber Silk</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="324" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>51000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>9</categoryId>
+        <name>HS09 Apricot Topaz</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="325" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>47000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>9</categoryId>
+        <name>HS09 Ceramic Pink/Rose Gold</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="326" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>48000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>9</categoryId>
+        <name>HS09 Jasper Plum 🚛</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="327" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>51000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>9</categoryId>
+        <name>HS09 Red Velvet/Gold</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="328" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>33000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>9</categoryId>
+        <name>HD16 Ceramic Pink/Rose Gold</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="329" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>25000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>9</categoryId>
+        <name>V8 Absolute SV25 (Silver/Yellow)</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="330" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>44500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>10</categoryId>
+        <name>PS5 Slim Digital</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="331" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>49500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>10</categoryId>
+        <name>PS5 Slim Disc</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="332" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>76500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>10</categoryId>
+        <name>PS5 Pro</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="333" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>6800</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>10</categoryId>
+        <name>DualSense PS5 Chrome Pearl</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="334" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>6900</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>10</categoryId>
+        <name>DualSense PS5 Chrome Teal</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="335" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>6800</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>10</categoryId>
+        <name>DualSense PS5 Chrome Indigo</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="336" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>6700</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>10</categoryId>
+        <name>DualSense PS5 Cobalt Blue</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="337" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>7100</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>10</categoryId>
+        <name>DualSense PS5 Cosmic Red</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="338" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>6700</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>10</categoryId>
+        <name>DualSense PS5 Galactic Purple</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="339" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>7000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>10</categoryId>
+        <name>DualSense PS5 Grey Camouflage</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="340" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>6700</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>10</categoryId>
+        <name>DualSense PS5 Midnight Black</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="341" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>6700</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>10</categoryId>
+        <name>DualSense PS5 Nova Pink</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="342" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>7000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>10</categoryId>
+        <name>DualSense PS5 Starlight Blue</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="343" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>7000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>10</categoryId>
+        <name>DualSense PS5 Sterling Silver</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="344" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>7300</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>10</categoryId>
+        <name>DualSense PS5 Volcanic Red</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="345" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>6700</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>10</categoryId>
+        <name>DualSense PS5 White</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="346" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>4500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>10</categoryId>
+        <name>Charging Station DualSense</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="347" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>12000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>10</categoryId>
+        <name>PS5 Disc Drive</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="348" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>9500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>10</categoryId>
+        <name>PS5 Pulse 3D Black</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="349" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>4000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>10</categoryId>
+        <name>Disc PS4 NFS Heat</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="350" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>4000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>10</categoryId>
+        <name>Disc PS4 Sonic Frontiers</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="351" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>4500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>10</categoryId>
+        <name>Disc PS5 Atomic Heart</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="352" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>4000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>10</categoryId>
+        <name>Disc PS5 GTA V</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="353" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>5000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>10</categoryId>
+        <name>Disc PS5 Hogwarts Legasy</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="354" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>5000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>10</categoryId>
+        <name>Disc PS5 Horizon</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="355" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>5300</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>10</categoryId>
+        <name>Disc PS5 Mortal Kombat 1</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+      <offer id="356" available="true">
+        <url>https://applemarket26.ru/#catalog</url>
+        <price>5000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>10</categoryId>
+        <name>Disc PS5 PoboCop Rogue City</name>
+        <description>Apple Market, Ставрополь. Наличие и актуальную цену лучше уточнить перед покупкой.</description>
+      </offer>
+    </offers>
+  </shop>
+</yml_catalog>
