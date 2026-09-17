@@ -1,0 +1,44 @@
+name: Add reviews now
+on:
+  push:
+    paths:
+      - '.github/workflows/add-reviews-now.yml'
+permissions:
+  contents: write
+jobs:
+  update-site:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add real customer reviews
+        shell: bash
+        run: |
+          python3 <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+          block = '''
+    <h2 class="section-title">Отзывы наших клиентов</h2>
+    <p class="section-sub">Реальные отзывы покупателей и клиентов сервиса.</p>
+    <div class="cards reviews-real">
+      <div class="card"><div style="color:#ffd60a;font-size:20px;letter-spacing:2px;margin-bottom:12px">★★★★★</div><h3 style="font-size:22px">Елена Щербак</h3><p>«Принесли телефон полностью разбитый, очень важны были данные на телефоне. Ребята сделали за пол дня телефон, за что очень благодарна. Больше вам клиентов и процветания»</p></div>
+      <div class="card"><div style="color:#ffd60a;font-size:20px;letter-spacing:2px;margin-bottom:12px">★★★★★</div><h3 style="font-size:22px">Денис Ольховик</h3><p>«Приобрёл Note 14 pro. Телефон пушка. Спасибо ребятам, за отличный совет»</p></div>
+      <div class="card"><div style="color:#ffd60a;font-size:20px;letter-spacing:2px;margin-bottom:12px">★★★★★</div><h3 style="font-size:22px">missdior-06 М.</h3><p>«Обратилась за помощью в данный магазин. Мой телефон прекрасно работал и меня абсолютно устраивал, но сильно зависал. Другие магазины настаивали на том что бы приобрести новый телефон. У меня не было возможности купить новый. Ребята с этого магазина устранили проблему за час и мой телефон перестал зависать, теперь пользуюсь. Огромное спасибо за помощь, буду обращаться только к вам😊»</p></div>
+    </div>
+'''
+          if 'Елена Щербак' not in s:
+              marker = '<footer>'
+              pos = s.find(marker)
+              if pos < 0:
+                  marker = '</main>'
+                  pos = s.find(marker)
+              if pos < 0:
+                  raise SystemExit('No insertion point found')
+              s = s[:pos] + block + '\n' + s[pos:]
+              p.write_text(s, encoding='utf-8')
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html
+          git commit -m 'Add real customer reviews' || true
+          git push
