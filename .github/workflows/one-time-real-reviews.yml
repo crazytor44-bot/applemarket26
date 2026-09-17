@@ -20,49 +20,19 @@ jobs:
           reviews='''<h2 class="section-title">Отзывы наших клиентов</h2>
     <p class="section-sub">Реальные отзывы покупателей и клиентов сервиса.</p>
     <div class="cards reviews-real">
-      <div class="card">
-        <div style="color:#ffd60a;font-size:20px;letter-spacing:2px;margin-bottom:12px">★★★★★</div>
-        <h3 style="font-size:22px">Елена Щербак</h3>
-        <p>«Принесли телефон полностью разбитый, очень важны были данные на телефоне. Ребята сделали за полдня телефон, за что очень благодарна. Больше вам клиентов и процветания»</p>
-      </div>
-      <div class="card">
-        <div style="color:#ffd60a;font-size:20px;letter-spacing:2px;margin-bottom:12px">★★★★★</div>
-        <h3 style="font-size:22px">Денис Ольховик</h3>
-        <p>«Приобрёл Note 14 pro. Телефон пушка. Спасибо ребятам, за отличный совет»</p>
-      </div>
-      <div class="card">
-        <div style="color:#ffd60a;font-size:20px;letter-spacing:2px;margin-bottom:12px">★★★★★</div>
-        <h3 style="font-size:22px">missdior-06 М.</h3>
-        <p>«Обратилась за помощью в данный магазин. Мой телефон прекрасно работал и меня абсолютно устраивал, но сильно зависал. Другие магазины настаивали на том что бы приобрести новый телефон. Ребята с этого магазина устранили проблему за час и мой телефон перестал зависать, теперь пользуюсь. Огромное спасибо за помощь, буду обращаться только к вам 😊»</p>
-      </div>
+      <div class="card"><div style="color:#ffd60a;font-size:20px;letter-spacing:2px;margin-bottom:12px">★★★★★</div><h3 style="font-size:22px">Елена Щербак</h3><p>«Принесли телефон полностью разбитый, очень важны были данные на телефоне. Ребята сделали за пол дня телефон, за что очень благодарна. Больше вам клиентов и процветания»</p></div>
+      <div class="card"><div style="color:#ffd60a;font-size:20px;letter-spacing:2px;margin-bottom:12px">★★★★★</div><h3 style="font-size:22px">Денис Ольховик</h3><p>«Приобрёл Note 14 pro. Телефон пушка. Спасибо ребятам, за отличный совет»</p></div>
+      <div class="card"><div style="color:#ffd60a;font-size:20px;letter-spacing:2px;margin-bottom:12px">★★★★★</div><h3 style="font-size:22px">missdior-06 М.</h3><p>«Обратилась за помощью в данный магазин. Мой телефон прекрасно работал и меня абсолютно устраивал, но сильно зависал. Другие магазины настаивали на том что бы приобрести новый телефон. У меня не было возможности купить новый. Ребята с этого магазина устранили проблему за час и мой телефон перестал зависать, теперь пользуюсь. Огромное спасибо за помощь, буду обращаться только к вам😊»</p></div>
     </div>'''
-
-          # Replace existing review/customer-value block, preserving the following major section.
-          pats=[
-            r'<h2 class="section-title">(?:Отзывы наших клиентов|Что ценят наши клиенты|За что выбирают А Маркет)</h2>.*?<div class="cards[^\"]*">.*?</div>\s*(?=<h2 class="section-title">|<section\b|<div class="buyback|<div class="store-clean)',
-            r'<h2[^>]*>(?:Отзывы наших клиентов|Что ценят наши клиенты|За что выбирают А Маркет)</h2>.*?(?=<h2[^>]*>|<section\b)'
-          ]
-          changed=False
-          for pat in pats:
-            ns,n=re.subn(pat,reviews+'\n    ',s,count=1,flags=re.S|re.I)
-            if n:
-              s=ns; changed=True; break
-          if not changed:
-            # Insert before delivery/find-us/footer area if no prior review block is found.
-            anchors=['Доставка','Как нас найти','Самовывоз']
-            pos=None
-            for a in anchors:
-              m=re.search(r'<h2[^>]*>[^<]*'+re.escape(a)+r'[^<]*</h2>',s,re.I)
-              if m: pos=m.start(); break
-            if pos is None: pos=s.rfind('<footer')
-            s=s[:pos]+reviews+'\n    '+s[pos:]
-
-          p.write_text(s,encoding='utf-8')
+          pat=r'<section class="reviews-boost">.*?</section>'
+          ns,n=re.subn(pat,'<section class="reviews-boost">\n      '+reviews+'\n    </section>',s,count=1,flags=re.S)
+          if n != 1: raise SystemExit(f'review section matches: {n}')
+          p.write_text(ns,encoding='utf-8')
           PY
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html
-          git commit -m "Use real Yandex customer reviews" || true
+          git commit -m "Use real Yandex customer reviews"
           git rm .github/workflows/one-time-real-reviews.yml
           git commit -m "Remove one-time reviews workflow"
           git push
