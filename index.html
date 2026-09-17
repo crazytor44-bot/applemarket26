@@ -967,6 +967,18 @@ p,.lead,.section-sub,.address,.product-meta,.card p {
   .trade-steps li { padding: 16px; gap: 14px; border-radius: 18px; }
   .trade-steps li > span { flex-basis: 38px; width: 38px; height: 38px; font-size: 1.2rem; }
 }
+/* Split payment inquiry */
+.split-section { margin: 48px 0; scroll-margin-top: 24px; }
+.split-label { margin: 0 0 16px; text-align: center; font-size: 1.25rem; font-weight: 700; }
+.split-section .split-title { margin: 0 0 24px; text-align: center; font-size: clamp(2rem, 6vw, 3.5rem); line-height: 1.12; letter-spacing: -.04em; }
+.split-photo { display: block; width: 100%; height: auto; border-radius: 24px; }
+.split-section .split-explanation { margin: 18px 0; padding: 24px; border: 1px solid rgba(255,255,255,.15); border-radius: 24px; background: rgba(255,255,255,.045); font-size: clamp(1.125rem, 3vw, 1.75rem); font-weight: 650; line-height: 1.4; color: #fff !important; }
+.split-note { margin: 20px 8px 24px; font-size: 1rem; line-height: 1.5; text-align: center; }
+.split-caption { margin: 12px 0 0; text-align: center; font-size: .9375rem; line-height: 1.4; }
+@media (max-width: 480px) {
+ .split-photo { border-radius: 18px; }
+ .split-section .split-explanation { padding: 18px; border-radius: 18px; }
+}
 </style>
 
   <!-- Yandex.Metrika counter -->
@@ -1140,6 +1152,16 @@ p,.lead,.section-sub,.address,.product-meta,.card p {
 </a>
   </div>
 </section>
+
+    <section id="split" class="split-section" aria-labelledby="split-title">
+      <p class="split-label">Яндекс Сплит</p>
+      <h2 id="split-title" class="split-title">Оплата частями<br>с Яндекс Сплит</h2>
+      <img class="split-photo" src="/assets/split-phone-lineup.webp" width="1400" height="700" alt="Иллюстрация: линейка смартфонов разных цветов" loading="lazy" decoding="async">
+      <p class="split-explanation">Выберите телефон — уточним стоимость и отправим ссылку на оплату</p>
+      <p class="split-note">Доступность и условия Сплита определяются при оформлении</p>
+      <a class="repair-cta" href="https://wa.me/79383119888?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%83%D0%B7%D0%BD%D0%B0%D1%82%D1%8C%20%D1%83%D1%81%D0%BB%D0%BE%D0%B2%D0%B8%D1%8F%20%D0%BF%D0%BE%D0%BA%D1%83%D0%BF%D0%BA%D0%B8%20%D1%81%20%D0%AF%D0%BD%D0%B4%D0%B5%D0%BA%D1%81%20%D0%A1%D0%BF%D0%BB%D0%B8%D1%82.%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D1%82%D0%B5%D0%BB%D0%B5%D1%84%D0%BE%D0%BD%3A%20" target="_blank" rel="noopener noreferrer" aria-describedby="split-caption">Узнать условия</a>
+      <p id="split-caption" class="split-caption">Написать в WhatsApp</p>
+    </section>
 
     <section id="catalog">
 <h2 class="section-title">Каталог — наличие</h2>
