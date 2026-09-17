@@ -901,6 +901,55 @@ p,.lead,.section-sub,.address,.product-meta,.card p {
   width: 100%;
   height: auto;
 }
+/* Repair services */
+.repair-section { scroll-margin-top: 24px; }
+.repair-photo { display: block; width: 100%; height: auto; border-radius: 24px; }
+.repair-services {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  list-style: none;
+  margin: 20px 0;
+  padding: 0;
+}
+.repair-service {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  min-width: 0;
+  padding: 28px;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 24px;
+  background: rgba(255,255,255,.045);
+  font-size: clamp(1rem, 2.5vw, 1.6rem);
+  font-weight: 700;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+.repair-service svg { width: 48px; height: 56px; flex: 0 0 48px; color: #b76677; }
+.repair-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 64px;
+  padding: 18px 20px;
+  border-radius: 20px;
+  background: #fff;
+  color: #111;
+  text-align: center;
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-weight: 800;
+  line-height: 1.35;
+}
+.repair-cta:hover { background: #ececef; }
+.repair-cta:focus-visible { outline: 3px solid #b76677; outline-offset: 5px; }
+@media (max-width: 480px) {
+  .repair-photo { border-radius: 18px; }
+  .repair-services { gap: 10px; margin: 14px 0; }
+  .repair-service { flex-direction: column; align-items: flex-start; gap: 12px; padding: 16px; border-radius: 18px; font-size: 1rem; }
+  .repair-service svg { width: 30px; height: 36px; flex-basis: 36px; }
+  .repair-cta { border-radius: 18px; }
+}
 </style>
 
   <!-- Yandex.Metrika counter -->
@@ -979,6 +1028,32 @@ p,.lead,.section-sub,.address,.product-meta,.card p {
         <div class="card"><h3>AirPods и Watch</h3><p>Наушники, часы и аксессуары Apple под разные задачи.</p></div>
         <div class="card"><h3>Сервис</h3><p>Диагностика, модульный ремонт, настройка и перенос данных.</p></div>
       </div>
+    </section>
+
+    <section id="repair" class="repair-section" aria-labelledby="repair-title">
+      <h2 id="repair-title" class="section-title">Ремонт смартфонов</h2>
+      <img class="repair-photo" src="/assets/smartphone-repair.webp" width="1400" height="757"
+           alt="Иллюстрация процесса ремонта: мастер работает с разобранным смартфоном"
+           loading="lazy" decoding="async">
+      <ul class="repair-services">
+        <li class="repair-service">
+          <svg viewBox="0 0 32 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="22" height="36" rx="3"/><path d="M13 5h6M20 13l-6 8 5 2-6 8"/></svg>
+          <span>Замена экрана</span>
+        </li>
+        <li class="repair-service">
+          <svg viewBox="0 0 32 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="6" width="22" height="32" rx="3"/><path d="M12 6V2h8v4M18 14l-7 10h7l-4 9"/></svg>
+          <span>Замена аккумулятора</span>
+        </li>
+        <li class="repair-service">
+          <svg viewBox="0 0 32 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="13" width="18" height="18" rx="4"/><path d="M11 13V3h10v10M14 31v7M18 31v7M14 7v2M18 7v2"/></svg>
+          <span>Ремонт разъёма</span>
+        </li>
+        <li class="repair-service">
+          <svg viewBox="0 0 32 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3S4 18 4 26a12 12 0 0 0 24 0C28 18 16 3 16 3Z"/></svg>
+          <span>После попадания воды</span>
+        </li>
+      </ul>
+      <a class="repair-cta" href="https://wa.me/79383119888?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%83%D0%B7%D0%BD%D0%B0%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C%20%D1%80%D0%B5%D0%BC%D0%BE%D0%BD%D1%82%D0%B0.%20%D0%9C%D0%BE%D0%B4%D0%B5%D0%BB%D1%8C%20%D1%82%D0%B5%D0%BB%D0%B5%D1%84%D0%BE%D0%BD%D0%B0%3A%20%0A%D0%9F%D1%80%D0%BE%D0%B1%D0%BB%D0%B5%D0%BC%D0%B0%3A%20" target="_blank" rel="noopener noreferrer">Узнать стоимость ремонта</a>
     </section>
 
     <section>
