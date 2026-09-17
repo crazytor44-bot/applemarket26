@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <yml_catalog date="2026-05-24 00:00">
   <shop>
-    <name>Apple Market</name>
-    <company>Apple Market</company>
+    <name>А Маркет</name>
+    <company>А Маркет</company>
     <url>https://applemarket26.ru</url>
     <currencies>
       <currency id="RUR" rate="1"/>
@@ -22,7 +22,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 Pro Max 256GB Blue 🇯🇵</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="2" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -31,7 +31,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 Pro Max 256GB Orange 🇯🇵</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="3" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -40,7 +40,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 Pro Max 256GB Silver 🇯🇵</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="4" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -49,7 +49,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 Pro Max 256GB Orange 🇪🇺</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="5" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -58,7 +58,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 Pro Max 256GB Silver 🇪🇺</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="6" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -67,7 +67,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 Pro Max 256GB Blue 🇪🇺</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="7" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -76,7 +76,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 Pro Max 512GB Orange 🇯🇵</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="8" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -85,7 +85,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 Pro Max 512GB Blue 🇯🇵</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="9" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -94,7 +94,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 Pro Max 512GB Silver 🇯🇵</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="10" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -103,7 +103,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 Pro Max 512GB Orange 🇪🇺</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="11" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -112,7 +112,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 Pro Max 512GB Blue 🇪🇺</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="12" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -121,7 +121,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 Pro Max 1TB Orange 🇯🇵</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="13" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -130,7 +130,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 Pro Max 512GB Silver 🇪🇺</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="14" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -139,7 +139,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 Pro Max 1TB Blue 🇯🇵 ✈️</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="15" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -148,7 +148,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 Pro Max 1TB Silver 🇯🇵 ✈️</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="16" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -157,7 +157,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 Pro Max 2TB Orange 🇯🇵</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="17" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -166,7 +166,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 Pro Max 1TB Blue 🇪🇺</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="18" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -175,7 +175,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 Pro Max 1TB Silver 🇪🇺</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="19" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -184,7 +184,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 Pro Max 1TB Orange 🇪🇺</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="20" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -193,7 +193,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 Pro 256GB Orange 🇯🇵</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="21" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -202,7 +202,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 Pro 256GB Blue 🇯🇵</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="22" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -211,7 +211,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 Pro 256GB Silver 🇯🇵</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="23" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -220,7 +220,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 Pro 256GB Orange 🇪🇺</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="24" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -229,7 +229,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 Pro 256GB Silver 🇪🇺</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="25" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -238,7 +238,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 Pro 256GB Blue 🇪🇺</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="26" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -247,7 +247,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 Pro 512GB Orange 🇯🇵</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="27" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -256,7 +256,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 Pro 512GB Blue 🇯🇵</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="28" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -265,7 +265,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 Pro 512GB Silver 🇯🇵 ✈️</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="29" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -274,7 +274,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 Pro 512GB Orange 🇪🇺</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="30" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -283,7 +283,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 Pro 512GB Blue 🇪🇺</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="31" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -292,7 +292,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 Pro 1TB Orange 🇯🇵</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="32" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -301,7 +301,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 Pro 512GB Silver 🇪🇺</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="33" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -310,7 +310,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 Pro 1TB Blue 🇯🇵</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="34" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -319,7 +319,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 Pro 1TB Orange 🇪🇺</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="35" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -328,7 +328,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 Pro 1TB Blue 🇪🇺</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="36" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -337,7 +337,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 Pro 1TB Silver 🇪🇺</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="37" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -346,7 +346,7 @@
         <categoryId>1</categoryId>
         <name>iPhone Air 256GB Blue 🇯🇵</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="38" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -355,7 +355,7 @@
         <categoryId>1</categoryId>
         <name>iPhone Air 256GB Gold 🇯🇵</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="39" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -364,7 +364,7 @@
         <categoryId>1</categoryId>
         <name>iPhone Air 256GB Black 🇯🇵 ✈️</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="40" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -373,7 +373,7 @@
         <categoryId>1</categoryId>
         <name>iPhone Air 256GB White 🇯🇵</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="41" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -382,7 +382,7 @@
         <categoryId>1</categoryId>
         <name>iPhone Air 512GB Blue 🇯🇵</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="42" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -391,7 +391,7 @@
         <categoryId>1</categoryId>
         <name>iPhone Air 512GB Black 🇯🇵</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="43" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -400,7 +400,7 @@
         <categoryId>1</categoryId>
         <name>iPhone Air 512GB Gold 🇯🇵</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="44" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -409,7 +409,7 @@
         <categoryId>1</categoryId>
         <name>iPhone Air 512GB White 🇯🇵</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="45" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -418,7 +418,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 256GB Blue 🇯🇵</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="46" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -427,7 +427,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 256GB Sage 🇯🇵</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="47" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -436,7 +436,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 256GB White 🇯🇵</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="48" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -445,7 +445,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 256GB Lavender 🇯🇵</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="49" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -454,7 +454,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 256GB Black 🇯🇵</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="50" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -463,7 +463,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 256GB Blue 🇮🇳</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="51" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -472,7 +472,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 256GB Black 🇮🇳</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="52" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -481,7 +481,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 256GB White 🇮🇳</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="53" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -490,7 +490,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 256GB Lavender 🇮🇳</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="54" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -499,7 +499,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 256GB Sage 🇮🇳</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="55" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -508,7 +508,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 512GB Black 🇯🇵</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="56" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -517,7 +517,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 512GB White 🇯🇵 ✈️</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="57" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -526,7 +526,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17 512GB Black 🇮🇳</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="58" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -535,7 +535,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17E 256GB Black 🇯🇵</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="59" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -544,7 +544,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17E 256GB White 🇯🇵</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="60" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -553,7 +553,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17E 256GB Pink 🇯🇵</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="61" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -562,7 +562,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17E 256GB Pink 🇮🇳</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="62" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -571,7 +571,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 17E 256GB Black 🇮🇳</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="63" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -580,7 +580,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 16 Pro 128GB Desert 🇨🇳</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="64" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -589,7 +589,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 16 Pro 128GB Black 🇨🇳</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="65" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -598,7 +598,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 16 128GB Teal 🇮🇳</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="66" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -607,7 +607,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 16 128GB Black 🇮🇳</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="67" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -616,7 +616,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 16 128GB Pink 🇮🇳</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="68" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -625,7 +625,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 16 128GB Ultramarine 🇮🇳</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="69" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -634,7 +634,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 16 128GB White 🇮🇳</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="70" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -643,7 +643,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 16E 256GB Black 🇮🇳</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="71" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -652,7 +652,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 16E 256GB White 🇮🇳</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="72" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -661,7 +661,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 15 Pro Max 256GB Black 🇨🇳</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="73" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -670,7 +670,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 15 128GB Black 🇮🇳</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="74" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -679,7 +679,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 15 256GB Black 🇮🇳</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="75" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -688,7 +688,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 15 256GB Blue 🇮🇳</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="76" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -697,7 +697,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 15 256GB Pink 🇮🇳</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="77" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -706,7 +706,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 14 128GB Red 🇮🇳</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="78" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -715,7 +715,7 @@
         <categoryId>1</categoryId>
         <name>iPhone 13 256GB Red 🇮🇳</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="79" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -724,7 +724,7 @@
         <categoryId>2</categoryId>
         <name>Apple Watch Ultra 3 Black Black Alpine Loop L 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="80" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -733,7 +733,7 @@
         <categoryId>2</categoryId>
         <name>Apple Watch Ultra 3 Black Black Ocean Band 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="81" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -742,7 +742,7 @@
         <categoryId>2</categoryId>
         <name>Apple Watch Ultra 3 Black Black Charcoal Trail Loop M/L 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="82" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -751,7 +751,7 @@
         <categoryId>2</categoryId>
         <name>Apple Watch Ultra 3 Black Black Charcoal Trail Loop S/M 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="83" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -760,7 +760,7 @@
         <categoryId>2</categoryId>
         <name>Apple Watch Ultra 3 Natural Blue Alpine Loop M 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="84" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -769,7 +769,7 @@
         <categoryId>2</categoryId>
         <name>Apple Watch Ultra 3 Natural Bright Blue Trail Loop M 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="85" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -778,7 +778,7 @@
         <categoryId>2</categoryId>
         <name>Apple Watch Ultra 3 Natural Anchor Blue Ocean Band 🇺🇸 ✈️</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="86" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -787,7 +787,7 @@
         <categoryId>2</categoryId>
         <name>Apple Watch Ultra 3 Natural Neon Green Ocean Band 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="87" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -796,7 +796,7 @@
         <categoryId>2</categoryId>
         <name>Apple Watch S11 42 Jet Black S/M 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="88" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -805,7 +805,7 @@
         <categoryId>2</categoryId>
         <name>Apple Watch S11 42 Rose Gold Light Blush S/M 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="89" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -814,7 +814,7 @@
         <categoryId>2</categoryId>
         <name>Apple Watch S11 42 Silver Purple Fog S/M 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="90" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -823,7 +823,7 @@
         <categoryId>2</categoryId>
         <name>Apple Watch S11 42 Space Gray Black M/L 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="91" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -832,7 +832,7 @@
         <categoryId>2</categoryId>
         <name>Apple Watch S11 42 Space Gray Black S/M 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="92" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -841,7 +841,7 @@
         <categoryId>2</categoryId>
         <name>Apple Watch S11 46 Jet Black S/M 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="93" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -850,7 +850,7 @@
         <categoryId>2</categoryId>
         <name>Apple Watch S11 46 Rose Gold Light Blush M/L 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="94" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -859,7 +859,7 @@
         <categoryId>2</categoryId>
         <name>Apple Watch S11 46 Silver Purple Fog M/L 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="95" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -868,7 +868,7 @@
         <categoryId>2</categoryId>
         <name>Apple Watch S11 46 Space Gray Black M/L 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="96" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -877,7 +877,7 @@
         <categoryId>2</categoryId>
         <name>Apple Watch S8 45 Starlight M/L 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="97" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -886,7 +886,7 @@
         <categoryId>2</categoryId>
         <name>Apple Watch SE3 40 Midnight M/L 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="98" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -895,7 +895,7 @@
         <categoryId>2</categoryId>
         <name>Apple Watch SE3 40 Midnight S/M 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="99" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -904,7 +904,7 @@
         <categoryId>2</categoryId>
         <name>Apple Watch SE3 40 Starlight S/M 🇺🇸 ✈️</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="100" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -913,7 +913,7 @@
         <categoryId>2</categoryId>
         <name>Apple Watch SE3 44 Midnight M/L 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="101" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -922,7 +922,7 @@
         <categoryId>2</categoryId>
         <name>Apple Watch SE3 44 Midnight S/M 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="102" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -931,7 +931,7 @@
         <categoryId>2</categoryId>
         <name>Apple Watch SE3 44 Starlight M/L 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="103" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -940,7 +940,7 @@
         <categoryId>2</categoryId>
         <name>Apple Watch SE3 44 Starlight S/M 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="104" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -949,7 +949,7 @@
         <categoryId>3</categoryId>
         <name>AirPods 4</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="105" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -958,7 +958,7 @@
         <categoryId>3</categoryId>
         <name>AirPods Pro 2</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="106" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -967,7 +967,7 @@
         <categoryId>3</categoryId>
         <name>AirPods 4 ANC</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="107" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -976,7 +976,7 @@
         <categoryId>3</categoryId>
         <name>AirPods Pro 3</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="108" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -985,7 +985,7 @@
         <categoryId>3</categoryId>
         <name>AirPods Max 2024 Purple</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="109" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -994,7 +994,7 @@
         <categoryId>3</categoryId>
         <name>AirPods Max 2024 Orange</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="110" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1003,7 +1003,7 @@
         <categoryId>3</categoryId>
         <name>AirPods Max 2026 Blue</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="111" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1012,7 +1012,7 @@
         <categoryId>3</categoryId>
         <name>AirPods Max 2026 Purple</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="112" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1021,7 +1021,7 @@
         <categoryId>3</categoryId>
         <name>AirPods Max 2026 Starlight</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="113" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1030,7 +1030,7 @@
         <categoryId>4</categoryId>
         <name>MacBook Pro 14 M5 16/1TB Black MDE14 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="114" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1039,7 +1039,7 @@
         <categoryId>4</categoryId>
         <name>MacBook Pro 14 M5 16/1TB Silver MDE54 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="115" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1048,7 +1048,7 @@
         <categoryId>4</categoryId>
         <name>MacBook Pro 14 M5 24/1TB Black MDE34 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="116" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1057,7 +1057,7 @@
         <categoryId>4</categoryId>
         <name>MacBook Air 15 M5 16/512GB Midnight MDVH4 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="117" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1066,7 +1066,7 @@
         <categoryId>4</categoryId>
         <name>MacBook Air 15 M5 16/512GB Starlight MDVD4 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="118" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1075,7 +1075,7 @@
         <categoryId>4</categoryId>
         <name>MacBook Air 15 M5 16/512GB Blue MDVQ4 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="119" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1084,7 +1084,7 @@
         <categoryId>4</categoryId>
         <name>MacBook Air 15 M5 16/512GB Silver MDV94🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="120" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1093,7 +1093,7 @@
         <categoryId>4</categoryId>
         <name>MacBook Air 15 M4 16/256GB Midnight MW1L3 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="121" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1102,7 +1102,7 @@
         <categoryId>4</categoryId>
         <name>MacBook Air 15 M4 16/512GB Starlight MW1K3 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="122" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1111,7 +1111,7 @@
         <categoryId>4</categoryId>
         <name>MacBook Air 13 M5 16/512GB  Starlight MDHA4🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="123" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1120,7 +1120,7 @@
         <categoryId>4</categoryId>
         <name>MacBook Air 13 M5 16/512GB Blue MDHH4 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="124" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1129,7 +1129,7 @@
         <categoryId>4</categoryId>
         <name>MacBook Air 13 M5 16/512GB Silver MDH74🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="125" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1138,7 +1138,7 @@
         <categoryId>4</categoryId>
         <name>MacBook Air 13 M5 16/512GB Midnight MDHE4 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="126" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1147,7 +1147,7 @@
         <categoryId>4</categoryId>
         <name>MacBook Air 13 M4 16/256GB Midnight MW123 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="127" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1156,7 +1156,7 @@
         <categoryId>4</categoryId>
         <name>MacBook Air 13 M4 16/512GB Blue MC6U4 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="128" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1165,7 +1165,7 @@
         <categoryId>4</categoryId>
         <name>MacBook Air 13 M4 16/512GB Midnight MW133 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="129" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1174,7 +1174,7 @@
         <categoryId>4</categoryId>
         <name>MacBook Air 13 M4 16/512GB Starlight MW103 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="130" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1183,7 +1183,7 @@
         <categoryId>4</categoryId>
         <name>MacBook Neo 13 8/256GB Silver MHFA4 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="131" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1192,7 +1192,7 @@
         <categoryId>4</categoryId>
         <name>MacBook Neo 13 8/256GB Blush MHFH4 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="132" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1201,7 +1201,7 @@
         <categoryId>4</categoryId>
         <name>MacBook Neo 13 8/256GB Citrus MHFD4 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="133" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1210,7 +1210,7 @@
         <categoryId>4</categoryId>
         <name>MacBook Neo 13 8/512GB Indigo MHFG4 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="134" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1219,7 +1219,7 @@
         <categoryId>4</categoryId>
         <name>MacBook Neo 13 8/512GB Citrus MHFD4 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="135" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1228,7 +1228,7 @@
         <categoryId>4</categoryId>
         <name>MacBook Neo 13 8/512GB Blush MHFJ4 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="136" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1237,7 +1237,7 @@
         <categoryId>4</categoryId>
         <name>iMac 24 M3 8/512GB Green MQRP3 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="137" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1246,7 +1246,7 @@
         <categoryId>5</categoryId>
         <name>iPad Pro 11 M5 Wi-Fi 256GB Black 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="138" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1255,7 +1255,7 @@
         <categoryId>5</categoryId>
         <name>iPad Pro 13 M5 Wi-Fi 256 Black 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="139" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1264,7 +1264,7 @@
         <categoryId>5</categoryId>
         <name>iPad Pro 11 M4 Wi-Fi 256GB Silver 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="140" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1273,7 +1273,7 @@
         <categoryId>5</categoryId>
         <name>iPad Air 11 M4 Wi-Fi 128GB Purple 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="141" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1282,7 +1282,7 @@
         <categoryId>5</categoryId>
         <name>iPad Air 11 M4 Wi-Fi 128GB Starlight 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="142" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1291,7 +1291,7 @@
         <categoryId>5</categoryId>
         <name>iPad Air 11 M4 Wi-Fi 128GB Blue 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="143" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1300,7 +1300,7 @@
         <categoryId>5</categoryId>
         <name>iPad Air 11 M4 Wi-Fi 128GB Gray 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="144" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1309,7 +1309,7 @@
         <categoryId>5</categoryId>
         <name>iPad Air 11 M4 Wi-Fi 256GB Blue 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="145" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1318,7 +1318,7 @@
         <categoryId>5</categoryId>
         <name>iPad Air 11 M4 Wi-Fi 256GB Purple 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="146" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1327,7 +1327,7 @@
         <categoryId>5</categoryId>
         <name>iPad Air 11 M4 Wi-Fi 256GB Starlight 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="147" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1336,7 +1336,7 @@
         <categoryId>5</categoryId>
         <name>iPad Air 13 M4 Wi-Fi 128GB Blue 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="148" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1345,7 +1345,7 @@
         <categoryId>5</categoryId>
         <name>iPad Air 13 M4 Wi-Fi 128GB Purple 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="149" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1354,7 +1354,7 @@
         <categoryId>5</categoryId>
         <name>iPad Air 11 M3 Wi-Fi 256GB Blue 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="150" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1363,7 +1363,7 @@
         <categoryId>5</categoryId>
         <name>iPad Air 13 M3 Wi-Fi 256GB Blue 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="151" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1372,7 +1372,7 @@
         <categoryId>5</categoryId>
         <name>iPad Air 13 M3 Wi-Fi 256GB Purple 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="152" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1381,7 +1381,7 @@
         <categoryId>5</categoryId>
         <name>iPad Air 13 M3 Wi-Fi 256GB Starlight 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="153" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1390,7 +1390,7 @@
         <categoryId>5</categoryId>
         <name>iPad 11 A16 Wi-Fi 128GB Blue 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="154" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1399,7 +1399,7 @@
         <categoryId>5</categoryId>
         <name>iPad 11 A16 Wi-Fi 128GB Pink 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="155" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1408,7 +1408,7 @@
         <categoryId>5</categoryId>
         <name>iPad 11 A16 Wi-Fi 128GB Silver 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="156" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1417,7 +1417,7 @@
         <categoryId>5</categoryId>
         <name>iPad 11 A16 Wi-Fi 128GB Yellow 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="157" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1426,7 +1426,7 @@
         <categoryId>5</categoryId>
         <name>iPad 11 A16 Wi-Fi 256GB Blue 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="158" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1435,7 +1435,7 @@
         <categoryId>5</categoryId>
         <name>iPad 11 A16 Wi-Fi 256GB Pink 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="159" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1444,7 +1444,7 @@
         <categoryId>5</categoryId>
         <name>iPad 11 A16 Wi-Fi 256GB Yellow 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
       <offer id="160" available="true">
         <url>https://applemarket26.ru/#catalog</url>
@@ -1453,7 +1453,7 @@
         <categoryId>5</categoryId>
         <name>iPad 11 A16 Wi-Fi 256GB Silver 🇺🇸</name>
         <vendor>Apple</vendor>
-        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в Apple Market.</description>
+        <description>Новая техника Apple. Наличие и цену лучше уточнить перед визитом в А Маркет.</description>
       </offer>
     </offers>
   </shop>
