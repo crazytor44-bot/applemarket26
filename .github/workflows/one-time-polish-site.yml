@@ -1,0 +1,52 @@
+name: One-time polish site
+on:
+  push:
+    paths:
+      - '.github/workflows/one-time-polish-site.yml'
+permissions:
+  contents: write
+jobs:
+  polish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Polish current site
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('index.html')
+          s=p.read_text(encoding='utf-8')
+
+          # Clean duplicated supplier naming throughout visible site.
+          replacements = {
+            'Watch Watch Ultra 3':'Watch Ultra 3',
+            'Apple Watch Watch Ultra 3':'Apple Watch Ultra 3',
+            'Black Black Alpine Loop':'Black Alpine Loop',
+            'Black Black':'Black',
+          }
+          for a,b in replacements.items(): s=s.replace(a,b)
+
+          # Make catalog model groups compact on first visit.
+          s=re.sub(r'(<details\b[^>]*class="[^"]*catalog-group[^"]*"[^>]*)\s+open(?=[\s>])', r'\1', s, flags=re.I)
+
+          # Turn anonymous testimonial section into an honest benefits framing.
+          s=s.replace('Отзывы клиентов','Что ценят наши клиенты')
+          s=s.replace('Что говорят о нас','За что выбирают А Маркет')
+
+          # Slightly improve hit cards without inventing photos: visual device icon area.
+          if '.hit-card::before' not in s:
+            marker='.hit-card span {'
+            css='''\n    .hit-card::before {\n      content:"◉";\n      width:44px;\n      height:44px;\n      border-radius:14px;\n      display:flex;\n      align-items:center;\n      justify-content:center;\n      background:rgba(255,255,255,.08);\n      border:1px solid rgba(255,255,255,.12);\n      color:#fff;\n      font-size:20px;\n      margin-bottom:12px;\n    }\n\n'''
+            s=s.replace(marker,css+marker,1)
+
+          p.write_text(s,encoding='utf-8')
+          PY
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Polish catalog and customer trust sections" || true
+          git rm .github/workflows/one-time-polish-site.yml
+          git commit -m "Remove one-time polish workflow"
+          git push
