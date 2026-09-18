@@ -1010,6 +1010,21 @@ p,.lead,.section-sub,.address,.product-meta,.card p {
   .section-nav a { padding: 10px 12px; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Real customer reviews */
+#reviews { scroll-margin-top: 24px; }
+.real-reviews .review-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; }
+.real-reviews .customer-review { min-width: 0; display: flex; flex-direction: column; }
+.real-reviews .customer-review h3 { margin: 0 0 10px; font-size: 20px; }
+.real-reviews .review-stars { color: #ffcf55; letter-spacing: 3px; font-size: 22px; }
+.real-reviews time { display: block; margin: 8px 0 0; color: #b9bbc4; font-size: 14px; }
+.real-reviews blockquote { margin: 16px 0 22px; }
+.real-reviews blockquote p { margin: 0; line-height: 1.65; }
+.real-reviews summary { cursor: pointer; padding: 12px 0; color: #fff; text-decoration: underline; text-underline-offset: 4px; }
+.real-reviews .review-source { margin-top: auto; color: #c7c9d0; font-size: 14px; text-decoration: underline; text-underline-offset: 4px; }
+.real-reviews a:focus-visible, .real-reviews summary:focus-visible { outline: 3px solid #b76677; outline-offset: 4px; }
+.real-reviews .review-cta { margin-top: 22px; text-align: center; }
+@media (max-width: 640px) { .real-reviews .review-grid { grid-template-columns: 1fr; } }
 </style>
 
   <!-- Yandex.Metrika counter -->
@@ -2687,15 +2702,40 @@ p,.lead,.section-sub,.address,.product-meta,.card p {
 </details>
 </section>
 
-    <section class="reviews-boost">
-      <h2 class="section-title">Что ценят наши клиенты</h2>
-      <p class="section-sub">Спасибо каждому, кто выбирает А Маркет и возвращается снова.</p>
-      <div class="cards">
-        <div class="card"><h3>★★★★★</h3><p>Быстро подобрали телефон, всё проверили и спокойно объяснили.</p><b>Покупка iPhone</b></div>
-        <div class="card"><h3>★★★★★</h3><p>Отличный магазин, нормальное отношение и понятные цены.</p><b>Аксессуары и техника</b></div>
-        <div class="card"><h3>★★★★★</h3><p>Помогли с выбором, перенесли данные и всё настроили.</p><b>Настройка устройства</b></div>
+    <section id="reviews" class="reviews-boost real-reviews" aria-labelledby="reviews-title">
+      <h2 id="reviews-title" class="section-title">Отзывы клиентов</h2>
+      <p class="section-sub">Четыре истории наших клиентов из Яндекс Карт.</p>
+      <div class="review-grid">
+        <article class="card customer-review">
+          <h3>Елена Щербак</h3>
+          <div class="review-stars" role="img" aria-label="Оценка: 5 из 5">★★★★★</div>
+          <time datetime="2025-08-13">13 августа 2025</time>
+          <blockquote><p>Принесли телефон полностью разбитый, очень важны были данные на телефоне. Ребята сделали за пол дня телефон, за что очень благодарна. Больше вам клиентов и процветания</p></blockquote>
+          <a class="review-source" href="https://yandex.ru/maps/org/apple_market/149080119502/reviews/" target="_blank" rel="noopener noreferrer">Яндекс Карты ↗</a>
+        </article>
+        <article class="card customer-review">
+          <h3>Елена К.</h3>
+          <div class="review-stars" role="img" aria-label="Оценка: 5 из 5">★★★★★</div>
+          <time datetime="2025-08-24">24 августа 2025</time>
+          <blockquote><p>Очень хорошее место, обратилась по совету подруги. Купила у ребят телефон внучке, телефон быстрый, не зависает и по цене сошлись с ребятами. Всех благ вам👏👏👏</p></blockquote>
+          <a class="review-source" href="https://yandex.ru/maps/org/apple_market/149080119502/reviews/" target="_blank" rel="noopener noreferrer">Яндекс Карты ↗</a>
+        </article>
+        <article class="card customer-review">
+          <h3>Владимир Абышев</h3>
+          <div class="review-stars" role="img" aria-label="Оценка: 5 из 5">★★★★★</div>
+          <time datetime="2025-08-29">29 августа 2025</time>
+          <blockquote><p>Спасибо огромное данному магазину. Защитили мой телефон, хорошей гидрогелевой пленкой, по отличной цене. И подобрали чехол под заказ.</p></blockquote>
+          <a class="review-source" href="https://yandex.ru/maps/org/apple_market/149080119502/reviews/" target="_blank" rel="noopener noreferrer">Яндекс Карты ↗</a>
+        </article>
+        <article class="card customer-review">
+          <h3>missdior-06 М.</h3>
+          <div class="review-stars" role="img" aria-label="Оценка: 5 из 5">★★★★★</div>
+          <time datetime="2025-06-11">11 июня 2025</time>
+          <blockquote><p>Обратилась за помощью в данный магазин. Мой телефон прекрасно работал и меня абсолютно устраивал, но сильно зависал.</p><details><summary>Читать полностью</summary><p>Другие магазины настаивали на том что бы приобрести новый телефон. У меня не было возможности купить новый. Ребята с этого магазина устранили проблему за час и мой телефон перестал зависать, теперь пользуюсь. Огромное спасибо за помощь, буду обращаться только к вам😊</p></details></blockquote>
+          <a class="review-source" href="https://yandex.ru/maps/org/apple_market/149080119502/reviews/" target="_blank" rel="noopener noreferrer">Яндекс Карты ↗</a>
+        </article>
       </div>
-      <a class="review-cta" href="https://yandex.ru/maps/?text=Apple%20Market%20%D0%A1%D1%82%D0%B0%D0%B2%D1%80%D0%BE%D0%BF%D0%BE%D0%BB%D1%8C%20%D0%A2%D1%83%D1%85%D0%B0%D1%87%D0%B5%D0%B2%D1%81%D0%BA%D0%BE%D0%B3%D0%BE%2016%D0%BA10" target="_blank">⭐ Оставить отзыв</a>
+      <a class="review-cta" href="https://yandex.ru/maps/org/apple_market/149080119502/reviews/" target="_blank" rel="noopener noreferrer">⭐ Оставить отзыв на Яндекс Картах</a>
     </section>
 
     <section id="delivery">
