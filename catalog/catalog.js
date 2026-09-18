@@ -24,8 +24,10 @@ buttons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.category===cat
 const filters=Object.fromEntries(Object.entries(fields).map(([k,input])=>[k,input.value]));filters.category=category;
 const invalid=filters.min!==''&&filters.max!==''&&Number(filters.min)>Number(filters.max);
 document.querySelector('#range-error').hidden=!invalid;
-let count=0;products.forEach(p=>{const visible=!invalid&&matching(p,filters);cards.get(p.id).hidden=!visible;if(visible)count++;});
-document.querySelector('#catalog-count').textContent='Найдено вариантов: '+count;
+let count=0;const matched=new Map();
+products.forEach(p=>{if(!invalid&&matching(p,filters)){count++;const key=p.groupKey||p.id;if(!matched.has(key))matched.set(key,[]);matched.get(key).push(p);}});
+cards.forEach((card,key)=>{const variants=matched.get(key);card.hidden=!variants;if(variants&&variants[0].groupKey){const p=variants.reduce((a,b)=>a.price<=b.price?a:b);card.querySelector('strong').textContent='от '+new Intl.NumberFormat('ru-RU').format(p.price)+' ₽';card.querySelectorAll('a').forEach(a=>a.href=p.page+'?variant='+p.id);}});
+document.querySelector('#catalog-count').textContent='Моделей и товаров: '+matched.size+' · Вариантов: '+count;
 document.querySelector('#catalog-empty').hidden=count>0||invalid;
 }
 buttons.forEach(b=>b.addEventListener('click',()=>{category=b.dataset.category;apply();}));
