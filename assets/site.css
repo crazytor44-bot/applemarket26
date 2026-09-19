@@ -79,3 +79,8 @@ header .am-nav{order:2;width:100%;display:grid;grid-template-columns:repeat(5,mi
 .home-iphone-photo{display:flex;align-items:center;justify-content:center;aspect-ratio:4/3;padding:24px;background:#f4f4f6}
 .home-iphone-photo img{display:block;width:100%;height:100%;min-height:0;object-fit:contain}
 @media(max-width:760px){.home-iphone-hero{padding:24px;margin-top:24px}.home-iphone-photo{padding:22px}}
+
+/* Graphite homepage image panels */
+.home-iphone-hero{background:radial-gradient(ellipse at 58% 60%,rgba(113,75,96,.30) 0%,rgba(44,39,48,.65) 38%,#080808 76%)}
+.home-iphone-photo{background:radial-gradient(ellipse at 50% 46%,#39303a 0%,#211c24 48%,#151217 100%)}
+.home-iphone-hero img,.home-iphone-photo img{filter:drop-shadow(0 16px 24px rgba(0,0,0,.35))}
