@@ -11,7 +11,19 @@
   .home-iphone-hero img{width:100%!important;height:100%!important;object-fit:contain!important}
   .hero + .section{margin-top:28px!important}
 }
-</style><link rel="stylesheet" href="/assets/cart.css?v=4"></head><body><!-- Yandex.Metrika counter -->
+</style><link rel="stylesheet" href="/assets/cart.css?v=4"><style id="cart-mobile-hard-align">
+@media (max-width:600px){
+  .am-cart-fab{
+    left:24px !important;
+    right:auto !important;
+    top:auto !important;
+    bottom:calc(14px + env(safe-area-inset-bottom,0px)) !important;
+    width:58px !important;
+    height:58px !important;
+  }
+}
+</style>
+</head><body><!-- Yandex.Metrika counter -->
   <script type="text/javascript">
       (function(m,e,t,r,i,k,a){
           m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
