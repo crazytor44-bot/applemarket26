@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "description": "DOM tests for the price editor",
+  "devDependencies": {
+    "linkedom": "0.18.12"
+  },
+  "scripts": {
+    "test": "node price-editor.cjs && node cart-price-sync.cjs"
+  }
+}
