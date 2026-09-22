@@ -84,3 +84,7 @@ header .am-nav{order:2;width:100%;display:grid;grid-template-columns:repeat(5,mi
 .home-iphone-hero{background:radial-gradient(ellipse at 58% 60%,rgba(113,75,96,.30) 0%,rgba(44,39,48,.65) 38%,#080808 76%)}
 .home-iphone-photo{background:radial-gradient(ellipse at 50% 46%,#39303a 0%,#211c24 48%,#151217 100%)}
 .home-iphone-hero img,.home-iphone-photo img{filter:drop-shadow(0 16px 24px rgba(0,0,0,.35))}
+
+/* Six primary destinations, including comparison */
+header .am-nav{grid-template-columns:repeat(6,minmax(0,1fr))}
+@media(max-width:760px){header .am-nav{grid-template-columns:repeat(3,minmax(0,1fr))}header .am-nav-link,header .am-nav-link:nth-child(n+4){grid-column:auto;flex-direction:column;min-height:91px;padding:12px 5px;gap:9px}header .am-nav-link:nth-child(n+4) .am-nav-icon{width:30px;height:30px;background:#3b2937}}
