@@ -7,7 +7,7 @@ const cards=new Map([...document.querySelectorAll('.catalog-item')].map(card=>[c
 const modelOptions=[...fields.model.options];
 const iphoneOrder=['iphone-18-pro-max','iphone-18-pro','iphone-17-pro-max','iphone-17-pro','iphone-air','iphone-17','iphone-17e','iphone-16-pro','iphone-16','iphone-15'];
 const iphoneCards=iphoneOrder.map(id=>cards.get(id)).filter(Boolean);
-if(iphoneCards.length){const parent=iphoneCards[0].parentElement;const marker=document.createTextNode("");parent.insertBefore(marker,iphoneCards[0]);iphoneCards.forEach(card=>parent.insertBefore(card,marker));marker.remove();}
+if(iphoneCards.length){const parent=iphoneCards[0].parentElement;iphoneCards.forEach(card=>parent.appendChild(card));const firstNonIphone=[...parent.children].find(card=>!iphoneOrder.includes(card.dataset.id));if(firstNonIphone)iphoneCards.forEach(card=>parent.insertBefore(card,firstNonIphone));}
 
 let category=new URLSearchParams(location.search).get('category')||'';
 if(!buttons.some(b=>b.dataset.category===category))category='';
