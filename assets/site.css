@@ -22,6 +22,8 @@
 .catalog-results-line{display:flex;justify-content:space-between;gap:12px;margin-bottom:18px;font-size:14px}
 .catalog-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 .catalog-item{display:flex;flex-direction:column;min-width:0;padding:24px;border:1px solid #373039;border-radius:18px;background:#19171c}
+.catalog-item.is-unavailable{opacity:.58}
+.catalog-item.is-unavailable .catalog-buy{background:#3a3539;color:#fff}
 .catalog-item.is-preorder{border-color:#74505f;background:linear-gradient(135deg,#302029,#1b191f)}
 .catalog-item-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;color:#bbb0bb;font-size:14px;margin-bottom:22px}
 .catalog-preorder-label{color:#f0c2d0}

@@ -1,0 +1,54 @@
+name: Telegram price sync
+on:
+  schedule:
+    - cron: '0 8,12,15 * * *'
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: 'Опубликовать изменения после проверки'
+        required: true
+        type: boolean
+        default: false
+permissions:
+  contents: write
+concurrency:
+  group: telegram-price-sync
+  cancel-in-progress: false
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Install Telegram client
+        run: python -m pip install --disable-pip-version-check 'telethon==1.45.0'
+      - name: Read Telegram price and update catalog
+        env:
+          TELEGRAM_API_ID: ${{ secrets.TELEGRAM_API_ID }}
+          TELEGRAM_API_HASH: ${{ secrets.TELEGRAM_API_HASH }}
+          TELEGRAM_SESSION: ${{ secrets.TELEGRAM_SESSION }}
+          TELEGRAM_CHANNEL: iCenter Stavropol
+          MIN_PRICE_ITEMS: '20'
+        run: |
+          result="$(python automation/telegram_price_sync.py)"
+          echo "$result"
+          {
+            echo '### Результат проверки прайса'
+            echo '```json'
+            echo "$result"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Run safety tests
+        run: python -m unittest discover -s automation -p 'test_*.py'
+      - name: Publish changed prices
+        if: github.event_name == 'schedule' || inputs.publish == true
+        shell: bash
+        run: |
+          if git diff --quiet -- catalog/index.html yml.xml; then echo 'Прайс не изменился.'; exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add catalog/index.html yml.xml
+          git commit -m 'Автоматически обновить прайс из Telegram'
+          git push
