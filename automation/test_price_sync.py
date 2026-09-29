@@ -43,4 +43,17 @@ class PriceSyncTests(unittest.TestCase):
         self.assertEqual(stats["added"], 0)
         self.assertEqual(merged[0]["price"], 80_000)
 
+    def test_partial_supplier_batch_does_not_disable_unrepresented_category(self):
+        products = [
+            {"id":"ps5","name":"DualSense PS5 White","category":"gaming","model":"DualSense",
+             "price":6900,"available":True,"source":"icenter"},
+            {"id":"mouse","name":"Magic Mouse 3 White","category":"accessories","model":"Magic Mouse 3 White",
+             "price":8000,"available":True,"source":"icenter"},
+        ]
+        entries = parse_price_text("Magic Mouse 3 White - 7.000")
+        merged, stats = merge_products(products, entries)
+        dualsense = next(x for x in merged if x["id"] == "ps5")
+        self.assertTrue(dualsense["available"])
+        self.assertEqual(stats["unavailable"], 0)
+
 if __name__ == "__main__": unittest.main()

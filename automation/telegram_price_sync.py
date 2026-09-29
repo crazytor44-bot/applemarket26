@@ -134,7 +134,7 @@ def model_for(name: str, category: str) -> str:
         "ipad": r"((?:iPad\s+)?(?:(?:Air|Pro)\s+(?:11|13)\s+M\d|11\s+A\d+|iPad(?:\s+(?:Air|Pro|mini))?(?:\s+\d{1,2})?(?:\s+M\d)?))",
         "airpods": r"(AirPods(?:\s+(?:Pro|Max))?\s*\d*)",
         "watch": r"((?:(?:Apple\s+)?Watch\s+)?(?:Series\s*\d+|Ultra\s*\d+|SE\s*\d+))",
-        "gaming": r"((?:DualSense\s+PS5|PlayStation\s*5|PS5|PS\s+Portal|Sony\s+Pulse))",
+        "gaming": r"((?:Charging\s+Station\s+DualSense|DualSense(?:\s+PS5)?|PS5\s+Disc\s+Drive|PlayStation\s*5|PS\s+Portal|Sony\s+Pulse))",
         "xiaomi": r"((?:Redmi\s+)?Note\s+\d+(?:\s+Pro(?:\s+Max)?)?(?:\s+5G)?|Poco\s+[A-Z]\d+(?:\s+(?:Pro|Ultra))?|Mi\s+\d+[A-Z]?(?:\s+(?:Pro|Ultra))?)",
         "honor": r"(Honor\s+\d+(?:\s+(?:Lite|Pro))?)",
         "beauty": r"((?:Dyson\s+)?(?:HT01|HS08|HS09))",
@@ -198,6 +198,9 @@ def merge_products(products: list[dict], entries: list[PriceEntry]) -> tuple[lis
         if not is_iphone_18(product.get("name", "")):
             by_key.setdefault(normal_key(product.get("name", "")), []).append(index)
     seen: set[int] = set()
+    represented_categories = {
+        category_for(entry.name) for entry in entries if not is_iphone_18(entry.name)
+    }
     stats = {"updated": 0, "added": 0, "unavailable": 0,
              "protected18": sum(is_iphone_18(p.get("name", "")) for p in products)}
     for entry in entries:
@@ -219,7 +222,9 @@ def merge_products(products: list[dict], entries: list[PriceEntry]) -> tuple[lis
             by_key.setdefault(entry.key, []).append(index)
             seen.add(index); stats["added"] += 1
     for index, product in enumerate(products):
-        if is_iphone_18(product.get("name", "")) or index in seen or product.get("source") != "icenter":
+        if (is_iphone_18(product.get("name", "")) or index in seen
+                or product.get("source") != "icenter"
+                or product.get("category") not in represented_categories):
             continue
         product.update(available=False, meta="Нет в наличии",
                        url=whatsapp_url(product["name"], int(product["price"]), False))
@@ -294,8 +299,13 @@ async def telegram_batch() -> str:
                 activity = message.edit_date or message.date
                 messages.append((activity.astimezone(MOSCOW), message.id, message.message))
         if not messages: raise RuntimeError("В канале не найдены текстовые сообщения")
-        newest_day = max(item[0].date() for item in messages)
-        batch = sorted((item for item in messages if item[0].date() == newest_day), key=lambda item: (item[0], item[1]))
+        # The supplier keeps one long price list split across several Telegram
+        # messages and edits its sections at different times.  Selecting only
+        # the newest edit day drops untouched sections (for example PS5).
+        price_messages = [item for item in messages if parse_price_text(item[2])]
+        if not price_messages:
+            raise RuntimeError("В канале не найдены сообщения с ценами")
+        batch = sorted(price_messages[:80], key=lambda item: (item[0], item[1]))
         return "\n".join(item[2] for item in batch)
 
 
