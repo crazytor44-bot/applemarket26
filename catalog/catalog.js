@@ -1,5 +1,6 @@
 (() => {
 const products=JSON.parse(document.querySelector('#catalog-data').textContent);
+products.forEach(p=>{if((p.groupKey||'')==='glasses-fitbit-air'){p.category='accessories';p.groupKey='accessories-fitbit-air';}});
 const form=document.querySelector('#catalog-filters');
 const fields={query:document.querySelector('#catalog-query'),model:document.querySelector('#catalog-model'),memory:document.querySelector('#catalog-memory'),min:document.querySelector('#catalog-min'),max:document.querySelector('#catalog-max')};
 const categoryLabels={iphone:'iPhone',samsung:'Samsung',xiaomi:'Xiaomi · Poco',honor:'Honor',mac:'Mac',ipad:'iPad',watch:'Apple Watch',airpods:'AirPods',beauty:'Красота',cameras:'Камеры',glasses:'Умные очки',gaming:'PlayStation',accessories:'Аксессуары',collectibles:'Коллекционное'};
@@ -16,21 +17,40 @@ function targetUrl(p){return p.page?p.page+'?variant='+encodeURIComponent(p.id):
 function variantLabel(count){const lastTwo=count%100,last=count%10;if(lastTwo>=11&&lastTwo<=14)return count+' вариантов';if(last===1)return count+' вариант';if(last>=2&&last<=4)return count+' варианта';return count+' вариантов';}
 const photoMap={"samsung-a17":"https://images.samsung.com/is/image/samsung/p6pim/de/sm-a176bzkdeub/gallery/de-galaxy-a17-5g-sm-a176-sm-a176bzkdeub-548753932?$1164_776_PNG$=","samsung-a37":"https://images.samsung.com/is/image/samsung/p6pim/ru/sm-a376edgdcau/gallery/ru-galaxy-a37-5g-sm-a376-sm-a376edgdcau-551713449?$1164_776_PNG$=","samsung-a57":"https://images.samsung.com/is/image/samsung/assets/de/offer/galaxy-a57/carousel/260320_a57_multi_cutout_carousel_buypage_1600x864px.png?imbypass=true","samsung-z-flip-8":"https://img.global.news.samsung.com/uk/wp-content/uploads/2026/07/Samsung-Mobile-Galaxy-Unpacked-July-2026-Galaxy-Z-Fold8-Ultra-Galaxy-Z-Fold8-Galaxy-Z-Flip8-A-First-Look_main10.jpg","samsung-z-fold-8":"https://img.global.news.samsung.com/uk/wp-content/uploads/2026/07/Samsung-Mobile-Galaxy-Unpacked-July-2026-Galaxy-Z-Fold8-Ultra-Galaxy-Z-Fold8-Galaxy-Z-Flip8-A-First-Look_main6.jpg","samsung-z-fold-8-ultra":"https://img.global.news.samsung.com/uk/wp-content/uploads/2026/07/Samsung-Mobile-Galaxy-Unpacked-July-2026-Galaxy-Z-Fold8-Ultra-Galaxy-Z-Fold8-Galaxy-Z-Flip8-A-First-Look_main2.jpg","samsung-buds-4":"https://images.samsung.com/kdp/static/pd/buds/galaxy-buds4/SM-R540N_web_00_KV.jpg","samsung-buds-4-pro":"https://images.samsung.com/ru/galaxy-buds4-pro/feature/galaxy-buds4-pro-kv.jpg?imbypass=true","samsung-watch-ultra":"https://images.samsung.com/is/image/samsung/p6pim/ru/f2507/gallery/ru-galaxy-watch-ultra-2025-l705-sm-l705fzb1cau-547608533?$1164_776_PNG$=","airpods-5":"https://www.apple.com/newsroom/images/2026/09/apple-introduces-airpods-5-with-best-in-class-open-ear-active-noise-cancellation/article/Apple-AirPods-5-hero-260909_big.jpg.large.jpg","airpods-5-wireless":"https://www.apple.com/newsroom/images/2026/09/apple-introduces-airpods-5-with-best-in-class-open-ear-active-noise-cancellation/article/Apple-AirPods-5-hero-260909_big.jpg.large.jpg","apple-watch-ultra-3-black-black-alpine-loop-l":"/assets/products/watch-ultra3.png","iphone-16-pro-max":"https://www.apple.com/newsroom/images/2024/09/apple-debuts-iphone-16-pro-and-iphone-16-pro-max/article/Apple-iPhone-16-Pro-hero-240909_inline.jpg.large.jpg","imac-24-m3":"https://www.apple.com/newsroom/images/2023/10/apple-supercharges-24-inch-imac-with-new-m3-chip/article/Apple-iMac-M3-colors-231030_big.jpg.large.jpg","macbook-neo-13":"https://www.apple.com/newsroom/images/2026/03/macbook-neo-iphone-17e-ipad-air-with-m4-and-more-are-now-available/article/Apple-March-2026-MacBook-Neo-color-lineup_big.jpg.large.jpg","macbook-air-13-m5":"https://www.apple.com/newsroom/images/2026/03/apple-introduces-the-new-macbook-air-with-m5/article/Apple-MacBook-Air-hero-260303_big.jpg.large.jpg","macbook-air-15-m5":"https://www.apple.com/newsroom/images/2026/03/apple-introduces-the-new-macbook-air-with-m5/article/Apple-MacBook-Air-hero-260303_big.jpg.large.jpg","macbook-pro-14-m5":"https://www.apple.com/newsroom/images/2025/10/apple-unveils-new-14-inch-macbook-pro-powered-by-the-m5-chip/article/Apple-MacBook-Pro-14-in-front-251015_big.jpg.large.jpg","ipad-11-a16":"https://www.apple.com/v/ipad-11/d/images/overview/hero/hero__crzh9misvcuq_large.jpg","ipad-air-11-m4":"https://www.apple.com/newsroom/images/2026/03/apple-introduces-the-new-ipad-air-powered-by-m4/article/Apple-iPad-Air-M4-multitasking-260302_big.jpg.large.jpg","ipad-air-13-m4":"https://www.apple.com/newsroom/images/2026/03/apple-introduces-the-new-ipad-air-powered-by-m4/article/Apple-iPad-Air-M4-multitasking-260302_big.jpg.large.jpg","ipad-pro-11-m5":"https://www.apple.com/newsroom/images/2025/10/apple-introduces-the-powerful-new-ipad-pro-with-the-m5-chip/article/Apple-iPad-Pro-hero-251015_big.jpg.large.jpg","ipad-pro-13-m5":"https://www.apple.com/newsroom/images/2025/10/apple-introduces-the-powerful-new-ipad-pro-with-the-m5-chip/article/Apple-iPad-Pro-hero-251015_big.jpg.large.jpg"};
 Object.assign(photoMap,{
- 'beauty-dyson-ht01':'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/images/products/primary-locale/en_US/598973-01.png?$responsive$=&fmt=png-alpha',
- 'beauty-dyson-hs08':'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/images/products/primary-locale/en_US/598973-01.png?$responsive$=&fmt=png-alpha',
+ 'xiaomi-note-15':'https://i02.appmifile.com/mi-com-product/fly-birds/redmi-note-15/pc/scroll_slider4.jpg',
+ 'xiaomi-note-17-pro-5g':'https://i02.appmifile.com/mi-com-product/fly-birds/redmi-note-17-pro-5g/pc/icon-screen04-slider-4.jpg',
+ 'xiaomi-note-17-pro-max-5g':'https://i02.appmifile.com/mi-com-product/fly-birds/redmi-note-17-pro-max-5g/pc/icon-screen05-slider-3.png',
+ 'xiaomi-poco-f8-ultra':'https://i02.appmifile.com/mi-com-product/fly-birds/poco-f8-ultra/pc/44ac18c72202e9cf733ddffedd198619.png',
+ 'xiaomi-poco-f9-pro':'https://i02.appmifile.com/mi-com-product/fly-birds/poco-f9-pro/pc/icon-screen39-1-1.png',
+ 'xiaomi-poco-f9-ultra':'https://i02.appmifile.com/mi-com-product/fly-birds/poco-f9-ultra/pc/icon-screen39-2.png',
+ 'xiaomi-poco-x8-pro':'https://i02.appmifile.com/mi-com-product/fly-birds/poco-x8-pro/pc/pc30_green_pic1.png?q=100',
+ 'xiaomi-mi-17t':'https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17t/pc/dda2f4e1293aef781f3c577515f30019.jpg',
+ 'xiaomi-mi-17t-pro':'https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17t-pro/pc/screen20-color-3.png',
+ 'xiaomi-mi-17-ultra':'https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/new_green_img.jpg',
+ 'honor-honor-600-lite':'https://www-file.honor.com/content/dam/honor/common/products/honor-600-lite/imgs/green/section-cmf/icon4.png',
+ 'honor-honor-600':'https://www-file.honor.com/content/dam/honor/common/products/honor-600/product/imgs/section-cmf/honor600series-cmf-icon-black.png',
+ 'honor-honor-600-pro':'https://www-file.honor.com/content/dam/honor/common/products/honor-600-pro/product/imgs/section-cmf/honor600series-cmf-icon-black.png',
+ 'beauty-dyson-ht01':'https://miport.ru/assets/img/products/dyson-airstrait-ht01/brown/4.jpg',
+ 'beauty-dyson-hs08':'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/images/products/primary-locale/en_US/453835-01.png?$responsive$=&fmt=png-alpha',
  'beauty-dyson-hs09':'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/images/products/primary-locale/en_US/598973-01.png?$responsive$=&fmt=png-alpha',
- 'cameras-dji-mic-mini-2':'https://se-cdn.djiits.com/tpc/uploads/spu/cover/9fdf869bacc90d77635cbe548c3ee89d@small.png?format=webp',
- 'cameras-dji-osmo-mobile-8':'https://se-cdn.djiits.com/tpc/uploads/spu/cover/9fdf869bacc90d77635cbe548c3ee89d@small.png?format=webp',
- 'cameras-dji-osmo-nano':'https://se-cdn.djiits.com/tpc/uploads/spu/cover/9fdf869bacc90d77635cbe548c3ee89d@small.png?format=webp',
- 'cameras-dji-osmo-pocket-4p':'https://se-cdn.djiits.com/tpc/uploads/spu/cover/9fdf869bacc90d77635cbe548c3ee89d@small.png?format=webp',
- 'cameras-fujifilm-instax-mini-13':'https://www.instax.com/mini_12/assets/images/pic_mini12_purple_01.png',
+ 'cameras-canon-powershot-g7-x-mark-iii':'https://cdn.media.amplience.net/i/canon/g7_x_mark_iii_bk_frt_d39de1737aa145cfa5ab1c2f2fe7fa49?$flex-product-hero-1by1-jpg$=',
+ 'cameras-dji-mic-mini-2':'https://se-cdn.djiits.com/tpc/uploads/spu/cover/cc67a84b8908fc97d07e5d607d4679b3@small.png?format=webp',
+ 'cameras-dji-osmo-mobile-8':'https://se-cdn.djiits.com/tpc/uploads/spu/cover/f4e722e8300152ce11f9525cb4cb3a0d@ultra.png?format=webp',
+ 'cameras-dji-osmo-nano':'https://se-cdn.djiits.com/tpc/uploads/spu/cover/b1928694c545425a2ff219d8e267df0d@ultra.png?format=webp',
+ 'cameras-dji-osmo-pocket-4p':'https://se-cdn.djiits.com/tpc/uploads/carousel/image/d94b26866e0ca4fcd4b0a312eddbd9b4@ultra.jpg?format=webp',
+ 'cameras-fujifilm-instax-mini-13':'https://www.instax.com/mini13/assets/images/product_item_main_blue_front.png',
  'cameras-картриджи-instax-mini-photo-sticker-10-shots':'https://www.instax.com/mini_12/assets/images/pic_film_package.png',
  'cameras-картриджи-instax-mini-photo-sticker-20-shots':'https://www.instax.com/mini_12/assets/images/pic_film_package.png',
+ 'accessories-fitbit-air':'https://tsmactive.com/image/cache/catalog/_2026/Fitbit_AIR/google_fitbit_air_Fog_02-1100x1100.png',
+ 'glasses-starfire-kylie-jenner':'https://lojabrmetaverso.com.br/cdn/shop/files/MetaGlassesStarfireKylieEditionClassicBlack_1000x.png?v=1782799470',
+ 'glasses-rw4012':'https://theopticalstore.co.uk/wp-content/uploads/2026/03/Ray-ban-Meta.png',
+ 'glasses-ai-glasses':'https://substackcdn.com/image/fetch/%24s_%21-7s4%21%2Cf_auto%2Cq_auto%3Abest%2Cfl_progressive%3Asteep/https%3A%2F%2Fpandaily.substack.com%2Fapi%2Fv1%2Fpost_preview%2F167392436%2Ftwitter.jpg%3Fversion%3D4',
+ 'collectibles-labubu-zimomo':'https://avol.sg/cdn/shop/files/pop-mart-zimomo-the-monsters-i-found-pre-order-full-payment-177.jpg?v=1758748760&width=1445',
  'gaming-dualsense':'https://gmedia.playstation.com/is/image/SIEPDC/dualsense-controller-image-block-01-ps5-26jun20?$1600px$=',
  'gaming-dualsense-ps5':'https://gmedia.playstation.com/is/image/SIEPDC/dualsense-controller-image-block-01-ps5-26jun20?$1600px$=',
- 'gaming-charging-station-dualsense':'https://gmedia.playstation.com/is/image/SIEPDC/dualsense-controller-image-block-01-ps5-26jun20?$1600px$=',
- 'gaming-ps5-disc-drive':'https://gmedia.playstation.com/is/image/SIEPDC/dualsense-controller-image-block-01-ps5-26jun20?$1600px$=',
- 'gaming-sony-pulse':'https://gmedia.playstation.com/is/image/SIEPDC/dualsense-controller-image-block-01-ps5-26jun20?$1600px$='
+ 'gaming-charging-station-dualsense':'https://store.sony.com.au/dw/image/v2/abbc_PRD/on/demandware.static/-/Sites-sony-master-catalog/default/dw1e282a80/images/PS5DSDOCKW/PS5DSDOCKW.png?sh=900&sm=fit&sw=900',
+ 'gaming-ps5-disc-drive':'https://gmedia.playstation.com/is/image/SIEPDC/ps5-disc-drive-product-shot-01-en-14sep23?$1600px$=',
+ 'gaming-sony-pulse':'https://store.sony.com.au/dw/image/v2/abbc_PRD/on/demandware.static/-/Sites-sony-master-catalog/default/dwc903d3fe/images/PS5ELITEWIRELESSHS/PS5ELITEWIRELESSHS.png?sh=900&sm=fit&sw=900'
 });
 const categoryPhotos={
  iphone:'/assets/models/iphone-17.png',samsung:photoMap['samsung-a17'],
@@ -38,26 +58,34 @@ const categoryPhotos={
  honor:photoMap['samsung-a17'],mac:photoMap['macbook-air-13-m5'],ipad:photoMap['ipad-11-a16'],
  watch:'/assets/products/watch-se3.png',airpods:'/assets/products/airpods-4.jpg',
  beauty:photoMap['beauty-dyson-ht01'],cameras:'https://www.instax.com/mini_12/assets/images/pic_mini12_purple_01.png',
- glasses:'https://i02.appmifile.com/855_operatorx_operatorx_opx/11/01/2024/4fad3c8039e37a4fa97f8be0462e88e5.png?q=85&thumb=1&w=500',
+ glasses:photoMap['glasses-ai-glasses'],
  gaming:photoMap['gaming-dualsense'],accessories:'/assets/products/airtag-1.jpg',
  collectibles:'https://prod-america-res.popmart.com/default/20260123_175743_055710____4_them-1_____1200x1200.JPG?x-oss-process=image%2Fresize%2Cw_1400%2Fquality%2Cq_90%2Fformat%2Cwebp'
 };
 const iphonePhotos=new Set(['iphone-15','iphone-16','iphone-16-pro','iphone-17e','iphone-17','iphone-air','iphone-17-pro','iphone-17-pro-max','iphone-18-pro','iphone-18-pro-max']);
 function placeholderPhoto(p){const label=(categoryLabels[p.category]||p.model||'А Маркет').slice(0,22);return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="700" height="700" viewBox="0 0 700 700"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f8f4f6"/><stop offset="1" stop-color="#e6d9df"/></linearGradient></defs><rect width="700" height="700" rx="38" fill="url(#g)"/><circle cx="350" cy="285" r="118" fill="#8d3651" opacity=".12"/><path d="M270 360h160a28 28 0 0 1 28 28v36H242v-36a28 28 0 0 1 28-28Z" fill="#8d3651" opacity=".2"/><text x="350" y="520" text-anchor="middle" font-family="Arial,sans-serif" font-size="40" font-weight="700" fill="#4b303a">${label}</text></svg>`);}
 function productPhoto(p,key){if(photoMap[key])return photoMap[key];if(iphonePhotos.has(key))return `/assets/models/${key}.png`;return categoryPhotos[p.category]||placeholderPhoto(p);}
+function fitCardPhoto(card,p,key,replace){
+ const photo=card.querySelector('.model-photo'),img=photo&&photo.querySelector('img');if(!img)return;
+ const original=img.getAttribute('src');if(replace&&photoMap[key])img.src=photoMap[key];
+ img.alt='Фото '+p.model;img.width=700;img.height=700;img.loading='lazy';img.decoding='async';
+ photo.style.cssText+=';background:#fff;display:grid;place-items:center;overflow:hidden;padding:20px;box-sizing:border-box';
+ img.style.cssText='width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain;object-position:center;display:block';
+ if(replace)img.addEventListener('error',()=>{img.src=original||categoryPhotos[p.category]||'/assets/amarket-hero-burgundy.webp';},{once:true});
+}
 function pickVariant(variants){const available=variants.filter(p=>p.available!==false);const pool=available.length?available:variants;return pool.reduce((a,b)=>a.price<=b.price?a:b);}
 function addCard(key,variants){
  const p=pickVariant(variants), groupedCard=!!p.groupKey, available=variants.some(v=>v.available!==false);
  const card=document.createElement('article');card.className='catalog-item'+(groupedCard?' model-card':'');card.dataset.id=key;
- const photo=document.createElement('a');photo.className='model-photo';photo.href=targetUrl(p);photo.style.cssText='background:#fff;display:grid;place-items:center;text-decoration:none;overflow:hidden';
- const img=document.createElement('img');img.src=productPhoto(p,key);img.alt='Фото '+p.model;img.width=700;img.height=700;img.loading='lazy';img.decoding='async';img.style.cssText='width:100%;height:100%;object-fit:contain';img.addEventListener('error',()=>{img.src='/assets/amarket-hero-burgundy.webp';},{once:true});photo.appendChild(img);
+ const photo=document.createElement('a');photo.className='model-photo';photo.href=targetUrl(p);photo.style.cssText='background:#fff;display:grid;place-items:center;text-decoration:none;overflow:hidden;padding:20px;box-sizing:border-box';
+ const img=document.createElement('img');img.src=productPhoto(p,key);img.alt='Фото '+p.model;img.width=700;img.height=700;img.loading='lazy';img.decoding='async';img.style.cssText='width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain;object-position:center;display:block';img.addEventListener('error',()=>{img.src=categoryPhotos[p.category]||'/assets/amarket-hero-burgundy.webp';},{once:true});photo.appendChild(img);
  const top=document.createElement('div');top.className='catalog-item-top';const brand=document.createElement('span');brand.textContent=brandLabels[p.category]||'А Маркет';top.appendChild(brand);
  const h=document.createElement('h2');h.textContent=groupedCard?p.model:p.name;
  const meta=document.createElement('p');meta.className='catalog-item-meta';meta.textContent=available?(groupedCard?variantLabel(variants.length)+' · Наличие уточняйте':p.meta):'Нет в наличии';
  const bottom=document.createElement('div');bottom.className='catalog-item-bottom';const strong=document.createElement('strong');const buy=document.createElement('a');buy.className='catalog-buy';buy.href=targetUrl(p);buy.textContent=available?(groupedCard?'Выбрать вариант ↗':'Уточнить наличие ↗'):'Уточнить поступление ↗';if(!p.page){buy.target='_blank';buy.rel='noopener noreferrer';}bottom.append(strong,buy);card.classList.toggle('is-unavailable',!available);
  card.append(photo,top,h,meta,bottom);grid.appendChild(card);cards.set(key,card);
 }
-grouped.forEach((variants,key)=>{if(!cards.has(key))addCard(key,variants);});
+grouped.forEach((variants,key)=>{const existed=cards.has(key);if(!existed)addCard(key,variants);fitCardPhoto(cards.get(key),pickVariant(variants),key,existed&&!!photoMap[key]);});
 const presentModels=new Set([...fields.model.options].map(o=>o.value));
 [...new Set(products.map(p=>p.model))].sort((a,b)=>a.localeCompare(b,'ru')).forEach(model=>{if(!presentModels.has(model)){const o=document.createElement('option');o.value=model;o.textContent=model;fields.model.appendChild(o);}});
 const modelOptions=[...fields.model.options];
