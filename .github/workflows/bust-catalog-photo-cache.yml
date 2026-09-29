@@ -1,0 +1,21 @@
+name: Refresh catalog photo cache
+on:
+  push:
+    paths:
+      - .github/workflows/bust-catalog-photo-cache.yml
+permissions:
+  contents: write
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Refresh catalog script version
+        run: |
+          python -c "from pathlib import Path; p=Path('catalog/index.html'); s=p.read_text(); old='/catalog/catalog.js?v=ux-20260928-2'; new='/catalog/catalog.js?v=photos-20260929-1'; assert old in s; p.write_text(s.replace(old,new))"
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git rm .github/workflows/bust-catalog-photo-cache.yml
+          git add catalog/index.html
+          git commit -m 'Refresh catalog product photos'
+          git push
