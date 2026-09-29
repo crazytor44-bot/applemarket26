@@ -23,7 +23,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CATALOG_PATH = ROOT / "catalog" / "index.html"
 YML_PATH = ROOT / "yml.xml"
 PHONE = "79383119888"
-MARKUP = 2_000
+LOW_PRICE_LIMIT = 10_000
 MOSCOW = ZoneInfo("Europe/Moscow")
 CHANNEL_DEFAULT = "iCenter Stavropol"
 
@@ -49,7 +49,8 @@ def normal_key(value: str) -> str:
     for flag, code in {"🇯🇵": " jp ", "🇮🇳": " in ", "🇪🇺": " eu ", "🇨🇳": " cn ", "🇺🇸": " us ", "🇦🇪": " ae ", "🇭🇰": " hk "}.items():
         s = s.replace(flag, code)
     s = re.sub(r"apple\s*watch", " ", s)
-    s = re.sub(r"\b(?:apple|iphone)\b", " ", s)
+    s = re.sub(r"\b(?:apple|iphone|ipad|samsung|galaxy|macbook)\b", " ", s)
+    s = re.sub(r"\bairpods\s+max\s+2\s+2026\b", "airpods max 2026", s)
     s = re.sub(r"\bse\s*([23])\b", r"se\1", s)
     s = re.sub(r"\bs\s*11\b", "series 11", s)
     s = re.sub(r"\b(\d+)\s*(?:tb|тб)\b", lambda m: f" {int(m.group(1)) * 1024}gb ", s)
@@ -92,15 +93,32 @@ def parse_price_text(text: str) -> list[PriceEntry]:
 
 
 def category_for(name: str) -> str:
-    s = name.lower()
-    if re.search(r"\b(?:iphone\s*)?(?:1[1-79]|se)\b", s): return "iphone"
-    if "samsung" in s or "galaxy" in s: return "samsung"
-    if any(word in s for word in ("macbook", "imac", "mac mini", "mac studio")): return "mac"
-    if "ipad" in s: return "ipad"
+    s = unicodedata.normalize("NFKC", name).lower().strip()
+    if ("samsung" in s or "galaxy" in s or
+            re.match(r"^(?:a\d{2}|s\d{2}(?:\s|$)|z\s+(?:flip|fold)|buds\s*\d)", s)):
+        return "samsung"
+    if (any(word in s for word in ("macbook", "imac", "mac mini", "mac studio")) or
+            re.match(r"^(?:neo\s+13|(?:air\s+(?:13|15)|pro\s+14)\s+m\d)\s+\d+/", s)):
+        return "mac"
+    if ("ipad" in s or re.match(r"^(?:11\s+a\d+|(?:air|pro)\s+(?:11|13)\s+m\d).*(?:wi[ -]?fi|lte)", s)):
+        return "ipad"
     if "airpods" in s: return "airpods"
-    if "watch" in s: return "watch"
+    if ("watch" in s or re.match(r"^(?:series\s*\d+|se\s*[23]\s+\d{2}\s*mm|ultra\s*[23]\s+49\s*mm)", s)):
+        return "watch"
     if any(word in s for word in ("playstation", "ps5", "dualsense", "ps portal", "sony pulse")): return "gaming"
+    if re.match(r"^(?:note\s+\d+|poco\s+|mi\s+\d+)", s): return "xiaomi"
+    if s.startswith("honor "): return "honor"
+    if re.match(r"^(?:ht01|hs0[89])\b", s) or "dyson" in s: return "beauty"
+    if any(word in s for word in ("g7x", "instax", "osmo", "mic mini")): return "cameras"
+    if re.match(r"^(?:fitbit air|starfire|rw\d+|ai glasses)", s): return "glasses"
+    if any(word in s for word in ("labubu", "zimomo")) or s == "life": return "collectibles"
+    if re.match(r"^air\s+\d+gb\b", s): return "iphone"
+    if re.match(r"^(?:iphone\s+)?(?:1[1-79](?:e)?)(?:\s|$)", s): return "iphone"
     return "accessories"
+
+
+def markup_for(supplier_price: int) -> int:
+    return 1_000 if supplier_price < LOW_PRICE_LIMIT else 2_000
 
 
 def memory_for(name: str) -> int | None:
@@ -110,21 +128,50 @@ def memory_for(name: str) -> int | None:
 
 def model_for(name: str, category: str) -> str:
     patterns = {
-        "iphone": r"(?:iPhone\s+)?(1[1-79](?:\s+(?:Pro\s+Max|Pro|Plus|e|Air))?)",
-        "samsung": r"(?:Samsung\s+)?(Galaxy\s+(?:S|A|Z\s+(?:Fold|Flip))?\s*\d+(?:\s+(?:Ultra|Plus|FE))?)",
-        "mac": r"((?:MacBook\s+(?:Air|Pro|Neo)|iMac|Mac\s+(?:mini|Studio))(?:\s+\d{2})?(?:\s+M\d)?)",
-        "ipad": r"((?:iPad)(?:\s+(?:Air|Pro|mini))?(?:\s+\d{1,2})?(?:\s+M\d)?)",
+        "iphone": r"(?:iPhone\s+)?(1[1-79](?:e|\s+(?:Pro\s+Max|Pro|Plus|Air))?|Air)",
+        "samsung": r"(?:Samsung\s+)?(?:Galaxy\s+)?((?:S|A)\d+(?:\s+(?:Ultra|Plus|FE))?|Z\s+(?:Fold|Flip)\s*\d+|Buds\s*\d+(?:\s+Pro)?|Watch\s+Ultra)",
+        "mac": r"((?:(?:MacBook\s+)?(?:Air|Pro|Neo)|iMac|Mac\s+(?:mini|Studio))(?:\s+\d{2})?(?:\s+M\d)?)",
+        "ipad": r"((?:iPad\s+)?(?:(?:Air|Pro)\s+(?:11|13)\s+M\d|11\s+A\d+|iPad(?:\s+(?:Air|Pro|mini))?(?:\s+\d{1,2})?(?:\s+M\d)?))",
         "airpods": r"(AirPods(?:\s+(?:Pro|Max))?\s*\d*)",
-        "watch": r"((?:Apple\s+)?Watch(?:\s+(?:Series|Ultra|SE))?\s*\d*)",
+        "watch": r"((?:(?:Apple\s+)?Watch\s+)?(?:Series\s*\d+|Ultra\s*\d+|SE\s*\d+))",
         "gaming": r"((?:DualSense\s+PS5|PlayStation\s*5|PS5|PS\s+Portal|Sony\s+Pulse))",
+        "xiaomi": r"((?:Redmi\s+)?Note\s+\d+(?:\s+Pro(?:\s+Max)?)?(?:\s+5G)?|Poco\s+[A-Z]\d+(?:\s+(?:Pro|Ultra))?|Mi\s+\d+[A-Z]?(?:\s+(?:Pro|Ultra))?)",
+        "honor": r"(Honor\s+\d+(?:\s+(?:Lite|Pro))?)",
+        "beauty": r"((?:Dyson\s+)?(?:HT01|HS08|HS09))",
+        "cameras": r"((?:Mark\s+3\s+G7X|Mic\s+Mini\s+2|Osmo\s+(?:Mobile\s+8|Nano|Pocket\s+4P)|Instax\s+Mini\s+13))",
+        "glasses": r"((?:Fitbit\s+Air|Starfire(?:\s+Kylie\s+Jenner)?|RW\d+|AI\s+Glasses))",
+        "collectibles": r"((?:LABUBU\s+)?(?:Zimomo|Life))",
     }
     match = re.search(patterns.get(category, r"$^"), name, re.I)
     if match:
         model = match.group(1).strip()
         if category == "iphone" and not model.lower().startswith("iphone"):
             model = "iPhone " + model
+        elif category == "samsung" and not model.lower().startswith("samsung"):
+            model = "Samsung Galaxy " + model
+        elif category == "ipad" and not model.lower().startswith("ipad"):
+            model = "iPad " + model
+        elif category == "watch" and not model.lower().startswith("apple watch"):
+            model = "Apple Watch " + model
+        elif category == "mac" and not re.match(r"^(?:macbook|imac|mac\s)", model, re.I):
+            model = "MacBook " + model
+        elif category == "beauty" and not model.lower().startswith("dyson"):
+            model = "Dyson " + model
+        elif category == "cameras" and re.match(r"^(?:mic|osmo)", model, re.I):
+            model = "DJI " + model
+        elif category == "cameras" and model.lower().startswith("instax"):
+            model = "Fujifilm " + model
+        elif category == "cameras" and model.lower().startswith("mark"):
+            model = "Canon PowerShot G7 X Mark III"
         return re.sub(r"\s+", " ", model)
     return name
+
+
+def group_key_for(name: str, category: str, model: str) -> str:
+    base = normal_key(model or name)
+    base = re.sub(r"\b(?:128|256|512|1024|2048)gb\b", " ", base)
+    base = re.sub(r"[^a-z0-9а-яё]+", "-", base, flags=re.I).strip("-")
+    return f"{category}-{base}" if base else f"{category}-other"
 
 
 def whatsapp_url(name: str, price: int, available: bool) -> str:
@@ -136,12 +183,13 @@ def whatsapp_url(name: str, price: int, available: bool) -> str:
 
 def new_product(entry: PriceEntry) -> dict:
     category = category_for(entry.name)
+    model = model_for(entry.name, category)
     product_id = "icenter-" + hashlib.sha1(entry.key.encode("utf-8")).hexdigest()[:14]
-    price = entry.supplier_price + MARKUP
-    return {"id": product_id, "name": entry.name, "category": category, "model": model_for(entry.name, category),
+    price = entry.supplier_price + markup_for(entry.supplier_price)
+    return {"id": product_id, "name": entry.name, "category": category, "model": model,
             "memory": memory_for(entry.name), "price": price, "preorder": False, "notes": "", "transit": False,
             "available": True, "source": "icenter", "meta": "В наличии · Цена обновляется автоматически",
-            "url": whatsapp_url(entry.name, price, True)}
+            "groupKey": group_key_for(entry.name, category, model), "url": whatsapp_url(entry.name, price, True)}
 
 
 def merge_products(products: list[dict], entries: list[PriceEntry]) -> tuple[list[dict], dict[str, int]]:
@@ -153,12 +201,15 @@ def merge_products(products: list[dict], entries: list[PriceEntry]) -> tuple[lis
     stats = {"updated": 0, "added": 0, "unavailable": 0,
              "protected18": sum(is_iphone_18(p.get("name", "")) for p in products)}
     for entry in entries:
-        matches = by_key.get(entry.key, [])
-        if len(matches) == 1:
-            index = matches[0]
+        matches = [index for index in by_key.get(entry.key, []) if index not in seen]
+        if matches:
+            index = min(matches, key=lambda item: products[item].get("source") == "icenter")
             product = products[index]
-            price = entry.supplier_price + MARKUP
-            product.update(price=price, available=True, source="icenter",
+            price = entry.supplier_price + markup_for(entry.supplier_price)
+            category = category_for(entry.name)
+            model = model_for(entry.name, category)
+            product.update(price=price, available=True, source="icenter", category=category, model=model,
+                           groupKey=product.get("groupKey") or group_key_for(entry.name, category, model),
                            meta="В наличии · Цена обновляется автоматически",
                            url=whatsapp_url(product["name"], price, True))
             seen.add(index); stats["updated"] += 1
@@ -168,7 +219,7 @@ def merge_products(products: list[dict], entries: list[PriceEntry]) -> tuple[lis
             by_key.setdefault(entry.key, []).append(index)
             seen.add(index); stats["added"] += 1
     for index, product in enumerate(products):
-        if is_iphone_18(product.get("name", "")) or index in seen:
+        if is_iphone_18(product.get("name", "")) or index in seen or product.get("source") != "icenter":
             continue
         product.update(available=False, meta="Нет в наличии",
                        url=whatsapp_url(product["name"], int(product["price"]), False))
@@ -198,7 +249,10 @@ def save_products(source: str, products: list[dict], path: Path = CATALOG_PATH) 
 def update_yml(products: list[dict], path: Path = YML_PATH) -> None:
     categories = {"iphone": ("1", "iPhone"), "samsung": ("2", "Samsung"), "mac": ("3", "Mac"),
                   "ipad": ("4", "iPad"), "watch": ("5", "Apple Watch"), "airpods": ("6", "AirPods"),
-                  "accessories": ("7", "Аксессуары"), "gaming": ("8", "Игры и PlayStation")}
+                  "accessories": ("7", "Аксессуары"), "gaming": ("8", "Игры и PlayStation"),
+                  "xiaomi": ("9", "Xiaomi, Redmi и Poco"), "honor": ("10", "Honor"),
+                  "beauty": ("11", "Красота и уход"), "cameras": ("12", "Камеры и съёмка"),
+                  "glasses": ("13", "Умные очки"), "collectibles": ("14", "Коллекционные товары")}
     root = ET.Element("yml_catalog", {"date": datetime.now(MOSCOW).strftime("%Y-%m-%d %H:%M")})
     shop = ET.SubElement(root, "shop")
     for tag, value in (("name", "А Маркет"), ("company", "А Маркет"), ("url", "https://applemarket26.ru")):
@@ -214,7 +268,10 @@ def update_yml(products: list[dict], path: Path = YML_PATH) -> None:
         ET.SubElement(offer, "url").text = product.get("page") or f"https://applemarket26.ru/catalog/?q={urllib.parse.quote(product['name'])}"
         ET.SubElement(offer, "price").text = str(product["price"]); ET.SubElement(offer, "currencyId").text = "RUR"
         ET.SubElement(offer, "categoryId").text = category_id; ET.SubElement(offer, "name").text = product["name"]
-        ET.SubElement(offer, "vendor").text = "Samsung" if category == "samsung" else ("Sony" if category == "gaming" else "Apple")
+        vendor = {"samsung": "Samsung", "gaming": "Sony", "xiaomi": "Xiaomi", "honor": "Honor",
+                  "beauty": "Dyson", "cameras": "А Маркет", "glasses": "А Маркет",
+                  "collectibles": "А Маркет"}.get(category, "Apple")
+        ET.SubElement(offer, "vendor").text = vendor
         ET.SubElement(offer, "description").text = product.get("meta", "Наличие уточняйте")
     path.write_text('<?xml version="1.0" encoding="UTF-8"?>' + ET.tostring(root, encoding="unicode"), encoding="utf-8")
 
