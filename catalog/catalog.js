@@ -1,6 +1,11 @@
 (() => {
 const products=JSON.parse(document.querySelector('#catalog-data').textContent);
-products.forEach(p=>{if((p.groupKey||'')==='glasses-fitbit-air'){p.category='accessories';p.groupKey='accessories-fitbit-air';}});
+products.forEach(p=>{
+ const key=p.groupKey||'';
+ if(key==='glasses-fitbit-air'){p.category='accessories';p.groupKey='accessories-fitbit-air';}
+ if(key==='iphone-air'){p.category='iphone';p.model='iPhone Air';}
+ if(key==='samsung-watch-ultra'){p.category='samsung';p.model='Samsung Galaxy Watch Ultra 47';}
+});
 const form=document.querySelector('#catalog-filters');
 const fields={query:document.querySelector('#catalog-query'),model:document.querySelector('#catalog-model'),memory:document.querySelector('#catalog-memory'),min:document.querySelector('#catalog-min'),max:document.querySelector('#catalog-max')};
 const categoryLabels={iphone:'iPhone',samsung:'Samsung',xiaomi:'Xiaomi · Poco',honor:'Honor',mac:'Mac',ipad:'iPad',watch:'Apple Watch',airpods:'AirPods',beauty:'Красота',cameras:'Камеры',glasses:'Умные очки',gaming:'PlayStation',accessories:'Аксессуары',collectibles:'Коллекционное'};
@@ -31,11 +36,11 @@ Object.assign(photoMap,{
  'honor-honor-600':'https://www-file.honor.com/content/dam/honor/common/products/honor-600/product/imgs/section-cmf/honor600series-cmf-icon-black.png',
  'honor-honor-600-pro':'https://www-file.honor.com/content/dam/honor/common/products/honor-600-pro/product/imgs/section-cmf/honor600series-cmf-icon-black.png',
  'beauty-dyson-ht01':'https://miport.ru/assets/img/products/dyson-airstrait-ht01/brown/4.jpg',
- 'beauty-dyson-hs08':'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/images/products/primary-locale/en_US/453835-01.png?$responsive$=&fmt=png-alpha',
+ 'beauty-dyson-hs08':'https://dyshop.ru/storage/product/view/533818-01.png',
  'beauty-dyson-hs09':'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/images/products/primary-locale/en_US/598973-01.png?$responsive$=&fmt=png-alpha',
  'cameras-canon-powershot-g7-x-mark-iii':'https://cdn.media.amplience.net/i/canon/g7_x_mark_iii_bk_frt_d39de1737aa145cfa5ab1c2f2fe7fa49?$flex-product-hero-1by1-jpg$=',
  'cameras-dji-mic-mini-2':'https://se-cdn.djiits.com/tpc/uploads/spu/cover/cc67a84b8908fc97d07e5d607d4679b3@small.png?format=webp',
- 'cameras-dji-osmo-mobile-8':'https://se-cdn.djiits.com/tpc/uploads/spu/cover/f4e722e8300152ce11f9525cb4cb3a0d@ultra.png?format=webp',
+ 'cameras-dji-osmo-mobile-8':'https://se-cdn.djiits.com/tpc/uploads/carousel/image/8d9dff65bd56d551b4d3cbd814631919@ultra.webp',
  'cameras-dji-osmo-nano':'https://se-cdn.djiits.com/tpc/uploads/spu/cover/b1928694c545425a2ff219d8e267df0d@ultra.png?format=webp',
  'cameras-dji-osmo-pocket-4p':'https://se-cdn.djiits.com/tpc/uploads/carousel/image/d94b26866e0ca4fcd4b0a312eddbd9b4@ultra.jpg?format=webp',
  'cameras-fujifilm-instax-mini-13':'https://www.instax.com/mini13/assets/images/product_item_main_blue_front.png',
@@ -49,8 +54,30 @@ Object.assign(photoMap,{
  'gaming-dualsense':'https://gmedia.playstation.com/is/image/SIEPDC/dualsense-controller-image-block-01-ps5-26jun20?$1600px$=',
  'gaming-dualsense-ps5':'https://gmedia.playstation.com/is/image/SIEPDC/dualsense-controller-image-block-01-ps5-26jun20?$1600px$=',
  'gaming-charging-station-dualsense':'https://store.sony.com.au/dw/image/v2/abbc_PRD/on/demandware.static/-/Sites-sony-master-catalog/default/dw1e282a80/images/PS5DSDOCKW/PS5DSDOCKW.png?sh=900&sm=fit&sw=900',
- 'gaming-ps5-disc-drive':'https://gmedia.playstation.com/is/image/SIEPDC/ps5-disc-drive-product-shot-01-en-14sep23?$1600px$=',
+ 'gaming-ps5-disc-drive':'https://media.direct.playstation.com/is/image/sierialto/Disc-Drive-PS5-Hero-1?$Background_Large$',
  'gaming-sony-pulse':'https://store.sony.com.au/dw/image/v2/abbc_PRD/on/demandware.static/-/Sites-sony-master-catalog/default/dwc903d3fe/images/PS5ELITEWIRELESSHS/PS5ELITEWIRELESSHS.png?sh=900&sm=fit&sw=900'
+});
+Object.assign(photoMap,{
+ 'ipad-pro-11-m4':'https://www.apple.com/newsroom/images/2024/05/apple-unveils-stunning-new-ipad-pro-with-m4-chip-and-apple-pencil-pro/article/Apple-iPad-Pro-hero-240507_big.jpg.large.jpg',
+ 'ipad-pro-13-m4':'https://www.apple.com/newsroom/images/2024/05/apple-unveils-stunning-new-ipad-pro-with-m4-chip-and-apple-pencil-pro/article/Apple-iPad-Pro-hero-240507_big.jpg.large.jpg',
+ 'watch-se2':'/assets/products/watch-se2.png',
+ 'watch-se3':'/assets/products/watch-se3.png',
+ 'watch-series-11':'/assets/products/watch-s11.png',
+ 'watch-ultra-3':'/assets/products/watch-ultra3.png',
+ 'airpods-airpods-4':'/assets/products/airpods-4.jpg',
+ 'airpods-airpods-5':photoMap['airpods-5'],
+ 'airpods-airpods-pro-3':'/assets/products/airpods-pro-3.jpg',
+ 'airpods-airpods-max-2024':'/assets/products/airpods-max-orange.jpg',
+ 'airpods-airpods-max-2':'/assets/products/airpods-max-blue.jpg',
+ 'accessories-airtag-1-pack':'/assets/products/airtag-1.jpg',
+ 'accessories-airtag-4-pack':'/assets/products/airtag-4.jpg',
+ 'accessories-airtag-2-4-pack':'/assets/products/airtag-2-4.jpg',
+ 'accessories-magic-trackpad-usbc-white':'/assets/products/trackpad-white.jpg',
+ 'accessories-magic-mouse-3-black':'/assets/products/mouse-black.jpg',
+ 'accessories-magic-mouse-3-white':'/assets/products/mouse-white.jpg',
+ 'accessories-pencil-pro':'/assets/products/pencil-pro.jpg',
+ 'accessories-pencil-usbc':'/assets/products/pencil-usbc.jpg',
+ 'accessories-power-adapter-20w-usbc-100-original':'https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MWVV3?wid=600&hei=600&fmt=jpeg&qlt=85'
 });
 const categoryPhotos={
  iphone:'/assets/models/iphone-17.png',samsung:photoMap['samsung-a17'],
