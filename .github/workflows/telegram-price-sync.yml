@@ -2,7 +2,7 @@ name: Telegram price sync
 on:
   schedule:
     - cron: '0 8,12,15,17,20 * * *'
-    - cron: '35 15 * * *'
+    - cron: '5 16 * * *'
   workflow_dispatch:
     inputs:
       publish:
