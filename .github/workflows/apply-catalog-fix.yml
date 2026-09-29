@@ -50,7 +50,7 @@ jobs:
           path.write_text(html, encoding='utf-8')
           print(stats)
           PY
-          python -m unittest automation.test_price_sync
+          PYTHONPATH=automation python -m unittest discover -s automation -p 'test_*.py'
           node --check catalog/catalog.js
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
