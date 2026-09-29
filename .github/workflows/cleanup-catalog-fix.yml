@@ -1,0 +1,19 @@
+name: Cleanup catalog fix
+on:
+  push:
+    paths:
+      - .github/workflows/cleanup-catalog-fix.yml
+permissions:
+  contents: write
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Remove temporary files
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git rm -r automation/__pycache__ .github/workflows/cleanup-catalog-fix.yml
+          git commit -m 'Remove temporary catalog repair files'
+          git push
