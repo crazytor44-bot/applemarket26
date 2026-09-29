@@ -26,7 +26,7 @@ Object.assign(photoMap,{
  'xiaomi-poco-x8-pro':'https://i02.appmifile.com/mi-com-product/fly-birds/poco-x8-pro/pc/pc30_green_pic1.png?q=100',
  'xiaomi-mi-17t':'https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17t/pc/dda2f4e1293aef781f3c577515f30019.jpg',
  'xiaomi-mi-17t-pro':'https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17t-pro/pc/screen20-color-3.png',
- 'xiaomi-mi-17-ultra':'https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/new_green_img.jpg',
+ 'xiaomi-mi-17-ultra':'https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/489eb45a3fd47a6c3c09a0a94fa5bace.jpg?f=webp',
  'honor-honor-600-lite':'https://www-file.honor.com/content/dam/honor/common/products/honor-600-lite/imgs/green/section-cmf/icon4.png',
  'honor-honor-600':'https://www-file.honor.com/content/dam/honor/common/products/honor-600/product/imgs/section-cmf/honor600series-cmf-icon-black.png',
  'honor-honor-600-pro':'https://www-file.honor.com/content/dam/honor/common/products/honor-600-pro/product/imgs/section-cmf/honor600series-cmf-icon-black.png',
