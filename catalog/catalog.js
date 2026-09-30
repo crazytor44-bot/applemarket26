@@ -61,7 +61,7 @@ Object.assign(photoMap,{
  'ipad-pro-11-m4':'https://www.apple.com/newsroom/images/2024/05/apple-unveils-stunning-new-ipad-pro-with-m4-chip-and-apple-pencil-pro/article/Apple-iPad-Pro-hero-240507_big.jpg.large.jpg',
  'ipad-pro-13-m4':'https://www.apple.com/newsroom/images/2024/05/apple-unveils-stunning-new-ipad-pro-with-m4-chip-and-apple-pencil-pro/article/Apple-iPad-Pro-hero-240507_big.jpg.large.jpg',
  'watch-se2':'/assets/products/watch-se2.png',
- 'watch-se3':'/assets/products/watch-se3.png',
+ 'watch-se3':'https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-40-se-3-nc-alum-midnight-sport-band-midnight?wid=600&hei=600&fmt=jpeg&qlt=90',
  'watch-series-11':'https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-42-s11-alum-jet-sport-band-black?wid=600&hei=600&fmt=jpeg&qlt=90',
  'watch-ultra-3':'https://cdsassets.apple.com/live/7WUAS350/images/tech-specs/apple-watch-ultra-3-hero.png',
  'airpods-airpods-4':'/assets/products/airpods-4.jpg',
