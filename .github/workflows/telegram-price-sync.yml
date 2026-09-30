@@ -5,6 +5,7 @@ on:
   push:
     paths:
       - '.github/workflows/telegram-price-sync.yml'
+      - 'automation/telegram_price_sync.py'
   workflow_dispatch:
     inputs:
       publish:
@@ -67,9 +68,9 @@ jobs:
         if: steps.telegram_config.outputs.ready == 'true' && (github.event_name == 'schedule' || github.event_name == 'push' || inputs.publish == true)
         shell: bash
         run: |
-          if git diff --quiet -- catalog/index.html yml.xml; then echo 'Прайс не изменился.'; exit 0; fi
+          if git diff --quiet; then echo 'Прайс не изменился.'; exit 0; fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add catalog/index.html yml.xml
+          git add catalog/index.html yml.xml */index.html
           git commit -m 'Автоматически обновить прайс из Telegram'
           git push
