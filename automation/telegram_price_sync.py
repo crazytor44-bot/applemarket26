@@ -30,6 +30,12 @@ CHANNEL_DEFAULT = "iCenter Stavropol"
 CATALOG_RE = re.compile(
     r'(<script\s+id="catalog-data"\s+type="application/json">)(.*?)(</script>)', re.DOTALL
 )
+DETAIL_DATA_RE = re.compile(
+    r'(<script\s+id="product-data"\s+type="application/json">)(.*?)(</script>)', re.DOTALL
+)
+DETAIL_PRICE_RE = re.compile(
+    r'(<strong\s+id="price"[^>]*>)(.*?)(</strong>)', re.DOTALL
+)
 PRICE_RE = re.compile(
     r"^(.*?)\s+(?:[-–—:]\s*)?(\d{1,3}(?:[.\s\u00a0\u202f]\d{3})+|\d{4,7})\s*(?:₽|руб\.?|р\.)?\s*$",
     re.IGNORECASE,
@@ -251,6 +257,85 @@ def save_products(source: str, products: list[dict], path: Path = CATALOG_PATH) 
     path.write_text(updated, encoding="utf-8")
 
 
+def _status_meta(old_meta: str, available: bool) -> str:
+    base = re.sub(r"\s*·\s*(?:Наличие.*|Нет в наличии.*|Срок.*)$", "", old_meta or "", flags=re.I).strip(" ·")
+    status = "Наличие уточняйте перед покупкой" if available else "Нет в наличии"
+    return f"{base} · {status}" if base else status
+
+
+def update_detail_pages(products: list[dict]) -> int:
+    by_page: dict[str, list[dict]] = {}
+    for product in products:
+        page = product.get("page")
+        if not page or page in {"/choose/"}:
+            continue
+        by_page.setdefault(page, []).append(product)
+
+    changed_pages = 0
+    for page, current_variants in by_page.items():
+        path = ROOT / page.strip("/") / "index.html"
+        if not path.exists():
+            continue
+
+        source = path.read_text(encoding="utf-8")
+        match = DETAIL_DATA_RE.search(source)
+        if not match:
+            continue
+
+        page_data = json.loads(html.unescape(match.group(2)))
+        old_variants = page_data.get("variants")
+        if not isinstance(old_variants, list):
+            continue
+
+        by_id = {str(p.get("id")): p for p in current_variants if p.get("id") is not None}
+        by_name = {normal_key(p.get("name", "")): p for p in current_variants if p.get("name")}
+        refreshed: list[dict] = []
+        seen: set[str] = set()
+
+        for old in old_variants:
+            fresh = by_id.get(str(old.get("id"))) or by_name.get(normal_key(old.get("name", "")))
+            if not fresh:
+                refreshed.append(old)
+                continue
+
+            item = dict(old)
+            for field in ("price", "available", "url", "source", "category", "model", "memory",
+                          "preorder", "notes", "transit", "groupKey", "page"):
+                if field in fresh:
+                    item[field] = fresh[field]
+            item["meta"] = _status_meta(old.get("meta", ""), fresh.get("available", True) is not False)
+            refreshed.append(item)
+            seen.add(str(fresh.get("id")))
+
+        for fresh in current_variants:
+            fresh_id = str(fresh.get("id"))
+            if fresh_id not in seen and not any(normal_key(v.get("name", "")) == normal_key(fresh.get("name", "")) for v in refreshed):
+                refreshed.append(dict(fresh))
+
+        page_data["variants"] = refreshed
+        updated = DETAIL_DATA_RE.sub(
+            lambda m: m.group(1) + safe_json(page_data) + m.group(3), source, count=1
+        )
+
+        priced = [v for v in refreshed if isinstance(v.get("price"), int) and v.get("available", True) is not False]
+        if not priced:
+            priced = [v for v in refreshed if isinstance(v.get("price"), int)]
+        if priced:
+            minimum = min(v["price"] for v in priced)
+            def replace_price(m: re.Match[str]) -> str:
+                current = html.unescape(m.group(2)).strip().lower()
+                prefix = "от " if current.startswith("от ") else ""
+                formatted = f"{minimum:,}".replace(",", "&nbsp;")
+                return m.group(1) + prefix + formatted + " ₽" + m.group(3)
+            updated = DETAIL_PRICE_RE.sub(replace_price, updated, count=1)
+
+        if updated != source:
+            path.write_text(updated, encoding="utf-8")
+            changed_pages += 1
+
+    return changed_pages
+
+
 def update_yml(products: list[dict], path: Path = YML_PATH) -> None:
     categories = {"iphone": ("1", "iPhone"), "samsung": ("2", "Samsung"), "mac": ("3", "Mac"),
                   "ipad": ("4", "iPad"), "watch": ("5", "Apple Watch"), "airpods": ("6", "AirPods"),
@@ -294,7 +379,8 @@ async def telegram_batch() -> str:
             if dialog.name.strip().casefold() == channel_name.casefold(): entity = dialog.entity; break
         if entity is None: raise RuntimeError(f"Канал {channel_name!r} не найден в Telegram-аккаунте")
         messages = []
-        async for message in client.iter_messages(entity, limit=250):
+        scan_limit = int(os.getenv("TELEGRAM_SCAN_LIMIT", "1000"))
+        async for message in client.iter_messages(entity, limit=scan_limit):
             if message.message:
                 activity = message.edit_date or message.date
                 messages.append((activity.astimezone(MOSCOW), message.id, message.message))
@@ -305,7 +391,12 @@ async def telegram_batch() -> str:
         price_messages = [item for item in messages if parse_price_text(item[2])]
         if not price_messages:
             raise RuntimeError("В канале не найдены сообщения с ценами")
-        batch = sorted(price_messages[:80], key=lambda item: (item[0], item[1]))
+        # iter_messages returns newest message IDs first, but the supplier often
+        # edits older price sections. Select by actual activity time (edit/date),
+        # then concatenate oldest -> newest so the freshest edit wins on duplicates.
+        batch_size = int(os.getenv("TELEGRAM_BATCH_MESSAGES", "120"))
+        newest = sorted(price_messages, key=lambda item: (item[0], item[1]), reverse=True)[:batch_size]
+        batch = sorted(newest, key=lambda item: (item[0], item[1]))
         return "\n".join(item[2] for item in batch)
 
 
@@ -317,8 +408,11 @@ def run(text: str, minimum: int) -> dict[str, int]:
     if len(entries) < safe_minimum:
         raise RuntimeError(f"Защитная остановка: распознано только {len(entries)} позиций, безопасный минимум {safe_minimum}. Каталог не изменён.")
     merged, stats = merge_products(products, entries)
-    save_products(source, merged); update_yml(merged)
-    stats.update(parsed=len(entries), total=len(merged)); return stats
+    save_products(source, merged)
+    detail_pages = update_detail_pages(merged)
+    update_yml(merged)
+    stats.update(parsed=len(entries), total=len(merged), detail_pages=detail_pages)
+    return stats
 
 
 def main() -> int:
