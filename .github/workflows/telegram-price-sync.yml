@@ -64,7 +64,7 @@ jobs:
         if: steps.telegram_config.outputs.ready == 'true'
         run: python -m unittest discover -s automation -p 'test_*.py'
       - name: Publish changed prices
-        if: steps.telegram_config.outputs.ready == 'true' && (github.event_name == 'schedule' || inputs.publish == true)
+        if: steps.telegram_config.outputs.ready == 'true' && (github.event_name == 'schedule' || github.event_name == 'push' || inputs.publish == true)
         shell: bash
         run: |
           if git diff --quiet -- catalog/index.html yml.xml; then echo 'Прайс не изменился.'; exit 0; fi
