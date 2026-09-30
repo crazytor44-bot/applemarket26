@@ -35,8 +35,8 @@ Object.assign(photoMap,{
  'honor-honor-600-lite':'https://www.honor.com/content/dam/honor/common/products/honor-600-lite/imgs/green/section-kv/kv.avif',
  'honor-honor-600':'https://www.honor.com/content/dam/honor/common/products/honor-600/product/imgs/section-kv/honor600series-kv-bg.avif',
  'honor-honor-600-pro':'https://www.honor.com/content/dam/honor/common/products/honor-600-pro/product/imgs/section-kv/honor600series-kv-bg.avif',
- 'beauty-dyson-ht01':'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/images/products/primary-locale/en_GB/143346-01.png?$responsive'beauty-dyson-ht01':'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/images/products/hero-locale/en_GB/143346-01.png'fmt=png-alpha',
- 'beauty-dyson-hs08':'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/images/products/primary/601950-01.png?$responsive'beauty-dyson-hs08':'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/leap-petite-global/dynamic-media/personal-care/308f/primary/WEB-308F_H-AW-PDP-Primary-SW.png'fmt=png-alpha',
+ 'beauty-dyson-ht01':'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/images/products/hero-locale/en_GB/143346-01.png',
+ 'beauty-dyson-hs08':'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/leap-petite-global/dynamic-media/personal-care/308f/primary/WEB-308F_H-AW-PDP-Primary-SW.png',
  'beauty-dyson-hs09':'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/images/products/primary/264192-01.png',
  'cameras-canon-powershot-g7-x-mark-iii':'https://cdn.media.amplience.net/i/canon/g7_x_mark_iii_bk_frt_d39de1737aa145cfa5ab1c2f2fe7fa49?$flex-product-hero-1by1-jpg$=',
  'cameras-dji-mic-mini-2':'https://se-cdn.djiits.com/tpc/uploads/spu/cover/cc67a84b8908fc97d07e5d607d4679b3@ultra.png?format=webp',
@@ -98,7 +98,6 @@ function fitCardPhoto(card,p,key,replace){
  img.alt='Фото '+p.model;img.width=700;img.height=700;img.loading='lazy';img.decoding='async';
  photo.style.cssText+=';background:#fff;display:grid;place-items:center;overflow:hidden;padding:20px;box-sizing:border-box';
  img.style.cssText='width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain;object-position:center;display:block';
- if(key==='beauty-dyson-hs08'||key==='beauty-dyson-hs09'){img.style.width='85%';img.style.height='85%';}
  if(replace)img.addEventListener('error',()=>{img.src=original||categoryPhotos[p.category]||'/assets/amarket-hero-burgundy.webp';},{once:true});
 }
 function pickVariant(variants){const available=variants.filter(p=>p.available!==false);const pool=available.length?available:variants;return pool.reduce((a,b)=>a.price<=b.price?a:b);}
