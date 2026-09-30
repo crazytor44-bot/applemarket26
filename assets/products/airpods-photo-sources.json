@@ -1,0 +1,34 @@
+{
+  "new0": {
+    "name": "AirPods 4",
+    "url": "/assets/products/airpods-4.jpg"
+  },
+  "new1": {
+    "name": "AirPods 4 ANC",
+    "url": "/assets/products/airpods-4-anc.jpg"
+  },
+  "new4": {
+    "name": "AirPods Max 2024 Orange",
+    "url": "/assets/products/airpods-max-orange.jpg"
+  },
+  "new5": {
+    "name": "AirPods Max 2026 Blue",
+    "url": "/assets/products/airpods-max-blue.jpg"
+  },
+  "new6": {
+    "name": "AirPods Max 2026 Midnight",
+    "url": "/assets/products/airpods-max-midnight.jpg"
+  },
+  "new7": {
+    "name": "AirPods Max 2026 Orange",
+    "url": "/assets/products/airpods-max-orange.jpg"
+  },
+  "new8": {
+    "name": "AirPods Max 2026 Purple",
+    "url": "/assets/products/airpods-max-purple.jpg"
+  },
+  "new9": {
+    "name": "AirPods Max 2026 Starlight",
+    "url": "/assets/products/airpods-max-starlight.jpg"
+  }
+}
