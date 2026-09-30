@@ -239,6 +239,16 @@ def merge_products(products: list[dict], entries: list[PriceEntry]) -> tuple[lis
             index = len(products) - 1
             by_key.setdefault(entry.key, []).append(index)
             seen.add(index); stats["added"] += 1
+    # Keep all Apple Watch products in the Apple Watch category, including
+    # temporarily unavailable items that are absent from the newest supplier batch.
+    for product in products:
+        name = product.get("name", "")
+        if re.match(r"^\s*Apple\s+Watch\b", name, re.I):
+            model = model_for(name, "watch")
+            product["category"] = "watch"
+            product["model"] = model
+            product["groupKey"] = group_key_for(name, "watch", model)
+
     for index, product in enumerate(products):
         if (is_iphone_18(product.get("name", "")) or index in seen
                 or product.get("source") != "icenter"
