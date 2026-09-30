@@ -107,6 +107,11 @@ def parse_price_text(text: str) -> list[PriceEntry]:
 
 def category_for(name: str) -> str:
     s = unicodedata.normalize("NFKC", name).lower().strip()
+    # Supplier often abbreviates Apple Watch as S11 / SE 3 / Ultra 3.
+    # Recognize those before Samsung's S-series shorthand.
+    if ("samsung" not in s and "galaxy" not in s and
+            re.match(r"^(?:s(?:eries)?\s*11|se\s*[23]|ultra\s*[23])(?:\s|$)", s)):
+        return "watch"
     if ("samsung" in s or "galaxy" in s or
             re.match(r"^(?:a\d{2}|s\d{2}(?:\s|$)|z\s+(?:flip|fold)|buds\s*\d)", s)):
         return "samsung"
