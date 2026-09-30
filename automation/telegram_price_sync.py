@@ -36,6 +36,13 @@ DETAIL_DATA_RE = re.compile(
 DETAIL_PRICE_RE = re.compile(
     r'(<strong\s+id="price"[^>]*>)(.*?)(</strong>)', re.DOTALL
 )
+CATALOG_CARD_RE = re.compile(
+    r'(<article\b(?=[^>]*\bclass="[^"]*\bcatalog-item\b)(?=[^>]*\bdata-id="([^"]+)")[^>]*>)(.*?)(</article>)',
+    re.DOTALL,
+)
+CARD_PRICE_RE = re.compile(
+    r'(<div\s+class="catalog-item-bottom"[^>]*>\s*<strong>)(.*?)(</strong>)', re.DOTALL
+)
 PRICE_RE = re.compile(
     r"^(.*?)\s+(?:[-–—:]\s*)?(\d{1,3}(?:[.\s\u00a0\u202f]\d{3})+|\d{4,7})\s*(?:₽|руб\.?|р\.)?\s*$",
     re.IGNORECASE,
@@ -251,9 +258,42 @@ def safe_json(data: object) -> str:
     return json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c")
 
 
+def update_catalog_fallback_cards(source: str, products: list[dict]) -> str:
+    by_id: dict[str, list[dict]] = {}
+    by_group: dict[str, list[dict]] = {}
+    for product in products:
+        if product.get("id") is not None:
+            by_id.setdefault(str(product["id"]), []).append(product)
+        if product.get("groupKey"):
+            by_group.setdefault(str(product["groupKey"]), []).append(product)
+
+    def replace_card(match: re.Match[str]) -> str:
+        key = match.group(2)
+        variants = by_group.get(key) or by_id.get(key)
+        if not variants:
+            return match.group(0)
+        available = [p for p in variants if p.get("available", True) is not False and isinstance(p.get("price"), int)]
+        pool = available or [p for p in variants if isinstance(p.get("price"), int)]
+        if not pool:
+            return match.group(0)
+        minimum = min(int(p["price"]) for p in pool)
+        body = match.group(3)
+        current = CARD_PRICE_RE.search(body)
+        if not current:
+            return match.group(0)
+        current_text = html.unescape(current.group(2)).strip().lower()
+        prefix = "от " if current_text.startswith("от ") else ""
+        price_text = prefix + f"{minimum:,}".replace(",", "&nbsp;") + " ₽"
+        body = CARD_PRICE_RE.sub(lambda m: m.group(1) + price_text + m.group(3), body, count=1)
+        return match.group(1) + body + match.group(4)
+
+    return CATALOG_CARD_RE.sub(replace_card, source)
+
+
 def save_products(source: str, products: list[dict], path: Path = CATALOG_PATH) -> None:
     updated, count = CATALOG_RE.subn(lambda m: m.group(1) + safe_json(products) + m.group(3), source, count=1)
     if count != 1: raise RuntimeError("Не удалось обновить catalog-data")
+    updated = update_catalog_fallback_cards(updated, products)
     path.write_text(updated, encoding="utf-8")
 
 
