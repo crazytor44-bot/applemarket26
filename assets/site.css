@@ -98,11 +98,3 @@ header .am-nav{grid-template-columns:repeat(6,minmax(0,1fr))}
 .catalog-item[data-id="airpods-airpods-4"] .model-photo img,
 .catalog-item[data-id="airpods-airpods-5"] .model-photo img,
 .catalog-item[data-id="airpods-airpods-pro-3"] .model-photo img{transform:translateY(-7%)}
-
-/* Dyson catalog cards: keep tall product renders fully visible with extra breathing room. */
-.catalog-item[data-id="beauty-dyson-ht01"] .model-photo,
-.catalog-item[data-id="beauty-dyson-hs08"] .model-photo,
-.catalog-item[data-id="beauty-dyson-hs09"] .model-photo{padding:28px}
-.catalog-item[data-id="beauty-dyson-ht01"] .model-photo img,
-.catalog-item[data-id="beauty-dyson-hs08"] .model-photo img,
-.catalog-item[data-id="beauty-dyson-hs09"] .model-photo img{width:88%;height:88%;object-fit:contain;object-position:center center;transform:none}
