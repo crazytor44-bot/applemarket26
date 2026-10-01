@@ -89,7 +89,7 @@ const categoryPhotos={
  watch:'/assets/products/watch-se3.png',airpods:'/assets/products/airpods-4.jpg',
  beauty:photoMap['beauty-dyson-ht01'],cameras:'https://www.instax.com/mini_12/assets/images/pic_mini12_purple_01.png',
  glasses:photoMap['glasses-ai-glasses'],
- gaming:photoMap['gaming-dualsense'],accessories:'/assets/products/airtag-1.jpg',
+ gaming:photoMap['gaming-ps5-slim'],accessories:'/assets/products/airtag-1.jpg',
  collectibles:'https://prod-america-res.popmart.com/default/20260123_175743_055710____4_them-1_____1200x1200.JPG?x-oss-process=image%2Fresize%2Cw_1400%2Fquality%2Cq_90%2Fformat%2Cwebp'
 };
 const iphonePhotos=new Set(['iphone-15','iphone-16','iphone-16-pro','iphone-17e','iphone-17','iphone-air','iphone-17-pro','iphone-17-pro-max','iphone-18-pro','iphone-18-pro-max']);
