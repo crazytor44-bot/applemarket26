@@ -111,7 +111,7 @@ Object.assign(photoMap,{
  'accessories-magic-mouse-3-white':'/assets/products/mouse-white.jpg',
  'accessories-pencil-pro':'/assets/products/pencil-pro.jpg',
  'accessories-pencil-usbc':'/assets/products/pencil-usbc.jpg',
- 'accessories-power-adapter-20w-usbc-100-original':'https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MWVV3?wid=600&hei=600&fmt=jpeg&qlt=85',
+ 'accessories-power-adapter-20w-usbc-100-original':'https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MD3J4?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=b2pVNXdDSjF6cEZLclYrd0t4RG5nZ2tuVHYzMERCZURia3c5SzJFOTlPZ0JzRncwa3hCV01oWVZJYmVjbndDL3JkSDVNanA3c0ZNMHh4S2FvRlhnMVE',
  'new18':'https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MQDP3?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=RzhFeFhNdFZQdVE1RDFjdWRMTC96d2tuVHYzMERCZURia3c5SzJFOTlPaTF5aTFDNjF5S3Z3MmhOdXVZT0NSUXdyVGliWmVrbnUycFNLZXdxTWZsMkE',
 
  'accessories-magic-mouse-3':'/assets/products/mouse-white.jpg',
