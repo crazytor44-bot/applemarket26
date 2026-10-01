@@ -5,6 +5,31 @@ products.forEach(p=>{
  if(key==='iphone-air'){p.category='iphone';p.model='iPhone Air';}
  if(key==='samsung-watch-ultra'){p.category='samsung';p.model='Samsung Galaxy Watch Ultra 47';}
 });
+const accessoryRules=[
+ [/^Magic Mouse 3\s+(.+)$/i,'Magic Mouse 3','accessories-magic-mouse-3'],
+ [/^JBL Charge 5\s+(.+)$/i,'JBL Charge 5','accessories-jbl-charge-5'],
+ [/^JBL Clip 4\s+(.+)$/i,'JBL Clip 4','accessories-jbl-clip-4'],
+ [/^JBL Flip 6\s+(.+)$/i,'JBL Flip 6','accessories-jbl-flip-6'],
+ [/^JBL Go 3\s+(.+)$/i,'JBL Go 3','accessories-jbl-go-3'],
+ [/^Marshall Major 5\s+(.+)$/i,'Marshall Major 5','accessories-marshall-major-5'],
+ [/^Станция Лайт 2 \(без часов\)\s+(.+)$/i,'Станция Лайт 2 (без часов)','accessories-станция-лайт-2-без-часов'],
+ [/^Станция Лайт 2\s+(.+)$/i,'Станция Лайт 2','accessories-станция-лайт-2'],
+ [/^Станция Макс с Zigbee\s+(.+)$/i,'Станция Макс с Zigbee','accessories-станция-макс-с-zigbee'],
+ [/^Станция Миди\s+(.+)$/i,'Станция Миди','accessories-станция-миди'],
+ [/^Станция Мини 3\s+(.+)$/i,'Станция Мини 3','accessories-станция-мини-3']
+];
+function normalizeAccessoryProduct(p){
+ if(p.category!=='accessories')return;
+ const oldKey=p.groupKey||p.id;
+ for(const [re,model,groupKey] of accessoryRules){
+  const match=(p.name||'').match(re);
+  if(!match)continue;
+  p._catalogOldKey=oldKey;p.model=model;p.groupKey=groupKey;p.page='/choose/';p.color=p.color||match[1].trim();return;
+ }
+ if(p.model==='Fitbit Air'){p.page='/choose/';p.color=p.color||(p.name||'').replace(/^Fitbit Air\s*/i,'').trim();}
+}
+products.forEach(normalizeAccessoryProduct);
+const staleAccessoryKeys=new Set(products.filter(p=>p._catalogOldKey&&p._catalogOldKey!==p.groupKey).map(p=>p._catalogOldKey));
 const form=document.querySelector('#catalog-filters');
 const fields={query:document.querySelector('#catalog-query'),model:document.querySelector('#catalog-model'),memory:document.querySelector('#catalog-memory'),min:document.querySelector('#catalog-min'),max:document.querySelector('#catalog-max')};
 const categoryLabels={iphone:'iPhone',samsung:'Samsung',xiaomi:'Xiaomi · Poco',honor:'Honor',mac:'Mac',ipad:'iPad',watch:'Apple Watch',airpods:'AirPods',beauty:'Красота',cameras:'Камеры',glasses:'Умные очки',gaming:'PlayStation',accessories:'Аксессуары',collectibles:'Коллекционное'};
@@ -15,6 +40,7 @@ const existingCategories=new Set([...document.querySelectorAll('[data-category]'
 const buttons=[...document.querySelectorAll('[data-category]')];
 const grid=document.querySelector('#catalog-grid');
 const cards=new Map([...document.querySelectorAll('.catalog-item')].map(card=>[card.dataset.id,card]));
+staleAccessoryKeys.forEach(key=>{const card=cards.get(key);if(card){card.remove();cards.delete(key);}});
 const grouped=new Map();
 products.forEach(p=>{const key=p.groupKey||p.id;if(!grouped.has(key))grouped.set(key,[]);grouped.get(key).push(p);});
 function targetUrl(p){if(p.page)return p.page+'?variant='+encodeURIComponent(p.id);if(p.category==='cameras')return '/choose/?variant='+encodeURIComponent(p.id)+'&v=cameras-chooser-20260930-2';if(p.category==='glasses')return '/choose/?variant='+encodeURIComponent(p.id)+'&v=glasses-chooser-20261001-2';if(p.category==='gaming')return '/choose/?variant='+encodeURIComponent(p.id)+'&v=gaming-chooser-20261001-2';if(p.category==='watch'||p.category==='airpods'||p.category==='beauty')return '/choose/?variant='+encodeURIComponent(p.id);return p.url;}
@@ -80,7 +106,19 @@ Object.assign(photoMap,{
  'accessories-magic-mouse-3-white':'/assets/products/mouse-white.jpg',
  'accessories-pencil-pro':'/assets/products/pencil-pro.jpg',
  'accessories-pencil-usbc':'/assets/products/pencil-usbc.jpg',
- 'accessories-power-adapter-20w-usbc-100-original':'https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MWVV3?wid=600&hei=600&fmt=jpeg&qlt=85'
+ 'accessories-power-adapter-20w-usbc-100-original':'https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MWVV3?wid=600&hei=600&fmt=jpeg&qlt=85',
+ 'accessories-magic-mouse-3':'/assets/products/mouse-white.jpg',
+ 'accessories-fitbit-air':'https://tsmactive.com/image/cache/catalog/_2026/Fitbit_AIR/google_fitbit_air_Fog_02-1100x1100.png',
+ 'accessories-jbl-charge-5':'https://www.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw8c55b4fe/JBL_CHARGE5_HERO_RED_0029_x2.png?sw=535&sh=535',
+ 'accessories-jbl-clip-4':'https://www.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw7abef79b/JBL_CLIP4_HERO_STANDARD_BLUE_0741_x1.png?sw=535&sh=535',
+ 'accessories-jbl-flip-6':'https://www.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwdd53473b/JBL_FLIP6_SQUAD_HERO_31828_x1.png?sw=535&sh=535',
+ 'accessories-jbl-go-3':'https://www.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw8b6740f7/JBL_GO_3_HERO_CLOUD_WHITE_0081_1605x1605px.png?sw=535&sh=535',
+ 'accessories-marshall-major-5':'https://images.ctfassets.net/javen7msabdh/6o4KYhq9D0w3SBbKU5aeZV/c53c73600937cf2c0830120e872d7a00/major-v-black-front-mobile-1.jpeg?w=1200&fm=jpg&q=85',
+ 'accessories-станция-лайт-2':'https://avatars.mds.yandex.net/get-iot/image-1761316455583-ymve0n0va-01.png_0/optimize',
+ 'accessories-станция-лайт-2-без-часов':'https://avatars.mds.yandex.net/get-iot/image-1761317129683-jjvcmye10-01.png_0/optimize',
+ 'accessories-станция-макс-с-zigbee':'https://avatars.mds.yandex.net/get-iot/image-1761318074307-ixa00ly96-01.png_0/optimize',
+ 'accessories-станция-миди':'https://avatars.mds.yandex.net/get-iot/image-1761318271312-21pgt34an-01.png_0/optimize',
+ 'accessories-станция-мини-3':'https://avatars.mds.yandex.net/get-iot/image-1761316807201-9lk9e40bg-01.png_0/optimize'
 });
 const categoryPhotos={
  iphone:'/assets/models/iphone-17.png',samsung:photoMap['samsung-a17'],
@@ -115,7 +153,17 @@ function addCard(key,variants){
  const bottom=document.createElement('div');bottom.className='catalog-item-bottom';const strong=document.createElement('strong');const buy=document.createElement('a');buy.className='catalog-buy';buy.href=targetUrl(p);buy.textContent=available?(groupedCard?'Выбрать вариант ↗':'Уточнить наличие ↗'):'Уточнить поступление ↗';if(/^https?:\/\//.test(buy.href)&&!buy.href.startsWith(location.origin)){buy.target='_blank';buy.rel='noopener noreferrer';}bottom.append(strong,buy);card.classList.toggle('is-unavailable',!available);
  card.append(photo,top,h,meta,bottom);grid.appendChild(card);cards.set(key,card);
 }
-grouped.forEach((variants,key)=>{const existed=cards.has(key);if(!existed)addCard(key,variants);fitCardPhoto(cards.get(key),pickVariant(variants),key,existed&&!!photoMap[key]);});
+grouped.forEach((variants,key)=>{
+ const existed=cards.has(key);if(!existed)addCard(key,variants);
+ const p=pickVariant(variants),card=cards.get(key);fitCardPhoto(card,p,key,existed&&!!photoMap[key]);
+ if(card&&p.category==='accessories'&&p.page==='/choose/'){
+  const href=targetUrl(p),photo=card.querySelector('.model-photo'),buy=card.querySelector('.catalog-buy'),title=card.querySelector('h2'),meta=card.querySelector('.catalog-item-meta');
+  if(photo){photo.href=href;photo.removeAttribute('target');photo.removeAttribute('rel');}
+  if(buy){buy.href=href;buy.removeAttribute('target');buy.removeAttribute('rel');buy.textContent='Выбрать вариант ↗';}
+  if(title)title.textContent=p.model;
+  if(meta)meta.textContent=variantLabel(variants.length)+' · Наличие уточняйте';
+ }
+});
 const presentModels=new Set([...fields.model.options].map(o=>o.value));
 [...new Set(products.map(p=>p.model))].sort((a,b)=>a.localeCompare(b,'ru')).forEach(model=>{if(!presentModels.has(model)){const o=document.createElement('option');o.value=model;o.textContent=model;fields.model.appendChild(o);}});
 const modelOptions=[...fields.model.options];
