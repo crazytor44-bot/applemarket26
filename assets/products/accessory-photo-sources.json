@@ -170,5 +170,25 @@
   "new18": {
     "name": "Keyboard iPad 10.9/11 White",
     "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MQDP3?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=RzhFeFhNdFZQdVE1RDFjdWRMTC96d2tuVHYzMERCZURia3c5SzJFOTlPaTF5aTFDNjF5S3Z3MmhOdXVZT0NSUXdyVGliWmVrbnUycFNLZXdxTWZsMkE"
+  },
+  "new10": {
+    "name": "AirTag 1 Pack",
+    "url": "/assets/products/airtag-1.jpg"
+  },
+  "new11": {
+    "name": "AirTag 4 Pack",
+    "url": "/assets/products/airtag-4.jpg"
+  },
+  "new12": {
+    "name": "AirTag 2 4 Pack",
+    "url": "/assets/products/airtag-2-4.jpg"
+  },
+  "new21": {
+    "name": "Pencil Pro",
+    "url": "/assets/products/pencil-pro.jpg"
+  },
+  "new22": {
+    "name": "Pencil USB-C",
+    "url": "/assets/products/pencil-usbc.jpg"
   }
 }
