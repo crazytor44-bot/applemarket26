@@ -164,7 +164,7 @@ function addCard(key,variants){
 }
 grouped.forEach((variants,key)=>{
  const existed=cards.has(key);if(!existed)addCard(key,variants);
- const p=pickVariant(variants),card=cards.get(key);fitCardPhoto(card,p,key,existed&&(!!photoMap[key]||p.category==='accessories'));
+ const p=pickVariant(variants),card=cards.get(key);if(card)card.classList.toggle('accessory-card',p.category==='accessories');fitCardPhoto(card,p,key,existed&&(!!photoMap[key]||p.category==='accessories'));
  if(card&&p.category==='accessories'&&p.page==='/choose/'){
   const href=targetUrl(p),photo=card.querySelector('.model-photo'),buy=card.querySelector('.catalog-buy'),title=card.querySelector('h2'),meta=card.querySelector('.catalog-item-meta');
   if(photo){photo.href=href;photo.removeAttribute('target');photo.removeAttribute('rel');}
