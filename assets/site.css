@@ -98,3 +98,6 @@ header .am-nav{grid-template-columns:repeat(6,minmax(0,1fr))}
 .catalog-item[data-id="airpods-airpods-4"] .model-photo img,
 .catalog-item[data-id="airpods-airpods-5"] .model-photo img,
 .catalog-item[data-id="airpods-airpods-pro-3"] .model-photo img{transform:translateY(-7%)}
+/* PlayStation catalog: keep the restored console photos, only lift the two Slim previews inside their cards. */
+.catalog-item[data-id="gaming-ps5-slim-digital"] .model-photo img,
+.catalog-item[data-id="gaming-ps5-slim"] .model-photo img{transform:translateY(-13%)}
