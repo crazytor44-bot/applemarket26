@@ -118,7 +118,9 @@ Object.assign(photoMap,{
  'accessories-станция-лайт-2-без-часов':'https://avatars.mds.yandex.net/get-iot/image-1761317129683-jjvcmye10-01.png_0/optimize',
  'accessories-станция-макс-с-zigbee':'https://avatars.mds.yandex.net/get-iot/image-1761318074307-ixa00ly96-01.png_0/optimize',
  'accessories-станция-миди':'https://avatars.mds.yandex.net/get-iot/image-1761318271312-21pgt34an-01.png_0/optimize',
- 'accessories-станция-мини-3':'https://avatars.mds.yandex.net/get-iot/image-1761316807201-9lk9e40bg-01.png_0/optimize'
+ 'accessories-станция-мини-3':'https://avatars.mds.yandex.net/get-iot/image-1761316807201-9lk9e40bg-01.png_0/optimize',
+ 'accessories-jbl-clip-5-squad':'https://www.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwfcbb770f/JBL_CLIP_5_HERO_CAMO_48148_x5.png?sw=535&sh=535',
+ 'accessories-станция-стрит-черная':'https://avatars.mds.yandex.net/get-iot/image-1761317581287-ynb8iwo3v-01.png_0/optimize'
 });
 const categoryPhotos={
  iphone:'/assets/models/iphone-17.png',samsung:photoMap['samsung-a17'],
@@ -127,7 +129,7 @@ const categoryPhotos={
  watch:'/assets/products/watch-se3.png',airpods:'/assets/products/airpods-4.jpg',
  beauty:photoMap['beauty-dyson-ht01'],cameras:'https://www.instax.com/mini_12/assets/images/pic_mini12_purple_01.png',
  glasses:photoMap['glasses-ai-glasses'],
- gaming:photoMap['gaming-ps5-slim'],accessories:'/assets/products/airtag-1.jpg',
+ gaming:photoMap['gaming-ps5-slim'],accessories:'',
  collectibles:'https://prod-america-res.popmart.com/default/20260123_175743_055710____4_them-1_____1200x1200.JPG?x-oss-process=image%2Fresize%2Cw_1400%2Fquality%2Cq_90%2Fformat%2Cwebp'
 };
 const iphonePhotos=new Set(['iphone-15','iphone-16','iphone-16-pro','iphone-17e','iphone-17','iphone-air','iphone-17-pro','iphone-17-pro-max','iphone-18-pro','iphone-18-pro-max']);
@@ -135,7 +137,7 @@ function placeholderPhoto(p){const label=(categoryLabels[p.category]||p.model||'
 function productPhoto(p,key){if(photoMap[key])return photoMap[key];if(iphonePhotos.has(key))return `/assets/models/${key}.png`;return categoryPhotos[p.category]||placeholderPhoto(p);}
 function fitCardPhoto(card,p,key,replace){
  const photo=card.querySelector('.model-photo'),img=photo&&photo.querySelector('img');if(!img)return;
- const original=img.getAttribute('src');if(replace&&photoMap[key])img.src=photoMap[key];
+ const original=img.getAttribute('src');if(replace){const resolved=photoMap[key]||(p.category==='accessories'?placeholderPhoto(p):'');if(resolved)img.src=resolved;}
  img.alt='Фото '+p.model;img.width=700;img.height=700;img.loading='lazy';img.decoding='async';
  photo.style.cssText+=';background:#fff;display:grid;place-items:center;overflow:hidden;padding:20px;box-sizing:border-box';
  img.style.cssText='width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain;object-position:center;display:block';
@@ -155,7 +157,7 @@ function addCard(key,variants){
 }
 grouped.forEach((variants,key)=>{
  const existed=cards.has(key);if(!existed)addCard(key,variants);
- const p=pickVariant(variants),card=cards.get(key);fitCardPhoto(card,p,key,existed&&!!photoMap[key]);
+ const p=pickVariant(variants),card=cards.get(key);fitCardPhoto(card,p,key,existed&&(!!photoMap[key]||p.category==='accessories'));
  if(card&&p.category==='accessories'&&p.page==='/choose/'){
   const href=targetUrl(p),photo=card.querySelector('.model-photo'),buy=card.querySelector('.catalog-buy'),title=card.querySelector('h2'),meta=card.querySelector('.catalog-item-meta');
   if(photo){photo.href=href;photo.removeAttribute('target');photo.removeAttribute('rel');}
