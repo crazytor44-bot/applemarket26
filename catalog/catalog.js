@@ -142,13 +142,14 @@ const categoryPhotos={
 const iphonePhotos=new Set(['iphone-15','iphone-16','iphone-16-pro','iphone-17e','iphone-17','iphone-air','iphone-17-pro','iphone-17-pro-max','iphone-18-pro','iphone-18-pro-max']);
 function placeholderPhoto(p){const label=(categoryLabels[p.category]||p.model||'А Маркет').slice(0,22);return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="700" height="700" viewBox="0 0 700 700"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f8f4f6"/><stop offset="1" stop-color="#e6d9df"/></linearGradient></defs><rect width="700" height="700" rx="38" fill="url(#g)"/><circle cx="350" cy="285" r="118" fill="#8d3651" opacity=".12"/><path d="M270 360h160a28 28 0 0 1 28 28v36H242v-36a28 28 0 0 1 28-28Z" fill="#8d3651" opacity=".2"/><text x="350" y="520" text-anchor="middle" font-family="Arial,sans-serif" font-size="40" font-weight="700" fill="#4b303a">${label}</text></svg>`);}
 function productPhoto(p,key){if(photoMap[key])return photoMap[key];if(iphonePhotos.has(key))return `/assets/models/${key}.png`;return categoryPhotos[p.category]||placeholderPhoto(p);}
-const xiaomiPhotoUp23=new Set(['xiaomi-note-17-pro-5g','xiaomi-note-17-pro-max-5g','xiaomi-mi-17t','xiaomi-mi-17t-pro','xiaomi-mi-17-ultra','honor-honor-600-lite','honor-honor-600','honor-honor-600-pro']);
+const xiaomiPhotoUp23=new Set(['xiaomi-note-17-pro-5g','xiaomi-note-17-pro-max-5g','xiaomi-mi-17t','xiaomi-mi-17t-pro','xiaomi-mi-17-ultra']);
+const honorPhotoUp53=new Set(['honor-honor-600-lite','honor-honor-600','honor-honor-600-pro']);
 function fitCardPhoto(card,p,key,replace){
  const photo=card.querySelector('.model-photo'),img=photo&&photo.querySelector('img');if(!img)return;
  const original=img.getAttribute('src');if(replace){const resolved=photoMap[key]||(p.category==='accessories'?placeholderPhoto(p):'');if(resolved)img.src=resolved;}
  img.alt='Фото '+p.model;img.width=700;img.height=700;img.loading='lazy';img.decoding='async';
  photo.style.cssText+=';background:#fff;display:grid;place-items:center;overflow:hidden;padding:20px;box-sizing:border-box';
- img.style.cssText='width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain;object-position:center;display:block';if(xiaomiPhotoUp23.has(key))img.style.transform='translateY(-23%)';
+ img.style.cssText='width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain;object-position:center;display:block';if(honorPhotoUp53.has(key))img.style.transform='translateY(-53%)';else if(xiaomiPhotoUp23.has(key))img.style.transform='translateY(-23%)';
  if(replace)img.addEventListener('error',()=>{img.src=original||categoryPhotos[p.category]||'/assets/amarket-hero-burgundy.webp';},{once:true});
 }
 function pickVariant(variants){const available=variants.filter(p=>p.available!==false);const pool=available.length?available:variants;return pool.reduce((a,b)=>a.price<=b.price?a:b);}
