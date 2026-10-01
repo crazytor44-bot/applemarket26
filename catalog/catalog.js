@@ -107,6 +107,8 @@ Object.assign(photoMap,{
  'accessories-pencil-pro':'/assets/products/pencil-pro.jpg',
  'accessories-pencil-usbc':'/assets/products/pencil-usbc.jpg',
  'accessories-power-adapter-20w-usbc-100-original':'https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MWVV3?wid=600&hei=600&fmt=jpeg&qlt=85',
+ 'new18':'https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MQDP3?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=RzhFeFhNdFZQdVE1RDFjdWRMTC96d2tuVHYzMERCZURia3c5SzJFOTlPaTF5aTFDNjF5S3Z3MmhOdXVZT0NSUXdyVGliWmVrbnUycFNLZXdxTWZsMkE',
+
  'accessories-magic-mouse-3':'/assets/products/mouse-white.jpg',
  'accessories-fitbit-air':'https://tsmactive.com/image/cache/catalog/_2026/Fitbit_AIR/google_fitbit_air_Fog_02-1100x1100.png',
  'accessories-jbl-charge-5':'https://www.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw8c55b4fe/JBL_CHARGE5_HERO_RED_0029_x2.png?sw=535&sh=535',
