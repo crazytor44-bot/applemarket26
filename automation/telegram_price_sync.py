@@ -128,7 +128,7 @@ def category_for(name: str) -> str:
     if s.startswith("honor "): return "honor"
     if re.match(r"^(?:ht01|hs0[89])\b", s) or "dyson" in s: return "beauty"
     if any(word in s for word in ("g7x", "instax", "osmo", "mic mini")): return "cameras"
-    if re.match(r"^(?:fitbit air|starfire|rw\d+|ai glasses)", s): return "glasses"
+    if re.match(r"^fitbit air\b", s): return "accessories"\n    if re.match(r"^(?:starfire|rw\d+|ai glasses)", s): return "glasses"
     if any(word in s for word in ("labubu", "zimomo")) or s == "life": return "collectibles"
     if re.match(r"^air\s+\d+gb\b", s): return "iphone"
     if re.match(r"^(?:iphone\s+)?(?:1[1-79](?:e)?)(?:\s|$)", s): return "iphone"
@@ -157,7 +157,7 @@ def model_for(name: str, category: str) -> str:
         "honor": r"(Honor\s+\d+(?:\s+(?:Lite|Pro))?)",
         "beauty": r"((?:Dyson\s+)?(?:HT01|HS08|HS09))",
         "cameras": r"((?:Mark\s+3\s+G7X|Mic\s+Mini\s+2|Osmo\s+(?:Mobile\s+8|Nano|Pocket\s+4P)|Instax\s+Mini\s+13))",
-        "glasses": r"((?:Fitbit\s+Air|Starfire(?:\s+Kylie\s+Jenner)?|RW\d+|AI\s+Glasses))",
+        "accessories": r"(Fitbit\s+Air)",\n        "glasses": r"((?:Starfire(?:\s+Kylie\s+Jenner)?|RW\d+|AI\s+Glasses))",
         "collectibles": r"((?:LABUBU\s+)?(?:Zimomo|Life))",
     }
     match = re.search(patterns.get(category, r"$^"), name, re.I)
@@ -230,7 +230,7 @@ def merge_products(products: list[dict], entries: list[PriceEntry]) -> tuple[lis
             category = category_for(entry.name)
             model = model_for(entry.name, category)
             product.update(price=price, available=True, source="icenter", category=category, model=model,
-                           groupKey=product.get("groupKey") or group_key_for(entry.name, category, model),
+                           groupKey=(group_key_for(entry.name, category, model) if re.match(r"^\\s*Fitbit\\s+Air\\b", entry.name, re.I) else (product.get("groupKey") or group_key_for(entry.name, category, model))),
                            meta="В наличии · Цена обновляется автоматически",
                            url=whatsapp_url(product["name"], price, True))
             seen.add(index); stats["updated"] += 1
