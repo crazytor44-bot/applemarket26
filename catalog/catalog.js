@@ -6,6 +6,8 @@ products.forEach(p=>{
  if(key==='samsung-watch-ultra'){p.category='samsung';p.model='Samsung Galaxy Watch Ultra 47';}
 });
 const accessoryRules=[
+ [/^AirTag\s+(.+)$/i,'AirTag','accessories-airtag'],
+ [/^Pencil\s+(.+)$/i,'Apple Pencil','accessories-pencil'],
  [/^Magic Mouse 3\s+(.+)$/i,'Magic Mouse 3','accessories-magic-mouse-3'],
  [/^JBL Charge 5\s+(.+)$/i,'JBL Charge 5','accessories-jbl-charge-5'],
  [/^JBL Clip 4\s+(.+)$/i,'JBL Clip 4','accessories-jbl-clip-4'],
@@ -102,6 +104,8 @@ Object.assign(photoMap,{
  'accessories-airtag-1-pack':'/assets/products/airtag-1.jpg',
  'accessories-airtag-4-pack':'/assets/products/airtag-4.jpg',
  'accessories-airtag-2-4-pack':'/assets/products/airtag-2-4.jpg',
+ 'accessories-airtag':'/assets/products/airtag-1.jpg',
+ 'accessories-pencil':'/assets/products/pencil-pro.jpg',
  'accessories-magic-trackpad-usbc-white':'/assets/products/trackpad-white.jpg',
  'accessories-magic-mouse-3-black':'/assets/products/mouse-black.jpg',
  'accessories-magic-mouse-3-white':'/assets/products/mouse-white.jpg',
