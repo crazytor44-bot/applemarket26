@@ -120,7 +120,7 @@ Object.assign(photoMap,{
  'accessories-jbl-clip-4':'https://www.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw7abef79b/JBL_CLIP4_HERO_STANDARD_BLUE_0741_x1.png?sw=535&sh=535',
  'accessories-jbl-flip-6':'https://www.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwdd53473b/JBL_FLIP6_SQUAD_HERO_31828_x1.png?sw=535&sh=535',
  'accessories-jbl-go-3':'https://www.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw8b6740f7/JBL_GO_3_HERO_CLOUD_WHITE_0081_1605x1605px.png?sw=535&sh=535',
- 'accessories-marshall-major-5':'https://appleman.pk/cdn/shop/files/1_4de2d7c2-e6ac-402d-bbb0-a636e69563a1.png?v=1708001390',
+ 'accessories-marshall-major-5':'https://m.media-amazon.com/images/I/51K8eJaYsKL.jpg',
  'accessories-станция-лайт-2':'https://avatars.mds.yandex.net/get-iot/image-1761316455583-ymve0n0va-01.png_0/optimize',
  'accessories-станция-лайт-2-без-часов':'https://avatars.mds.yandex.net/get-iot/image-1761317129683-jjvcmye10-01.png_0/optimize',
  'accessories-станция-макс-с-zigbee':'https://avatars.mds.yandex.net/get-iot/image-1761318074307-ixa00ly96-01.png_0/optimize',
