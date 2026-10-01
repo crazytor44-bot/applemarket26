@@ -55,10 +55,10 @@ Object.assign(photoMap,{
  'gaming-charging-station-dualsense':'https://store.sony.com.au/dw/image/v2/abbc_PRD/on/demandware.static/-/Sites-sony-master-catalog/default/dw1e282a80/images/PS5DSDOCKW/PS5DSDOCKW.png?sh=900&sm=fit&sw=900',
  'gaming-ps5-disc-drive':'https://media.direct.playstation.com/is/image/sierialto/Disc-Drive-PS5-Hero-1?$Background_Large$',
  'gaming-sony-pulse':'https://store.sony.com.au/dw/image/v2/abbc_PRD/on/demandware.static/-/Sites-sony-master-catalog/default/dwc903d3fe/images/PS5ELITEWIRELESSHS/PS5ELITEWIRELESSHS.png?sh=900&sm=fit&sw=900',
- 'gaming-ps5-slim-digital':'https://media.direct.playstation.com/is/image/sierialto/2025-PS5-Digital-Hero-7-grey-background',
- 'gaming-ps5-slim':'https://media.direct.playstation.com/is/image/sierialto/2025-PS5-Disc-Hero-6-grey-background',
- 'gaming-ps5-slim-ghost-of-yotei-limited-edition-gold':'https://gmedia.playstation.com/is/image/SIEPDC/Ghost-of-Yotei-LE-product-imagery-06-en-03jul25?$1600px$',
- 'gaming-ps5-pro-2-ревизия':'https://media.direct.playstation.com/is/image/sierialto/ps5-pro-Hero-2-forward-facing'
+ 'gaming-ps5-slim-digital':'https://gmedia.playstation.com/is/image/SIEPDC/ps5-slim-digital-edition-right-image-block-01-en-24jun24?$1600px--t$=',
+ 'gaming-ps5-slim':'https://gmedia.playstation.com/is/image/SIEPDC/ps5-slim-edition-left-image-block-01-en-24jun24?$1600px--t$=',
+ 'gaming-ps5-slim-ghost-of-yotei-limited-edition-gold':'https://gmedia.playstation.com/is/image/SIEPDC/Ghost-of-Yotei-LE-Gold-image-block-01-02jul25?$1600px--t$=',
+ 'gaming-ps5-pro-2-ревизия':'https://gmedia.playstation.com/is/image/SIEPDC/ps5-pro-overview-homepage-hero-desktop-background-01-en-16aug24?$1600px$='
 });
 Object.assign(photoMap,{
  'ipad-pro-11-m4':'https://www.apple.com/newsroom/images/2024/05/apple-unveils-stunning-new-ipad-pro-with-m4-chip-and-apple-pencil-pro/article/Apple-iPad-Pro-hero-240507_big.jpg.large.jpg',
