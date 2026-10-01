@@ -58,7 +58,7 @@ Object.assign(photoMap,{
  'gaming-ps5-slim-digital':'https://gmedia.playstation.com/is/image/SIEPDC/ps5-slim-digital-edition-right-image-block-01-en-24jun24?$1600px--t$=',
  'gaming-ps5-slim':'https://gmedia.playstation.com/is/image/SIEPDC/ps5-slim-edition-left-image-block-01-en-24jun24?$1600px--t$=',
  'gaming-ps5-slim-ghost-of-yotei-limited-edition-gold':'https://gmedia.playstation.com/is/image/SIEPDC/Ghost-of-Yotei-LE-Gold-image-block-01-02jul25?$1600px--t$=',
- 'gaming-ps5-pro-2-ревизия':'https://gmedia.playstation.com/is/image/SIEPDC/ps5-pro-overview-homepage-hero-desktop-background-01-en-16aug24?$1600px$='
+ 'gaming-ps5-pro-2-ревизия':'https://media.direct.playstation.com/is/image/sierialto/ps5-pro-Hero-2-forward-facing'
 });
 Object.assign(photoMap,{
  'ipad-pro-11-m4':'https://www.apple.com/newsroom/images/2024/05/apple-unveils-stunning-new-ipad-pro-with-m4-chip-and-apple-pencil-pro/article/Apple-iPad-Pro-hero-240507_big.jpg.large.jpg',
