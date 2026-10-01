@@ -20,13 +20,14 @@ const accessoryRules=[
 ];
 function normalizeAccessoryProduct(p){
  if(p.category!=='accessories')return;
+ p.page='/choose/';
  const oldKey=p.groupKey||p.id;
  for(const [re,model,groupKey] of accessoryRules){
   const match=(p.name||'').match(re);
   if(!match)continue;
-  p._catalogOldKey=oldKey;p.model=model;p.groupKey=groupKey;p.page='/choose/';p.color=p.color||match[1].trim();return;
+  p._catalogOldKey=oldKey;p.model=model;p.groupKey=groupKey;p.color=p.color||match[1].trim();return;
  }
- if(p.model==='Fitbit Air'){p.page='/choose/';p.color=p.color||(p.name||'').replace(/^Fitbit Air\s*/i,'').trim();}
+ if(p.model==='Fitbit Air')p.color=p.color||(p.name||'').replace(/^Fitbit Air\s*/i,'').trim();
 }
 products.forEach(normalizeAccessoryProduct);
 const staleAccessoryKeys=new Set(products.filter(p=>p._catalogOldKey&&p._catalogOldKey!==p.groupKey).map(p=>p._catalogOldKey));
@@ -164,7 +165,7 @@ grouped.forEach((variants,key)=>{
   const href=targetUrl(p),photo=card.querySelector('.model-photo'),buy=card.querySelector('.catalog-buy'),title=card.querySelector('h2'),meta=card.querySelector('.catalog-item-meta');
   if(photo){photo.href=href;photo.removeAttribute('target');photo.removeAttribute('rel');}
   if(buy){buy.href=href;buy.removeAttribute('target');buy.removeAttribute('rel');buy.textContent='Выбрать вариант ↗';}
-  if(title)title.textContent=p.model;
+  if(title)title.textContent=variants.length>1?p.model:(p.name||p.model);
   if(meta)meta.textContent=variantLabel(variants.length)+' · Наличие уточняйте';
  }
 });
