@@ -179,6 +179,8 @@ const modelOptions=[...fields.model.options];
 const iphoneOrder=['iphone-18-pro-max','iphone-18-pro','iphone-17-pro-max','iphone-17-pro','iphone-air','iphone-17','iphone-17e','iphone-16-pro-max','iphone-16-pro','iphone-16','iphone-15'];
 const iphoneCards=iphoneOrder.map(id=>cards.get(id)).filter(Boolean);
 if(iphoneCards.length){const parent=iphoneCards[0].parentElement;iphoneCards.forEach(card=>parent.appendChild(card));const firstNonIphone=[...parent.children].find(card=>!iphoneOrder.includes(card.dataset.id));if(firstNonIphone)iphoneCards.forEach(card=>parent.insertBefore(card,firstNonIphone));}
+const accessoryBottomOrder=['accessories-pencil','accessories-airtag','accessories-power-adapter-20w-usbc-100-original'];
+accessoryBottomOrder.map(id=>cards.get(id)).filter(Boolean).forEach(card=>grid.appendChild(card));
 
 const params=new URLSearchParams(location.search);
 let category=params.get('category')||(params.get('q')?'':'iphone');
