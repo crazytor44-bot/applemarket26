@@ -2,7 +2,6 @@
 const products=JSON.parse(document.querySelector('#catalog-data').textContent);
 products.forEach(p=>{
  const key=p.groupKey||'';
- if(key==='glasses-fitbit-air'){p.category='accessories';p.groupKey='accessories-fitbit-air';}
  if(key==='iphone-air'){p.category='iphone';p.model='iPhone Air';}
  if(key==='samsung-watch-ultra'){p.category='samsung';p.model='Samsung Galaxy Watch Ultra 47';}
 });
