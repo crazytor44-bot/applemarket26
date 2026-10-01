@@ -103,3 +103,5 @@ header .am-nav{grid-template-columns:repeat(6,minmax(0,1fr))}
 .catalog-item[data-id="gaming-ps5-slim"] .model-photo img,
 .catalog-item[data-id="gaming-ps5-slim-ghost-of-yotei-limited-edition-gold"] .model-photo img{transform:translateY(-23%)}
 .catalog-item[data-id="gaming-ps5-pro-2-ревизия"] .model-photo img{transform:translateY(-10%)}
+/* Accessories catalog: lift all product photos inside cards by 20%. */
+.catalog-item.accessory-card .model-photo img{transform:translateY(-20%)}
