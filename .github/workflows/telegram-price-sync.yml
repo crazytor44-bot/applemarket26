@@ -71,6 +71,6 @@ jobs:
           if git diff --quiet; then echo 'Прайс не изменился.'; exit 0; fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add catalog/index.html yml.xml */index.html
+          git add index.html catalog/index.html yml.xml */index.html
           git commit -m 'Автоматически обновить прайс из Telegram'
           git push

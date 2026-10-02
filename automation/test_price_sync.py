@@ -1,5 +1,6 @@
-import copy, unittest
-from telegram_price_sync import category_for, markup_for, merge_products, normal_key, parse_price_text
+import copy, tempfile, unittest
+from pathlib import Path
+from telegram_price_sync import category_for, markup_for, merge_products, normal_key, parse_price_text, update_home_prices
 
 class PriceSyncTests(unittest.TestCase):
     def setUp(self):
@@ -46,6 +47,25 @@ class PriceSyncTests(unittest.TestCase):
         self.assertEqual(stats["updated"], 1)
         self.assertEqual(stats["added"], 0)
         self.assertEqual(merged[0]["price"], 80_000)
+
+    def test_home_prices_follow_live_iphone18_minimums(self):
+        html = '<a class="product-card" href="/iphone-18-pro/"><div class="price-row"><strong>от 121&nbsp;990 ₽</strong></div></a>' \
+               '<a class="product-card" href="/iphone-18-pro-max/"><div class="price-row"><strong>от 142&nbsp;990 ₽</strong></div></a>'
+        products = [
+            {"groupKey":"iphone-18-pro","price":118500,"available":True},
+            {"groupKey":"iphone-18-pro","price":117000,"available":True},
+            {"groupKey":"iphone-18-pro-max","price":136500,"available":True},
+            {"groupKey":"iphone-18-pro-max","price":133500,"available":True},
+        ]
+        with tempfile.TemporaryDirectory() as folder:
+            path = Path(folder) / "index.html"
+            path.write_text(html, encoding="utf-8")
+            update_home_prices(products, path)
+            updated = path.read_text(encoding="utf-8")
+        self.assertIn("от 117&nbsp;000 ₽", updated)
+        self.assertIn("от 133&nbsp;500 ₽", updated)
+        self.assertNotIn("121&nbsp;990", updated)
+        self.assertNotIn("142&nbsp;990", updated)
 
     def test_partial_supplier_batch_does_not_disable_unrepresented_category(self):
         products = [

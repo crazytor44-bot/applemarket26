@@ -21,6 +21,7 @@ from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG_PATH = ROOT / "catalog" / "index.html"
+HOME_PATH = ROOT / "index.html"
 YML_PATH = ROOT / "yml.xml"
 PHONE = "79383119888"
 LOW_PRICE_LIMIT = 10_000
@@ -348,6 +349,38 @@ def _status_meta(old_meta: str, available: bool) -> str:
     return f"{base} · {status}" if base else status
 
 
+def update_home_prices(products: list[dict], path: Path = HOME_PATH) -> int:
+    source = path.read_text(encoding="utf-8")
+    updated = source
+    changed_cards = 0
+    for group_key, page in (
+        ("iphone-18-pro", "/iphone-18-pro/"),
+        ("iphone-18-pro-max", "/iphone-18-pro-max/"),
+    ):
+        variants = [
+            product for product in products
+            if product.get("groupKey") == group_key and isinstance(product.get("price"), int)
+        ]
+        available = [product for product in variants if product.get("available", True) is not False]
+        pool = available or variants
+        if not pool:
+            continue
+        minimum = min(int(product["price"]) for product in pool)
+        formatted = "от " + f"{minimum:,}".replace(",", "&nbsp;") + " ₽"
+        pattern = re.compile(
+            r'(<a\s+class="product-card"\s+href="' + re.escape(page) +
+            r'">.*?<div\s+class="price-row">\s*<strong>)(.*?)(</strong>)',
+            re.DOTALL,
+        )
+        updated, count = pattern.subn(lambda match: match.group(1) + formatted + match.group(3), updated, count=1)
+        if count != 1:
+            raise RuntimeError(f"Не найдена карточка главной страницы для {group_key}")
+        changed_cards += 1 if updated != source else 0
+        source = updated
+    path.write_text(updated, encoding="utf-8")
+    return changed_cards
+
+
 def update_detail_pages(products: list[dict]) -> int:
     by_page: dict[str, list[dict]] = {}
     for product in products:
@@ -499,8 +532,9 @@ def run(text: str, minimum: int) -> dict[str, int]:
     merged, stats = merge_products(products, entries)
     save_products(source, merged)
     detail_pages = update_detail_pages(merged)
+    home_cards = update_home_prices(merged)
     update_yml(merged)
-    stats.update(parsed=len(entries), total=len(merged), detail_pages=detail_pages)
+    stats.update(parsed=len(entries), total=len(merged), detail_pages=detail_pages, home_cards=home_cards)
     return stats
 
 
