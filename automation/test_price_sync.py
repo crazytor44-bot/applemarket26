@@ -1,23 +1,23 @@
 import copy, unittest
-from telegram_price_sync import category_for, is_iphone_18, markup_for, merge_products, normal_key, parse_price_text
+from telegram_price_sync import category_for, markup_for, merge_products, normal_key, parse_price_text
 
 class PriceSyncTests(unittest.TestCase):
     def setUp(self):
         self.products = [
-            {"id":"protected","name":"iPhone 18 Pro 256GB Black eSIM","category":"iphone","model":"iPhone 18 Pro","price":121990,"meta":"В наличии","url":"https://wa.me/1"},
+            {"id":"iphone18","name":"iPhone 18 Pro 256GB Black eSIM","category":"iphone","model":"iPhone 18 Pro","price":121990,"meta":"В наличии","url":"https://wa.me/1"},
             {"id":"airpods","name":"AirPods 4","category":"airpods","model":"AirPods 4","price":12000,"meta":"В наличии","url":"https://wa.me/1"},
             {"id":"old","name":"Magic Mouse 3 White","category":"accessories","model":"Magic Mouse 3 White","price":8990,"meta":"В наличии","url":"https://wa.me/1"},]
-    def test_parser_and_protection(self):
+    def test_parser_updates_iphone_18(self):
         text="""iCenter Stavropol, [29 сен. 2026 в 10:00]\n▪️ Audio\nAirPods 4 - 10.000\n18 Pro 256 Black eSIM - 135.000\nDualSense PS5 White - 5.900\nОт 10 шт - 1.650\n"""
-        entries=parse_price_text(text); self.assertEqual({x.supplier_price for x in entries},{10000,5900})
-        self.assertTrue(is_iphone_18("18 Pro Max 256 Black"))
+        entries=parse_price_text(text); self.assertEqual({x.supplier_price for x in entries},{10000,135000,5900})
+        self.assertEqual(category_for("18 Pro Max 256 Black"), "iphone")
         self.assertEqual(normal_key("iPhone 17 Pro 256GB Blue 🇯🇵"),normal_key("17 Pro 256 Blue 🇯🇵"))
         merged,stats=merge_products(copy.deepcopy(self.products),entries)
-        protected=next(x for x in merged if x["id"]=="protected"); airpods=next(x for x in merged if x["id"]=="airpods")
+        iphone18=next(x for x in merged if x["id"]=="iphone18"); airpods=next(x for x in merged if x["id"]=="airpods")
         old=next(x for x in merged if x["id"]=="old"); dualsense=next(x for x in merged if x["name"]=="DualSense PS5 White")
-        self.assertEqual(protected["price"],121990); self.assertEqual(airpods["price"],12000); self.assertTrue(airpods["available"])
+        self.assertEqual(iphone18["price"],137000); self.assertTrue(iphone18["available"]); self.assertEqual(iphone18["category"],"iphone")
+        self.assertEqual(airpods["price"],12000); self.assertTrue(airpods["available"])
         self.assertTrue(old.get("available",True)); self.assertEqual(dualsense["price"],6900); self.assertEqual(dualsense["category"],"gaming")
-        self.assertEqual(stats["protected18"],1)
 
     def test_short_supplier_names_are_categorized_and_matched(self):
         self.assertEqual(category_for("S26 Ultra 12/256GB Black 🇦🇪"), "samsung")

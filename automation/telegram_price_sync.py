@@ -94,7 +94,7 @@ def parse_price_text(text: str) -> list[PriceEntry]:
         if not match:
             continue
         name = match.group(1).strip(" -–—:")
-        if not name or is_iphone_18(name):
+        if not name:
             continue
         amount = int(re.sub(r"[.\s\u00a0\u202f]", "", match.group(2)))
         if not 0 < amount <= 2_000_000:
@@ -132,7 +132,7 @@ def category_for(name: str) -> str:
     if re.match(r"^(?:starfire|rw\d+|ai glasses)", s): return "glasses"
     if any(word in s for word in ("labubu", "zimomo")) or s == "life": return "collectibles"
     if re.match(r"^air\s+\d+gb\b", s): return "iphone"
-    if re.match(r"^(?:iphone\s+)?(?:1[1-79](?:e)?)(?:\s|$)", s): return "iphone"
+    if re.match(r"^(?:iphone\s+)?(?:1[1-9](?:e)?)(?:\s|$)", s): return "iphone"
     return "accessories"
 
 
@@ -147,7 +147,7 @@ def memory_for(name: str) -> int | None:
 
 def model_for(name: str, category: str) -> str:
     patterns = {
-        "iphone": r"(?:iPhone\s+)?(1[1-79](?:e|\s+(?:Pro\s+Max|Pro|Plus|Air))?|Air)",
+        "iphone": r"(?:iPhone\s+)?(1[1-9](?:e|\s+(?:Pro\s+Max|Pro|Plus|Air))?|Air)",
         "samsung": r"(?:Samsung\s+)?(?:Galaxy\s+)?((?:S|A)\d+(?:\s+(?:Ultra|Plus|FE))?|Z\s+(?:Fold|Flip)\s*\d+|Buds\s*\d+(?:\s+Pro)?|Watch\s+Ultra)",
         "mac": r"((?:(?:MacBook\s+)?(?:Air|Pro|Neo)|iMac|Mac\s+(?:mini|Studio))(?:\s+\d{2})?(?:\s+M\d)?)",
         "ipad": r"((?:iPad\s+)?(?:(?:Air|Pro)\s+(?:11|13)\s+M\d|11\s+A\d+|iPad(?:\s+(?:Air|Pro|mini))?(?:\s+\d{1,2})?(?:\s+M\d)?))",
@@ -215,14 +215,10 @@ def new_product(entry: PriceEntry) -> dict:
 def merge_products(products: list[dict], entries: list[PriceEntry]) -> tuple[list[dict], dict[str, int]]:
     by_key: dict[str, list[int]] = {}
     for index, product in enumerate(products):
-        if not is_iphone_18(product.get("name", "")):
-            by_key.setdefault(normal_key(product.get("name", "")), []).append(index)
+        by_key.setdefault(normal_key(product.get("name", "")), []).append(index)
     seen: set[int] = set()
-    represented_categories = {
-        category_for(entry.name) for entry in entries if not is_iphone_18(entry.name)
-    }
-    stats = {"updated": 0, "added": 0, "unavailable": 0,
-             "protected18": sum(is_iphone_18(p.get("name", "")) for p in products)}
+    represented_categories = {category_for(entry.name) for entry in entries}
+    stats = {"updated": 0, "added": 0, "unavailable": 0}
     for entry in entries:
         matches = [index for index in by_key.get(entry.key, []) if index not in seen]
         if matches:
@@ -252,7 +248,7 @@ def merge_products(products: list[dict], entries: list[PriceEntry]) -> tuple[lis
             product["groupKey"] = group_key_for(name, "watch", model)
 
     for index, product in enumerate(products):
-        if (is_iphone_18(product.get("name", "")) or index in seen
+        if (index in seen
                 or product.get("source") != "icenter"
                 or product.get("category") not in represented_categories):
             continue
@@ -460,7 +456,7 @@ async def telegram_batch() -> str:
 def run(text: str, minimum: int) -> dict[str, int]:
     entries = parse_price_text(text)
     source, products = load_products()
-    managed = sum(not is_iphone_18(product.get("name", "")) for product in products)
+    managed = len(products)
     safe_minimum = max(minimum, min(100, (managed * 45 + 99) // 100))
     if len(entries) < safe_minimum:
         raise RuntimeError(f"Защитная остановка: распознано только {len(entries)} позиций, безопасный минимум {safe_minimum}. Каталог не изменён.")
