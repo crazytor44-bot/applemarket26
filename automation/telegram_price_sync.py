@@ -80,6 +80,23 @@ def is_iphone_18(name: str) -> bool:
     return bool(re.search(r"^\s*(?:iphone\s+)?18(?:\s|$)", name, re.IGNORECASE))
 
 
+def iphone_18_display_fields(name: str, model: str) -> dict:
+    if not is_iphone_18(name):
+        return {}
+    fields: dict[str, str] = {}
+    color = re.search(r"\b(Black|Burgundy|Glacier|Silver)\b", name, re.I)
+    region = re.search(r"(🇯🇵|🇪🇺|🇭🇰|🇺🇸|🇦🇪)", name)
+    if color:
+        fields["color"] = color.group(1).title()
+    if region:
+        fields["region"] = region.group(1)
+    if re.search(r"\b18\s+Pro\s+Max\b", model, re.I):
+        fields["page"] = "/iphone-18-pro-max/"
+    elif re.search(r"\b18\s+Pro\b", model, re.I):
+        fields["page"] = "/iphone-18-pro/"
+    return fields
+
+
 def parse_price_text(text: str) -> list[PriceEntry]:
     entries: dict[str, PriceEntry] = {}
     for raw in text.replace("\r", "").split("\n"):
@@ -206,19 +223,33 @@ def new_product(entry: PriceEntry) -> dict:
     model = model_for(entry.name, category)
     product_id = "icenter-" + hashlib.sha1(entry.key.encode("utf-8")).hexdigest()[:14]
     price = entry.supplier_price + markup_for(entry.supplier_price)
-    return {"id": product_id, "name": entry.name, "category": category, "model": model,
-            "memory": memory_for(entry.name), "price": price, "preorder": False, "notes": "", "transit": False,
-            "available": True, "source": "icenter", "meta": "В наличии · Цена обновляется автоматически",
-            "groupKey": group_key_for(entry.name, category, model), "url": whatsapp_url(entry.name, price, True)}
+    product = {"id": product_id, "name": entry.name, "category": category, "model": model,
+               "memory": memory_for(entry.name), "price": price, "preorder": False, "notes": "", "transit": False,
+               "available": True, "source": "icenter", "meta": "В наличии · Цена обновляется автоматически",
+               "groupKey": group_key_for(entry.name, category, model), "url": whatsapp_url(entry.name, price, True)}
+    product.update(iphone_18_display_fields(entry.name, model))
+    return product
 
 
 def merge_products(products: list[dict], entries: list[PriceEntry]) -> tuple[list[dict], dict[str, int]]:
+    has_iphone18_entries = any(is_iphone_18(entry.name) for entry in entries)
+    legacy18_removed = 0
+    if has_iphone18_entries:
+        legacy18_removed = sum(
+            is_iphone_18(product.get("name", "")) and product.get("source") != "icenter"
+            for product in products
+        )
+        products[:] = [
+            product for product in products
+            if not (is_iphone_18(product.get("name", "")) and product.get("source") != "icenter")
+        ]
+
     by_key: dict[str, list[int]] = {}
     for index, product in enumerate(products):
         by_key.setdefault(normal_key(product.get("name", "")), []).append(index)
     seen: set[int] = set()
     represented_categories = {category_for(entry.name) for entry in entries}
-    stats = {"updated": 0, "added": 0, "unavailable": 0}
+    stats = {"updated": 0, "added": 0, "unavailable": 0, "legacy18_removed": legacy18_removed}
     for entry in entries:
         matches = [index for index in by_key.get(entry.key, []) if index not in seen]
         if matches:
@@ -231,6 +262,7 @@ def merge_products(products: list[dict], entries: list[PriceEntry]) -> tuple[lis
                            groupKey=(group_key_for(entry.name, category, model) if re.match(r"^\\s*Fitbit\\s+Air\\b", entry.name, re.I) else (product.get("groupKey") or group_key_for(entry.name, category, model))),
                            meta="В наличии · Цена обновляется автоматически",
                            url=whatsapp_url(product["name"], price, True))
+            product.update(iphone_18_display_fields(entry.name, model))
             seen.add(index); stats["updated"] += 1
         elif not matches:
             products.append(new_product(entry))
@@ -340,30 +372,34 @@ def update_detail_pages(products: list[dict]) -> int:
         if not isinstance(old_variants, list):
             continue
 
-        by_id = {str(p.get("id")): p for p in current_variants if p.get("id") is not None}
-        by_name = {normal_key(p.get("name", "")): p for p in current_variants if p.get("name")}
-        refreshed: list[dict] = []
-        seen: set[str] = set()
+        replace_supplier_variants = page in {"/iphone-18-pro/", "/iphone-18-pro-max/"}
+        if replace_supplier_variants:
+            refreshed = [dict(fresh) for fresh in current_variants]
+        else:
+            by_id = {str(p.get("id")): p for p in current_variants if p.get("id") is not None}
+            by_name = {normal_key(p.get("name", "")): p for p in current_variants if p.get("name")}
+            refreshed: list[dict] = []
+            seen: set[str] = set()
 
-        for old in old_variants:
-            fresh = by_id.get(str(old.get("id"))) or by_name.get(normal_key(old.get("name", "")))
-            if not fresh:
-                refreshed.append(old)
-                continue
+            for old in old_variants:
+                fresh = by_id.get(str(old.get("id"))) or by_name.get(normal_key(old.get("name", "")))
+                if not fresh:
+                    refreshed.append(old)
+                    continue
 
-            item = dict(old)
-            for field in ("price", "available", "url", "source", "category", "model", "memory",
-                          "preorder", "notes", "transit", "groupKey", "page"):
-                if field in fresh:
-                    item[field] = fresh[field]
-            item["meta"] = _status_meta(old.get("meta", ""), fresh.get("available", True) is not False)
-            refreshed.append(item)
-            seen.add(str(fresh.get("id")))
+                item = dict(old)
+                for field in ("price", "available", "url", "source", "category", "model", "memory",
+                              "preorder", "notes", "transit", "groupKey", "page"):
+                    if field in fresh:
+                        item[field] = fresh[field]
+                item["meta"] = _status_meta(old.get("meta", ""), fresh.get("available", True) is not False)
+                refreshed.append(item)
+                seen.add(str(fresh.get("id")))
 
-        for fresh in current_variants:
-            fresh_id = str(fresh.get("id"))
-            if fresh_id not in seen and not any(normal_key(v.get("name", "")) == normal_key(fresh.get("name", "")) for v in refreshed):
-                refreshed.append(dict(fresh))
+            for fresh in current_variants:
+                fresh_id = str(fresh.get("id"))
+                if fresh_id not in seen and not any(normal_key(v.get("name", "")) == normal_key(fresh.get("name", "")) for v in refreshed):
+                    refreshed.append(dict(fresh))
 
         page_data["variants"] = refreshed
         updated = DETAIL_DATA_RE.sub(
