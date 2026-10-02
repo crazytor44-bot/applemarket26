@@ -158,7 +158,8 @@ def model_for(name: str, category: str) -> str:
         "honor": r"(Honor\s+\d+(?:\s+(?:Lite|Pro))?)",
         "beauty": r"((?:Dyson\s+)?(?:HT01|HS08|HS09))",
         "cameras": r"((?:Mark\s+3\s+G7X|Mic\s+Mini\s+2|Osmo\s+(?:Mobile\s+8|Nano|Pocket\s+4P)|Instax\s+Mini\s+13))",
-        "accessories": r"(Fitbit\s+Air)",\n        "glasses": r"((?:Starfire(?:\s+Kylie\s+Jenner)?|RW\d+|AI\s+Glasses))",
+        "accessories": r"(Fitbit\s+Air)",
+        "glasses": r"((?:Starfire(?:\s+Kylie\s+Jenner)?|RW\d+|AI\s+Glasses))",
         "collectibles": r"((?:LABUBU\s+)?(?:Zimomo|Life))",
     }
     match = re.search(patterns.get(category, r"$^"), name, re.I)
