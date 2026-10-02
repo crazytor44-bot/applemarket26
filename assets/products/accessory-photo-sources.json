@@ -194,5 +194,21 @@
   "icenter-c4ad71c9086627": {
     "name": "Power Adapter 20W USB-C (100% original)",
     "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MD3J4?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=b2pVNXdDSjF6cEZLclYrd0t4RG5nZ2tuVHYzMERCZURia3c5SzJFOTlPZ0JzRncwa3hCV01oWVZJYmVjbndDL3JkSDVNanA3c0ZNMHh4S2FvRlhnMVE"
+  },
+  "new14": {
+    "name": "Keyboard iPad Pro 11 M4/M5 Black",
+    "url": "/assets/products/keyboard-11-black.jpg"
+  },
+  "new15": {
+    "name": "Keyboard iPad Pro 11 M4/M5 White",
+    "url": "/assets/products/keyboard-11-white.jpg"
+  },
+  "new16": {
+    "name": "Keyboard iPad Pro 13 M4/M5 Black",
+    "url": "/assets/products/keyboard-13-black.jpg"
+  },
+  "new17": {
+    "name": "Keyboard iPad Pro 13 M4/M5 White",
+    "url": "/assets/products/keyboard-13-white.jpg"
   }
 }
