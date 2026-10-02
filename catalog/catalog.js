@@ -65,7 +65,7 @@ const categoryLabels={iphone:'iPhone',samsung:'Samsung',xiaomi:'Xiaomi · Poco',
 const brandLabels={iphone:'Apple',samsung:'Samsung',xiaomi:'Xiaomi',honor:'Honor',mac:'Apple',ipad:'Apple',watch:'Apple',airpods:'Apple',beauty:'Dyson',cameras:'Фото и видео',glasses:'Умные очки',gaming:'PlayStation',accessories:'Аксессуары',collectibles:'Коллекционное'};
 const categoryFieldset=document.querySelector('.catalog-categories');
 const existingCategories=new Set([...document.querySelectorAll('[data-category]')].map(button=>button.dataset.category));
-[...new Set(products.map(product=>product.category))].forEach(category=>{if(!existingCategories.has(category)){const button=document.createElement('button');button.type='button';button.className='choice';button.dataset.category=category;button.setAttribute('aria-pressed','false');button.textContent=categoryLabels[category]||category;categoryFieldset.appendChild(button);}});
+[...new Set(products.map(product=>product.category))].filter(category=>category!=='collectibles').forEach(category=>{if(!existingCategories.has(category)){const button=document.createElement('button');button.type='button';button.className='choice';button.dataset.category=category;button.setAttribute('aria-pressed','false');button.textContent=categoryLabels[category]||category;categoryFieldset.appendChild(button);}});
 const buttons=[...document.querySelectorAll('[data-category]')];
 const grid=document.querySelector('#catalog-grid');
 const cards=new Map([...document.querySelectorAll('.catalog-item')].map(card=>[card.dataset.id,card]));
