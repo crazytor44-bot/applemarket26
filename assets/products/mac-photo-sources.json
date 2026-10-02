@@ -34,5 +34,37 @@
   "macbook-air-13-m5-16-512gb-starlight-mdha4-3": {
     "name": "MacBook Air 13 M5 16/512GB Starlight MDHA4 🇺🇸",
     "url": "https://www.apple.com/v/macbook-air/z/images/overview/design/color/design_top_starlight__dtojfd6ibywm_large.jpg"
+  },
+  "macbook-neo-13-8-256gb-blush-mhfh4-0": {
+    "name": "MacBook Neo 13 8/256GB Blush MHFH4 🇺🇸",
+    "url": "https://www.apple.com/v/macbook-neo/c/images/overview/product-viewer/pv_colors_blush__fji4uke74w2m_large.jpg"
+  },
+  "macbook-neo-13-8-256gb-citrus-mhfd4-1": {
+    "name": "MacBook Neo 13 8/256GB Citrus MHFD4 🇺🇸",
+    "url": "https://www.apple.com/v/macbook-neo/c/images/overview/product-viewer/pv_colors_citrus__flplef60bpim_large.jpg"
+  },
+  "macbook-neo-13-8-256gb-indigo-mhff4-2": {
+    "name": "MacBook Neo 13 8/256GB Indigo MHFF4 🇺🇸",
+    "url": "https://www.apple.com/v/macbook-neo/c/images/overview/product-viewer/pv_colors_indigo__ee1m3vsakryq_large.jpg"
+  },
+  "macbook-neo-13-8-256gb-silver-mhfa4-3": {
+    "name": "MacBook Neo 13 8/256GB Silver MHFA4 🇺🇸",
+    "url": "https://www.apple.com/v/macbook-neo/c/images/overview/product-viewer/pv_colors_silver__bhbd7o8mxxzm_large.jpg"
+  },
+  "macbook-neo-13-8-512gb-blush-mhfj4-4": {
+    "name": "MacBook Neo 13 8/512GB Blush MHFJ4 🇺🇸",
+    "url": "https://www.apple.com/v/macbook-neo/c/images/overview/product-viewer/pv_colors_blush__fji4uke74w2m_large.jpg"
+  },
+  "macbook-neo-13-8-512gb-citrus-mhfe4-5": {
+    "name": "MacBook Neo 13 8/512GB Citrus MHFE4 🇺🇸",
+    "url": "https://www.apple.com/v/macbook-neo/c/images/overview/product-viewer/pv_colors_citrus__flplef60bpim_large.jpg"
+  },
+  "macbook-neo-13-8-512gb-indigo-mhfg4-6": {
+    "name": "MacBook Neo 13 8/512GB Indigo MHFG4 🇺🇸",
+    "url": "https://www.apple.com/v/macbook-neo/c/images/overview/product-viewer/pv_colors_indigo__ee1m3vsakryq_large.jpg"
+  },
+  "macbook-neo-13-8-512gb-silver-mhfc4-7": {
+    "name": "MacBook Neo 13 8/512GB Silver MHFC4 🇺🇸",
+    "url": "https://www.apple.com/v/macbook-neo/c/images/overview/product-viewer/pv_colors_silver__bhbd7o8mxxzm_large.jpg"
   }
 }
