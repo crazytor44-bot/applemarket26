@@ -39,6 +39,10 @@ window.normalizeAccessoryChooserGroups=function(groups){
  ];
  const all=Object.values(groups).flat();
  all.forEach(v=>{
+  const keyboard11=(v.name||'').match(/^Keyboard iPad Pro 11 M4\/M5\s+(Black|White)$/i);
+  if(keyboard11){v.category='accessories';v.model='Keyboard iPad Pro 11 M4/M5';v.groupKey='accessories-keyboard-ipad-pro-11-m4-m5';v.page='/choose/';v.color=keyboard11[1][0].toUpperCase()+keyboard11[1].slice(1).toLowerCase();return;}
+  const keyboard13=(v.name||'').match(/^Keyboard iPad Pro 13 M4\/M5\s+(Black|White)$/i);
+  if(keyboard13){v.category='accessories';v.model='Keyboard iPad Pro 13 M4/M5';v.groupKey='accessories-keyboard-ipad-pro-13-m4-m5';v.page='/choose/';v.color=keyboard13[1][0].toUpperCase()+keyboard13[1].slice(1).toLowerCase();return;}
   if(v.category!=='accessories')return;
   for(const [re,model,groupKey] of rules){
    const m=(v.name||'').match(re);
