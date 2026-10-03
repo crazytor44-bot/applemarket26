@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ru"><head><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Техника и сервис в Ставрополе — А Маркет</title><link rel="stylesheet" href="/assets/site.css?v=live-stock-selective-up8-20261003-1"><meta name="description" content="А Маркет в Ставрополе: iPhone, Apple Watch, AirPods, аксессуары, ремонт и обмен. Каталог с ценами. iPhone 18 в наличии."><link rel="canonical" href="https://applemarket26.ru/"><style id="mobile-hero-compact">
+<html lang="ru"><head><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Техника и сервис в Ставрополе — А Маркет</title><link rel="stylesheet" href="/assets/site.css?v=airpods18-watch13-20261003-1"><meta name="description" content="А Маркет в Ставрополе: iPhone, Apple Watch, AirPods, аксессуары, ремонт и обмен. Каталог с ценами. iPhone 18 в наличии."><link rel="canonical" href="https://applemarket26.ru/"><style id="mobile-hero-compact">
 @media(max-width:600px){
   main.wrap{padding-top:10px}
   .hero{min-height:0!important;padding:22px 18px 16px!important;gap:8px!important}
@@ -96,7 +96,7 @@
     (spec.kind==='iPhone'?'<div class="iphone-assurances" style="display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 18px"><span style="padding:7px 10px;border:1px solid #44363b;border-radius:999px;font-size:13px;font-weight:600">Без RuStore</span><span style="padding:7px 10px;border:1px solid #44363b;border-radius:999px;font-size:13px;font-weight:600">Гарантия 1 год</span></div>':'')+
     '<div class="price-row"><strong></strong><span class="round" aria-label="Выбрать">↗</span></div></div>';
    const img=card.querySelector('img');
-   img.src=spec.image;img.alt=spec.title;if(['iphone-18-pro-max','airpods-airpods-pro-3','watch-ultra-3'].includes(spec.key)){img.style.transform='translateY(-8%)';img.style.transformOrigin='center center';}
+   img.src=spec.image;img.alt=spec.title;if(spec.key==='iphone-18-pro-max'){img.style.transform='translateY(-8%)';img.style.transformOrigin='center center';}else if(spec.key==='airpods-airpods-pro-3'){img.style.transform='translateY(-18%)';img.style.transformOrigin='center center';}else if(spec.key==='watch-ultra-3'){img.style.transform='translateY(-13%)';img.style.transformOrigin='center center';}
    card.querySelector('h3').textContent=spec.title;
    card.querySelector('.live-card-meta').textContent=variantLabel(variants.length)+' · В наличии';
    card.querySelector('strong').textContent='от '+money(Number(pick.price));
