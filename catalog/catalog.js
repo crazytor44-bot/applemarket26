@@ -4,6 +4,7 @@ products.forEach(p=>{
  const key=p.groupKey||'';
  if(key==='iphone-air'){p.category='iphone';p.model='iPhone Air';}
  if(key==='samsung-watch-ultra'){p.category='samsung';p.model='Samsung Galaxy Watch Ultra 47';}
+ if(/^Z Fold 8 Ultra\b/i.test(p.name||'')){p.category='samsung';p.model='Samsung Galaxy Z Fold 8 Ultra';p.groupKey='samsung-z-fold-8-ultra';p.page='/choose/';}
 });
 function normalizeMacAir15(p){
  if(p.category!=='mac'||p.model!=='MacBook Air 15 M5')return;
@@ -201,7 +202,7 @@ function displayModelName(model){if(model==='AirPods Max 2')return 'AirPods Max 
 }
 grouped.forEach((variants,key)=>{
  const existed=cards.has(key);if(!existed)addCard(key,variants);
- const p=pickVariant(variants),card=cards.get(key);if(card){card.classList.toggle('accessory-card',p.category==='accessories');if(p.category!=='accessories'){const title=card.querySelector('h2');if(title)title.textContent=displayModelName(p.model);}}fitCardPhoto(card,p,key,existed&&(!!photoMap[key]||p.category==='accessories'));
+ const p=pickVariant(variants),card=cards.get(key);if(card){card.classList.toggle('accessory-card',p.category==='accessories');if(p.category!=='accessories'){const title=card.querySelector('h2');if(title)title.textContent=displayModelName(p.model);if(key==='samsung-z-fold-8'||key==='samsung-z-fold-8-ultra'){const meta=card.querySelector('.catalog-item-meta'),n=variants.filter(v=>v.available!==false).length||variants.length;if(meta)meta.textContent=variantLabel(n)+' · Наличие уточняйте';}}}fitCardPhoto(card,p,key,existed&&(!!photoMap[key]||p.category==='accessories'));
  if(card&&p.category==='accessories'&&p.page==='/choose/'){
   const href=targetUrl(p),photo=card.querySelector('.model-photo'),buy=card.querySelector('.catalog-buy'),title=card.querySelector('h2'),meta=card.querySelector('.catalog-item-meta');
   if(photo){photo.href=href;photo.removeAttribute('target');photo.removeAttribute('rel');}
