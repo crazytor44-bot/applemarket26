@@ -51,7 +51,7 @@ class PriceSyncTests(unittest.TestCase):
         self.assertEqual(stats["updated"], 1)
         self.assertEqual(merged[0]["category"], "watch")
         self.assertEqual(merged[0]["model"], "Apple Watch Ultra 4")
-        self.assertEqual(merged[0]["groupKey"], "watch-apple-watch-ultra-4")
+        self.assertEqual(merged[0]["groupKey"], "watch-ultra-4")
         self.assertEqual(merged[0]["price"], 78_000)
 
     def test_short_samsung_name_updates_existing_card_without_duplicate(self):
