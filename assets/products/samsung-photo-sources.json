@@ -97,18 +97,38 @@
   },
   "samsung-galaxy-buds-4-black": {
     "name": "Samsung Galaxy Buds 4 Black",
-    "url": "https://images.samsung.com/is/image/samsung/p6pim/ru/s2602/gallery/ru-galaxy-buds4-r540-sm-r540nzkacis-551008474?wid=700&hei=700&fmt=png"
+    "url": "https://images.samsung.com/is/image/samsung/p6pim/ru/s2602/gallery/ru-galaxy-buds4-r540-sm-r540nzkacis-551008457?$1164_776_PNG$"
   },
   "samsung-galaxy-buds-4-white": {
     "name": "Samsung Galaxy Buds 4 White",
-    "url": "https://images.samsung.com/is/image/samsung/p6pim/ru/s2602/gallery/ru-galaxy-buds4-r540-sm-r540nzwacis-551008495?wid=700&hei=700&fmt=png"
+    "url": "https://images.samsung.com/is/image/samsung/p6pim/ru/s2602/gallery/ru-galaxy-buds4-r540-sm-r540nzwacis-551008478?$1164_776_PNG$"
   },
   "samsung-galaxy-buds-4-pro-black": {
     "name": "Samsung Galaxy Buds 4 Pro Black",
-    "url": "https://images.samsung.com/is/image/samsung/p6pim/ru/s2602/gallery/ru-galaxy-buds4-r640-sm-r640nzkacis-550945306?wid=700&hei=700&fmt=png"
+    "url": "https://images.samsung.com/is/image/samsung/p6pim/ru/s2602/gallery/ru-galaxy-buds4-r640-sm-r640nzkacis-550945289?$1164_776_PNG$"
   },
   "samsung-galaxy-buds-4-pro-white": {
     "name": "Samsung Galaxy Buds 4 Pro White",
-    "url": "https://images.samsung.com/is/image/samsung/p6pim/ru/s2602/gallery/ru-galaxy-buds4-r640-sm-r640nzwacis-550945327?wid=700&hei=700&fmt=png"
+    "url": "https://images.samsung.com/is/image/samsung/p6pim/ru/s2602/gallery/ru-galaxy-buds4-r640-sm-r640nzwacis-550945310?$1164_776_PNG$"
+  },
+  "samsung-galaxy-z-flip-8-12-256gb-graphite": {
+    "name": "Samsung Galaxy Z Flip 8 Graphite",
+    "url": "https://images.samsung.com/is/image/samsung/p6pim/us/f2607/gallery/us-galaxy-zflip8-f776-sm-f776uzkaxaa-553843340?wid=700&hei=700&fmt=png"
+  },
+  "samsung-galaxy-z-fold-8-12-256gb-graphite": {
+    "name": "Samsung Galaxy Z Fold 8 Graphite",
+    "url": "https://images.samsung.com/is/image/samsung/p6pim/us/f2607/gallery/us-galaxy-z-fold8-f971-600257-sm-f971uzkaxaa-553841306?wid=700&hei=700&fmt=png"
+  },
+  "samsung-galaxy-z-fold-8-12-512gb-graphite": {
+    "name": "Samsung Galaxy Z Fold 8 Graphite",
+    "url": "https://images.samsung.com/is/image/samsung/p6pim/us/f2607/gallery/us-galaxy-z-fold8-f971-600257-sm-f971uzkaxaa-553841306?wid=700&hei=700&fmt=png"
+  },
+  "samsung-galaxy-z-fold-8-ultra-12-512gb-graphite": {
+    "name": "Samsung Galaxy Z Fold 8 Ultra Graphite",
+    "url": "https://images.samsung.com/is/image/samsung/p6pim/us/f2607/gallery/us-galaxy-z-fold8-ultra-f976-600251-sm-f976uzkexaa-553838831?wid=700&hei=700&fmt=png"
+  },
+  "icenter-f7d253d59a2918": {
+    "name": "Samsung Galaxy Z Fold 8 Ultra Graphite",
+    "url": "https://images.samsung.com/is/image/samsung/p6pim/us/f2607/gallery/us-galaxy-z-fold8-ultra-f976-600251-sm-f976uzkexaa-553838831?wid=700&hei=700&fmt=png"
   }
 }
