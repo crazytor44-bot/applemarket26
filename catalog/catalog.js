@@ -243,7 +243,7 @@ document.querySelector('#range-error').hidden=!invalid;
 let count=0;const matched=new Map();
 products.forEach(p=>{if(!invalid&&matching(p,filters)){count++;const key=p.groupKey||p.id;if(!matched.has(key))matched.set(key,[]);matched.get(key).push(p);}});
 cards.forEach((card,key)=>{const variants=matched.get(key);card.hidden=!variants;if(variants){const p=pickVariant(variants),groupedCard=!!p.groupKey,available=variants.some(v=>v.available!==false);card.classList.toggle('is-unavailable',!available);card.querySelector('strong').textContent=available?(groupedCard?'от ':'')+new Intl.NumberFormat('ru-RU').format(p.price)+' ₽':'Нет в наличии';const meta=card.querySelector('.catalog-item-meta');if(meta&&!available)meta.textContent='Нет в наличии';const buy=card.querySelector('.catalog-buy');if(buy)buy.textContent=available?((groupedCard||p.category==='accessories')?'Выбрать вариант ↗':'Уточнить наличие ↗'):'Уточнить поступление ↗';card.querySelectorAll('a').forEach(a=>{const href=targetUrl(p);a.href=href;if(href.startsWith('/')){a.removeAttribute('target');a.removeAttribute('rel');}else{a.target='_blank';a.rel='noopener noreferrer';}});}});
-document.querySelector('#catalog-count').textContent='Моделей и товаров: '+matched.size+' · Вариантов: '+count;
+const availableCount=[...matched.values()].reduce((sum,variants)=>sum+variants.filter(v=>v.available!==false).length,0);document.querySelector('#catalog-count').textContent='Моделей и товаров: '+matched.size+' · Вариантов: '+availableCount;
 document.querySelector('#catalog-empty').hidden=count>0||invalid;
 }
 buttons.forEach(b=>b.addEventListener('click',()=>{category=b.dataset.category;apply();}));
