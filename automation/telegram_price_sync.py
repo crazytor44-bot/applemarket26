@@ -128,7 +128,7 @@ def category_for(name: str) -> str:
     # Supplier often abbreviates Apple Watch as S11 / SE 3 / Ultra 3.
     # Recognize those before Samsung's S-series shorthand.
     if ("samsung" not in s and "galaxy" not in s and
-            re.match(r"^(?:s(?:eries)?\s*11|se\s*[23]|ultra\s*[23])(?:\s|$)", s)):
+            re.match(r"^(?:s(?:eries)?\s*11|se\s*[23]|ultra\s*[234])(?:\s|$)", s)):
         return "watch"
     if ("samsung" in s or "galaxy" in s or
             re.match(r"^(?:a\d{2}|s\d{2}(?:\s|$)|z\s+(?:flip|fold)|buds\s*\d)", s)):
@@ -139,7 +139,7 @@ def category_for(name: str) -> str:
     if ("ipad" in s or re.match(r"^(?:11\s+a\d+|(?:air|pro)\s+(?:11|13)\s+m\d).*(?:wi[ -]?fi|lte)", s)):
         return "ipad"
     if "airpods" in s: return "airpods"
-    if ("watch" in s or re.match(r"^(?:series\s*\d+|se\s*[23]\s+\d{2}\s*mm|ultra\s*[23]\s+49\s*mm)", s)):
+    if ("watch" in s or re.match(r"^(?:series\s*\d+|se\s*[23]\s+\d{2}\s*mm|ultra\s*[234]\s+49\s*mm)", s)):
         return "watch"
     if any(word in s for word in ("playstation", "ps5", "dualsense", "ps portal", "sony pulse")): return "gaming"
     if re.match(r"^(?:note\s+\d+|poco\s+|mi\s+\d+)", s): return "xiaomi"
@@ -260,7 +260,7 @@ def merge_products(products: list[dict], entries: list[PriceEntry]) -> tuple[lis
             category = category_for(entry.name)
             model = model_for(entry.name, category)
             product.update(price=price, available=True, source="icenter", category=category, model=model,
-                           groupKey=(group_key_for(entry.name, category, model) if re.match(r"^\\s*Fitbit\\s+Air\\b", entry.name, re.I) else (product.get("groupKey") or group_key_for(entry.name, category, model))),
+                           groupKey=(group_key_for(entry.name, category, model) if (re.match(r"^\\s*Fitbit\\s+Air\\b", entry.name, re.I) or re.match(r"^\\s*Ultra\\s*4(?:\\s|$)", entry.name, re.I)) else (product.get("groupKey") or group_key_for(entry.name, category, model))),
                            meta="В наличии · Цена обновляется автоматически",
                            url=whatsapp_url(product["name"], price, True))
             product.update(iphone_18_display_fields(entry.name, model))
@@ -271,10 +271,15 @@ def merge_products(products: list[dict], entries: list[PriceEntry]) -> tuple[lis
             by_key.setdefault(entry.key, []).append(index)
             seen.add(index); stats["added"] += 1
     # Keep all Apple Watch products in the Apple Watch category, including
-    # temporarily unavailable items that are absent from the newest supplier batch.
+    # supplier shorthand such as "Ultra 4 ..." and temporarily unavailable items.
     for product in products:
         name = product.get("name", "")
-        if re.match(r"^\s*Apple\s+Watch\b", name, re.I):
+        is_apple_watch = bool(re.match(r"^\s*Apple\s+Watch\b", name, re.I))
+        is_ultra4_shorthand = (
+            "samsung" not in name.lower() and "galaxy" not in name.lower()
+            and bool(re.match(r"^\s*Ultra\s*4(?:\s|$)", name, re.I))
+        )
+        if is_apple_watch or is_ultra4_shorthand:
             model = model_for(name, "watch")
             product["category"] = "watch"
             product["model"] = model

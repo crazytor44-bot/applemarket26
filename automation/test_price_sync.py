@@ -37,6 +37,23 @@ class PriceSyncTests(unittest.TestCase):
         self.assertEqual(markup_for(9_999), 1_000)
         self.assertEqual(markup_for(10_000), 2_000)
 
+    def test_ultra4_moves_from_accessories_to_apple_watch(self):
+        self.assertEqual(category_for("Ultra 4 49mm Black Ti Band Ocean Band"), "watch")
+        products = [{
+            "id":"u4","name":"Ultra 4 49mm Black Ti Band Ocean Band",
+            "category":"accessories","model":"Ultra 4 49mm Black Ti Band Ocean Band",
+            "groupKey":"accessories-ultra-4-49mm-black-ti-band-ocean-band",
+            "price":78000,"available":True,"source":"icenter"
+        }]
+        entries = parse_price_text("Ultra 4 49mm Black Ti Band Ocean Band - 76.000")
+        merged, stats = merge_products(products, entries)
+        self.assertEqual(len(merged), 1)
+        self.assertEqual(stats["updated"], 1)
+        self.assertEqual(merged[0]["category"], "watch")
+        self.assertEqual(merged[0]["model"], "Apple Watch Ultra 4")
+        self.assertEqual(merged[0]["groupKey"], "watch-apple-watch-ultra-4")
+        self.assertEqual(merged[0]["price"], 78_000)
+
     def test_short_samsung_name_updates_existing_card_without_duplicate(self):
         products = [{"id":"s26","name":"Samsung Galaxy S26 Ultra 12/256GB Black 🇦🇪",
                      "category":"samsung","model":"Samsung Galaxy S26 Ultra","price":80990,
