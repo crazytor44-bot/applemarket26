@@ -128,7 +128,7 @@ def category_for(name: str) -> str:
     # Supplier often abbreviates Apple Watch as S11 / SE 3 / Ultra 3.
     # Recognize those before Samsung's S-series shorthand.
     if ("samsung" not in s and "galaxy" not in s and
-            re.match(r"^(?:s(?:eries)?\s*11|se\s*[23]|ultra\s*[234])(?:\s|$)", s)):
+            re.match(r"^(?:s(?:eries)?\s*11|se\s*[23]|ultra\s*[2-4])(?:\s|$)", s)):
         return "watch"
     if ("samsung" in s or "galaxy" in s or
             re.match(r"^(?:a\d{2}|s\d{2}(?:\s|$)|z\s+(?:flip|fold)|buds\s*\d)", s)):
@@ -139,7 +139,7 @@ def category_for(name: str) -> str:
     if ("ipad" in s or re.match(r"^(?:11\s+a\d+|(?:air|pro)\s+(?:11|13)\s+m\d).*(?:wi[ -]?fi|lte)", s)):
         return "ipad"
     if "airpods" in s: return "airpods"
-    if ("watch" in s or re.match(r"^(?:series\s*\d+|se\s*[23]\s+\d{2}\s*mm|ultra\s*[234]\s+49\s*mm)", s)):
+    if ("watch" in s or re.match(r"^(?:series\s*\d+|se\s*[23]\s+\d{2}\s*mm|ultra\s*[2-4]\s+49\s*mm)", s)):
         return "watch"
     if any(word in s for word in ("playstation", "ps5", "dualsense", "ps portal", "sony pulse")): return "gaming"
     if re.match(r"^(?:note\s+\d+|poco\s+|mi\s+\d+)", s): return "xiaomi"
