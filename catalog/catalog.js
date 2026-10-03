@@ -188,7 +188,7 @@ function fitCardPhoto(card,p,key,replace){
  if(replace)img.addEventListener('error',()=>{img.src=key==='imac-24-m3'?'https://www.apple.com/newsroom/images/2023/10/apple-supercharges-24-inch-imac-with-new-m3-chip/article/Apple-iMac-M3-color-matched-accessories-231030_big.jpg.large.jpg':key==='watch-ultra-4'?'https://www.apple.com/newsroom/images/2026/09/apple-unveils-apple-watch-ultra-4/article/Apple-Watch-Ultra-4-Alpine-Loop-Band-burgundy-260909_inline.jpg.large.jpg':key==='airpods-airpods-5'?'https://www.apple.com/v/airpods-5/b/images/overview/bento-gallery/bento_pair__c7i9mu5k2zee_large.jpg':(original||categoryPhotos[p.category]||'/assets/amarket-hero-burgundy.webp');},{once:true});
 }
 function pickVariant(variants){const available=variants.filter(p=>p.available!==false);const pool=available.length?available:variants;return pool.reduce((a,b)=>a.price<=b.price?a:b);}
-function displayModelName(model){return model==='AirPods Max 2'?'AirPods Max 2026':model;}function addCard(key,variants){
+function displayModelName(model){if(model==='AirPods Max 2')return 'AirPods Max 2026';if(model==='Apple Watch Watch Ultra 47')return 'Samsung Galaxy Watch Ultra 47';return model;}function addCard(key,variants){
  const p=pickVariant(variants), groupedCard=!!p.groupKey, available=variants.some(v=>v.available!==false);
  const card=document.createElement('article');card.className='catalog-item'+(groupedCard?' model-card':'');card.dataset.id=key;
  const photo=document.createElement('a');photo.className='model-photo';photo.href=targetUrl(p);photo.style.cssText='background:#fff;display:grid;place-items:center;text-decoration:none;overflow:hidden;padding:20px;box-sizing:border-box';
