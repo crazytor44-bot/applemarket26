@@ -220,6 +220,7 @@ const accessoryBottomOrder=['accessories-pencil','accessories-airtag','accessori
 accessoryBottomOrder.map(id=>cards.get(id)).filter(Boolean).forEach(card=>grid.appendChild(card));
 
 const params=new URLSearchParams(location.search);
+if(params.get('q'))fields.query.value=params.get('q');
 let category=params.get('category')||(params.get('q')?'':'iphone');
 if(!buttons.some(b=>b.dataset.category===category))category='';
 function matching(p,filters){
