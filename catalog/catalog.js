@@ -126,7 +126,7 @@ Object.assign(photoMap,{
  'watch-se3':'https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-40-se-3-nc-alum-midnight-sport-band-midnight?wid=600&hei=600&fmt=jpeg&qlt=90',
  'watch-series-11':'https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-42-s11-alum-jet-sport-band-black?wid=600&hei=600&fmt=jpeg&qlt=90',
  'watch-ultra-3':'https://cdsassets.apple.com/live/7WUAS350/images/tech-specs/apple-watch-ultra-3-hero.png',
- 'watch-ultra-4':'https://www.apple.com/v/apple-watch-ultra-4/b/images/overview/contrast/compare_ultra4__d5x92dr0j3sm_large.png',
+ 'watch-ultra-4':'https://www.apple.com/newsroom/images/2026/09/apple-unveils-apple-watch-ultra-4/article/Apple-Watch-Ultra-4-Alpine-Loop-Band-burgundy-260909_inline.jpg.large.jpg',
  'airpods-airpods-4':'/assets/products/airpods-4.jpg',
  'airpods-airpods-5':photoMap['airpods-5'],
  'airpods-airpods-pro-3':'/assets/products/airpods-pro-3.jpg',
