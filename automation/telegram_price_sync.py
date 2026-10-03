@@ -351,6 +351,8 @@ def _status_meta(old_meta: str, available: bool) -> str:
 
 def update_home_prices(products: list[dict], path: Path = HOME_PATH) -> int:
     source = path.read_text(encoding="utf-8")
+    if 'id="live-stock-products"' in source:
+        return 0
     updated = source
     changed_cards = 0
     for group_key, page in (

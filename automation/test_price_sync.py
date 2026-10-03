@@ -67,6 +67,17 @@ class PriceSyncTests(unittest.TestCase):
         self.assertNotIn("121&nbsp;990", updated)
         self.assertNotIn("142&nbsp;990", updated)
 
+    def test_live_home_block_skips_legacy_price_rewrite(self):
+        html = '<div id="live-stock-products"></div>'
+        products = [{"groupKey":"iphone-18-pro","price":117000,"available":True}]
+        with tempfile.TemporaryDirectory() as folder:
+            path = Path(folder) / "index.html"
+            path.write_text(html, encoding="utf-8")
+            changed = update_home_prices(products, path)
+            updated = path.read_text(encoding="utf-8")
+        self.assertEqual(changed, 0)
+        self.assertEqual(updated, html)
+
     def test_partial_supplier_batch_does_not_disable_unrepresented_category(self):
         products = [
             {"id":"ps5","name":"DualSense PS5 White","category":"gaming","model":"DualSense",
