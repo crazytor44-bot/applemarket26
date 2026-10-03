@@ -163,14 +163,14 @@
   },
   "icenter-2bd2df3bac782b": {
     "name": "Ultra 4 49mm Black Ti Band Ocean Band",
-    "asset": "apple-watch-ultra-4-official",
-    "apple": true,
-    "url": "https://cf-images.dustin.eu/cdn-cgi/image/fit=contain,format=auto,quality=75,width=828,fit=contain/image/d2000010011837824/d2000010011837824.jpg"
+    "asset": "ultra4-black-ocean",
+    "apple": false,
+    "url": "https://i-ray.ru/upload/iblock/cdd/hbaw7uuece4k4udvlcboahj1up0gmq8g.png"
   },
   "icenter-17137708a4ef1a": {
     "name": "Ultra 4 49mm Black Ti Band Ocean Band 🇺🇸",
-    "asset": "apple-watch-ultra-4-official",
-    "apple": true,
-    "url": "https://cf-images.dustin.eu/cdn-cgi/image/fit=contain,format=auto,quality=75,width=828,fit=contain/image/d2000010011837824/d2000010011837824.jpg"
+    "asset": "ultra4-black-ocean",
+    "apple": false,
+    "url": "https://i-ray.ru/upload/iblock/cdd/hbaw7uuece4k4udvlcboahj1up0gmq8g.png"
   }
 }
