@@ -195,7 +195,7 @@ function addCard(key,variants){
  const img=document.createElement('img');img.src=productPhoto(p,key);img.alt='Фото '+p.model;img.width=700;img.height=700;img.loading='lazy';img.decoding='async';img.style.cssText='width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain;object-position:center;display:block';img.referrerPolicy='no-referrer';img.addEventListener('error',()=>{img.src=key==='imac-24-m3'?'https://www.apple.com/newsroom/images/2023/10/apple-supercharges-24-inch-imac-with-new-m3-chip/article/Apple-iMac-M3-color-matched-accessories-231030_big.jpg.large.jpg':key==='watch-ultra-4'?'https://www.apple.com/newsroom/images/2026/09/apple-unveils-apple-watch-ultra-4/article/Apple-Watch-Ultra-4-Alpine-Loop-Band-burgundy-260909_inline.jpg.large.jpg':key==='airpods-airpods-5'?'https://www.apple.com/v/airpods-5/b/images/overview/bento-gallery/bento_pair__c7i9mu5k2zee_large.jpg':(categoryPhotos[p.category]||'/assets/amarket-hero-burgundy.webp');},{once:true});photo.appendChild(img);
  const top=document.createElement('div');top.className='catalog-item-top';const brand=document.createElement('span');brand.textContent=brandLabels[p.category]||'А Маркет';top.appendChild(brand);
  const h=document.createElement('h2');h.textContent=groupedCard?p.model:p.name;
- const meta=document.createElement('p');meta.className='catalog-item-meta';meta.textContent=available?(groupedCard?variantLabel(variants.length)+' · Наличие уточняйте':p.meta):'Нет в наличии';
+ const meta=document.createElement('p');meta.className='catalog-item-meta';meta.textContent=available?(groupedCard?variantLabel(variants.filter(v=>v.available!==false).length||variants.length)+' · Наличие уточняйте':p.meta):'Нет в наличии';
  const bottom=document.createElement('div');bottom.className='catalog-item-bottom';const strong=document.createElement('strong');const buy=document.createElement('a');buy.className='catalog-buy';buy.href=targetUrl(p);buy.textContent=available?((groupedCard||p.category==='accessories')?'Выбрать вариант ↗':'Уточнить наличие ↗'):'Уточнить поступление ↗';if(/^https?:\/\//.test(buy.href)&&!buy.href.startsWith(location.origin)){buy.target='_blank';buy.rel='noopener noreferrer';}bottom.append(strong,buy);card.classList.toggle('is-unavailable',!available);
  card.append(photo,top,h,meta,bottom);grid.appendChild(card);cards.set(key,card);
 }
@@ -207,7 +207,7 @@ grouped.forEach((variants,key)=>{
   if(photo){photo.href=href;photo.removeAttribute('target');photo.removeAttribute('rel');}
   if(buy){buy.href=href;buy.removeAttribute('target');buy.removeAttribute('rel');buy.textContent='Выбрать вариант ↗';}
   if(title)title.textContent=variants.length>1?p.model:(p.name||p.model);
-  if(meta)meta.textContent=variantLabel(variants.length)+' · Наличие уточняйте';
+  if(meta)meta.textContent=variantLabel(variants.filter(v=>v.available!==false).length||variants.length)+' · Наличие уточняйте';
  }
 });
 const presentModels=new Set([...fields.model.options].map(o=>o.value));
