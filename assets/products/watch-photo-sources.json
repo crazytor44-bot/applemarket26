@@ -160,5 +160,17 @@
     "asset": "natural-alpine-Terra-Cotta",
     "apple": false,
     "url": "https://ap71.ru/wp-content/uploads/2025/09/watch-ultra-3-titanium-natural-alpine-Terra-Cotta.png"
+  },
+  "icenter-2bd2df3bac782b": {
+    "name": "Ultra 4 49mm Black Ti Band Ocean Band",
+    "asset": "apple-watch-ultra-4-official",
+    "apple": true,
+    "url": "https://www.apple.com/v/apple-watch-ultra-4/b/images/overview/contrast/compare_ultra4__d5x92dr0j3sm_large.png"
+  },
+  "icenter-17137708a4ef1a": {
+    "name": "Ultra 4 49mm Black Ti Band Ocean Band 🇺🇸",
+    "asset": "apple-watch-ultra-4-official",
+    "apple": true,
+    "url": "https://www.apple.com/v/apple-watch-ultra-4/b/images/overview/contrast/compare_ultra4__d5x92dr0j3sm_large.png"
   }
 }
