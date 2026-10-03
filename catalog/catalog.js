@@ -188,20 +188,20 @@ function fitCardPhoto(card,p,key,replace){
  if(replace)img.addEventListener('error',()=>{img.src=key==='imac-24-m3'?'https://www.apple.com/newsroom/images/2023/10/apple-supercharges-24-inch-imac-with-new-m3-chip/article/Apple-iMac-M3-color-matched-accessories-231030_big.jpg.large.jpg':key==='watch-ultra-4'?'https://www.apple.com/newsroom/images/2026/09/apple-unveils-apple-watch-ultra-4/article/Apple-Watch-Ultra-4-Alpine-Loop-Band-burgundy-260909_inline.jpg.large.jpg':key==='airpods-airpods-5'?'https://www.apple.com/v/airpods-5/b/images/overview/bento-gallery/bento_pair__c7i9mu5k2zee_large.jpg':(original||categoryPhotos[p.category]||'/assets/amarket-hero-burgundy.webp');},{once:true});
 }
 function pickVariant(variants){const available=variants.filter(p=>p.available!==false);const pool=available.length?available:variants;return pool.reduce((a,b)=>a.price<=b.price?a:b);}
-function addCard(key,variants){
+function displayModelName(model){return model==='AirPods Max 2'?'AirPods Max 2026':model;}function addCard(key,variants){
  const p=pickVariant(variants), groupedCard=!!p.groupKey, available=variants.some(v=>v.available!==false);
  const card=document.createElement('article');card.className='catalog-item'+(groupedCard?' model-card':'');card.dataset.id=key;
  const photo=document.createElement('a');photo.className='model-photo';photo.href=targetUrl(p);photo.style.cssText='background:#fff;display:grid;place-items:center;text-decoration:none;overflow:hidden;padding:20px;box-sizing:border-box';
  const img=document.createElement('img');img.src=productPhoto(p,key);img.alt='Фото '+p.model;img.width=700;img.height=700;img.loading='lazy';img.decoding='async';img.style.cssText='width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain;object-position:center;display:block';img.referrerPolicy='no-referrer';img.addEventListener('error',()=>{img.src=key==='imac-24-m3'?'https://www.apple.com/newsroom/images/2023/10/apple-supercharges-24-inch-imac-with-new-m3-chip/article/Apple-iMac-M3-color-matched-accessories-231030_big.jpg.large.jpg':key==='watch-ultra-4'?'https://www.apple.com/newsroom/images/2026/09/apple-unveils-apple-watch-ultra-4/article/Apple-Watch-Ultra-4-Alpine-Loop-Band-burgundy-260909_inline.jpg.large.jpg':key==='airpods-airpods-5'?'https://www.apple.com/v/airpods-5/b/images/overview/bento-gallery/bento_pair__c7i9mu5k2zee_large.jpg':(categoryPhotos[p.category]||'/assets/amarket-hero-burgundy.webp');},{once:true});photo.appendChild(img);
  const top=document.createElement('div');top.className='catalog-item-top';const brand=document.createElement('span');brand.textContent=brandLabels[p.category]||'А Маркет';top.appendChild(brand);
- const h=document.createElement('h2');h.textContent=groupedCard?p.model:p.name;
+ const h=document.createElement('h2');h.textContent=groupedCard?displayModelName(p.model):p.name;
  const meta=document.createElement('p');meta.className='catalog-item-meta';meta.textContent=available?(groupedCard?variantLabel(variants.filter(v=>v.available!==false).length||variants.length)+' · Наличие уточняйте':p.meta):'Нет в наличии';
  const bottom=document.createElement('div');bottom.className='catalog-item-bottom';const strong=document.createElement('strong');const buy=document.createElement('a');buy.className='catalog-buy';buy.href=targetUrl(p);buy.textContent=available?((groupedCard||p.category==='accessories')?'Выбрать вариант ↗':'Уточнить наличие ↗'):'Уточнить поступление ↗';if(/^https?:\/\//.test(buy.href)&&!buy.href.startsWith(location.origin)){buy.target='_blank';buy.rel='noopener noreferrer';}bottom.append(strong,buy);card.classList.toggle('is-unavailable',!available);
  card.append(photo,top,h,meta,bottom);grid.appendChild(card);cards.set(key,card);
 }
 grouped.forEach((variants,key)=>{
  const existed=cards.has(key);if(!existed)addCard(key,variants);
- const p=pickVariant(variants),card=cards.get(key);if(card)card.classList.toggle('accessory-card',p.category==='accessories');fitCardPhoto(card,p,key,existed&&(!!photoMap[key]||p.category==='accessories'));
+ const p=pickVariant(variants),card=cards.get(key);if(card){card.classList.toggle('accessory-card',p.category==='accessories');if(p.category!=='accessories'){const title=card.querySelector('h2');if(title)title.textContent=displayModelName(p.model);}}fitCardPhoto(card,p,key,existed&&(!!photoMap[key]||p.category==='accessories'));
  if(card&&p.category==='accessories'&&p.page==='/choose/'){
   const href=targetUrl(p),photo=card.querySelector('.model-photo'),buy=card.querySelector('.catalog-buy'),title=card.querySelector('h2'),meta=card.querySelector('.catalog-item-meta');
   if(photo){photo.href=href;photo.removeAttribute('target');photo.removeAttribute('rel');}
@@ -210,9 +210,13 @@ grouped.forEach((variants,key)=>{
   if(meta)meta.textContent=variantLabel(variants.filter(v=>v.available!==false).length||variants.length)+' · Наличие уточняйте';
  }
 });
-const presentModels=new Set([...fields.model.options].map(o=>o.value));
-[...new Set(products.map(p=>p.model))].sort((a,b)=>a.localeCompare(b,'ru')).forEach(model=>{if(!presentModels.has(model)){const o=document.createElement('option');o.value=model;o.textContent=model;fields.model.appendChild(o);}});
-const modelOptions=[...fields.model.options];
+function syncModelOptions(){
+ const selected=fields.model.value;
+ const models=[...new Set(products.filter(p=>!category||p.category===category).map(p=>p.model))].sort((a,b)=>a.localeCompare(b,'ru'));
+ const options=[document.createElement('option'),...models.map(model=>{const o=document.createElement('option');o.value=model;o.textContent=displayModelName(model);return o;})];
+ options[0].value='';options[0].textContent='Все модели';fields.model.replaceChildren(...options);
+ if(models.includes(selected))fields.model.value=selected;
+}
 const iphoneOrder=['iphone-18-pro-max','iphone-18-pro','iphone-17-pro-max','iphone-17-pro','iphone-air','iphone-17','iphone-17e','iphone-16-pro-max','iphone-16-pro','iphone-16','iphone-15'];
 const iphoneCards=iphoneOrder.map(id=>cards.get(id)).filter(Boolean);
 if(iphoneCards.length){const parent=iphoneCards[0].parentElement;iphoneCards.forEach(card=>parent.appendChild(card));const firstNonIphone=[...parent.children].find(card=>!iphoneOrder.includes(card.dataset.id));if(firstNonIphone)iphoneCards.forEach(card=>parent.insertBefore(card,firstNonIphone));}
@@ -233,9 +237,7 @@ return (!filters.category||p.category===filters.category)
 && (!hasPrice||(p.price!==null&&p.price>=(filters.min===''?0:Number(filters.min))&&p.price<=(filters.max===''?Infinity:Number(filters.max))));
 }
 function apply(){
-const models=new Set(products.filter(p=>!category||p.category===category).map(p=>p.model));
-modelOptions.forEach(o=>{o.hidden=!!o.value&&!models.has(o.value);o.disabled=o.hidden;});
-if(fields.model.value&&!models.has(fields.model.value))fields.model.value='';
+syncModelOptions();
 buttons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.category===category)));
 const filters=Object.fromEntries(Object.entries(fields).map(([k,input])=>[k,input.value]));filters.category=category;
 const invalid=filters.min!==''&&filters.max!==''&&Number(filters.min)>Number(filters.max);
