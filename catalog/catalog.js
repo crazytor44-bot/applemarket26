@@ -108,6 +108,7 @@ Object.assign(photoMap,{
  'accessories-fitbit-air':'https://tsmactive.com/image/cache/catalog/_2026/Fitbit_AIR/google_fitbit_air_Fog_02-1100x1100.png',
  'glasses-starfire-kylie-jenner':'https://assets2.lenscrafters.com/prod-onecp-record-files/pieyewear/04fd31e8-0256-4189-9b97-b45200ea322a/0YM000006__1105A1__P21__shad__qt.png?impolicy=LC_grey',
  'glasses-rw4012':'https://images2.ray-ban.com/prod-onecp-record-files/pieyewear/ef902cf3-771e-450c-a436-b3a0002a78b6/0RW4012__6628MF__P21__shad__al31.png?impolicy=RB_Product_clone&width=1000&bgc=%23f2f2f2',
+ 'glasses-rw4013':'https://images2.ray-ban.com/prod-onecp-record-files/pieyewear/11a794bd-ac28-4a03-8d90-b3a001677ca4/0RW4013__601_1M__P21__shad__al31.png?impolicy=RB_Product_clone&width=1000&bgc=%23f2f2f2',
  'glasses-ai-glasses':'https://n.cdn.cdek.shopping/images/shopping/445f029b03484955a630e527e42f7ba6.jpg?v=1',
  'collectibles-labubu-zimomo':'https://avol.sg/cdn/shop/files/pop-mart-zimomo-the-monsters-i-found-pre-order-full-payment-177.jpg?v=1758748760&width=1445',
  'gaming-dualsense':'https://gmedia.playstation.com/is/image/SIEPDC/dualsense-controller-image-block-01-ps5-26jun20?$1600px$=',
