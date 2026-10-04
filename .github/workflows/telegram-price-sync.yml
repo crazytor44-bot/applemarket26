@@ -1,7 +1,7 @@
 name: Telegram price sync
 on:
   schedule:
-    - cron: '13 8,12,15,17,20 * * *'
+    - cron: '0 8,12,15,17,20 * * *'
   push:
     paths:
       - '.github/workflows/telegram-price-sync.yml'
