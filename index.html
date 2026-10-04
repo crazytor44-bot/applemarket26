@@ -74,7 +74,7 @@
   {key:'iphone-17-pro',title:'iPhone 17 Pro',image:'/assets/models/iphone-17-pro.png',href:'/iphone-17-pro/',kind:'iPhone'},
   {key:'iphone-17-pro-max',title:'iPhone 17 Pro Max',image:'/assets/models/iphone-17-pro-max.png',href:'/iphone-17-pro-max/',kind:'iPhone'},
   {key:'airpods-airpods-pro-3',title:'AirPods Pro 3',image:'/assets/products/airpods-pro-3.jpg',choose:true,kind:'AirPods'},
-  {key:'watch-ultra-3',title:'Apple Watch Ultra 3',image:'https://cdsassets.apple.com/live/7WUAS350/images/tech-specs/apple-watch-ultra-3-hero.png',choose:true,kind:'Apple Watch'}
+  {key:'watch-ultra-4',title:'Apple Watch Ultra 4',image:'https://i-ray.ru/upload/iblock/cdd/hbaw7uuece4k4udvlcboahj1up0gmq8g.png',choose:true,kind:'Apple Watch'}
  ];
  try{
   const text=await fetch('/catalog/?live-stock=20261003-1',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('catalog '+r.status);return r.text();});
@@ -96,7 +96,7 @@
     (spec.kind==='iPhone'?'<div class="iphone-assurances" style="display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 18px"><span style="padding:7px 10px;border:1px solid #44363b;border-radius:999px;font-size:13px;font-weight:600">Без RuStore</span><span style="padding:7px 10px;border:1px solid #44363b;border-radius:999px;font-size:13px;font-weight:600">Гарантия 1 год</span></div>':'')+
     '<div class="price-row"><strong></strong><span class="round" aria-label="Выбрать">↗</span></div></div>';
    const img=card.querySelector('img');
-   img.src=spec.image;img.alt=spec.title;if(spec.key==='iphone-18-pro-max'){img.style.transform='translateY(-8%)';img.style.transformOrigin='center center';}else if(spec.key==='airpods-airpods-pro-3'){img.style.transform='translateY(-18%)';img.style.transformOrigin='center center';}else if(spec.key==='watch-ultra-3'){img.style.transform='translateY(-13%)';img.style.transformOrigin='center center';}
+   img.src=spec.image;img.alt=spec.title;if(spec.key==='iphone-18-pro-max'){img.style.transform='translateY(-8%)';img.style.transformOrigin='center center';}else if(spec.key==='airpods-airpods-pro-3'){img.style.transform='translateY(-18%)';img.style.transformOrigin='center center';}else if(spec.key==='watch-ultra-4'){img.style.transform='translateY(-13%)';img.style.transformOrigin='center center';}
    card.querySelector('h3').textContent=spec.title;
    card.querySelector('.live-card-meta').textContent=variantLabel(variants.length)+' · В наличии';
    card.querySelector('strong').textContent='от '+money(Number(pick.price));
