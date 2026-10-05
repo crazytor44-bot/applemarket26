@@ -280,5 +280,75 @@
     "storage": "2 ТБ SSD",
     "resolution": "До 8K в поддерживаемых играх; 4K",
     "fps": "До 120 fps"
+  },
+  "samsung-buds-4": {
+    "source": "https://www.samsung.com/sec/buds/galaxy-buds/galaxy-buds4/specs/",
+    "type": "TWS, открытая посадка",
+    "anc": "Да, адаптивное ANC",
+    "transparency": "Да",
+    "batteryLife": "До 5 ч с ANC / до 24 ч с кейсом; до 6 / 30 ч без ANC",
+    "charging": "Зарядный кейс",
+    "water": "IP54",
+    "weight": "4,6 г каждый"
+  },
+  "samsung-buds-4-pro": {
+    "source": "https://www.samsung.com/sec/buds/galaxy-buds/galaxy-buds4-pro/specs/",
+    "type": "TWS, внутриканальные",
+    "anc": "Да, адаптивное ANC",
+    "transparency": "Да",
+    "batteryLife": "До 6 ч с ANC / до 26 ч с кейсом; до 7 / 30 ч без ANC",
+    "charging": "Зарядный кейс",
+    "water": "IP57",
+    "weight": "5,1 г каждый"
+  },
+  "airpods-airpods-4": {
+    "source": "https://support.apple.com/en-gb/121204",
+    "type": "TWS, открытая посадка",
+    "anc": "Зависит от версии: есть версия с ANC",
+    "transparency": "Да у версии с ANC",
+    "batteryLife": "До 4 ч с ANC / до 20 ч с кейсом; до 5 / 30 ч без ANC",
+    "charging": "USB-C; версия ANC также Qi / Apple Watch",
+    "water": "IP54",
+    "weight": "4,3 г каждый"
+  },
+  "airpods-airpods-5": {
+    "source": "https://www.apple.com/fr/airpods-5/",
+    "type": "TWS, открытая посадка",
+    "anc": "Да",
+    "transparency": "Да, адаптивное аудио",
+    "batteryLife": "До 4 ч с ANC; до 5 ч у Wireless; до 22 ч с Wireless-кейсом",
+    "charging": "USB-C; Wireless Case также Qi / Apple Watch",
+    "water": "IP57",
+    "weight": "Уточняется по версии"
+  },
+  "airpods-airpods-pro-3": {
+    "source": "https://support.apple.com/en-gb/125135",
+    "type": "TWS, внутриканальные",
+    "anc": "Да",
+    "transparency": "Да, прозрачный и адаптивный режимы",
+    "batteryLife": "До 8 ч с ANC",
+    "charging": "MagSafe-кейс USB-C; беспроводная зарядка",
+    "water": "IP57",
+    "weight": "5,55 г каждый"
+  },
+  "airpods-airpods-max-2024": {
+    "source": "https://support.apple.com/en-gb/121205",
+    "type": "Полноразмерные",
+    "anc": "Да",
+    "transparency": "Да",
+    "batteryLife": "До 20 ч с ANC",
+    "charging": "USB-C",
+    "water": "Нет заявленного IP",
+    "weight": "386,2 г"
+  },
+  "airpods-airpods-max-2": {
+    "source": "https://support.apple.com/fr-fr/126620",
+    "type": "Полноразмерные",
+    "anc": "Да",
+    "transparency": "Да, адаптивное аудио",
+    "batteryLife": "До 20 ч с ANC",
+    "charging": "USB-C",
+    "water": "Нет заявленного IP",
+    "weight": "Уточняется"
   }
 }
