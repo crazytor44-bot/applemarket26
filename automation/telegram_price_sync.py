@@ -525,6 +525,12 @@ async def telegram_batch() -> str:
         # must always win. This avoids an older price section overriding a fresh edit.
         batch_size = int(os.getenv("TELEGRAM_BATCH_MESSAGES", "120"))
         newest = sorted(price_messages, key=lambda item: (item[0], item[1]), reverse=True)[:batch_size]
+        # Temporary diagnostic for the iPhone 18 Pro Max supplier section.
+        # It reveals exactly which Telegram message/edit the API exposes to Actions.
+        for activity, message_id, message_text in newest:
+            if "18 Pro Max 256GB Black" in message_text:
+                rows = [line.strip() for line in message_text.splitlines() if "18 Pro Max 256GB Black" in line]
+                print(f"TG_DIAG message={message_id} activity={activity.isoformat()} rows={rows}", file=sys.stderr)
         latest_entries = {}
         for activity, message_id, message_text in newest:
             for entry in parse_price_text(message_text):
