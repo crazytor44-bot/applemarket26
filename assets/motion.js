@@ -23,7 +23,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 const METRIKA_ID=109374177;
 function sendLeadGoal(goal,meta={}){
  try{
-  if(typeof window.ym==='function')window.ym(METRIKA_ID,'reachGoal',goal,{page:location.pathname,...meta});
+  if(typeof window.ym==='function'){window.ym(METRIKA_ID,'params',{amarket_lead:goal,amarket_lead_page:location.pathname});window.ym(METRIKA_ID,'reachGoal',goal,{page:location.pathname,...meta});}
  }catch(e){}
 }
 function decodeHref(href){
