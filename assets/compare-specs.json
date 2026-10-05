@@ -10,7 +10,7 @@
     "ultra": "12 Мп",
     "tele": "Нет отдельного телеобъектива",
     "front": "12 Мп",
-    "battery": null,
+    "battery": "3349 мА·ч",
     "charge": "До 50% примерно за 30 мин; адаптер от 20 Вт",
     "os": "iOS"
   },
@@ -25,7 +25,7 @@
     "ultra": "12 Мп",
     "tele": "Нет отдельного телеобъектива",
     "front": "12 Мп",
-    "battery": null,
+    "battery": "3561 мА·ч",
     "charge": "До 50% примерно за 30 мин; адаптер от 20 Вт",
     "os": "iOS"
   },
@@ -40,7 +40,7 @@
     "ultra": "48 Мп",
     "tele": "12 Мп · оптический 5×",
     "front": "12 Мп",
-    "battery": null,
+    "battery": "3582 мА·ч",
     "charge": "До 50% примерно за 30 мин; адаптер от 20 Вт",
     "os": "iOS"
   },
@@ -55,7 +55,7 @@
     "ultra": "Нет",
     "tele": "Нет отдельного телеобъектива",
     "front": "12 Мп",
-    "battery": null,
+    "battery": "4005 мА·ч",
     "charge": "До 50% примерно за 30 мин; адаптер от 20 Вт",
     "os": "iOS"
   },
@@ -70,7 +70,7 @@
     "ultra": "48 Мп",
     "tele": "Нет отдельного телеобъектива",
     "front": "18 Мп",
-    "battery": null,
+    "battery": "3692 мА·ч",
     "charge": "До 50% за 20 мин; адаптер от 40 Вт",
     "os": "iOS"
   },
@@ -85,7 +85,7 @@
     "ultra": "Нет",
     "tele": "Нет отдельного телеобъектива",
     "front": "18 Мп",
-    "battery": null,
+    "battery": "3149 мА·ч",
     "charge": "До 50% примерно за 30 мин; адаптер от 20 Вт",
     "os": "iOS"
   },
@@ -102,7 +102,9 @@
     "front": "18 Мп",
     "battery": null,
     "charge": "До 50% за 20 мин; адаптер от 40 Вт",
-    "os": "iOS"
+    "os": "iOS",
+    "batterySim": "3988 мА·ч",
+    "batteryEsim": "4252 мА·ч"
   },
   "iphone-17-pro-max": {
     "source": "https://support.apple.com/en-us/125091",
@@ -117,7 +119,9 @@
     "front": "18 Мп",
     "battery": null,
     "charge": "До 50% за 20 мин; адаптер от 40 Вт",
-    "os": "iOS"
+    "os": "iOS",
+    "batterySim": "4823 мА·ч",
+    "batteryEsim": "5088 мА·ч"
   },
   "iphone-18-pro": {
     "source": "https://www.apple.com/iphone-18-pro/specs/",
@@ -132,7 +136,9 @@
     "front": "18 Мп",
     "battery": null,
     "charge": "До 50% примерно за 15 мин; адаптер от 60 Вт с AVS",
-    "os": "iOS"
+    "os": "iOS",
+    "batterySim": "4056 мА·ч",
+    "batteryEsim": "4288 мА·ч"
   },
   "iphone-18-pro-max": {
     "source": "https://www.apple.com/iphone-18-pro/specs/",
@@ -147,7 +153,9 @@
     "front": "18 Мп",
     "battery": null,
     "charge": "До 50% примерно за 15 мин; адаптер от 60 Вт с AVS",
-    "os": "iOS"
+    "os": "iOS",
+    "batterySim": "5391 мА·ч",
+    "batteryEsim": "5567 мА·ч"
   },
   "samsung-s25": {
     "source": "https://news.samsung.com/global/samsung-galaxy-s25-series-sets-the-standard-of-ai-phone-as-a-true-ai-companion",
