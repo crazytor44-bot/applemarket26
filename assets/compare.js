@@ -2,6 +2,13 @@
 const $=s=>document.querySelector(s),panels=[...document.querySelectorAll('.compare-device')],state=[null,null],cache=new Map();let allCatalog=[],catalog=[],specs={},models=[],generation=0,currentKind='phones';
 const money=n=>new Intl.NumberFormat('ru-RU').format(n)+' ₽';
 const comparePhotos={
+'samsung-buds-4':'https://images.samsung.com/is/image/samsung/p6pim/ru/s2602/gallery/ru-galaxy-buds4-r540-sm-r540nzkacis-551008457?$1164_776_PNG$=',
+'samsung-buds-4-pro':'https://images.samsung.com/is/image/samsung/p6pim/ru/s2602/gallery/ru-galaxy-buds4-r640-sm-r640nzkacis-550945289?$1164_776_PNG$=',
+'airpods-airpods-4':'/assets/products/airpods-4.jpg',
+'airpods-airpods-5':'https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/airpods-5-up-compare-202509?wid=1200&hei=1400&fmt=png-alpha',
+'airpods-airpods-pro-3':'/assets/products/airpods-pro-3.jpg',
+'airpods-airpods-max-2024':'/assets/products/airpods-max-orange.jpg',
+'airpods-airpods-max-2':'/assets/products/airpods-max-blue.jpg',
 'beauty-dyson-ht01':'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/images/products/hero-locale/en_GB/143346-01.png',
 'beauty-dyson-hs08':'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/leap-petite-global/dynamic-media/personal-care/308f/primary/WEB-308F_H-AW-PDP-Primary-SW.png',
 'beauty-dyson-hs09':'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/images/products/primary/264192-01.png',
