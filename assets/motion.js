@@ -19,4 +19,27 @@ function stock18(){
  }
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',stock18);else stock18();
+
+const METRIKA_ID=109374177;
+function sendLeadGoal(goal,meta={}){
+ try{
+  if(typeof window.ym==='function')window.ym(METRIKA_ID,'reachGoal',goal,{page:location.pathname,...meta});
+ }catch(e){}
+}
+function decodeHref(href){
+ try{return decodeURIComponent(String(href||'').replace(/\+/g,' '));}catch(e){return String(href||'');}
+}
+document.addEventListener('click',event=>{
+ const link=event.target.closest&&event.target.closest('a[href*="wa.me/"]');
+ if(!link)return;
+ const raw=decodeHref(link.getAttribute('href')||link.href),label=(link.textContent||'').trim();
+ const text=(raw+' '+label).toLowerCase();
+ if(/стоимость ремонта|ремонт телефона|по ремонту/.test(text))return sendLeadGoal('lead_repair',{label});
+ if(/trade-?in|обменять телефон|продать телефон|оценить телефон/.test(text))return sendLeadGoal('lead_tradein',{label});
+ if(/подобрать iphone/.test(text))return sendLeadGoal('lead_iphone_help',{label});
+ if(/налич/.test(text))return sendLeadGoal('lead_stock',{label});
+},true);
+document.addEventListener('submit',event=>{
+ if(event.target&&event.target.id==='trade-form')sendLeadGoal('lead_tradein',{label:'trade-form'});
+},true);
 })();
