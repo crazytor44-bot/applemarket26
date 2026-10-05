@@ -55,6 +55,7 @@ class PriceEntry:
     name: str
     supplier_price: int
     key: str
+    transit: bool = False
 
 
 def normal_key(value: str) -> str:
@@ -106,8 +107,9 @@ def parse_price_text(text: str) -> list[PriceEntry]:
             continue
         if re.match(r"^(?:iCenter\s+Stavropol\s*,?\s*\[|От\s+\d+\s*шт)", line, re.I):
             continue
+        transit = "✈️" in line or "✈" in line
         clean = re.sub(r"\*.*$", "", line)
-        clean = re.sub(r"[🚛🚚🔥❗❕‼️]", "", clean).strip()
+        clean = re.sub(r"[🚛🚚🔥❗❕‼️✈]", "", clean).strip()
         match = PRICE_RE.match(clean)
         if not match:
             continue
@@ -119,7 +121,7 @@ def parse_price_text(text: str) -> list[PriceEntry]:
             continue
         key = normal_key(name)
         if key:
-            entries[key] = PriceEntry(name=name, supplier_price=amount, key=key)
+            entries[key] = PriceEntry(name=name, supplier_price=amount, key=key, transit=transit)
     return list(entries.values())
 
 
@@ -225,8 +227,8 @@ def new_product(entry: PriceEntry) -> dict:
     product_id = "icenter-" + hashlib.sha1(entry.key.encode("utf-8")).hexdigest()[:14]
     price = entry.supplier_price + markup_for(entry.supplier_price)
     product = {"id": product_id, "name": entry.name, "category": category, "model": model,
-               "memory": memory_for(entry.name), "price": price, "preorder": False, "notes": "", "transit": False,
-               "available": True, "source": "icenter", "meta": "В наличии · Цена обновляется автоматически",
+               "memory": memory_for(entry.name), "price": price, "preorder": False, "notes": "", "transit": entry.transit,
+               "available": True, "source": "icenter", "meta": ("В пути" if entry.transit else "В наличии · Цена обновляется автоматически"),
                "groupKey": group_key_for(entry.name, category, model), "url": whatsapp_url(entry.name, price, True)}
     product.update(iphone_18_display_fields(entry.name, model))
     return product
@@ -259,9 +261,9 @@ def merge_products(products: list[dict], entries: list[PriceEntry]) -> tuple[lis
             price = entry.supplier_price + markup_for(entry.supplier_price)
             category = category_for(entry.name)
             model = model_for(entry.name, category)
-            product.update(price=price, available=True, source="icenter", category=category, model=model,
+            product.update(price=price, available=True, transit=entry.transit, source="icenter", category=category, model=model,
                            groupKey=(group_key_for(entry.name, category, model) if (re.match(r"^\\s*Fitbit\\s+Air\\b", entry.name, re.I) or re.match(r"^\\s*Ultra\\s*4(?:\\s|$)", entry.name, re.I)) else (product.get("groupKey") or group_key_for(entry.name, category, model))),
-                           meta="В наличии · Цена обновляется автоматически",
+                           meta=("В пути" if entry.transit else "В наличии · Цена обновляется автоматически"),
                            url=whatsapp_url(product["name"], price, True))
             product.update(iphone_18_display_fields(entry.name, model))
             seen.add(index); stats["updated"] += 1
@@ -537,7 +539,7 @@ async def telegram_batch() -> str:
                 if entry.key not in latest_entries:
                     latest_entries[entry.key] = entry
         return "\n".join(
-            f"{entry.name} - {entry.supplier_price:,}".replace(",", ".")
+            f"{entry.name} - {entry.supplier_price:,}".replace(",", ".") + (" ✈️" if entry.transit else "")
             for entry in latest_entries.values()
         )
 
