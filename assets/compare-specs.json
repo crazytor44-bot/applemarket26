@@ -231,5 +231,54 @@
     "battery": "5000 мА·ч (типичная)",
     "charge": "До 75% примерно за 30 мин; совместимый адаптер Samsung",
     "os": "Android / One UI"
+  },
+  "beauty-dyson-ht01": {
+    "source": "https://www.dyson.com/hair-care/hair-straighteners/airstrait",
+    "weight": "≈ 0,94 кг",
+    "power": "1600 Вт",
+    "modes": "Влажные волосы: 80 / 110 / 140 °C; сухие: 120 / 140 °C + Boost",
+    "attachments": "Dyson Airstrait; комплектация зависит от версии/цвета"
+  },
+  "beauty-dyson-hs08": {
+    "source": "https://www.dyson.com/hair-care/hair-stylers/airwrap",
+    "weight": "≈ 0,59 кг",
+    "power": "1300 Вт",
+    "modes": "3 скорости воздушного потока · 3 температурных режима · холодный воздух",
+    "attachments": "Airwrap i.d.; набор насадок зависит от комплектации"
+  },
+  "beauty-dyson-hs09": {
+    "source": "https://www.dyson.com/hair-care/hair-stylers/airwrap",
+    "weight": "≈ 0,71 кг",
+    "power": "1700 Вт",
+    "modes": "Airwrap Co-anda2x · 3 скорости · 3 температурных режима · холодный воздух",
+    "attachments": "Co-anda2x; набор насадок зависит от комплектации"
+  },
+  "gaming-ps5-slim-digital": {
+    "source": "https://www.playstation.com/ps5/",
+    "drive": "Нет; совместимый съёмный дисковод можно установить отдельно",
+    "storage": "825 ГБ SSD",
+    "resolution": "До 4K",
+    "fps": "До 120 fps"
+  },
+  "gaming-ps5-slim": {
+    "source": "https://www.playstation.com/ps5/",
+    "drive": "Ultra HD Blu-ray",
+    "storage": "1 ТБ SSD",
+    "resolution": "До 4K",
+    "fps": "До 120 fps"
+  },
+  "gaming-ps5-slim-ghost-of-yotei-limited-edition-gold": {
+    "source": "https://www.playstation.com/ps5/",
+    "drive": "Ultra HD Blu-ray",
+    "storage": "1 ТБ SSD",
+    "resolution": "До 4K",
+    "fps": "До 120 fps"
+  },
+  "gaming-ps5-pro-2-ревизия": {
+    "source": "https://www.playstation.com/ps5/ps5-pro/",
+    "drive": "Нет в комплекте; дисковод продаётся отдельно",
+    "storage": "2 ТБ SSD",
+    "resolution": "До 8K в поддерживаемых играх; 4K",
+    "fps": "До 120 fps"
   }
 }
