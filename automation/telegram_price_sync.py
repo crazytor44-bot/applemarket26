@@ -520,13 +520,20 @@ async def telegram_batch() -> str:
         price_messages = [item for item in messages if parse_price_text(item[2])]
         if not price_messages:
             raise RuntimeError("В канале не найдены сообщения с ценами")
-        # iter_messages returns newest message IDs first, but the supplier often
-        # edits older price sections. Select by actual activity time (edit/date),
-        # then concatenate oldest -> newest so the freshest edit wins on duplicates.
+        # Select the most recently active price messages. Resolve duplicate
+        # products here, message by message: the newest edited/posted message
+        # must always win. This avoids an older price section overriding a fresh edit.
         batch_size = int(os.getenv("TELEGRAM_BATCH_MESSAGES", "120"))
         newest = sorted(price_messages, key=lambda item: (item[0], item[1]), reverse=True)[:batch_size]
-        batch = sorted(newest, key=lambda item: (item[0], item[1]))
-        return "\n".join(item[2] for item in batch)
+        latest_entries = {}
+        for activity, message_id, message_text in newest:
+            for entry in parse_price_text(message_text):
+                if entry.key not in latest_entries:
+                    latest_entries[entry.key] = entry
+        return "\n".join(
+            f"{entry.name} - {entry.supplier_price:,}".replace(",", ".")
+            for entry in latest_entries.values()
+        )
 
 
 def run(text: str, minimum: int) -> dict[str, int]:
