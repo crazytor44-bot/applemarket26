@@ -161,7 +161,10 @@ def markup_for(supplier_price: int) -> int:
 
 
 def memory_for(name: str) -> int | None:
-    values = [int(x) for x in re.findall(r"\b(\d+)\s*(?:GB|ГБ)\b", name, re.I)]
+    # Store memory in GB internally; 1TB therefore becomes 1024 GB.
+    tb_values = [int(x) * 1024 for x in re.findall(r"\b(\d+)\s*(?:TB|ТБ)\b", name, re.I)]
+    gb_values = [int(x) for x in re.findall(r"\b(\d+)\s*(?:GB|ГБ)\b", name, re.I)]
+    values = tb_values + gb_values
     return max(values) if values else None
 
 
