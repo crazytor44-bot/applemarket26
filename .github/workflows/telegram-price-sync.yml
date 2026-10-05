@@ -75,4 +75,8 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add index.html catalog/index.html yml.xml */index.html
           git commit -m 'Автоматически обновить прайс из Telegram'
-          git push
+          # The site may be edited while this job is running. Rebase the price commit
+          # onto the latest main before pushing so concurrent site edits are preserved.
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
