@@ -143,7 +143,7 @@ def category_for(name: str) -> str:
     # Supplier often abbreviates Apple Watch as S11 / SE 3 / Ultra 3.
     # Recognize those before Samsung's S-series shorthand.
     if ("samsung" not in s and "galaxy" not in s and
-            re.match(r"^(?:s(?:eries)?\s*11|se\s*[23]|ultra\s*[2-4])(?:\s|$)", s)):
+            re.match(r"^(?:s(?:eries)?\s*(?:11|12)|se\s*[23]|ultra\s*[2-4])(?:\s|$)", s)):
         return "watch"
     if ("samsung" in s or "galaxy" in s or
             re.match(r"^(?:a\d{2}|s\d{2}(?:\s|$)|z\s+(?:flip|fold)|buds\s*\d)", s)):
@@ -198,6 +198,11 @@ def model_for(name: str, category: str) -> str:
         "glasses": r"((?:Starfire(?:\s+Kylie\s+Jenner)?|RW\d+|AI\s+Glasses))",
         "collectibles": r"((?:LABUBU\s+)?(?:Zimomo|Life))",
     }
+    # Supplier abbreviates Apple Watch Series 11/12 as S11/S12.
+    if category == "watch":
+        short_series = re.match(r"^S(11|12)(?:\s|$)", name, re.I)
+        if short_series:
+            return "Apple Watch Series " + short_series.group(1)
     match = re.search(patterns.get(category, r"$^"), name, re.I)
     if match:
         model = match.group(1).strip()
