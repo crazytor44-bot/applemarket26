@@ -190,5 +190,23 @@
     "asset": "ultra4-natural-gray-ocean",
     "apple": false,
     "url": "https://www.bazos.sk/img/1/943/195846943.jpg"
+  },
+  "icenter-8f43943023b5da": {
+    "name": "Ultra 4 49 Black Burgundy Trail Loop M 🇺🇸",
+    "asset": "ultra4-black-burgundy-trail",
+    "apple": false,
+    "url": "https://www.apple.com/newsroom/images/2026/09/apple-unveils-apple-watch-ultra-4/article/Apple-Watch-Ultra-4-Alpine-Loop-Band-burgundy-260909_inline.jpg.large.jpg"
+  },
+  "icenter-9030f1feddaf21": {
+    "name": "Ultra 4 49 Natural Desert Alpine Loop M 🇺🇸",
+    "asset": "ultra4-natural-desert-alpine",
+    "apple": false,
+    "url": "https://www.apple.com/newsroom/images/2026/09/apple-unveils-apple-watch-ultra-4/article/Apple-Watch-Ultra-4-Alpine-Loop-Band-burgundy-260909_inline.jpg.large.jpg"
+  },
+  "icenter-eae968fad61a7f": {
+    "name": "Ultra 4 49 Natural Desert Trail Loop M/L 🇺🇸",
+    "asset": "ultra4-natural-desert-trail",
+    "apple": false,
+    "url": "https://www.apple.com/newsroom/images/2026/09/apple-unveils-apple-watch-ultra-4/article/Apple-Watch-Ultra-4-Alpine-Loop-Band-burgundy-260909_inline.jpg.large.jpg"
   }
 }
