@@ -7,7 +7,7 @@ const params=new URLSearchParams(location.search);
 if(data.slug==='iphone-18-pro'&&params.get('model')==='max'){location.replace('/iphone-18-pro-max/'+location.search);return;}
 const fields={memory:document.querySelector('#product-memory'),color:document.querySelector('#product-color'),region:document.querySelector('#product-region')};
 const regions={'🇯🇵':'🇯🇵 Япония · eSIM','🇮🇳':'🇮🇳 Индия · SIM + eSIM','🇪🇺':'🇪🇺 Европа · SIM + eSIM','🇨🇳':'🇨🇳 Китай · SIM уточните','eSIM':'eSIM','1 SIM':'1 SIM','1 SIM · 🇭🇰 active':'1 SIM · 🇭🇰 active'};
-const colors={Black:['Чёрный','#303033'],Blue:['Голубой','#b9d3e2'],Glacier:['Glacier','#b9d3e2'],Burgundy:['Бургунди','#69333f'],Silver:['Серебристый','#d8d8d6'],White:['Белый','#f0ede7'],Natural:['Натуральный титан','#a69e91'],Pink:['Розовый','#eac6d6'],Teal:['Бирюзовый','#80aead'],Ultramarine:['Ультрамарин','#6476c2'],Lavender:['Лавандовый','#c8bddc'],Sage:['Шалфей','#acbba5'],Gold:['Золотистый','#e8ddbb'],Orange:['Оранжевый','#d87e4d']};
+const colors={Black:['Чёрный','#303033'],Blue:['Голубой','#b9d3e2'],Glacier:['Glacier','#b9d3e2'],Burgundy:['Бургунди','#69333f'],Silver:['Серебристый','#d8d8d6'],White:['Белый','#f0ede7'],Natural:['Натуральный титан','#a69e91'],Desert:['Пустынный титан','#c7a98b'],Pink:['Розовый','#eac6d6'],Teal:['Бирюзовый','#80aead'],Ultramarine:['Ультрамарин','#6476c2'],Lavender:['Лавандовый','#c8bddc'],Sage:['Шалфей','#acbba5'],Gold:['Золотистый','#e8ddbb'],Orange:['Оранжевый','#d87e4d']};
 if(/^iphone-17-pro/.test(data.slug))colors.Blue=['Тёмно-синий','#384557'];
 const colorLabel=c=>(colors[c]||[c])[0];const money=n=>new Intl.NumberFormat('ru-RU').format(n)+' ₽';
 let initial=variants.find(v=>v.id===params.get('variant'))||variants[0];
