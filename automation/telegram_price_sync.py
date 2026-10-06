@@ -457,7 +457,7 @@ def update_detail_pages(products: list[dict]) -> int:
 
                 item = dict(old)
                 for field in ("price", "available", "url", "source", "category", "model", "memory",
-                              "preorder", "notes", "transit", "groupKey", "page"):
+                              "preorder", "notes", "transit", "groupKey", "page", "color", "region"):
                     if field in fresh:
                         item[field] = fresh[field]
                 item["meta"] = _status_meta(old.get("meta", ""), fresh.get("available", True) is not False)
