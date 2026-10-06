@@ -233,8 +233,7 @@ def new_product(entry: PriceEntry) -> dict:
                "memory": memory_for(entry.name), "price": price, "preorder": False, "notes": "", "transit": entry.transit,
                "available": True, "source": "icenter", "meta": ("В пути" if entry.transit else "В наличии · Цена обновляется автоматически"),
                "groupKey": group_key_for(entry.name, category, model), "url": whatsapp_url(entry.name, price, True)}
-    product.update(iphone_18_display_fields(entry.name, model))
-    return product
+    # New supplier iPhone variants must point at their model detail page.\n    if category == "iphone":\n        slug = group_key_for(entry.name, category, model).removeprefix("iphone-")\n        if slug:\n            product["page"] = f"/iphone-{slug}/"\n    product.update(iphone_18_display_fields(entry.name, model))\n    return product
 
 
 def merge_products(products: list[dict], entries: list[PriceEntry]) -> tuple[list[dict], dict[str, int]]:
