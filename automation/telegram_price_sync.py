@@ -289,8 +289,14 @@ def merge_products(products: list[dict], entries: list[PriceEntry]) -> tuple[lis
             price = entry.supplier_price + markup_for(entry.supplier_price)
             category = category_for(entry.name)
             model = model_for(entry.name, category)
+            force_group_key = bool(
+                re.match(r"^\\s*Fitbit\\s+Air\\b", entry.name, re.I)
+                or re.match(r"^\\s*Ultra\\s*[2-4](?:\\s|$)", entry.name, re.I)
+                or re.match(r"^\\s*S(?:11|12)(?:\\s|$)", entry.name, re.I)
+                or re.match(r"^\\s*SE\\s*[23](?:\\s|$)", entry.name, re.I)
+            )
             product.update(price=price, available=True, transit=entry.transit, source="icenter", category=category, model=model,
-                           groupKey=(group_key_for(entry.name, category, model) if (re.match(r"^\\s*Fitbit\\s+Air\\b", entry.name, re.I) or re.match(r"^\\s*Ultra\\s*4(?:\\s|$)", entry.name, re.I)) else (product.get("groupKey") or group_key_for(entry.name, category, model))),
+                           groupKey=(group_key_for(entry.name, category, model) if force_group_key else (product.get("groupKey") or group_key_for(entry.name, category, model))),
                            meta=("В пути" if entry.transit else "В наличии · Цена обновляется автоматически"),
                            url=whatsapp_url(product["name"], price, True))
             if category == "iphone":
