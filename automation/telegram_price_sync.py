@@ -99,6 +99,16 @@ def iphone_18_display_fields(name: str, model: str) -> dict:
     return fields
 
 
+def iphone_display_fields(name: str) -> dict:
+    fields: dict[str, str] = {}
+    color = re.search(r"\\b(Black|White|Natural|Desert|Silver|Blue|Pink|Teal|Ultramarine|Green|Yellow|Purple|Gold|Graphite|Sierra Blue|Alpine Green|Deep Purple|Space Black)\\b", name, re.I)
+    region = re.search(r"(🇯🇵|🇮🇳|🇪🇺|🇨🇳|🇺🇸|🇦🇪|🇭🇰|🇰🇼)", name)
+    if color:
+        fields["color"] = color.group(1).title()
+    if region:
+        fields["region"] = region.group(1)
+    return fields
+
 def parse_price_text(text: str) -> list[PriceEntry]:
     entries: dict[str, PriceEntry] = {}
     for raw in text.replace("\r", "").split("\n"):
@@ -238,6 +248,8 @@ def new_product(entry: PriceEntry) -> dict:
         slug = group_key_for(entry.name, category, model).removeprefix("iphone-")
         if slug:
             product["page"] = f"/iphone-{slug}/"
+    if category == "iphone":
+        product.update(iphone_display_fields(entry.name))
     product.update(iphone_18_display_fields(entry.name, model))
     return product
 
@@ -277,6 +289,8 @@ def merge_products(products: list[dict], entries: list[PriceEntry]) -> tuple[lis
                 slug = group_key_for(entry.name, category, model).removeprefix("iphone-")
                 if slug:
                     product["page"] = f"/iphone-{slug}/"
+            if category == "iphone":
+                product.update(iphone_display_fields(entry.name))
             product.update(iphone_18_display_fields(entry.name, model))
             seen.add(index); stats["updated"] += 1
         elif not matches:
