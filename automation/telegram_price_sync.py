@@ -101,10 +101,13 @@ def iphone_18_display_fields(name: str, model: str) -> dict:
 
 def iphone_display_fields(name: str) -> dict:
     fields: dict[str, str] = {}
-    color = re.search(r"\\b(Black|White|Natural|Desert|Silver|Blue|Pink|Teal|Ultramarine|Green|Yellow|Purple|Gold|Graphite|Sierra Blue|Alpine Green|Deep Purple|Space Black)\\b", name, re.I)
+    colors = ("Black", "White", "Natural", "Desert", "Silver", "Blue", "Pink", "Teal", "Ultramarine", "Green", "Yellow", "Purple", "Gold", "Graphite", "Sierra Blue", "Alpine Green", "Deep Purple", "Space Black")
+    lower_name = name.casefold()
+    for candidate in colors:
+        if candidate.casefold() in lower_name:
+            fields["color"] = candidate
+            break
     region = re.search(r"(🇯🇵|🇮🇳|🇪🇺|🇨🇳|🇺🇸|🇦🇪|🇭🇰|🇰🇼)", name)
-    if color:
-        fields["color"] = color.group(1).title()
     if region:
         fields["region"] = region.group(1)
     return fields
