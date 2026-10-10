@@ -1,6 +1,6 @@
 name: Telegram price sync
 on:
-  # Scheduled twice per local slot for reliability; forced 2026-10-09 23:00 MSK.
+  # Scheduled twice per local slot for reliability; forced 2026-10-10 11:01 MSK.
   schedule:
     - cron: '7 8,12,15,17,20 * * *'
     - cron: '37 8,12,15,17,20 * * *'
