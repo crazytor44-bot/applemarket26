@@ -1,0 +1,29 @@
+name: Cart UI checks
+on:
+  push:
+    paths:
+      - 'assets/cart.js'
+      - 'assets/cart.css'
+      - 'tests/**'
+      - '.github/workflows/cart-ui-check.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  cart-checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify cart JavaScript syntax
+        run: node --check assets/cart.js
+      - name: Test dynamic catalog price and checkout
+        run: |
+          cd tests
+          npm install --no-audit --no-fund
+          npm test
