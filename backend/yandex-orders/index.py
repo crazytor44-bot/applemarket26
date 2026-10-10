@@ -6,6 +6,7 @@
 import base64
 import datetime
 import json
+import hmac
 import os
 import re
 import uuid
@@ -29,8 +30,8 @@ def _response(status, payload, origin=""):
     if origin in ALLOWED_ORIGINS:
         headers["Access-Control-Allow-Origin"] = origin
         headers["Vary"] = "Origin"
-        headers["Access-Control-Allow-Methods"] = "POST, OPTIONS"
-        headers["Access-Control-Allow-Headers"] = "Content-Type"
+        headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+        headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
         headers["Access-Control-Max-Age"] = "600"
     return {"statusCode": status, "headers": headers,
             "body": json.dumps(payload, ensure_ascii=False)}
@@ -145,6 +146,42 @@ def _telegram_notice(order_id, items_count, total):
         r.read(1024)
 
 
+def _list_orders():
+    # Последние 100 заявок; полные данные доступны только после проверки ключа.
+    query = """
+    SELECT id, created_at, customer_name, phone, city, preferred_contact,
+           comment, items_json, declared_total, status
+    FROM orders
+    ORDER BY created_at DESC
+    LIMIT 100;
+    """
+
+    def read(session):
+        return session.transaction().execute(query, commit_tx=True)
+
+    result_sets = _db_pool().retry_operation_sync(read)
+    orders = []
+    for result in result_sets:
+        for row in result.rows:
+            try:
+                items = json.loads(row.items_json or "[]")
+            except (ValueError, TypeError):
+                items = []
+            orders.append({
+                "id": row.id,
+                "created_at": row.created_at,
+                "name": row.customer_name,
+                "phone": row.phone,
+                "city": row.city,
+                "contact": row.preferred_contact,
+                "comment": row.comment,
+                "items": items,
+                "total": int(row.declared_total or 0),
+                "status": row.status,
+            })
+    return orders
+
+
 def handler(event, context):
     headers = {k.lower(): v for k, v in (event.get("headers") or {}).items()}
     origin = headers.get("origin", "")
@@ -154,8 +191,20 @@ def handler(event, context):
         return _response(403, {"error": "Недопустимый источник"})
     if method == "OPTIONS":
         return _response(204, {}, origin)
+    if method == "GET":
+        # Доступ только по длинному случайному ключу из защищённых настроек функции.
+        configured = os.environ.get("ADMIN_ACCESS_TOKEN", "")
+        header = headers.get("authorization", "")
+        provided = header.removeprefix("Bearer ") if header.startswith("Bearer ") else ""
+        if len(configured) < 32 or not hmac.compare_digest(provided, configured):
+            return _response(401, {"error": "Доступ запрещён"}, origin)
+        try:
+            return _response(200, {"ok": True, "orders": _list_orders()}, origin)
+        except Exception:
+            # Не раскрываем конфигурацию базы или персональные данные.
+            return _response(503, {"error": "Не удалось загрузить заявки"}, origin)
     if method != "POST":
-        return _response(405, {"error": "Используйте POST"}, origin)
+        return _response(405, {"error": "Используйте GET или POST"}, origin)
 
     try:
         name, phone, city, contact, comment, items, total = _parse(event)
