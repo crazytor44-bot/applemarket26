@@ -132,11 +132,9 @@ def _telegram_notice(order_id, items_count, total):
     if not token or not chat_id:
         return
     # В Telegram НЕ отправляем имя, телефон, комментарий или ссылку с ПДн.
-    msg = ("🛒 А Маркет — новая заявка\n"
-           "Номер: " + order_id + "\n"
-           "Позиций: " + str(items_count) + "\n"
-           "Сумма по заявке: " + str(total) + " ₽\n"
-           "Данные покупателя — в защищённой базе YDB.")
+    msg = ("🛒 А Маркет — новая заявка с сайта!\n"
+           "Контактные данные покупателя доступны только в закрытом кабинете:\n"
+           "https://applemarket26.ru/orders-admin/")
     data = parse.urlencode({"chat_id": chat_id, "text": msg}).encode("utf-8")
     with request.urlopen(
         request.Request("https://api.telegram.org/bot" + token + "/sendMessage",
