@@ -1,4 +1,5 @@
 /* A Market — premium cart, v20261011. Isolated from catalog styles. */
+.am-cart-panel [hidden],.am-cart-foot[hidden]{display:none!important}
 .am-cart-fab{
  position:fixed;z-index:2147483644;right:24px;bottom:26px;top:auto;
  display:flex;align-items:center;justify-content:center;gap:8px;
@@ -170,7 +171,7 @@
 .am-checkout input,.am-checkout select,.am-checkout textarea{
  display:block;width:100%;min-height:49px;margin-top:8px;padding:12px 13px;
  border:1px solid #53424f;border-radius:12px;
- background:#131118;color:#fff;font:500 14px/1.4 inherit;appearance:none;
+ background:#131118;color:#fff;font-size:14px;font-weight:500;line-height:1.4;font-family:inherit;appearance:none;
 }
 .am-checkout input::placeholder,.am-checkout textarea::placeholder{color:#877982}
 .am-checkout input:focus,.am-checkout select:focus,.am-checkout textarea:focus{outline:2px solid #c77b9b;outline-offset:1px;border-color:#c77b9b}
