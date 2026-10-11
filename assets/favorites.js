@@ -49,6 +49,7 @@ function updateHeart(btn,entry){
  btn.title=active?'Убрать из избранного':'Добавить в избранное';
 }
 function catalogCard(card){
+ if(!card)return null;
  const key=card.dataset.id;if(!key)return null;
  const title=safeText(card.querySelector('h2')?.textContent)||'Товар';
  const link=card.querySelector('.model-photo')?.getAttribute('href')||card.querySelector('.catalog-buy')?.getAttribute('href');
