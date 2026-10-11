@@ -246,6 +246,28 @@ function setupAddButtons(){
   }
  }
 }
+function setupChooseButton(){
+ const select=document.querySelector("#variant-select"),order=document.querySelector("#choose-order");
+ if(!select||!order||document.querySelector(".am-choose-add"))return;
+ const button=document.createElement("button");
+ button.type="button";button.className="choose-btn am-choose-add";button.textContent="Добавить в корзину +";
+ button.addEventListener("click",()=>{
+  const id=String(select.value||"").trim();
+  const price=Number((document.querySelector("#choose-price")?.textContent||"").replace(/\\D/g,""));
+  if(!id||!Number.isFinite(price)||price<=0){alert("Сначала выберите вариант товара");return;}
+  let product;
+  try{
+   const groups=JSON.parse(document.querySelector("#choose-data")?.textContent||"{}");
+   product=Object.values(groups).flat().find(p=>String(p.id)===id);
+  }catch{}
+  const model=document.querySelector("#choose-title")?.textContent.trim()||"Товар";
+  const option=select.options[select.selectedIndex]?.textContent?.split(" — ")[0]?.trim()||"";
+  const name=product?.name||((option&&option!==model)?model+" — "+option:model);
+  const photo=document.querySelector("#choose-photo");
+  add({id,name,price,image:photo?.currentSrc||photo?.getAttribute("src"),href:location.pathname+"?variant="+encodeURIComponent(id)});
+ });
+ order.insertAdjacentElement("afterend",button);
+}
 function init(){
  if(document.querySelector(".am-cart-panel"))return;
  document.body.insertAdjacentHTML("beforeend",
@@ -282,7 +304,7 @@ function init(){
   else if(del){remove(del.dataset.remove);}
  });
  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.querySelector(".am-cart-panel")?.classList.contains("open"))close();});
- setupAddButtons();draw();
+ setupAddButtons();setupChooseButton();draw();
 }
 if(typeof fetch==="function")fetch("/assets/orders-config.json",{cache:"no-store"}).then(r=>r.ok?r.json():{}).then(c=>{
  if(typeof c.apiUrl==="string"&&/^https:\/\//.test(c.apiUrl))ORDER_API_URL=c.apiUrl;
