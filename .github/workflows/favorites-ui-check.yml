@@ -1,0 +1,27 @@
+name: Favorites UI checks
+on:
+  push:
+    paths:
+      - 'assets/favorites.js'
+      - 'assets/favorites.css'
+      - 'tests/favorites.cjs'
+      - '.github/workflows/favorites-ui-check.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  favorites:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check favorites JavaScript syntax
+        run: node --check assets/favorites.js
+      - name: Test UI storage and comparison
+        run: |
+          cd tests
+          npm install --no-audit --no-fund
+          node favorites.cjs
