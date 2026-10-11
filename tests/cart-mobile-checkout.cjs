@@ -38,4 +38,5 @@ assert(!panel.classList.contains('is-checkout'),'Returning to cart clears checko
 const css=fs.readFileSync(root+'/assets/cart.css','utf8');
 assert(css.includes('.am-cart-panel.is-checkout.keyboard-open .am-cart-foot'));
 assert(css.includes('display:none!important'));
+assert(/body\.am-cart-locked\s+#am-help\s*\{\s*display:none!important/.test(css),'Help bubble must be hidden while cart is open');
 console.log('PASS: iOS checkout compact keyboard layout, viewport restore and cart return');
