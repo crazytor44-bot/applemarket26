@@ -198,10 +198,35 @@ function close(){
  panel.setAttribute('aria-hidden','true');document.body.classList.remove('am-fav-locked');
  lastFocus?.focus?.();
 }
+// Keep the opener in the normal page flow, never floating over product photography.
+function mountLaunchButton(){
+ const button=document.querySelector('.am-fav-launch');
+ if(!button)return;
+ const heading=document.querySelector('.catalog-intro h1');
+ if(heading){
+  const row=document.createElement('div');
+  row.className='am-fav-heading-row';
+  heading.parentElement.insertBefore(row,heading);
+  row.append(heading,button);
+  button.classList.add('am-fav-launch--catalog');
+  return;
+ }
+ // Other product pages still need a way to open their saved products.
+ const header=document.querySelector('header .wrap');
+ if(header){
+  const contact=header.querySelector('.contact');
+  if(contact)header.insertBefore(button,contact);
+  else header.appendChild(button);
+  button.classList.add('am-fav-launch--header');
+ }else{
+  const main=document.querySelector('main');
+  if(main)main.prepend(button);
+ }
+}
 function init(){
  if(document.querySelector('.am-fav-panel'))return;
  document.body.insertAdjacentHTML('beforeend',
-  '<button type="button" class="am-fav-launch" aria-label="Открыть избранное" title="Избранное">'+heart+'<span class="am-fav-count" hidden></span></button>'+
+  '<button type="button" class="am-fav-launch" aria-label="Открыть избранное" title="Избранное">'+heart+'<span class="am-fav-launch-label">Избранное</span><span class="am-fav-count" hidden></span></button>'+
   '<div class="am-fav-backdrop"></div>'+
   '<aside class="am-fav-panel" role="dialog" aria-modal="true" aria-label="Избранное А Маркет" aria-hidden="true">'+
    '<header class="am-fav-head"><div><div class="am-fav-kicker">А МАРКЕТ · ВАШ ВЫБОР</div><h2>Избранное <span>♡</span></h2><p>Всё, что понравилось — в одном месте.</p></div><button type="button" class="am-fav-close" aria-label="Закрыть избранное">×</button></header>'+
@@ -209,6 +234,7 @@ function init(){
    '<div class="am-fav-bottom"><p class="am-fav-compare-note">Отметьте два товара одной категории, чтобы сравнить.</p><a class="am-fav-compare" href="/compare/" hidden>Сравнить выбранное ↗</a>'+
     '<div class="am-fav-bottom-actions"><a href="/catalog/">Каталог товаров ↗</a><button type="button" class="am-fav-clear" hidden>Очистить избранное</button></div></div>'+
   '</aside>');
+ mountLaunchButton();
  document.querySelector('.am-fav-launch').addEventListener('click',open);
  document.querySelector('.am-fav-close').addEventListener('click',close);
  document.querySelector('.am-fav-backdrop').addEventListener('click',close);
