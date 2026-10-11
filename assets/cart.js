@@ -253,7 +253,7 @@ function setupChooseButton(){
  button.type="button";button.className="choose-btn am-choose-add";button.textContent="Добавить в корзину +";
  button.addEventListener("click",()=>{
   const id=String(select.value||"").trim();
-  const price=Number((document.querySelector("#choose-price")?.textContent||"").replace(/\\D/g,""));
+  const price=Number((document.querySelector("#choose-price")?.textContent||"").replace(/\D/g,""));
   if(!id||!Number.isFinite(price)||price<=0){alert("Сначала выберите вариант товара");return;}
   let product;
   try{
