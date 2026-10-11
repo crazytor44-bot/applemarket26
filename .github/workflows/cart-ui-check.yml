@@ -27,3 +27,4 @@ jobs:
           cd tests
           npm install --no-audit --no-fund
           node cart-price-sync.cjs
+          node cart-choose.cjs
