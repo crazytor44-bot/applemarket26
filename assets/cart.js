@@ -116,6 +116,7 @@ function renderStep(){
  if(btn&&!submitting)btn.textContent=ORDER_API_URL?"Отправить заявку →":"Перейти в WhatsApp ↗";
  syncCheckoutMobileState();
 }
+let idleCartViewportHeight=0;
 function syncCheckoutMobileState(){
  const panel=document.querySelector(".am-cart-panel");
  if(!panel)return;
@@ -128,9 +129,10 @@ function syncCheckoutMobileState(){
  const editing=active&&panel.contains(active)&&
   active.matches(".am-checkout input, .am-checkout textarea, .am-checkout select");
  const vv=window.visualViewport;
- const obscured=vv&&typeof window.innerHeight==="number"&&
-  window.innerHeight-vv.height>120;
- const keyboardOpen=Boolean(checkout&&mobile&&editing&&obscured);
+ if(vv&&!editing)idleCartViewportHeight=vv.height;
+ const baseline=Math.max(Number(window.innerHeight)||0,idleCartViewportHeight);
+ const obscured=!!(vv&&baseline-vv.height>120);
+ const keyboardOpen=Boolean(checkout&&mobile&&editing&&(!vv||obscured));
  panel.classList.toggle("keyboard-open",keyboardOpen);
  if(keyboardOpen&&vv){
   panel.style.setProperty("--am-cart-visual-height",Math.max(180,Math.round(vv.height))+"px");
