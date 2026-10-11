@@ -247,3 +247,79 @@
  .am-cart-qty button{width:27px}
 }
 @media(prefers-reduced-motion:reduce){.am-cart-panel,.am-cart-backdrop,.am-cart-fab,.am-cart-primary{transition:none!important}}
+
+
+/* Mobile checkout polish (2026-10-11). Keep changes isolated from products/prices. */
+.am-cart-panel{
+  height:100vh;
+  max-height:100vh;
+  transition:transform .43s cubic-bezier(.22,1,.36,1);
+}
+@supports (height:100dvh){
+  .am-cart-panel{height:100dvh;max-height:100dvh}
+}
+.am-cart-backdrop{transition:opacity .34s ease}
+.am-cart-scroll{-webkit-overflow-scrolling:touch}
+.am-cart-view:not([hidden]){animation:am-cart-step-in .24s ease-out both}
+@keyframes am-cart-step-in{
+  from{opacity:.55;transform:translateY(8px)}
+  to{opacity:1;transform:translateY(0)}
+}
+/* Safari autofill: keep inputs in the cart's dark palette. */
+.am-checkout input:-webkit-autofill,
+.am-checkout input:-webkit-autofill:hover,
+.am-checkout input:-webkit-autofill:focus,
+.am-checkout textarea:-webkit-autofill{
+  -webkit-text-fill-color:#fff!important;
+  caret-color:#fff;
+  -webkit-box-shadow:0 0 0 1000px #131118 inset!important;
+  box-shadow:0 0 0 1000px #131118 inset!important;
+}
+@media(max-width:620px){
+  /* Anchor the drawer to the entire viewport, regardless of page overflow. */
+  .am-cart-panel{
+    left:0;right:0;top:0;bottom:0;
+    width:100%;max-width:100%;min-width:0;border-left:0;
+    -webkit-text-size-adjust:100%;text-size-adjust:100%;
+  }
+  .am-cart-panel > *{min-width:0;max-width:100%}
+  .am-cart-head{padding:13px 16px 11px}
+  .am-cart-head h2{font-size:20px}
+  .am-cart-progress{gap:8px;padding:11px 16px 10px}
+  .am-cart-stage{min-width:0;white-space:normal;font-size:11px;line-height:1.25}
+  .am-cart-scroll{
+    flex:1 1 0;min-height:0;overflow-y:auto;overflow-x:hidden;
+    overscroll-behavior-y:contain;
+    -webkit-overflow-scrolling:touch;
+  }
+  .am-cart-view{min-width:0;max-width:100%;padding:18px 16px 36px}
+  .am-cart-checkout-title{font-size:19px;margin-bottom:7px}
+  .am-cart-checkout-note{font-size:12px;margin-bottom:17px;line-height:1.5}
+  .am-cart-back{margin-bottom:16px}
+  .am-cart-section-card{min-width:0;max-width:100%;padding:15px;margin-bottom:14px}
+  .am-cart-checkout-grid{grid-template-columns:minmax(0,1fr)}
+  /* 16px stops iOS Safari zooming the whole checkout when an input receives focus. */
+  .am-checkout input,.am-checkout select,.am-checkout textarea{
+    min-width:0;max-width:100%;font-size:16px;line-height:1.35;
+  }
+  .am-cart-foot{
+    flex:0 0 auto;min-width:0;width:100%;max-width:100%;
+    padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));
+  }
+  /* The subtotal repeated the very same amount above 'Итого'. */
+  .am-cart-cost-row{display:none}
+  .am-cart-total-row{align-items:center;border-top:0;padding-top:0}
+  .am-cart-total{font-size:clamp(22px,6.2vw,27px);line-height:1.1}
+  .am-cart-total-row span{font-size:15px}
+  .am-cart-foot-note{font-size:11px;margin:6px 0 10px;line-height:1.35}
+  .am-cart-primary{
+    min-height:50px;max-width:100%;padding:10px 12px;
+    font-size:15px;line-height:1.25;border-radius:13px;
+  }
+  .am-cart-note{display:none}
+  .am-cart-item-price{white-space:normal;overflow-wrap:anywhere}
+}
+@media(prefers-reduced-motion:reduce){
+  .am-cart-view:not([hidden]){animation:none!important}
+  .am-cart-panel,.am-cart-backdrop{transition:none!important}
+}
