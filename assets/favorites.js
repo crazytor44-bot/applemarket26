@@ -136,7 +136,7 @@ function itemMeta(entry){
 function renderList(){
  const list=document.querySelector('.am-fav-list'),compare=document.querySelector('.am-fav-compare');
  if(!list)return;
- const chosen=[...list.querySelectorAll('.am-fav-select:checked')].map(x=>x.value);
+ const chosen=[...list.querySelectorAll('.am-fav-select')].filter(x=>x.checked).map(x=>x.value);
  list.replaceChildren();
  if(!saved.length){
   const empty=document.createElement('div');empty.className='am-fav-empty';
@@ -168,7 +168,7 @@ function renderList(){
  updateCompare();
 }
 function updateCompare(){
- const selected=[...document.querySelectorAll('.am-fav-select:checked')];
+ const selected=[...document.querySelectorAll('.am-fav-select')].filter(x=>x.checked);
  const info=document.querySelector('.am-fav-compare-note'),link=document.querySelector('.am-fav-compare');
  if(!link)return;
  const ids=selected.map(x=>x.value),items=ids.map(get);
