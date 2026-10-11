@@ -366,3 +366,49 @@
     border-color:#d392ac;
   }
 }
+
+
+/* Keep the site's floating AM help bubble outside an open cart drawer.
+   Homepage sets #am-help to z-index:2147483647 and display:block!important;
+   the drawer is 2147483646, so the help button otherwise covers checkout. */
+body.am-cart-locked #am-help{
+ display:none!important;
+ visibility:hidden!important;
+ pointer-events:none!important;
+}
+/* Condense the non-keyboard mobile checkout so more fields fit above the CTA. */
+@media(max-width:620px){
+ .am-cart-panel.is-checkout:not(.keyboard-open) .am-cart-head{
+  padding:10px 16px 9px;
+ }
+ .am-cart-panel.is-checkout:not(.keyboard-open) .am-cart-symbol{
+  width:36px;height:36px;border-radius:11px;font-size:14px;
+ }
+ .am-cart-panel.is-checkout:not(.keyboard-open) .am-cart-head h2{
+  font-size:18px;margin-top:2px;
+ }
+ .am-cart-panel.is-checkout:not(.keyboard-open) .am-cart-head-count{
+  display:none;
+ }
+ .am-cart-panel.is-checkout:not(.keyboard-open) .am-cart-progress{
+  padding:9px 16px 8px;
+ }
+ .am-cart-panel.is-checkout:not(.keyboard-open) .am-cart-view{
+  padding-top:15px;
+  padding-bottom:44px;
+ }
+ .am-cart-panel.is-checkout:not(.keyboard-open) .am-cart-foot{
+  padding:9px 16px calc(10px + env(safe-area-inset-bottom,0px));
+ }
+ .am-cart-panel.is-checkout:not(.keyboard-open) .am-cart-total{
+  font-size:clamp(21px,6vw,25px);
+ }
+ .am-cart-panel.is-checkout:not(.keyboard-open) .am-cart-foot-note{
+  margin:4px 0 7px;
+  font-size:10px;
+ }
+ .am-cart-panel.is-checkout:not(.keyboard-open) .am-cart-primary{
+  min-height:46px;
+  font-size:14px;
+ }
+}
