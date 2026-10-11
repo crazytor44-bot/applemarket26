@@ -323,3 +323,46 @@
   .am-cart-view:not([hidden]){animation:none!important}
   .am-cart-panel,.am-cart-backdrop{transition:none!important}
 }
+
+
+/* iOS Safari checkout: keyboard must never cover the contact form. */
+@media(max-width:620px){
+  .am-cart-panel.is-checkout.keyboard-open{
+    top:var(--am-cart-visual-top,0px);
+    bottom:auto;
+    height:var(--am-cart-visual-height,100dvh);
+    max-height:var(--am-cart-visual-height,100dvh);
+    min-height:0;
+  }
+  .am-cart-panel.is-checkout.keyboard-open .am-cart-progress,
+  .am-cart-panel.is-checkout.keyboard-open .am-cart-foot{
+    display:none!important;
+  }
+  .am-cart-panel.is-checkout.keyboard-open .am-cart-head{
+    padding:8px 14px;
+  }
+  .am-cart-panel.is-checkout.keyboard-open .am-cart-symbol,
+  .am-cart-panel.is-checkout.keyboard-open .am-cart-head-kicker,
+  .am-cart-panel.is-checkout.keyboard-open .am-cart-head-count{
+    display:none;
+  }
+  .am-cart-panel.is-checkout.keyboard-open .am-cart-head h2{
+    margin:0;font-size:17px;
+  }
+  .am-cart-panel.is-checkout.keyboard-open .am-cart-close{
+    width:36px;height:36px;
+  }
+  .am-cart-panel.is-checkout.keyboard-open .am-cart-scroll{
+    flex:1 1 0;min-height:0;
+  }
+  .am-cart-panel.is-checkout.keyboard-open .am-cart-view{
+    padding:14px 16px 30px;
+  }
+  .am-cart-panel.is-checkout .am-checkout input:focus,
+  .am-cart-panel.is-checkout .am-checkout textarea:focus,
+  .am-cart-panel.is-checkout .am-checkout select:focus{
+    outline:1px solid #d392ac;
+    outline-offset:0;
+    border-color:#d392ac;
+  }
+}
