@@ -18,6 +18,7 @@ vm.runInNewContext(fs.readFileSync(root+'/assets/cart.js','utf8'),ctx);
 const button=doc.querySelector('.am-choose-add');
 assert(button,'Chooser must display Add to Cart button');
 assert(doc.querySelector('.am-cart-fab'),'Cart drawer launcher must exist on chooser');
+console.log('DEBUG CHOOSE',JSON.stringify({value:doc.querySelector('#variant-select').value,selectedIndex:doc.querySelector('#variant-select').selectedIndex,optionCount:doc.querySelector('#variant-select').options?.length,price:doc.querySelector('#choose-price').textContent}));
 button.dispatchEvent(new doc.defaultView.Event('click',{bubbles:true}));
 let items=JSON.parse(saved);
 assert.equal(items.length,1);
