@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /orders-admin/
+Disallow: /preview/
+
+Sitemap: https://applemarket26.ru/sitemap.xml
