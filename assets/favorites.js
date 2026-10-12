@@ -221,8 +221,10 @@ function mountLaunchButton(){
  // Other product pages still need a way to open their saved products.
  const header=document.querySelector('header .wrap');
  if(header){
+  const cart=header.querySelector('.am-cart-fab');
   const contact=header.querySelector('.contact');
-  if(contact)header.insertBefore(button,contact);
+  if(cart)header.insertBefore(button,cart);
+  else if(contact)header.insertBefore(button,contact);
   else header.appendChild(button);
   button.classList.add('am-fav-launch--header');
  }else{
