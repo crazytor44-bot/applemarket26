@@ -85,6 +85,8 @@ assert(doc.querySelector('.am-fav-panel').classList.contains('open'),'Drawer mus
  assert(stylesheet.includes('.am-fav-heart[aria-pressed="true"]'),'Saved state must have accessible active glass styling');
  assert(stylesheet.includes('backdrop-filter:blur(12px)'),'Glass styling must blur photo behind button');
  assert(stylesheet.includes('width:32px;height:32px;min-width:32px;min-height:32px'),'Mobile heart should be small');
+ assert(stylesheet.includes('width:34px;height:34px;min-width:34px;min-height:34px'),'Desktop heart should be compact');
+ assert(stylesheet.includes('.catalog-item>.am-fav-heart{right:28px;top:28px}'),'Desktop corner should be inset closer');
  assert(stylesheet.includes('.am-fav-heart svg{width:17px;height:17px}'),'Mobile heart icon should be smaller');
  assert(stylesheet.includes('.catalog-item>.am-fav-heart{top:26px;right:26px}'),'Phone heart must sit inside the model image');
  // Detail pages keep an icon in the header and preserve product hearts.
