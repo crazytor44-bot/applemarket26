@@ -33,9 +33,9 @@ body.am-fav-locked .am-cart-fab{display:none!important;pointer-events:none!impor
 /* Compact premium-glass heart: sits inside the photo instead of on its border. */
 .am-fav-heart{
  position:absolute;top:13px;right:13px;z-index:5;
- width:38px;height:38px;min-width:38px;min-height:38px;padding:0;
+ width:34px;height:34px;min-width:34px;min-height:34px;padding:0;
  border:1px solid rgba(255,235,245,.27);
- border-radius:13px;
+ border-radius:11px;
  display:grid;place-items:center;cursor:pointer;
  background:linear-gradient(145deg,rgba(51,38,53,.91),rgba(28,23,35,.87));
  color:#fbe4ef;
@@ -46,7 +46,7 @@ body.am-fav-locked .am-cart-fab{display:none!important;pointer-events:none!impor
  transition:transform .18s ease,background .2s ease,border-color .2s ease,box-shadow .2s ease,color .2s ease;
 }
 .am-fav-heart svg{
- display:block;width:21px;height:21px;pointer-events:none;
+ display:block;width:18px;height:18px;pointer-events:none;
  fill:transparent;stroke:currentColor;stroke-width:1.7;
  transition:fill .2s ease,stroke .2s ease,transform .2s ease;
 }
@@ -69,10 +69,10 @@ body.am-fav-locked .am-cart-fab{display:none!important;pointer-events:none!impor
 .am-fav-heart.is-active svg,
 .am-fav-heart[aria-pressed="true"] svg{fill:#f19bbf;stroke:#ffd4e8;transform:scale(1.04)}
 .catalog-item{position:relative}
-.catalog-item>.am-fav-heart{right:34px;top:34px}
+.catalog-item>.am-fav-heart{right:28px;top:28px}
 .catalog-item>.catalog-item-top{padding-right:42px}
 .product-layout .gallery,.choose-photo{position:relative}
-.product-layout .gallery>.am-fav-heart,.choose-photo>.am-fav-heart{top:14px;right:14px}
+.product-layout .gallery>.am-fav-heart,.choose-photo>.am-fav-heart{top:10px;right:10px}
 .am-fav-launch:focus-visible,.am-fav-heart:focus-visible,.am-fav-panel button:focus-visible,.am-fav-panel a:focus-visible{
  outline:3px solid #e7a0c2;outline-offset:3px
 }
@@ -139,9 +139,9 @@ body.am-fav-locked .am-cart-fab{display:none!important;pointer-events:none!impor
  .am-fav-launch--header{min-width:41px;width:41px;height:41px;min-height:41px;padding:0;margin:0}
  .am-fav-launch--header svg{width:23px;height:23px}
  /* Catalog card photos are inset; keep the glass heart inside that photo. */
- .catalog-item>.am-fav-heart{top:33px;right:33px}
- .am-fav-heart{width:36px;height:36px;min-width:36px;min-height:36px;border-radius:12px}
- .am-fav-heart svg{width:20px;height:20px}
+ .catalog-item>.am-fav-heart{top:26px;right:26px}
+ .am-fav-heart{width:32px;height:32px;min-width:32px;min-height:32px;border-radius:10px}
+ .am-fav-heart svg{width:17px;height:17px}
  .product-layout .gallery>.am-fav-heart,
  .choose-photo>.am-fav-heart{top:14px;right:14px}
  .am-fav-panel{left:0;right:0;border:0;width:100%}
