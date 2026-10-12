@@ -75,13 +75,16 @@ assert(doc.querySelector('.am-fav-panel').classList.contains('open'),'Drawer mus
  'iphone-18-pro/index.html','iphone-17-pro-max/index.html','samsung-s26-ultra/index.html'];
  for(const page of pages){
   const src=fs.readFileSync(path.join(root,page),'utf8');
-  assert(src.includes('/assets/favorites.css?v=amfav-header-v2-20261011'),page+' must load favorites styles');
+  assert(src.includes('/assets/favorites.css?v=amfav-glass-20261012-1'),page+' must load favorites styles');
   assert(src.includes('/assets/favorites.js?v=amfav-cartrow-20261012-1'),page+' must load favorites JavaScript');
  }
  const stylesheet=fs.readFileSync(path.join(root,'assets/favorites.css'),'utf8');
  assert(!/\\.am-fav-launch\\s*\\{\\s*position:fixed/.test(stylesheet),'Favorites launcher must not float over images');
  assert(stylesheet.includes('body.am-fav-locked #am-help'),'Help button must be hidden while favorites are open');
  assert(stylesheet.includes('body.am-fav-locked .am-cart-fab'),'Cart button must not overlap favorites drawer');
+ assert(stylesheet.includes('.am-fav-heart[aria-pressed="true"]'),'Saved state must have accessible active glass styling');
+ assert(stylesheet.includes('backdrop-filter:blur(12px)'),'Glass styling must blur photo behind button');
+ assert(stylesheet.includes('.catalog-item>.am-fav-heart{top:33px;right:33px}'),'Phone heart must sit inside the model image');
  // Detail pages keep an icon in the header and preserve product hearts.
  const detail=new DOMParser().parseFromString('<html><body><header><div class="wrap">'+
  '<a class="brand" href="/">А Маркет</a><a class="contact" href="/contacts/">Контакты</a>'+
