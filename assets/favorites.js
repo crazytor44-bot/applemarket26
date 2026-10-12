@@ -205,10 +205,16 @@ function mountLaunchButton(){
  if(!button)return;
  const heading=document.querySelector('.catalog-intro h1');
  if(heading){
-  const row=document.createElement('div');
-  row.className='am-fav-heading-row';
-  heading.parentElement.insertBefore(row,heading);
-  row.append(heading,button);
+  let row=heading.closest('.am-fav-heading-row');
+  if(!row){
+   row=document.createElement('div');
+   row.className='am-fav-heading-row';
+   heading.parentElement.insertBefore(row,heading);
+   row.append(heading);
+  }
+  const cart=row.querySelector('.am-cart-fab');
+  if(cart)row.insertBefore(button,cart);
+  else row.appendChild(button);
   button.classList.add('am-fav-launch--catalog');
   return;
  }
