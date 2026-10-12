@@ -42,6 +42,9 @@ const header=detail.doc.querySelector('header .wrap');
 assert.deepEqual(Array.from(header.children).map(x=>x.className),
  ['brand','am-fav-launch am-fav-launch--header','am-cart-fab am-cart-fab--header','contact'],
  'Compact favorites and cart controls should appear together in header');
+detail.doc.querySelector('.am-cart-fab').onclick();
+assert.equal(detail.doc.querySelector('.am-cart-panel').classList.contains('open'),true,
+ 'Header cart control must open the same checkout drawer');
 const css=fs.readFileSync(root+'/assets/cart.css','utf8');
 assert(css.includes('.am-cart-fab.am-cart-fab--header'),'CSS must explicitly override the floating cart button');
 assert(css.includes('position:relative!important'),'Header cart must be in normal document flow');
