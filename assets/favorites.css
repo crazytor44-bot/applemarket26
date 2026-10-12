@@ -30,16 +30,44 @@ body.am-fav-locked{overflow:hidden!important}
 /* Prevent the persistent AM/Cart buttons from covering the favorites drawer. */
 body.am-fav-locked #am-help,
 body.am-fav-locked .am-cart-fab{display:none!important;pointer-events:none!important}
+/* Compact premium-glass heart: sits inside the photo instead of on its border. */
 .am-fav-heart{
- position:absolute;top:13px;right:13px;z-index:5;width:43px;height:43px;
- border:1px solid #edd3df;background:#fffefefa;color:#8a405d;
- border-radius:15px;display:grid;place-items:center;cursor:pointer;
- box-shadow:0 5px 20px #0002;transition:transform .2s,background .2s,color .2s;
+ position:absolute;top:13px;right:13px;z-index:5;
+ width:38px;height:38px;min-width:38px;min-height:38px;padding:0;
+ border:1px solid rgba(255,235,245,.27);
+ border-radius:13px;
+ display:grid;place-items:center;cursor:pointer;
+ background:linear-gradient(145deg,rgba(51,38,53,.91),rgba(28,23,35,.87));
+ color:#fbe4ef;
+ -webkit-backdrop-filter:blur(12px) saturate(135%);
+ backdrop-filter:blur(12px) saturate(135%);
+ box-shadow:0 6px 20px rgba(18,11,23,.22),inset 0 1px rgba(255,255,255,.16);
+ -webkit-tap-highlight-color:transparent;
+ transition:transform .18s ease,background .2s ease,border-color .2s ease,box-shadow .2s ease,color .2s ease;
 }
-.am-fav-heart:hover{transform:scale(1.07)}
-.am-fav-heart svg{width:23px;height:23px;pointer-events:none}
-.am-fav-heart.is-active{color:#9e315d;background:#ffdeea;border-color:#f2b1d0}
-.am-fav-heart.is-active svg{fill:#de6b99}
+.am-fav-heart svg{
+ display:block;width:21px;height:21px;pointer-events:none;
+ fill:transparent;stroke:currentColor;stroke-width:1.7;
+ transition:fill .2s ease,stroke .2s ease,transform .2s ease;
+}
+@media(hover:hover) and (pointer:fine){
+ .am-fav-heart:hover{
+  transform:translateY(-2px);
+  background:linear-gradient(145deg,rgba(76,47,67,.96),rgba(40,27,43,.94));
+  border-color:rgba(250,197,223,.6);
+  box-shadow:0 10px 27px rgba(39,15,31,.33),inset 0 1px rgba(255,255,255,.20);
+ }
+}
+.am-fav-heart:active{transform:scale(.93)}
+.am-fav-heart.is-active,
+.am-fav-heart[aria-pressed="true"]{
+ color:#ffd2e5;
+ background:linear-gradient(145deg,rgba(116,50,79,.96),rgba(71,30,55,.97));
+ border-color:rgba(250,184,216,.67);
+ box-shadow:0 7px 21px rgba(106,35,71,.30),0 0 0 1px rgba(255,211,231,.08) inset;
+}
+.am-fav-heart.is-active svg,
+.am-fav-heart[aria-pressed="true"] svg{fill:#f19bbf;stroke:#ffd4e8;transform:scale(1.04)}
 .catalog-item{position:relative}
 .catalog-item>.am-fav-heart{right:34px;top:34px}
 .catalog-item>.catalog-item-top{padding-right:42px}
@@ -110,7 +138,12 @@ body.am-fav-locked .am-cart-fab{display:none!important;pointer-events:none!impor
  .am-fav-launch--catalog .am-fav-launch-label{font-size:13px}
  .am-fav-launch--header{min-width:41px;width:41px;height:41px;min-height:41px;padding:0;margin:0}
  .am-fav-launch--header svg{width:23px;height:23px}
- .catalog-item>.am-fav-heart{top:17px;right:17px}
+ /* Catalog card photos are inset; keep the glass heart inside that photo. */
+ .catalog-item>.am-fav-heart{top:33px;right:33px}
+ .am-fav-heart{width:36px;height:36px;min-width:36px;min-height:36px;border-radius:12px}
+ .am-fav-heart svg{width:20px;height:20px}
+ .product-layout .gallery>.am-fav-heart,
+ .choose-photo>.am-fav-heart{top:14px;right:14px}
  .am-fav-panel{left:0;right:0;border:0;width:100%}
  .am-fav-head{padding:18px 16px 14px}
  .am-fav-head h2{font-size:25px}
@@ -119,4 +152,4 @@ body.am-fav-locked .am-cart-fab{display:none!important;pointer-events:none!impor
  .am-fav-thumb{width:80px;height:86px}
  .am-fav-bottom{padding:10px 15px calc(12px + env(safe-area-inset-bottom,0px))}
 }
-@media(prefers-reduced-motion:reduce){.am-fav-panel,.am-fav-backdrop,.am-fav-launch,.am-fav-heart{transition:none!important}}
+@media(prefers-reduced-motion:reduce){.am-fav-panel,.am-fav-backdrop,.am-fav-launch,.am-fav-heart,.am-fav-heart svg{transition:none!important}}
