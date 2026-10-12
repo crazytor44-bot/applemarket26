@@ -75,7 +75,7 @@ assert(doc.querySelector('.am-fav-panel').classList.contains('open'),'Drawer mus
  'iphone-18-pro/index.html','iphone-17-pro-max/index.html','samsung-s26-ultra/index.html'];
  for(const page of pages){
   const src=fs.readFileSync(path.join(root,page),'utf8');
-  assert(src.includes('/assets/favorites.css?v=amfav-glass-20261012-1'),page+' must load favorites styles');
+  assert(src.includes('/assets/favorites.css?v=amfav-glass-mini-20261012-1'),page+' must load favorites styles');
   assert(src.includes('/assets/favorites.js?v=amfav-cartrow-20261012-1'),page+' must load favorites JavaScript');
  }
  const stylesheet=fs.readFileSync(path.join(root,'assets/favorites.css'),'utf8');
@@ -84,7 +84,9 @@ assert(doc.querySelector('.am-fav-panel').classList.contains('open'),'Drawer mus
  assert(stylesheet.includes('body.am-fav-locked .am-cart-fab'),'Cart button must not overlap favorites drawer');
  assert(stylesheet.includes('.am-fav-heart[aria-pressed="true"]'),'Saved state must have accessible active glass styling');
  assert(stylesheet.includes('backdrop-filter:blur(12px)'),'Glass styling must blur photo behind button');
- assert(stylesheet.includes('.catalog-item>.am-fav-heart{top:33px;right:33px}'),'Phone heart must sit inside the model image');
+ assert(stylesheet.includes('width:32px;height:32px;min-width:32px;min-height:32px'),'Mobile heart should be small');
+ assert(stylesheet.includes('.am-fav-heart svg{width:17px;height:17px}'),'Mobile heart icon should be smaller');
+ assert(stylesheet.includes('.catalog-item>.am-fav-heart{top:26px;right:26px}'),'Phone heart must sit inside the model image');
  // Detail pages keep an icon in the header and preserve product hearts.
  const detail=new DOMParser().parseFromString('<html><body><header><div class="wrap">'+
  '<a class="brand" href="/">А Маркет</a><a class="contact" href="/contacts/">Контакты</a>'+
