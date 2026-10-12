@@ -412,3 +412,37 @@ body.am-cart-locked #am-help{
   font-size:14px;
  }
 }
+
+/* Header/cart catalog launcher: no floating element over images or prices.
+   High-specificity rules override legacy mobile and homepage !important alignment. */
+.am-cart-fab.am-cart-fab--catalog,
+.am-cart-fab.am-cart-fab--header{
+ position:relative!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;
+ z-index:1;flex:none;box-sizing:border-box;
+ width:auto!important;height:46px!important;min-height:46px;max-height:none;
+ border:1px solid rgba(241,175,207,.57);border-radius:15px;
+ background:linear-gradient(145deg,#342630,#221b26);
+ color:#f3bed6!important;box-shadow:0 8px 23px #0006;
+ gap:9px;padding:0 15px!important;
+}
+.am-cart-fab.am-cart-fab--catalog:hover,
+.am-cart-fab.am-cart-fab--header:hover{transform:translateY(-2px)}
+.am-cart-fab.am-cart-fab--catalog svg,
+.am-cart-fab.am-cart-fab--header svg{width:22px;height:22px;flex:none}
+.am-cart-fab-label{display:inline;font:750 14px/1.15 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;white-space:nowrap}
+.am-cart-fab.am-cart-fab--catalog{align-self:center}
+.am-cart-fab.am-cart-fab--header{
+ order:1;align-self:center;
+ width:44px!important;height:44px!important;min-width:44px;min-height:44px;
+ padding:0!important;border-radius:14px;
+}
+.am-cart-fab--header .am-cart-fab-label{display:none}
+.am-cart-fab.am-cart-fab--header .am-cart-count,
+.am-cart-fab.am-cart-fab--catalog .am-cart-count{
+ right:-7px;top:-8px;min-width:23px;height:23px;padding:0 4px;border:2px solid #a75572;
+}
+@media(max-width:620px){
+ .am-cart-fab.am-cart-fab--catalog{min-height:44px;height:44px!important;padding:0 14px!important;border-radius:13px}
+ .am-cart-fab.am-cart-fab--catalog .am-cart-fab-label{font-size:13px}
+ .am-cart-fab.am-cart-fab--header{width:41px!important;height:41px!important;min-width:41px;min-height:41px}
+}
