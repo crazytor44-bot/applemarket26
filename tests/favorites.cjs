@@ -76,7 +76,7 @@ assert(doc.querySelector('.am-fav-panel').classList.contains('open'),'Drawer mus
  for(const page of pages){
   const src=fs.readFileSync(path.join(root,page),'utf8');
   assert(src.includes('/assets/favorites.css?v=amfav-header-v2-20261011'),page+' must load favorites styles');
-  assert(src.includes('/assets/favorites.js?v=amfav-header-v2-20261011'),page+' must load favorites JavaScript');
+  assert(src.includes('/assets/favorites.js?v=amfav-cartrow-20261012-1'),page+' must load favorites JavaScript');
  }
  const stylesheet=fs.readFileSync(path.join(root,'assets/favorites.css'),'utf8');
  assert(!/\\.am-fav-launch\\s*\\{\\s*position:fixed/.test(stylesheet),'Favorites launcher must not float over images');
