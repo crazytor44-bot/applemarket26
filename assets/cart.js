@@ -309,10 +309,40 @@ function setupChooseButton(){
  });
  order.insertAdjacentElement("afterend",button);
 }
+// Keep the cart access in the page flow instead of over product prices.
+function mountCartLauncher(){
+ const button=document.querySelector(".am-cart-fab");
+ if(!button)return;
+ const heading=document.querySelector(".catalog-intro h1");
+ if(heading){
+  let row=heading.closest(".am-fav-heading-row");
+  if(!row){
+   row=document.createElement("div");
+   row.className="am-fav-heading-row";
+   heading.parentElement.insertBefore(row,heading);
+   row.appendChild(heading);
+  }
+  row.appendChild(button);
+  button.classList.add("am-cart-fab--catalog");
+  return;
+ }
+ const header=document.querySelector("header .wrap");
+ if(header){
+  const contact=header.querySelector(".contact");
+  if(contact)header.insertBefore(button,contact);
+  else header.appendChild(button);
+  button.classList.add("am-cart-fab--header");
+  return;
+ }
+ const main=document.querySelector("main");
+ if(main)main.prepend(button);
+ else document.body.insertBefore(button,document.body.firstChild);
+ button.classList.add("am-cart-fab--header");
+}
 function init(){
  if(document.querySelector(".am-cart-panel"))return;
  document.body.insertAdjacentHTML("beforeend",
-  '<button class="am-cart-fab" type="button" aria-label="Открыть корзину" title="Корзина">'+cartIcon+'<span class="am-cart-count" hidden></span></button>'+
+  '<button class="am-cart-fab" type="button" aria-label="Открыть корзину" title="Корзина">'+cartIcon+'<span class="am-cart-fab-label">Корзина</span><span class="am-cart-count" hidden></span></button>'+
   '<div class="am-cart-backdrop"></div>'+
   '<aside class="am-cart-panel" role="dialog" aria-modal="true" aria-label="Корзина А Маркет" aria-hidden="true">'+
    '<div class="am-cart-head"><div class="am-cart-symbol">AM</div><div class="am-cart-head-copy"><span class="am-cart-head-kicker">А МАРКЕТ · ВАШ ВЫБОР</span><h2>Корзина</h2><div class="am-cart-head-count"></div></div><button class="am-cart-close" type="button" aria-label="Закрыть корзину">✕</button></div>'+
@@ -332,6 +362,7 @@ function init(){
    '<div class="am-cart-foot"><div class="am-cart-cost-row"><span class="am-cart-summary-count">Товары</span><b class="am-cart-subtotal">0 ₽</b></div><div class="am-cart-total-row"><span>Итого</span><strong class="am-cart-total">0 ₽</strong></div><div class="am-cart-foot-note am-cart-method-note">Без оплаты на сайте · Наличие подтвердим</div><button class="am-cart-primary am-cart-next" type="button">Перейти к оформлению <span>→</span></button><button class="am-cart-primary am-cart-order" type="button" hidden>Перейти в WhatsApp ↗</button><p class="am-cart-note">Цена и наличие подтверждаются при оформлении</p></div>'+
   '</aside>'
  );
+ mountCartLauncher();
  document.querySelector(".am-cart-fab").onclick=()=>{step="cart";renderStep();open();};
  document.querySelector(".am-cart-close").onclick=close;
  document.querySelector(".am-cart-backdrop").onclick=close;
