@@ -5,7 +5,7 @@ on:
     branches:
       - catalog-webp-optimization-20261013
 permissions:
-  contents: read
+  contents: write
 jobs:
   preview:
     runs-on: ubuntu-latest
@@ -25,3 +25,12 @@ jobs:
           path: |
             assets/models/*.webp
             catalog/index.html
+      - name: Commit images to optimization branch only
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add catalog/index.html assets/models/*.webp
+          if ! git diff --cached --quiet; then
+            git commit -m "Create optimized WebP assets for catalog"
+            git push origin HEAD:catalog-webp-optimization-20261013
+          fi
