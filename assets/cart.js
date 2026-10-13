@@ -156,7 +156,7 @@ function open(){
  document.querySelector(".am-cart-panel")?.classList.add("open");
  document.querySelector(".am-cart-backdrop")?.classList.add("open");
  document.body.classList.add("am-cart-locked");
- const panel=document.querySelector(".am-cart-panel");panel?.setAttribute("aria-hidden","false");
+ const panel=document.querySelector(".am-cart-panel");panel?.removeAttribute("inert");panel?.setAttribute("aria-hidden","false");
  document.querySelector(".am-cart-close")?.focus();
  syncCheckoutMobileState();
  const scroll=panel?.querySelector(".am-cart-scroll");if(scroll)scroll.scrollTop=0;
@@ -165,7 +165,7 @@ function close(){
  document.querySelector(".am-cart-panel")?.classList.remove("open");
  document.querySelector(".am-cart-backdrop")?.classList.remove("open");
  document.body.classList.remove("am-cart-locked");
- document.querySelector(".am-cart-panel")?.setAttribute("aria-hidden","true");
+ document.querySelector(".am-cart-panel")?.setAttribute("aria-hidden","true");document.querySelector(".am-cart-panel")?.setAttribute("inert","");
  if(previousFocus&&previousFocus.focus)previousFocus.focus();
  syncCheckoutMobileState();
 }
@@ -344,7 +344,7 @@ function init(){
  document.body.insertAdjacentHTML("beforeend",
   '<button class="am-cart-fab" type="button" aria-label="Открыть корзину" title="Корзина">'+cartIcon+'<span class="am-cart-fab-label">Корзина</span><span class="am-cart-count" hidden></span></button>'+
   '<div class="am-cart-backdrop"></div>'+
-  '<aside class="am-cart-panel" role="dialog" aria-modal="true" aria-label="Корзина А Маркет" aria-hidden="true">'+
+  '<aside class="am-cart-panel" role="dialog" aria-modal="true" aria-label="Корзина А Маркет" aria-hidden="true" inert>'+
    '<div class="am-cart-head"><div class="am-cart-symbol">AM</div><div class="am-cart-head-copy"><span class="am-cart-head-kicker">А МАРКЕТ · ВАШ ВЫБОР</span><h2>Корзина</h2><div class="am-cart-head-count"></div></div><button class="am-cart-close" type="button" aria-label="Закрыть корзину">✕</button></div>'+
    '<div class="am-cart-progress"><div class="am-cart-stage am-cart-stage-one active"><span class="am-cart-stage-n">1</span>Корзина</div><div class="am-cart-stage am-cart-stage-two"><span class="am-cart-stage-n">2</span>Оформление</div></div>'+
    '<div class="am-cart-scroll">'+
