@@ -13,7 +13,7 @@ const money=n=>new Intl.NumberFormat('ru-RU').format(n)+' ₽';
 let initial=variants.find(v=>v.id===params.get('variant'));
 if(!initial&&variants[0].preorder){const names=['Black','Burgundy','Silver','Blue'];initial=variants.find(v=>v.color===(names[Number(params.get('color'))]||'Black')&&v.region===(params.get('sim')==='1'?'1 SIM':'eSIM'));}
 initial=initial||variants[0];
-function options(key,list,value){const select=fields[key];select.replaceChildren(...[...new Set(list.map(v=>String(v[key])))].map(val=>{const option=document.createElement('option');option.value=val;option.textContent=key==='memory'?(Number(val)>=1024?Number(val)/1024+' ТБ':val+' ГБ'):key==='region'?(regions[val]||val):colorLabel(val);return option;}));select.value=[...select.options].some(o=>o.value===String(value))?String(value):select.options[0].value;}
+function options(key,list,value){const select=fields[key];select.replaceChildren(...[...new Set(list.map(v=>String(v[key])))].map(val=>{const option=document.createElement('option');option.value=val;option.textContent=key==='memory'?(/^[1-9]\d*$/.test(val)?(Number(val)>=1024?Number(val)/1024+' ТБ':val+' ГБ'):'Память уточняется'):key==='region'?(regions[val]||val):colorLabel(val);return option;}));select.value=[...select.options].some(o=>o.value===String(value))?String(value):select.options[0].value;}
 const photo=document.querySelector('#product-photo'),caption=document.querySelector('#photo-caption'),swatches=document.querySelector('#color-swatches');
 let photoVersion=0;
 function showPhoto(p){
