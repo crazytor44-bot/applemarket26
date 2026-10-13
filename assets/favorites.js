@@ -183,7 +183,7 @@ function open(){
  if(document.body.classList.contains('am-cart-locked'))return;
  lastFocus=document.activeElement;
  const overlay=document.querySelector('.am-fav-backdrop'),panel=document.querySelector('.am-fav-panel');
- overlay.classList.add('open');panel.classList.add('open');panel.setAttribute('aria-hidden','false');
+ overlay.classList.add('open');panel.classList.add('open');panel.removeAttribute('inert');panel.setAttribute('aria-hidden','false');
  document.body.classList.add('am-fav-locked');
  livePrices=null;renderList();
  document.querySelector('.am-fav-close').focus();
@@ -196,7 +196,7 @@ function open(){
 function close(){
  const overlay=document.querySelector('.am-fav-backdrop'),panel=document.querySelector('.am-fav-panel');
  overlay.classList.remove('open');panel.classList.remove('open');
- panel.setAttribute('aria-hidden','true');document.body.classList.remove('am-fav-locked');
+ panel.setAttribute('aria-hidden','true');panel.setAttribute('inert','');document.body.classList.remove('am-fav-locked');
  lastFocus?.focus?.();
 }
 // Keep the opener in the normal page flow, never floating over product photography.
@@ -237,7 +237,7 @@ function init(){
  document.body.insertAdjacentHTML('beforeend',
   '<button type="button" class="am-fav-launch" aria-label="Открыть избранное" title="Избранное">'+heart+'<span class="am-fav-launch-label">Избранное</span><span class="am-fav-count" hidden></span></button>'+
   '<div class="am-fav-backdrop"></div>'+
-  '<aside class="am-fav-panel" role="dialog" aria-modal="true" aria-label="Избранное А Маркет" aria-hidden="true">'+
+  '<aside class="am-fav-panel" role="dialog" aria-modal="true" aria-label="Избранное А Маркет" aria-hidden="true" inert>'+
    '<header class="am-fav-head"><div><div class="am-fav-kicker">А МАРКЕТ · ВАШ ВЫБОР</div><h2>Избранное <span>♡</span></h2><p>Всё, что понравилось — в одном месте.</p></div><button type="button" class="am-fav-close" aria-label="Закрыть избранное">×</button></header>'+
    '<div class="am-fav-list"></div>'+
    '<div class="am-fav-bottom"><p class="am-fav-compare-note">Отметьте два товара одной категории, чтобы сравнить.</p><a class="am-fav-compare" href="/compare/" hidden>Сравнить выбранное ↗</a>'+
