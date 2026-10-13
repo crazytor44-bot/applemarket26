@@ -1,0 +1,27 @@
+name: Catalog WebP Preview
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - catalog-webp-optimization-20261013
+permissions:
+  contents: read
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Pillow
+        run: pip install pillow==11.3.0
+      - name: Convert preview images
+        run: python scripts/optimize-catalog-webp.py
+      - name: Upload result for review
+        uses: actions/upload-artifact@v4
+        with:
+          name: catalog-webp-preview
+          path: |
+            assets/models/*.webp
+            catalog/index.html
