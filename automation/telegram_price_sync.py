@@ -299,6 +299,11 @@ def merge_products(products: list[dict], entries: list[PriceEntry]) -> tuple[lis
                            groupKey=(group_key_for(entry.name, category, model) if force_group_key else (product.get("groupKey") or group_key_for(entry.name, category, model))),
                            meta=("В пути" if entry.transit else "В наличии · Цена обновляется автоматически"),
                            url=whatsapp_url(product["name"], price, True))
+            # Existing supplier items may have a legacy null memory even when
+            # their names clearly include 1TB/2TB/256GB. Refresh it on each sync.
+            parsed_memory = memory_for(entry.name)
+            if parsed_memory is not None:
+                product["memory"] = parsed_memory
             if category == "iphone":
                 slug = group_key_for(entry.name, category, model).removeprefix("iphone-")
                 if slug:
@@ -335,6 +340,13 @@ def merge_products(products: list[dict], entries: list[PriceEntry]) -> tuple[lis
         product.update(available=False, meta="Нет в наличии",
                        url=whatsapp_url(product["name"], int(product["price"]), False))
         stats["unavailable"] += 1
+    # Repair legacy supplier variants even if they were not present in today's
+    # Telegram batch; leave devices with genuinely unknown memory untouched.
+    for product in products:
+        if product.get("memory") is None:
+            recovered_memory = memory_for(str(product.get("name") or ""))
+            if recovered_memory is not None:
+                product["memory"] = recovered_memory
     return products, stats
 
 
