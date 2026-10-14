@@ -126,9 +126,11 @@ assert(html.indexOf('class="trade-landing-hero"') < html.indexOf('id="am-trade-e
 assert(html.indexOf('id="am-trade-estimator"') < html.indexOf('id="how-buyback-works"'));
 assert(html.indexOf('id="how-buyback-works"') < html.indexOf('id="trade-form"'));
 assert(html.includes("IPhone_17_Pro_%282025-12-28%29.jpg") &&
-       html.includes("Реальное фото · Olgierd Rudak · CC0") &&
        html.includes("серебристого iPhone 17 Pro"),
        "Hero must use the verified real CC0 photograph of iPhone 17 Pro Silver");
+assert(!html.includes("<figcaption>") &&
+       !html.includes("commons.wikimedia.org/wiki/File:IPhone_17_Pro_"),
+       "Trade-in photo must have no visible attribution badge or outbound link");
 assert(html.includes("this.onerror=null") &&
        html.includes("iphone-17-pro-finish-select-silver-202509") &&
        html.includes("removeAttribute('srcset')"),
