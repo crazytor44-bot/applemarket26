@@ -87,19 +87,19 @@ def parse_public_posts(page: str) -> list[dict]:
         views = count_number(views_el.get_text(" ", strip=True)) if views_el else None
         # Emoji identities are never exposed; only counters.
         reactions = {}
-        for badge in card.select(".tgme_widget_message_reaction"):
-            emoji_node = badge.select_one(".tgme_widget_message_reaction_emoji")
-            count_node = badge.select_one(".tgme_widget_message_reaction_count")
-            if not count_node:
+        for badge in card.select(".tgme_reaction, .tgme_widget_message_reaction"):
+            # Public Telegram preview currently uses .tgme_reaction.
+            # Examples rendered as emoji + count, e.g. '🤔1' or '👍 2'.
+            raw = badge.get_text(" ", strip=True)
+            match = re.search(r"([\\d.,]+\\s*[KkMm]?)\\s*$", raw)
+            if not match:
                 continue
-            amount = count_number(count_node.get_text(" ", strip=True))
+            amount = count_number(match.group(1))
             if amount is None:
                 continue
-            emoji = emoji_node.get_text("", strip=True) if emoji_node else "other"
-            reactions[emoji or "other"] = reactions.get(emoji or "other", 0) + amount
-        # Telegram can render reaction badges in a different format.
-        # Never guess if markup is absent.
-        has_reaction_badges = bool(card.select(".tgme_widget_message_reaction"))
+            emoji = raw[:match.start()].strip() or "other"
+            reactions[emoji] = reactions.get(emoji, 0) + amount
+        # Absence of counters in public HTML does NOT prove zero reactions.
         reaction_total = sum(reactions.values()) if reactions else None
         replies = card.select_one(".tgme_widget_message_replies")
         comment_count = count_number(replies.get_text(" ", strip=True)) if replies else None
