@@ -100,7 +100,7 @@ def parse_public_posts(page: str) -> list[dict]:
         # Telegram can render reaction badges in a different format.
         # Never guess if markup is absent.
         has_reaction_badges = bool(card.select(".tgme_widget_message_reaction"))
-        reaction_total = sum(reactions.values()) if reactions else (None if has_reaction_badges else 0)
+        reaction_total = sum(reactions.values()) if reactions else None
         replies = card.select_one(".tgme_widget_message_replies")
         comment_count = count_number(replies.get_text(" ", strip=True)) if replies else None
         posts.append({
@@ -124,6 +124,12 @@ def main() -> None:
     posts = parse_public_posts(html)
     if not posts:
         raise SystemExit("Telegram не вернул публичных постов — отчёт не создан (чтобы не показывать ложные нули).")
+    # Diagnostics contain ONLY public layout tags/classes and no messages or users.
+    latest = next((node for node in BeautifulSoup(html, "html.parser").select('[data-post]') if node.get("data-post") == f"{CHANNEL}/60"), None)
+    if latest is not None:
+        classes = sorted({part for node in latest.find_all(True) for part in (node.get("class") or []) if "reaction" in part or "views" in part})
+        print("Проверка публичной разметки реакций #60:", ", ".join(classes) if classes else "отсутствует")
+        print("Счётчик реакций на публичной странице:", len(latest.select(".tgme_widget_message_reaction")))
     now = datetime.now(timezone.utc)
     snapshot = {
         "collected_at_utc": now.isoformat(timespec="seconds"),
