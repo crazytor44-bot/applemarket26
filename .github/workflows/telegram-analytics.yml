@@ -2,6 +2,11 @@ name: A Market Telegram analytics
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'telegram_channel/public_stats.py'
+      - '.github/workflows/telegram-analytics.yml'
   schedule:
     # 08:00, 14:00 and 20:00 local Stavropol time (UTC+3).
     - cron: '0 5,11,17 * * *'
