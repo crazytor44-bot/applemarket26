@@ -15,6 +15,7 @@ on:
     branches: [main]
     paths:
       - 'telegram_channel/approved/*.json'
+      - '.github/workflows/telegram-channel-content.yml'
 
 permissions:
   contents: read
@@ -51,6 +52,20 @@ jobs:
       - name: Change channel name and description
         if: github.event_name == 'workflow_dispatch' && inputs.operation == 'brand'
         run: python3 telegram_channel/publisher.py brand
+
+      - name: First-time channel setup (only when workflow file is newly added)
+        if: github.event_name == 'push'
+        env:
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+        shell: bash
+        run: |
+          if git diff --name-only --diff-filter=A "$BEFORE" "$AFTER" -- '.github/workflows/telegram-channel-content.yml' | grep -Fxq '.github/workflows/telegram-channel-content.yml'; then
+            echo "Applying initial A Market channel name and description..."
+            python3 telegram_channel/publisher.py brand
+          else
+            echo "Channel already configured; skipping branding."
+          fi
 
       - name: Publish newly approved files (one time, added files only)
         if: github.event_name == 'push'
