@@ -106,3 +106,17 @@ header .am-nav{grid-template-columns:repeat(6,minmax(0,1fr))}
 .catalog-item[data-id="gaming-ps5-pro-2-ревизия"] .model-photo img{transform:translateY(-10%)}
 /* Accessories catalog: lift all product photos inside cards by 20%. */
 .catalog-item.accessory-card .model-photo img{transform:translateY(-20%)}
+
+
+/* A Market Telegram subscription CTA — compact, responsive, no overlays or popups. */
+.am-telegram-inline{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:7px 10px;border-radius:12px;color:#e4d2dc;font-size:14px;font-weight:650;line-height:1.4;text-decoration:none;border:1px solid transparent;transition:color .15s ease,background .15s ease,border-color .15s ease}
+.am-telegram-inline:hover{color:#fff;background:#282029;border-color:#493744}
+.am-telegram-inline:focus-visible{outline:3px solid #e8adb9;outline-offset:3px}
+.am-telegram-inline svg{width:19px;height:19px;flex:none;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.hero-copy>.am-telegram-inline{vertical-align:middle;margin-left:10px}
+.am-catalog-shortcuts{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:14px 0 22px}
+.am-catalog-shortcuts .am-telegram-inline{border-color:#433740;background:#1b181e;padding:8px 12px}
+.footer-links .am-telegram-footer{display:inline-flex;align-items:center;gap:6px;color:#e9c8d7;font-weight:650}
+.footer-links .am-telegram-footer:hover{text-decoration:underline}
+@media(max-width:600px){.hero-copy>.am-telegram-inline{display:flex;width:fit-content;margin:9px 0 0;padding-left:3px;font-size:13px}.am-catalog-shortcuts{gap:8px;margin:12px 0 18px}.am-catalog-shortcuts .am-telegram-inline{font-size:13px}}
+@media(prefers-reduced-motion:reduce){.am-telegram-inline{transition:none}}
