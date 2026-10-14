@@ -125,11 +125,14 @@ for (const phrase of [
 assert(html.indexOf('class="trade-landing-hero"') < html.indexOf('id="am-trade-estimator"'));
 assert(html.indexOf('id="am-trade-estimator"') < html.indexOf('id="how-buyback-works"'));
 assert(html.indexOf('id="how-buyback-works"') < html.indexOf('id="trade-form"'));
-assert(html.includes('https://www.apple.com/newsroom/images/2023/09/'),
-  "Hero uses a real manufacturer product photo, not a generated illustration");
+assert(html.includes("IPhone_17_Pro_%282025-12-28%29.jpg") &&
+       html.includes("Реальное фото · Olgierd Rudak · CC0") &&
+       html.includes("серебристого iPhone 17 Pro"),
+       "Hero must use the verified real CC0 photograph of iPhone 17 Pro Silver");
 assert(html.includes("this.onerror=null") &&
-       html.includes("/assets/models/iphone-16-pro.png"),
-       "Apple photo failure must fall back to an existing store product image");
+       html.includes("iphone-17-pro-finish-select-silver-202509") &&
+       html.includes("removeAttribute('srcset')"),
+       "Photo failure must fall back to the correct official Silver 17 Pro product image");
 assert(!html.includes('class="info-image"'), "Do not duplicate photographs below calculator");
 assert(landingCss.includes("@media(max-width:700px)") &&
        landingCss.includes(".trade-landing-hero"),
