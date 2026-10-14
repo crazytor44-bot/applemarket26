@@ -22,7 +22,7 @@ assert.equal(engine.evaluate({...choices, working: ""}, {}).ready, false);
 assert.equal(engine.evaluate({...choices, intent: ""}, {}).ready, false);
 const key = "iPhone 15 Pro|256";
 const base = {[key]: {low: 30000, high: 40000}};
-assert.deepEqual(engine.evaluate(choices, base).range, {low:30000, high:40000, text:"30 000 ₽ — 40 000 ₽".replaceAll("\u00a0", "\u00a0")});
+assert.deepEqual(engine.evaluate(choices, base).range, {low:30000, high:40000, text:engine.money(30000) + " — " + engine.money(40000)});
 const worn = engine.evaluate({...choices, condition:"visible", battery:"70-79", repair:"yes"}, base);
 assert(worn.range.high < 40000 && worn.range.low < 30000, "Condition lowers approved indicative offer");
 for(const change of [
