@@ -1,0 +1,49 @@
+/* А Маркет — самостоятельный модуль быстрой оценки, не влияет на каталог */
+.am-estimator{
+  margin:32px 0 38px;padding:clamp(20px,4vw,36px);position:relative;overflow:hidden;
+  border:1px solid #56404c;border-radius:28px;background:
+  radial-gradient(circle at 100% 0%,#673b5247,transparent 53%),
+  linear-gradient(145deg,#241b23,#151319 62%);
+  box-shadow:0 20px 58px #0004;scroll-margin-top:28px;
+}
+.am-est-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.am-est-kicker{display:inline-block;color:#f4b4d0;font-size:12px;font-weight:850;letter-spacing:.17em;text-transform:uppercase;margin-bottom:12px}
+.am-estimator h2{font-size:clamp(27px,4.4vw,43px);line-height:1.08;margin:0 0 12px}
+.am-est-lead{color:#ddd0d8;font-size:15px;line-height:1.6;max-width:730px}
+.am-est-logo{border-radius:16px;background:#eab0c9;color:#27121e;font-weight:900;font-size:18px;letter-spacing:-.07em;padding:13px 11px;flex:none}
+.am-est-chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:19px}
+.am-est-chips span{border:1px solid #6f5361;padding:7px 11px;border-radius:999px;font-size:12px;color:#f2e5eb;font-weight:600}
+.am-est-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:28px 0 22px}
+.am-est-grid label{display:flex;flex-direction:column;gap:8px;min-width:0;color:#f1e8ed;font-size:14px;font-weight:700}
+.am-est-grid select{min-width:0;width:100%;min-height:52px;border:1px solid #68525e;border-radius:13px;background:#151118;color:#fff;color-scheme:dark;padding:12px 13px;font:inherit;font-weight:550;font-size:16px}
+.am-est-grid select:disabled{opacity:.6;cursor:not-allowed}
+.am-est-grid select:focus-visible,.am-est-continue:focus-visible{outline:3px solid #f0bfd5;outline-offset:3px}
+.am-est-full{grid-column:1/-1}
+.am-est-result{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:center;
+  border:1px solid #826171;background:linear-gradient(115deg,#34222e,#211922);
+  border-radius:20px;padding:24px;min-width:0}
+.am-est-badge{display:inline-block;margin-bottom:10px;font-size:11px;font-weight:850;letter-spacing:.13em;color:#f4b3cf}
+.am-est-result h3{font-size:clamp(19px,3vw,25px);margin:0 0 9px;line-height:1.25}
+.am-est-amount{font-size:clamp(25px,4vw,36px);font-weight:900;color:#fff;letter-spacing:-.035em;line-height:1.1;margin-bottom:10px}
+.am-est-result-details{font-size:14px;line-height:1.65;color:#d4c2ce;max-width:560px}
+.am-est-warning{color:#ffdcb8;font-size:13px;line-height:1.5;margin-top:11px}
+.am-est-warning[hidden],.am-est-prefilled[hidden]{display:none}
+.am-est-continue{background:#f2c0d4;color:#2a1320;border:0;border-radius:14px;padding:15px 20px;
+  min-height:54px;min-width:205px;font:inherit;font-size:15px;font-weight:850;box-shadow:0 8px 24px #bd6d9344}
+.am-est-continue:disabled{opacity:.55;box-shadow:none;cursor:not-allowed}
+.am-est-continue:not(:disabled):hover{background:#ffe0ec;transform:translateY(-1px)}
+.am-est-disclaimer{margin-top:16px;color:#bcb1b8;font-size:12px;line-height:1.65}
+.am-est-prefilled{border:1px solid #876a73;background:#2b242a;border-radius:14px;padding:15px 17px;
+  color:#fbe0e8;font-size:14px;font-weight:700;line-height:1.5;margin:16px 0 0}
+@media(max-width:760px){
+ .am-est-result{grid-template-columns:1fr}
+ .am-est-continue{width:100%}
+}
+@media(max-width:600px){
+ .am-estimator{margin:20px 0 28px;padding:22px 16px;border-radius:21px}
+ .am-est-logo{padding:10px 9px;font-size:15px}
+ .am-est-grid{grid-template-columns:1fr;gap:15px;margin-top:23px}
+ .am-est-full{grid-column:auto}
+ .am-est-result{padding:19px 17px}
+ .am-est-chips{gap:7px}
+}
