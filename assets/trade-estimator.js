@@ -15,9 +15,9 @@
   const out = {
     heading: $("am-est-result-title"), amount: $("am-est-amount"),
     details: $("am-est-result-details"), warning: $("am-est-warning"),
-    cta: $("am-est-continue"), badge: $("am-est-badge")
+    cta: $("am-est-continue"), reset: $("am-est-reset"), badge: $("am-est-badge")
   };
-  let approvedBases = {};
+  let valuationConfig = null;
 
   function fillOptions(select, values, placeholder, toLabel) {
     select.replaceChildren(new Option(placeholder, ""));
@@ -36,29 +36,38 @@
     fields.memory.disabled = !item;
   }
   function update() {
-    const quote = engine.evaluate(values(), approvedBases);
+    const quote = engine.evaluate(values(), valuationConfig);
     out.cta.disabled = !quote.ready;
+    out.reset.hidden = !quote.ready;
     out.warning.hidden = true;
     if (!quote.ready) {
       out.heading.textContent = "Ваш iPhone — наша оценка";
       out.amount.textContent = "Укажите параметры";
       out.details.textContent = "Мы подготовим заявку на выкуп или обмен без звонков и регистрации.";
       out.badge.textContent = "БЫСТРАЯ ОЦЕНКА";
+      out.cta.textContent = "Запросить оценку →";
       return;
     }
     out.heading.textContent = quote.grade;
-    out.badge.textContent = quote.range ? "ОРИЕНТИРОВОЧНО" : "ПРЕДВАРИТЕЛЬНО";
+    out.badge.textContent = quote.range ? "ПРЕДВАРИТЕЛЬНЫЙ РАСЧЁТ" : "ИНДИВИДУАЛЬНАЯ ОЦЕНКА";
+    out.cta.textContent = quote.range ?
+      (fields.intent.value === "Обмен" ? "Хочу обменять iPhone →" : "Хочу продать iPhone →") :
+      "Запросить индивидуальную оценку →";
     if (quote.manual) {
       out.amount.textContent = "Нужна проверка устройства";
       out.details.textContent = quote.reasons.join(" ") + " Заполненные данные перенесём в заявку.";
       out.warning.hidden = false;
-      out.warning.textContent = "Точную сумму обсудим только после диагностики и проверки блокировок.";
+      out.warning.textContent = "Для неисправных устройств и телефонов с блокировками автоматическую цену не показываем.";
     } else if (quote.range) {
       out.amount.textContent = quote.range.text;
-      out.details.textContent = "Предварительный ориентир выкупа для исправного телефона с АКБ от 90%, без ремонтов и блокировок. Итоговая сумма — после осмотра.";
+      out.details.textContent = (quote.source === "approved" ?
+        "Ориентир на основе цены магазина." :
+        "Автоматический ориентир по модели и памяти, рассчитанный на основе цен магазина.") +
+        (quote.discountAmount > 0 ? " Учтено снижение на " + engine.money(quote.discountAmount) + " за состояние, АКБ и ремонт." : "") +
+        " WhatsApp для просмотра цены не нужен. Итог после осмотра.";
     } else {
       out.amount.textContent = "Сумма после проверки";
-      out.details.textContent = "Параметры готовы! Передадим их мастеру: он рассчитает стоимость по актуальным ценам и состоянию.";
+      out.details.textContent = "Сейчас не получается рассчитать стоимость автоматически. Можно запросить индивидуальную оценку.";
     }
   }
 
@@ -79,6 +88,15 @@
   const repairMap = { no: "Не ремонтировался", yes: "Ремонтировался — опишу ниже", unknown: "Не знаю" };
   const batteryMap = { "90+": "90% и выше", "80-89": "80–89%", "70-79": "70–79%", below70: "ниже 70%", unknown: "не знаю" };
   const accountMap = { clear: "Apple ID и «Локатор» отвязаны", locked: "Есть блокировка", unknown: "Требует проверки" };
+
+  out.reset.addEventListener("click", () => {
+    for (const [key, field] of Object.entries(fields)) if (key !== "intent") field.value = "";
+    updateMemory();
+    const note = $("am-est-prefilled");
+    if (note) note.hidden = true;
+    update();
+    fields.model.focus();
+  });
 
   out.cta.addEventListener("click", () => {
     const input = values();
@@ -121,8 +139,9 @@
   fetch("/assets/trade-estimates.json", { cache: "no-store" })
     .then(response => response.ok ? response.json() : null)
     .then(config => {
-      if (config && config.schemaVersion === 1 && config.bases && typeof config.bases === "object" &&
-          !Array.isArray(config.bases)) approvedBases = config.bases;
+      if (config && config.schemaVersion === 2 && config.approvedBases && config.derivedReference256) {
+        valuationConfig = config;
+      }
       update();
     })
     .catch(update);
