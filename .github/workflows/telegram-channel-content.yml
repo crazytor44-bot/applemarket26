@@ -18,6 +18,7 @@ on:
       - 'telegram_channel/approved/*.json'
       - 'telegram_channel/avatar-setup.request'
       - '.github/workflows/telegram-channel-content.yml'
+      - 'telegram_channel/publisher.py'
 
 permissions:
   contents: read
@@ -46,6 +47,17 @@ jobs:
             echo "Не задан secret AMARKET_TELEGRAM_BOT_TOKEN." >&2
             exit 1
           fi
+
+      - name: Check Python syntax
+        run: python3 -m py_compile telegram_channel/publisher.py
+
+      - name: Verify rights to publish and pin
+        if: github.event_name == 'push'
+        run: python3 telegram_channel/publisher.py check-pin
+
+      - name: Install image support
+        if: github.event_name == 'push'
+        run: python3 -m pip install --disable-pip-version-check Pillow==11.3.0
 
       - name: Check Telegram bot
         if: github.event_name == 'workflow_dispatch' && inputs.operation == 'check'
