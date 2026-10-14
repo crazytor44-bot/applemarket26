@@ -1,0 +1,44 @@
+name: Brand A Market discussion group
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'telegram_channel/discussion-setup.request'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: amarket-telegram-discussion-branding
+  cancel-in-progress: false
+
+jobs:
+  update-linked-group:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Confirm this is first setup request
+        id: request
+        env:
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+        run: |
+          if git diff --name-only --diff-filter=A "$BEFORE" "$AFTER" -- telegram_channel/discussion-setup.request | grep -Fxq telegram_channel/discussion-setup.request; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Update linked Telegram discussion group
+        if: steps.request.outputs.run == 'true'
+        env:
+          AMARKET_TELEGRAM_BOT_TOKEN: ${{ secrets.AMARKET_TELEGRAM_BOT_TOKEN }}
+        run: |
+          if [[ -z "$AMARKET_TELEGRAM_BOT_TOKEN" ]]; then
+            echo "Отсутствует secret AMARKET_TELEGRAM_BOT_TOKEN" >&2
+            exit 1
+          fi
+          python3 -m py_compile telegram_channel/discussion.py
+          python3 telegram_channel/discussion.py
