@@ -19,6 +19,7 @@ const approved = {
 
 assert.equal(config.schemaVersion, 2);
 assert.deepEqual(config.approvedBases, approved, "Retain only the five merchant-confirmed prices");
+assert.deepEqual(config.appearanceDeductions, { excellent:0, minor:2500, visible:5000 });
 assert(engine.models.some(x => x.model === "iPhone 17 Pro Max" && x.storage.includes(2048)));
 assert.deepEqual(engine.models.filter(x => x.model === "iPhone 15 Pro").map(x => x.storage), [[128, 256, 512, 1024]]);
 assert.equal(engine.storageLabel(128), "128 ГБ");
@@ -30,24 +31,33 @@ assert.equal(engine.modelInfo("iPhone FAKE"), null);
 
 for (const [key, value] of Object.entries(approved)) {
   const [model, memory] = key.split("|");
-  const result = quote({model, memory});
-  assert.equal(result.source, "approved");
-  assert.equal(result.range.low, value, "Approved base price must be unchanged: " + key);
-  assert.equal(result.range.high, value);
-  assert.equal(result.range.text, "≈ " + engine.money(value));
-  assert.equal(result.discountAmount, 0);
-  assert.equal(quote({model, memory, condition:"excellent"}).range.low, value,
-    "Excellent condition must not exceed approved price");
+  const pristine = quote({model, memory, condition:"excellent"});
+  const lightlyWorn = quote({model, memory, condition:"minor"});
+  assert.equal(pristine.source, "approved");
+  assert.equal(pristine.range.low, value, "Keep original owner-approved maximum: " + key);
+  assert.equal(pristine.range.high, value);
+  assert.equal(pristine.range.text, "≈ " + engine.money(value));
+  assert.equal(pristine.discountAmount, 0);
+  assert.equal(lightlyWorn.range.low, value - 2500,
+    "Light wear must be exactly 2,500 ₽ below like new");
+  assert.equal(lightlyWorn.discountAmount, 2500);
 }
 let total = 0;
 for (const item of engine.models) {
   let last = -1;
   for (const storage of item.storage) {
-    const result = quote({model:item.model, memory:String(storage)});
+    const props = {model:item.model, memory:String(storage)};
+    const result = quote({...props, condition:"minor"});
+    const pristine = quote({...props, condition:"excellent"});
+    const visiblyWorn = quote({...props, condition:"visible"});
     assert(result.ready && !result.manual, item.model + " " + storage);
     assert(result.range?.low > 0, "No unsupported model/memory: " + item.model + " " + storage);
     assert.equal(result.range.low % 500, 0, "Round to 500 RUB");
     assert(result.range.low >= last, "More storage must not reduce the quote: " + item.model);
+    assert.equal(pristine.range.low - result.range.low, 2500,
+      "Exactly 2,500 RUB separation of like-new and minor wear across all model/storage combinations");
+    assert(visiblyWorn.range?.low < result.range.low,
+      "Noticeable scratches must always have a lower estimate");
     last = result.range.low;
     total++;
   }
@@ -55,7 +65,9 @@ for (const item of engine.models) {
 assert.equal(total, 99, "Cover all 99 selectable model/memory combinations");
 
 const v = quote();
-assert.equal(v.range.low, 45000);
+assert.equal(v.range.low, 42500);
+assert.equal(quote({condition:"excellent"}).range.low, 45000);
+assert.equal(quote({condition:"visible"}).range.low, 40000);
 assert(quote({condition:"visible"}).range.low < v.range.low);
 assert(quote({battery:"80-89"}).range.low < v.range.low);
 assert(quote({battery:"70-79"}).range.low < quote({battery:"80-89"}).range.low);
@@ -64,7 +76,7 @@ assert(quote({repair:"yes"}).range.low < v.range.low);
 assert(quote({condition:"visible",battery:"80-89",repair:"yes"}).range.low <
        quote({condition:"visible",battery:"80-89"}).range.low);
 assert.equal(quote({model:"iPhone 15 Pro",memory:"128"}).source,"calculated");
-assert.equal(quote({model:"iPhone 15 Pro",memory:"128"}).range.low, 42000);
+assert.equal(quote({model:"iPhone 15 Pro",memory:"128"}).range.low, 39500);
 
 for (const change of [
   {account:"locked"}, {account:"unknown"}, {condition:"broken"},
