@@ -78,20 +78,20 @@ def set_channel_avatar() -> None:
     verify(change_info=True)
     filename = Path("favicon-256.png")
     photo = filename.read_bytes()
-    if not photo.startswith(b"\\x89PNG\\r\\n\\x1a\\n"):
+    if not photo.startswith(b"\x89PNG\r\n\x1a\n"):
         raise RuntimeError("Не найден ожидаемый PNG логотип favicon-256.png")
     if len(photo) > 10_000_000:
         raise RuntimeError("Логотип слишком большой")
     token = os.environ.get("AMARKET_TELEGRAM_BOT_TOKEN", "").strip()
     boundary = "amarket-telegram-avatar-upload"
     body = (
-        f"--{boundary}\\r\\n"
-        'Content-Disposition: form-data; name="chat_id"\\r\\n\\r\\n'
-        f"{CHAT}\\r\\n"
-        f"--{boundary}\\r\\n"
-        'Content-Disposition: form-data; name="photo"; filename="amarket-logo.png"\\r\\n'
-        "Content-Type: image/png\\r\\n\\r\\n"
-    ).encode("utf-8") + photo + f"\\r\\n--{boundary}--\\r\\n".encode("utf-8")
+        f"--{boundary}\r\n"
+        'Content-Disposition: form-data; name="chat_id"\r\n\r\n'
+        f"{CHAT}\r\n"
+        f"--{boundary}\r\n"
+        'Content-Disposition: form-data; name="photo"; filename="amarket-logo.png"\r\n'
+        "Content-Type: image/png\r\n\r\n"
+    ).encode("utf-8") + photo + f"\r\n--{boundary}--\r\n".encode("utf-8")
     request = Request(
         f"https://api.telegram.org/bot{token}/setChatPhoto",
         data=body,
