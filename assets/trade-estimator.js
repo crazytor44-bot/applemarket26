@@ -55,7 +55,7 @@
       out.warning.textContent = "Точную сумму обсудим только после диагностики и проверки блокировок.";
     } else if (quote.range) {
       out.amount.textContent = quote.range.text;
-      out.details.textContent = "Предварительный диапазон выкупа. Цена не гарантирована и может измениться после осмотра телефона.";
+      out.details.textContent = "Предварительный ориентир выкупа для исправного телефона с АКБ от 90%, без ремонтов и блокировок. Итоговая сумма — после осмотра.";
     } else {
       out.amount.textContent = "Сумма после проверки";
       out.details.textContent = "Параметры готовы! Передадим их мастеру: он рассчитает стоимость по актуальным ценам и состоянию.";
@@ -93,6 +93,8 @@
     set("intent", input.intent);
     form.elements.namedItem("intent")?.dispatchEvent(new Event("change", { bubbles: true }));
     set("model", input.model);
+    // Reset custom validation error, if the customer previously submitted the form empty.
+    form.elements.namedItem("model")?.dispatchEvent(new Event("input", { bubbles: true }));
     set("memory", engine.storageLabel(Number(input.memory)));
     set("condition", conditionMap[input.condition]);
     set("working", workingMap[input.working]);
