@@ -20,24 +20,40 @@ assert.equal(engine.evaluate({...choices, model: "iPhone 0"}, {}).ready, false);
 assert.equal(engine.evaluate({...choices, memory: "123"}, {}).ready, false);
 assert.equal(engine.evaluate({...choices, working: ""}, {}).ready, false);
 assert.equal(engine.evaluate({...choices, intent: ""}, {}).ready, false);
+const config = JSON.parse(read("assets/trade-estimates.json"));
+assert.equal(config.schemaVersion, 1);
+const approved = {
+  "iPhone 13|128": 20000,
+  "iPhone 14 Pro|256": 30000,
+  "iPhone 15 Pro|256": 45000,
+  "iPhone 16 Pro|256": 55000,
+  "iPhone 17 Pro|256": 75000
+};
+assert.equal(Object.keys(config.bases).length, 5, "Only five owner-confirmed prices");
+for (const [key, price] of Object.entries(approved)) {
+ const [model, memory] = key.split("|");
+ assert.deepEqual(config.bases[key], { low: price, high: price });
+ const quote = engine.evaluate({...choices, model, memory}, config.bases);
+ assert(quote.ready && !quote.manual);
+ assert.deepEqual(quote.range, {low: price, high: price, text:"≈ " + engine.money(price)}, "Show exact approved indicative price");
+ assert.deepEqual(engine.evaluate({...choices, model, memory, condition:"excellent"}, config.bases).range, quote.range,
+   "Excellent condition cannot exceed owner-approved buyback price");
+}
 const key = "iPhone 15 Pro|256";
-const base = {[key]: {low: 30000, high: 40000}};
-assert.deepEqual(engine.evaluate(choices, base).range, {low:30000, high:40000, text:engine.money(30000) + " — " + engine.money(40000)});
-const worn = engine.evaluate({...choices, condition:"visible", battery:"70-79", repair:"yes"}, base);
-assert(worn.range.high < 40000 && worn.range.low < 30000, "Condition lowers approved indicative offer");
+const base = config.bases;
 for(const change of [
-  {account:"locked"}, {account:"unknown"}, {condition:"broken"},
-  {working:"issues"}, {working:"dead"}
+  {account:"locked"}, {account:"unknown"}, {condition:"broken"}, {condition:"visible"},
+  {working:"issues"}, {working:"dead"}, {battery:"80-89"}, {battery:"70-79"},
+  {battery:"below70"}, {battery:"unknown"}, {repair:"yes"}, {repair:"unknown"}
 ]){
  const result = engine.evaluate({...choices, ...change}, base);
- assert(result.ready && result.manual && !result.range, "Must require manual inspection for risky states");
+ assert(result.ready && result.manual && !result.range, "Must require manual assessment for unapproved conditions: " + JSON.stringify(change));
 }
+assert.equal(engine.evaluate({...choices, model:"iPhone 15 Pro", memory:"128"}, base).range, null,
+  "Do not offer a price for an unapproved model/memory variant");
 assert.equal(engine.evaluate(choices, {[key]:{low:0,high:990000}}).range, null);
 assert.equal(engine.evaluate(choices, {[key]:{low:45000,high:30000}}).range, null);
 assert.equal(engine.evaluate(choices, {[key]:{low:"30000",high:40000}}).range, null);
-const config = JSON.parse(read("assets/trade-estimates.json"));
-assert.equal(config.schemaVersion, 1);
-assert.deepEqual(config.bases, {}, "No unapproved buyback quotes in production");
 const html = read("trade-in/index.html");
 for(const phrase of ['id="am-trade-estimator"', 'id="am-est-model"', 'id="am-est-memory"',
                      'id="am-est-result-details"', 'id="am-est-continue"', 'id="trade-form"',
