@@ -1,0 +1,80 @@
+name: A Market Telegram content
+
+on:
+  workflow_dispatch:
+    inputs:
+      operation:
+        description: 'Действие с каналом (без новых постов)'
+        type: choice
+        required: true
+        default: check
+        options:
+          - check
+          - brand
+  push:
+    branches: [main]
+    paths:
+      - 'telegram_channel/approved/*.json'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: amarket-telegram-channel
+  cancel-in-progress: false
+
+jobs:
+  manage-telegram:
+    # An automatic rerun must never accidentally duplicate a published post.
+    if: github.run_attempt == 1
+    runs-on: ubuntu-latest
+    env:
+      AMARKET_TELEGRAM_BOT_TOKEN: ${{ secrets.AMARKET_TELEGRAM_BOT_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check configuration
+        shell: bash
+        run: |
+          if [[ -z "$AMARKET_TELEGRAM_BOT_TOKEN" ]]; then
+            echo "Не задан secret AMARKET_TELEGRAM_BOT_TOKEN." >&2
+            exit 1
+          fi
+
+      - name: Check Telegram bot
+        if: github.event_name == 'workflow_dispatch' && inputs.operation == 'check'
+        run: python3 telegram_channel/publisher.py check
+
+      - name: Change channel name and description
+        if: github.event_name == 'workflow_dispatch' && inputs.operation == 'brand'
+        run: python3 telegram_channel/publisher.py brand
+
+      - name: Publish newly approved files (one time, added files only)
+        if: github.event_name == 'push'
+        env:
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+        run: |
+          python3 - <<'PY'
+          import os
+          import subprocess
+          import sys
+
+          before, after = os.environ["BEFORE"], os.environ["AFTER"]
+          if before == "0" * 40:
+              print("Initial push ignored (to avoid bulk publishing).")
+              sys.exit(0)
+          files = subprocess.check_output(
+              ["git", "diff", "--name-only", "--diff-filter=A", before, after, "--", "telegram_channel/approved/"],
+              text=True,
+          ).splitlines()
+          for path in files:
+              if path.endswith(".json"):
+                  print(f"Publishing approved post from {path}")
+                  subprocess.run(["python3", "telegram_channel/publisher.py", "post", path], check=True)
+          if not files:
+              print("No newly approved post files.")
+          PY
