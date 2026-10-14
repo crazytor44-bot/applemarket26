@@ -20,9 +20,6 @@
 .trade-landing-photo{position:relative;min-height:100%;background:#050507;margin:0;overflow:hidden}
 .trade-landing-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block;filter:saturate(.87) contrast(1.05)}
 .trade-landing-photo:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,#1b181e 0%,transparent 21%,transparent 100%)}
-.trade-landing-photo figcaption{position:absolute;bottom:13px;right:15px;color:#f6f0f3;font-size:10px;z-index:1;text-shadow:0 1px 5px #0009;background:#171217c9;padding:6px 9px;border:1px solid #ffffff30;border-radius:7px}
-.trade-landing-photo figcaption a{color:inherit;text-decoration:none}
-.trade-landing-photo figcaption a:hover,.trade-landing-photo figcaption a:focus-visible{text-decoration:underline;text-underline-offset:3px}
 .trade-landing-process{margin:0 0 36px;scroll-margin-top:18px}
 .trade-landing-process .heading{margin-bottom:17px}
 .trade-landing-process h2{font-size:clamp(25px,3vw,35px)}
