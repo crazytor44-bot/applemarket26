@@ -44,8 +44,6 @@
     Object.freeze({ model, storage: Object.freeze(storage) })));
   const money = amount => new Intl.NumberFormat("ru-RU").format(amount) + " ₽";
   const storageLabel = value => value >= 1024 ? value / 1024 + " ТБ" : value + " ГБ";
-  const roundDown = n => Math.floor(n / 500) * 500;
-  const roundUp = n => Math.ceil(n / 500) * 500;
   const validChoices = {
     condition: ["excellent", "minor", "visible", "broken"],
     battery: ["90+", "80-89", "70-79", "below70", "unknown"],
@@ -66,33 +64,31 @@
         return { ready: false, message: "Заполните все параметры телефона." };
       }
     }
+    // The owner approved prices only for sound devices with battery 90%+,
+    // no repairs and no activation locks. Never invent depreciation coefficients.
     const manualReasons = [];
-    if (input.account !== "clear") manualReasons.push("Нужно проверить, снята ли блокировка Apple ID и «Локатора».");
-    if (input.condition === "broken") manualReasons.push("Повреждения экрана или корпуса оцениваются индивидуально.");
-    if (input.working !== "fine") manualReasons.push("Неисправности требуют диагностики перед оценкой.");
-
-    const conditionFactor = { excellent: 1.04, minor: 1, visible: 0.9, broken: 0.7 };
-    const batteryFactor = { "90+": 1, "80-89": 0.95, "70-79": 0.86, below70: 0.76, unknown: 0.89 };
-    const repairFactor = { no: 1, yes: 0.9, unknown: 0.92 };
-    const factor = conditionFactor[input.condition] * batteryFactor[input.battery] * repairFactor[input.repair];
+    if (input.account !== "clear") manualReasons.push("Нужно проверить, сняты ли блокировки Apple ID и «Локатора».");
+    if (input.condition === "broken") manualReasons.push("Трещины и повреждения требуют осмотра.");
+    else if (input.condition === "visible") manualReasons.push("При заметных царапинах или сколах стоимость уточняется после осмотра.");
+    if (input.working !== "fine") manualReasons.push("Неисправности требуют диагностики.");
+    if (input.battery !== "90+") manualReasons.push("Для этого состояния аккумулятора стоимость уточняется индивидуально.");
+    if (input.repair !== "no") manualReasons.push("После ремонта или при неизвестной истории нужна дополнительная проверка.");
     const grade = manualReasons.length
-      ? "Требуется проверка"
-      : factor >= 0.98 ? "Отличное состояние"
-      : factor >= 0.84 ? "Хорошее состояние" : "Нужна дополнительная оценка";
+      ? "Нужна индивидуальная оценка"
+      : input.condition === "excellent" ? "Отличное состояние" : "Хорошее состояние";
     const itemKey = input.model + "|" + memory;
     const base = configuredPrices && typeof configuredPrices === "object" ? configuredPrices[itemKey] : undefined;
     const baseValid = base && Number.isSafeInteger(base.low) && Number.isSafeInteger(base.high) &&
       base.low >= 1000 && base.high >= base.low && base.high <= 1000000;
     let range = null;
     if (baseValid && !manualReasons.length) {
-      const low = roundDown(base.low * factor);
-      const high = Math.max(low, roundUp(base.high * factor));
-      if (low > 0) range = { low, high, text: money(low) + " — " + money(high) };
+      const low = base.low;
+      const high = base.high;
+      range = { low, high, text: low === high ? "≈ " + money(low) : money(low) + " — " + money(high) };
     }
     return {
       ready: true, model: input.model, memory, grade, range, manual: manualReasons.length > 0,
-      reasons: manualReasons, factor: Math.round(factor * 100) / 100,
-      noPrices: !baseValid
+      reasons: manualReasons, noPrices: !baseValid
     };
   }
   return { models, money, storageLabel, evaluate };
