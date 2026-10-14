@@ -1,5 +1,5 @@
-/* А Маркет: pure calculations for preliminary iPhone buyback estimates.
-   Price ranges are NEVER guessed: they only come from merchant-approved bases. */
+/* А Маркет: preliminary buyback estimates anchored to owner-approved prices and
+   documented model/storage, battery, repair and appearance adjustments. */
 (function (root, factory) {
   const api = factory();
   if (typeof module === "object" && module.exports) module.exports = api;
