@@ -229,6 +229,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("check", help="Проверить подключение бота (без публикации)")
+    sub.add_parser("check-pin", help="Проверить права на публикацию и закрепление")
     sub.add_parser("brand", help="Переименовать канал и обновить описание")
     sub.add_parser("avatar", help="Поставить фирменный логотип AM в аватар канала")
     pub = sub.add_parser("post", help="Опубликовать одобренный пост")
@@ -236,6 +237,8 @@ def main() -> None:
     args = parser.parse_args()
     if args.command == "check":
         verify(post_messages=True)
+    elif args.command == "check-pin":
+        verify(post_messages=True, pin_messages=True)
     elif args.command == "brand":
         rebrand()
     elif args.command == "avatar":
