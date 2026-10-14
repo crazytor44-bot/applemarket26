@@ -1,5 +1,5 @@
-/* А Маркет: pure calculations for preliminary iPhone buyback estimates.
-   Price ranges are NEVER guessed: they only come from merchant-approved bases. */
+/* А Маркет: preliminary buyback estimates anchored to owner-approved prices and
+   documented model/storage, battery, repair and appearance adjustments. */
 (function (root, factory) {
   const api = factory();
   if (typeof module === "object" && module.exports) module.exports = api;
@@ -116,20 +116,33 @@
     const confirmed = allowedMoney(ownerApproved);
     const base = confirmed ? ownerApproved : calculateReferencePrice(input.model, memory, config);
     const noPrices = !allowedMoney(base);
+    // Prices approved by the owner are for "like new" appearance.
+    // Light wear is ALWAYS 2,500 ₽ lower, without raising the maximum buyback offer.
     const factors = [
-      config?.conditionFactors?.[input.condition],
       config?.batteryFactors?.[input.battery],
       config?.repairFactors?.[input.repair]
     ];
     if (factors.some(n => !Number.isFinite(n) || n <= 0 || n > 1)) {
       reasons.push("Для выбранного состояния нужна индивидуальная оценка.");
     }
+    const appearance = config?.appearanceDeductions?.[input.condition];
+    const validAppearance = Number.isSafeInteger(appearance) &&
+      appearance >= 0 && appearance <= 40000 && appearance % 500 === 0;
+    if (input.condition !== "broken" && !validAppearance) {
+      reasons.push("Для внешнего состояния необходима индивидуальная оценка.");
+    }
     const manual = reasons.length > 0;
     let range = null;
     let price = null;
     if (!manual && !noPrices) {
-      // Rounded DOWN: estimated discounts cannot exceed the model's reference price.
-      price = floor500(base * factors.reduce((a, b) => a * b, 1));
+      // Keep more visible damage below light wear, including inexpensive old phones.
+      const visibleFraction = config?.visibleWearExtraFraction;
+      const visualDeduction = input.condition === "visible"
+        ? Math.max(appearance, Number.isFinite(visibleFraction) && visibleFraction >= 0 && visibleFraction <= 0.5
+          ? Math.ceil(base * visibleFraction / 500) * 500 : appearance)
+        : appearance;
+      // Round DOWN before subtracting the fixed cosmetic discount.
+      price = floor500(base * factors.reduce((a, b) => a * b, 1)) - visualDeduction;
       if (price >= 1000 && price <= base) {
         range = { low: price, high: price, text: "≈ " + money(price) };
       } else {
