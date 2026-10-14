@@ -52,8 +52,48 @@
     account: ["clear", "locked", "unknown"],
     intent: ["Выкуп", "Обмен"]
   };
+  const round500 = n => Math.round(n / 500) * 500;
+  const floor500 = n => Math.floor(n / 500 + 1e-9) * 500;
+  const allowedMoney = n => Number.isSafeInteger(n) && n >= 1000 && n <= 300000;
 
-  function evaluate(input, configuredPrices) {
+  function modelInfo(model) {
+    if (model === "iPhone Air") return { generation: 17, tier: "air" };
+    const m = /^iPhone (\d{2})(.*)$/.exec(model);
+    if (!m) return null;
+    const generation = Number(m[1]);
+    const suffix = m[2].trim();
+    const tiers = {"": "base", "mini": "mini", "Plus": "plus",
+      "Pro": "pro", "Pro Max": "promax", "e": "e"};
+    const tier = tiers[suffix];
+    return tier ? { generation, tier } : null;
+  }
+  function calculateReferencePrice(model, memory, config) {
+    const info = modelInfo(model);
+    if (!info || !config || config.schemaVersion !== 2) return null;
+    const g = String(info.generation);
+    const isPro = info.tier === "pro" || info.tier === "promax";
+    const table = isPro ? config.derivedReference256?.pro : config.derivedReference256?.base;
+    let price = table?.[g];
+    if (!allowedMoney(price)) return null;
+
+    const modifiers = config.tierAdjustments || {};
+    const modifier = info.tier === "promax" ? modifiers.promax?.[g] :
+      info.tier === "plus" ? modifiers.plus :
+      info.tier === "mini" ? modifiers.mini :
+      info.tier === "e" ? modifiers.e?.[g] :
+      info.tier === "air" ? modifiers.air : 0;
+    if (!Number.isFinite(modifier) || Math.abs(modifier) > 40000) return null;
+    price += modifier;
+
+    const points = config.memoryPoints || {};
+    const factor = config.memoryFactors?.[g];
+    if (!Number.isFinite(points[memory]) || !Number.isFinite(points["256"]) ||
+        !Number.isFinite(factor) || factor < 0 || factor > 1) return null;
+    price += (points[memory] - points["256"]) * factor;
+    const result = round500(price);
+    return allowedMoney(result) ? result : null;
+  }
+  function evaluate(input, config) {
     const item = models.find(m => m.model === input?.model);
     const memory = Number(input?.memory);
     if (!item || !item.storage.includes(memory)) {
@@ -64,32 +104,47 @@
         return { ready: false, message: "Заполните все параметры телефона." };
       }
     }
-    // The owner approved prices only for sound devices with battery 90%+,
-    // no repairs and no activation locks. Never invent depreciation coefficients.
-    const manualReasons = [];
-    if (input.account !== "clear") manualReasons.push("Нужно проверить, сняты ли блокировки Apple ID и «Локатора».");
-    if (input.condition === "broken") manualReasons.push("Трещины и повреждения требуют осмотра.");
-    else if (input.condition === "visible") manualReasons.push("При заметных царапинах или сколах стоимость уточняется после осмотра.");
-    if (input.working !== "fine") manualReasons.push("Неисправности требуют диагностики.");
-    if (input.battery !== "90+") manualReasons.push("Для этого состояния аккумулятора стоимость уточняется индивидуально.");
-    if (input.repair !== "no") manualReasons.push("После ремонта или при неизвестной истории нужна дополнительная проверка.");
-    const grade = manualReasons.length
-      ? "Нужна индивидуальная оценка"
-      : input.condition === "excellent" ? "Отличное состояние" : "Хорошее состояние";
-    const itemKey = input.model + "|" + memory;
-    const base = configuredPrices && typeof configuredPrices === "object" ? configuredPrices[itemKey] : undefined;
-    const baseValid = base && Number.isSafeInteger(base.low) && Number.isSafeInteger(base.high) &&
-      base.low >= 1000 && base.high >= base.low && base.high <= 1000000;
-    let range = null;
-    if (baseValid && !manualReasons.length) {
-      const low = base.low;
-      const high = base.high;
-      range = { low, high, text: low === high ? "≈ " + money(low) : money(low) + " — " + money(high) };
+    const reasons = [];
+    if (input.account !== "clear") reasons.push("Блокировку Apple ID и «Локатора» нужно проверить лично.");
+    if (input.condition === "broken") reasons.push("Повреждения и трещины требуют индивидуальной диагностики.");
+    if (input.working !== "fine") reasons.push("Неисправности требуют диагностики.");
+    if (input.battery === "unknown") reasons.push("Необходимо уточнить состояние аккумулятора.");
+    if (input.repair === "unknown") reasons.push("Необходимо уточнить историю ремонтов.");
+
+    const key = input.model + "|" + memory;
+    const ownerApproved = config?.schemaVersion === 2 ? config.approvedBases?.[key] : null;
+    const confirmed = allowedMoney(ownerApproved);
+    const base = confirmed ? ownerApproved : calculateReferencePrice(input.model, memory, config);
+    const noPrices = !allowedMoney(base);
+    const factors = [
+      config?.conditionFactors?.[input.condition],
+      config?.batteryFactors?.[input.battery],
+      config?.repairFactors?.[input.repair]
+    ];
+    if (factors.some(n => !Number.isFinite(n) || n <= 0 || n > 1)) {
+      reasons.push("Для выбранного состояния нужна индивидуальная оценка.");
     }
+    const manual = reasons.length > 0;
+    let range = null;
+    let price = null;
+    if (!manual && !noPrices) {
+      // Rounded DOWN: estimated discounts cannot exceed the model's reference price.
+      price = floor500(base * factors.reduce((a, b) => a * b, 1));
+      if (price >= 1000 && price <= base) {
+        range = { low: price, high: price, text: "≈ " + money(price) };
+      } else {
+        price = null;
+      }
+    }
+    const grade = manual ? "Нужна индивидуальная оценка" :
+      input.condition === "excellent" ? "Отличное состояние" : "Предварительная оценка";
     return {
-      ready: true, model: input.model, memory, grade, range, manual: manualReasons.length > 0,
-      reasons: manualReasons, noPrices: !baseValid
+      ready: true, model: input.model, memory, grade, range,
+      basePrice: noPrices ? null : base,
+      price, source: confirmed ? "approved" : noPrices ? "none" : "calculated",
+      manual, reasons, noPrices,
+      discountAmount: price === null || noPrices ? null : base - price
     };
   }
-  return { models, money, storageLabel, evaluate };
+  return { models, money, storageLabel, evaluate, modelInfo, calculateReferencePrice };
 });
