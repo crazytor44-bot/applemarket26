@@ -1,0 +1,5 @@
+{
+  "schemaVersion": 1,
+  "description": "Merchant-approved baseline buyback ranges for working, lightly worn iPhones with 90%+ battery and no repairs. Values in RUB. Empty until store owner validates the prices. Keys: iPhone MODEL|STORAGE_GB; e.g. iPhone 15 Pro|256. This file is public.",
+  "bases": {}
+}
