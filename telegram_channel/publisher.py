@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Manage @applemarket26 using a dedicated Telegram bot (no personal account session)."""
 import argparse
+import io
 import json
 import os
 from pathlib import Path
@@ -50,7 +51,7 @@ def telegram(method: str, payload: dict | None = None) -> object:
     return result["result"]
 
 
-def verify(*, change_info: bool = False, post_messages: bool = False) -> None:
+def verify(*, change_info: bool = False, post_messages: bool = False, pin_messages: bool = False) -> None:
     chat = telegram("getChat", {"chat_id": CHAT})
     if chat.get("type") != "channel":
         raise RuntimeError("Указанный Telegram ID не является каналом")
@@ -60,6 +61,8 @@ def verify(*, change_info: bool = False, post_messages: bool = False) -> None:
         raise RuntimeError("Добавьте бота администратором канала @applemarket26")
     if post_messages and not membership.get("can_post_messages", False):
         raise RuntimeError("Боту не выданы права «Публиковать сообщения»")
+    if pin_messages and not membership.get("can_edit_messages", False):
+        raise RuntimeError("Для закрепления сообщений предоставьте боту право «Редактировать сообщения» в канале")
     if change_info and not membership.get("can_change_info", False):
         raise RuntimeError("Боту не выданы права «Изменять информацию канала»")
     print(f"Канал: {chat.get('title')} ({CHAT}); бот: @{me.get('username')}; доступ подтвержден")
@@ -114,10 +117,64 @@ def set_channel_avatar() -> None:
     print("Аватарка канала обновлена: оригинальный логотип AM из favicon-256.png.")
 
 
+def send_storefront_photo(caption: str, *, parse_mode: str) -> dict:
+    """Convert our verified storefront WEBP to JPEG and send it as a Telegram photo."""
+    from PIL import Image
+
+    image_path = Path("assets/amarket-storefront.webp")
+    if not image_path.is_file():
+        raise RuntimeError("Не найдена фотография магазина assets/amarket-storefront.webp")
+    with Image.open(image_path) as im:
+        if im.format != "WEBP":
+            raise RuntimeError("Фотография магазина имеет неожиданный формат")
+        im = im.convert("RGB")
+        im.thumbnail((1600, 1600))
+        buf = io.BytesIO()
+        im.save(buf, "JPEG", quality=91, optimize=True)
+        jpeg = buf.getvalue()
+
+    token = os.environ.get("AMARKET_TELEGRAM_BOT_TOKEN", "").strip()
+    boundary = "amarket-approved-storefront-photo"
+    parts = bytearray()
+
+    def field(name: str, value: str) -> None:
+        parts.extend(f"--{boundary}\r\nContent-Disposition: form-data; name=\"{name}\"\r\n\r\n{value}\r\n".encode("utf-8"))
+
+    field("chat_id", CHAT)
+    field("caption", caption)
+    if parse_mode == "HTML":
+        field("parse_mode", "HTML")
+    parts.extend(
+        f"--{boundary}\r\nContent-Disposition: form-data; name=\"photo\"; filename=\"amarket-storefront.jpg\"\r\nContent-Type: image/jpeg\r\n\r\n".encode("utf-8")
+    )
+    parts.extend(jpeg)
+    parts.extend(f"\r\n--{boundary}--\r\n".encode("utf-8"))
+    request = Request(
+        f"https://api.telegram.org/bot{token}/sendPhoto",
+        data=bytes(parts),
+        headers={"Content-Type": f"multipart/form-data; boundary={boundary}"},
+        method="POST",
+    )
+    try:
+        with urlopen(request, timeout=45) as response:
+            response_data = json.load(response)
+    except HTTPError as exc:
+        try:
+            message = json.load(exc).get("description", "Ошибка отправки фотографии")
+        except (ValueError, OSError):
+            message = "Ошибка отправки фотографии"
+        # Never log the URL: it includes the bot token.
+        raise RuntimeError(f"sendPhoto: {message}") from None
+    except URLError as exc:
+        raise RuntimeError(f"sendPhoto: Telegram недоступен ({exc.reason})") from None
+    if not response_data.get("ok"):
+        raise RuntimeError(f"sendPhoto: {response_data.get('description', 'Ошибка Telegram API')}")
+    return response_data["result"]
+
+
 def publish(path: str) -> None:
     if not path.startswith("telegram_channel/approved/") or not path.endswith(".json"):
         raise RuntimeError("Разрешены только файлы telegram_channel/approved/*.json")
-    verify(post_messages=True)
     post = json.loads(Path(path).read_text(encoding="utf-8"))
     body = post.get("text")
     if not isinstance(body, str) or not body.strip():
@@ -125,15 +182,31 @@ def publish(path: str) -> None:
     if post.get("parse_mode", "HTML") not in {"HTML", "plain"}:
         raise RuntimeError("Допустимые parse_mode: HTML или plain")
     parse_mode = post.get("parse_mode", "HTML")
+    pin = post.get("pin", False)
+    replace_pins = post.get("replace_pins", False)
+    if not isinstance(pin, bool) or not isinstance(replace_pins, bool):
+        raise RuntimeError("pin и replace_pins должны быть true или false")
+    if replace_pins and not pin:
+        raise RuntimeError("replace_pins требует pin=true")
+    verify(post_messages=True, pin_messages=pin)
     common = {"chat_id": CHAT}
     if parse_mode == "HTML":
         common["parse_mode"] = "HTML"
+    photo_path = post.get("photo_repository_path")
     photo = post.get("photo_url")
-    if photo:
+    if photo and photo_path:
+        raise RuntimeError("Укажите только один источник фотографии")
+    if photo_path:
+        if photo_path != "assets/amarket-storefront.webp":
+            raise RuntimeError("Разрешена только проверенная фотография магазина")
+        if len(body) > 1024:
+            raise RuntimeError("Текст для фото должен быть не длиннее 1024 символов")
+        result = send_storefront_photo(body, parse_mode=parse_mode)
+    elif photo:
         if not isinstance(photo, str) or not photo.startswith("https://"):
             raise RuntimeError("photo_url должен быть публичной ссылкой https://")
         if len(body) > 1024:
-            raise RuntimeError("Для поста с фотографией текст должен быть не длиннее 1024 символов")
+            raise RuntimeError("Текст для фото должен быть не длиннее 1024 символов")
         result = telegram("sendPhoto", {**common, "photo": photo, "caption": body})
     else:
         if len(body) > 4096:
@@ -142,13 +215,21 @@ def publish(path: str) -> None:
             "sendMessage",
             {**common, "text": body, "link_preview_options": {"is_disabled": True}},
         )
-    print(f"Опубликовано: https://t.me/applemarket26/{result['message_id']}")
+    message_id = result["message_id"]
+    print(f"Опубликовано: https://t.me/applemarket26/{message_id}")
+    if pin:
+        if replace_pins:
+            telegram("unpinAllChatMessages", {"chat_id": CHAT})
+            print("Предыдущие закрепления сняты; старые сообщения сохранены.")
+        telegram("pinChatMessage", {"chat_id": CHAT, "message_id": message_id, "disable_notification": True})
+        print(f"Закреплено: https://t.me/applemarket26/{message_id}")
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("check", help="Проверить подключение бота (без публикации)")
+    sub.add_parser("check-pin", help="Проверить права на публикацию и закрепление")
     sub.add_parser("brand", help="Переименовать канал и обновить описание")
     sub.add_parser("avatar", help="Поставить фирменный логотип AM в аватар канала")
     pub = sub.add_parser("post", help="Опубликовать одобренный пост")
@@ -156,6 +237,8 @@ def main() -> None:
     args = parser.parse_args()
     if args.command == "check":
         verify(post_messages=True)
+    elif args.command == "check-pin":
+        verify(post_messages=True, pin_messages=True)
     elif args.command == "brand":
         rebrand()
     elif args.command == "avatar":
