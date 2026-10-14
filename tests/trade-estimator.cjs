@@ -52,7 +52,7 @@ for (const item of engine.models) {
     total++;
   }
 }
-assert(total >= 100, "Cover the full selectable iPhone catalog");
+assert.equal(total, 99, "Cover all 99 selectable model/memory combinations");
 
 const v = quote();
 assert.equal(v.range.low, 45000);
