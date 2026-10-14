@@ -1,5 +1,26 @@
 {
   "schemaVersion": 1,
-  "description": "Merchant-approved baseline buyback ranges for working, lightly worn iPhones with 90%+ battery and no repairs. Values in RUB. Empty until store owner validates the prices. Keys: iPhone MODEL|STORAGE_GB; e.g. iPhone 15 Pro|256. This file is public.",
-  "bases": {}
+  "description": "Предварительные ориентиры выкупа, указанные владельцем «А Маркет» для исправных iPhone в хорошем состоянии, АКБ 90%+, без ремонтов и блокировок. Суммы в рублях. Цена не является офертой и подтверждается после осмотра.",
+  "bases": {
+    "iPhone 13|128": {
+      "low": 20000,
+      "high": 20000
+    },
+    "iPhone 14 Pro|256": {
+      "low": 30000,
+      "high": 30000
+    },
+    "iPhone 15 Pro|256": {
+      "low": 45000,
+      "high": 45000
+    },
+    "iPhone 16 Pro|256": {
+      "low": 55000,
+      "high": 55000
+    },
+    "iPhone 17 Pro|256": {
+      "low": 75000,
+      "high": 75000
+    }
+  }
 }
