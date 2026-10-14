@@ -113,5 +113,27 @@ assert(ui.includes("quote.range.text") && ui.includes('out.reset.addEventListene
 assert(ui.includes('out.cta.addEventListener') && ui.includes('scrollIntoView'));
 assert(!ui.includes('method: "POST"') && !ui.includes("localStorage"),
   "Appraisal does not store customer data");
+// Conversion landing must preserve the existing calculator, lead form and optional WhatsApp.
+const landingCss = read("assets/trade-landing.css");
+for (const phrase of [
+  'class="trade-landing-hero"', 'id="trade-landing-title"',
+  'href="#am-trade-estimator"', 'id="how-buyback-works"',
+  'id="trade-process-title"', 'class="trade-landing-photo"',
+  'id="am-trade-estimator"', 'id="trade-form"',
+  'class="trade-landing-steps"', 'Выкуп iPhone в Ставрополе'
+]) assert(html.includes(phrase), "Missing trade-in landing component: " + phrase);
+assert(html.indexOf('class="trade-landing-hero"') < html.indexOf('id="am-trade-estimator"'));
+assert(html.indexOf('id="am-trade-estimator"') < html.indexOf('id="how-buyback-works"'));
+assert(html.indexOf('id="how-buyback-works"') < html.indexOf('id="trade-form"'));
+assert(html.includes('https://www.apple.com/newsroom/images/2023/09/'),
+  "Hero uses a real manufacturer product photo, not a generated illustration");
+assert(html.includes("this.onerror=null") &&
+       html.includes("/assets/models/iphone-16-pro.png"),
+       "Apple photo failure must fall back to an existing store product image");
+assert(!html.includes('class="info-image"'), "Do not duplicate photographs below calculator");
+assert(landingCss.includes("@media(max-width:700px)") &&
+       landingCss.includes(".trade-landing-hero"),
+       "Trade landing should be responsive and scoped");
+
 console.log("PASS: " + total + " model/storage combinations, 5 anchors, adjustment rules, "
   + "manual review exceptions, optional WhatsApp form");
