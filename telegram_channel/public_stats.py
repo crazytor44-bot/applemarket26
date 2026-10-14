@@ -91,7 +91,7 @@ def parse_public_posts(page: str) -> list[dict]:
             # Public Telegram preview currently uses .tgme_reaction.
             # Examples rendered as emoji + count, e.g. '🤔1' or '👍 2'.
             raw = badge.get_text(" ", strip=True)
-            match = re.search(r"([\\d.,]+\\s*[KkMm]?)\\s*$", raw)
+            match = re.search(r"([\d.,]+\s*[KkMm]?)\s*$", raw)
             if not match:
                 continue
             amount = count_number(match.group(1))
