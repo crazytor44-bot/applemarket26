@@ -11,10 +11,12 @@ on:
         options:
           - check
           - brand
+          - avatar
   push:
     branches: [main]
     paths:
       - 'telegram_channel/approved/*.json'
+      - 'telegram_channel/avatar-setup.request'
       - '.github/workflows/telegram-channel-content.yml'
 
 permissions:
@@ -52,6 +54,24 @@ jobs:
       - name: Change channel name and description
         if: github.event_name == 'workflow_dispatch' && inputs.operation == 'brand'
         run: python3 telegram_channel/publisher.py brand
+
+      - name: Change channel avatar manually
+        if: github.event_name == 'workflow_dispatch' && inputs.operation == 'avatar'
+        run: python3 telegram_channel/publisher.py avatar
+
+      - name: Set AMarket avatar on initial avatar request
+        if: github.event_name == 'push'
+        env:
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+        shell: bash
+        run: |
+          if git diff --name-only --diff-filter=A "$BEFORE" "$AFTER" -- 'telegram_channel/avatar-setup.request' | grep -Fxq 'telegram_channel/avatar-setup.request'; then
+            echo "Setting the AMarket logo as the Telegram channel avatar..."
+            python3 telegram_channel/publisher.py avatar
+          else
+            echo "No new avatar request."
+          fi
 
       - name: First-time channel setup (only when workflow file is newly added)
         if: github.event_name == 'push'

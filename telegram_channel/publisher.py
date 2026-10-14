@@ -72,6 +72,48 @@ def rebrand() -> None:
     print("Название и описание канала обновлены; username и подписчики сохранены.")
 
 
+
+def set_channel_avatar() -> None:
+    """Upload the existing AMarket logo from the site as channel avatar."""
+    verify(change_info=True)
+    filename = Path("favicon-256.png")
+    photo = filename.read_bytes()
+    if not photo.startswith(b"\x89PNG\r\n\x1a\n"):
+        raise RuntimeError("Не найден ожидаемый PNG логотип favicon-256.png")
+    if len(photo) > 10_000_000:
+        raise RuntimeError("Логотип слишком большой")
+    token = os.environ.get("AMARKET_TELEGRAM_BOT_TOKEN", "").strip()
+    boundary = "amarket-telegram-avatar-upload"
+    body = (
+        f"--{boundary}\r\n"
+        'Content-Disposition: form-data; name="chat_id"\r\n\r\n'
+        f"{CHAT}\r\n"
+        f"--{boundary}\r\n"
+        'Content-Disposition: form-data; name="photo"; filename="amarket-logo.png"\r\n'
+        "Content-Type: image/png\r\n\r\n"
+    ).encode("utf-8") + photo + f"\r\n--{boundary}--\r\n".encode("utf-8")
+    request = Request(
+        f"https://api.telegram.org/bot{token}/setChatPhoto",
+        data=body,
+        headers={"Content-Type": f"multipart/form-data; boundary={boundary}"},
+        method="POST",
+    )
+    try:
+        with urlopen(request, timeout=35) as response:
+            result = json.load(response)
+    except HTTPError as exc:
+        try:
+            message = json.load(exc).get("description", "Ошибка Telegram API")
+        except (ValueError, OSError):
+            message = "Ошибка Telegram API"
+        raise RuntimeError(f"setChatPhoto: {message}") from None
+    except URLError as exc:
+        raise RuntimeError(f"setChatPhoto: Telegram недоступен ({exc.reason})") from None
+    if not result.get("ok"):
+        raise RuntimeError(f"setChatPhoto: {result.get('description', 'Ошибка Telegram API')}")
+    print("Аватарка канала обновлена: оригинальный логотип AM из favicon-256.png.")
+
+
 def publish(path: str) -> None:
     if not path.startswith("telegram_channel/approved/") or not path.endswith(".json"):
         raise RuntimeError("Разрешены только файлы telegram_channel/approved/*.json")
@@ -108,6 +150,7 @@ def main() -> None:
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("check", help="Проверить подключение бота (без публикации)")
     sub.add_parser("brand", help="Переименовать канал и обновить описание")
+    sub.add_parser("avatar", help="Поставить фирменный логотип AM в аватар канала")
     pub = sub.add_parser("post", help="Опубликовать одобренный пост")
     pub.add_argument("path")
     args = parser.parse_args()
@@ -115,6 +158,8 @@ def main() -> None:
         verify(post_messages=True)
     elif args.command == "brand":
         rebrand()
+    elif args.command == "avatar":
+        set_channel_avatar()
     elif args.command == "post":
         publish(args.path)
 
