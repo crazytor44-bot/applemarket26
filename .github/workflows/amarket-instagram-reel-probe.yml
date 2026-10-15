@@ -1,4 +1,4 @@
-name: A Market inspect owner's Instagram reel
+name: A Market stage owner's original Instagram reel
 on:
   push:
     paths:
@@ -6,27 +6,29 @@ on:
 permissions:
   contents: read
 jobs:
-  inspect:
+  download:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 8
     steps:
-      - name: Try to retrieve user's publicly shared original reel (do not publish)
+      - name: Get ffmpeg and yt-dlp
         shell: bash
         run: |
           set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -qq -y ffmpeg >/dev/null
           python3 -m pip install -q yt-dlp
-          set +e
-          yt-dlp --no-playlist --no-warnings --retries 1 --socket-timeout 12 --extractor-retries 1 --format 'bv*+ba/best' --merge-output-format mp4 --output '/tmp/amarket_15_pro.%(ext)s' 'https://www.instagram.com/reel/DY-WN_Ktb8e/'
-          rc=$?
-          set -e
-          echo "YT_DLP_EXIT_CODE=$rc"
-          if test "$rc" -eq 0; then
-            echo 'VIDEO_METADATA:'
-            for f in /tmp/amarket_15_pro.*; do
-              file "$f"
-              du -h "$f"
-              ffprobe -v error -show_entries format=duration,size -of default=noprint_wrappers=1 "$f" || true
-            done
-          else
-            echo 'DOWNLOAD_FAILED: original owner video was not obtainable through public Instagram access'
-          fi
+      - name: Download and check owner's original video (NO publication)
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/amarket-video
+          yt-dlp --no-playlist --no-warnings --retries 2 --socket-timeout 20 --format 'bv*+ba/best' --merge-output-format mp4 --output '/tmp/amarket-video/iphone-15-pro-marketplace.%(ext)s' 'https://www.instagram.com/reel/DY-WN_Ktb8e/'
+          test -s /tmp/amarket-video/iphone-15-pro-marketplace.mp4
+          ffprobe -v error -show_entries format=duration,size -show_entries stream=codec_type,codec_name -of json /tmp/amarket-video/iphone-15-pro-marketplace.mp4
+          sha256sum /tmp/amarket-video/iphone-15-pro-marketplace.mp4
+      - name: Store original video for owner (nothing sent to Telegram)
+        uses: actions/upload-artifact@v4
+        with:
+          name: amarket-instagram-iphone15pro-original
+          path: /tmp/amarket-video/iphone-15-pro-marketplace.mp4
+          retention-days: 14
