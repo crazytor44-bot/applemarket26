@@ -30,9 +30,9 @@ def main():
             or post.get("photo_git_blob_sha") != PHOTO_BLOB_SHA):
         raise RuntimeError("Approved caption/photo metadata validation failed.")
     photo = PHOTO_PATH.read_bytes()
-    if not (20000 < len(photo) < 10000000) or not photo.startswith(b"\\xff\\xd8"):
+    if not (20000 < len(photo) < 10000000) or not photo.startswith(b"\xff\xd8"):
         raise RuntimeError("Approved photo is missing or not JPEG.")
-    blob = b"blob " + str(len(photo)).encode("ascii") + b"\\0" + photo
+    blob = b"blob " + str(len(photo)).encode("ascii") + b"\0" + photo
     if hashlib.sha1(blob).hexdigest() != PHOTO_BLOB_SHA:
         raise RuntimeError("Approved photo hash mismatch; NOT sending.")
 
@@ -54,10 +54,10 @@ def main():
     boundary = "amarket-tradein-" + secrets.token_hex(12)
     body = bytearray()
     for field_name, field_value in (("chat_id", CHAT), ("caption", caption)):
-        body.extend((f'--{boundary}\\r\\nContent-Disposition: form-data; name="{field_name}"\\r\\n\\r\\n{field_value}\\r\\n').encode("utf-8"))
-    body.extend((f'--{boundary}\\r\\nContent-Disposition: form-data; name="photo"; filename="tradein-2026-10-16.jpg"\\r\\nContent-Type: image/jpeg\\r\\n\\r\\n').encode("utf-8"))
+        body.extend((f'--{boundary}\r\nContent-Disposition: form-data; name="{field_name}"\r\n\r\n{field_value}\r\n').encode("utf-8"))
+    body.extend((f'--{boundary}\r\nContent-Disposition: form-data; name="photo"; filename="tradein-2026-10-16.jpg"\r\nContent-Type: image/jpeg\r\n\r\n').encode("utf-8"))
     body.extend(photo)
-    body.extend(f'\\r\\n--{boundary}--\\r\\n'.encode("utf-8"))
+    body.extend(f'\r\n--{boundary}--\r\n'.encode("utf-8"))
     request = Request(f"https://api.telegram.org/bot{token}/sendPhoto",
                       data=bytes(body), headers={"Content-Type": f"multipart/form-data; boundary={boundary}"}, method="POST")
     try:
