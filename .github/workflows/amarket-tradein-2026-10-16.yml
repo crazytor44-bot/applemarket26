@@ -1,5 +1,11 @@
 name: A Market Trade-in post 2026-10-16
 on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/amarket-tradein-2026-10-16.yml'
+      - 'telegram_channel/tradein_publisher.py'
+      - 'telegram_channel/tradein_approved/2026-10-16.json'
   schedule:
     - cron: '0 6 16 10 *'
   workflow_dispatch:
@@ -12,8 +18,29 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  media-preflight:
+    if: github.event_name != 'schedule'
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify script and exact approved picture without posting
+        shell: bash
+        run: |
+          python3 -m py_compile telegram_channel/tradein_publisher.py
+          python3 - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          post = json.loads(Path('telegram_channel/tradein_approved/2026-10-16.json').read_text(encoding='utf-8'))
+          pic = Path(post['photo_repository_path']).read_bytes()
+          sha = hashlib.sha1(b'blob '+str(len(pic)).encode()+b'\0'+pic).hexdigest()
+          assert sha == 'bdab92a92c625c37a465be914bb1e9dfb6030e55'
+          assert pic[:2] == bytes([255, 216])
+          assert len(post['text']) < 1024
+          print('Preflight passed. No Telegram messages sent.')
+          PY
   approved-tradein:
-    if: github.run_attempt == 1
+    if: github.event_name == 'schedule' && github.run_attempt == 1
     runs-on: ubuntu-latest
     timeout-minutes: 7
     env:
