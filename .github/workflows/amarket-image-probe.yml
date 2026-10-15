@@ -1,0 +1,24 @@
+name: A Market Approved Image Probe
+on:
+  push:
+    paths:
+      - '.github/workflows/amarket-image-probe.yml'
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Probe approved image transfer only (no Telegram publishing)
+        env:
+          IMAGE_URL: https://at.adobe.com/LaMd3zM7XTPZ8TI2
+        shell: bash
+        run: |
+          set +e
+          curl --silent --show-error --location --max-time 35 --output /tmp/amarket-approved.png --write-out 'http_status=%{http_code} content_type=%{content_type} bytes=%{size_download}\n' "$IMAGE_URL"
+          file /tmp/amarket-approved.png
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('/tmp/amarket-approved.png')
+          print('PNG_SIGNATURE_OK:',p.read_bytes().startswith(b'\x89PNG\r\n\x1a\n') if p.exists() else False)
+          PY
