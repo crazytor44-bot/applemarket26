@@ -1,0 +1,27 @@
+name: A Market Trade-in post 2026-10-16
+on:
+  schedule:
+    - cron: '0 6 16 10 *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: amarket-tradein-2026-10-16-once
+  cancel-in-progress: false
+
+jobs:
+  approved-tradein:
+    if: github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    env:
+      AMARKET_TELEGRAM_BOT_TOKEN: ${{ secrets.AMARKET_TELEGRAM_BOT_TOKEN }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Validate one-time publication code
+        run: python3 -m py_compile telegram_channel/tradein_publisher.py
+      - name: Post owner's approved Trade-in photo and caption once
+        run: python3 telegram_channel/tradein_publisher.py
