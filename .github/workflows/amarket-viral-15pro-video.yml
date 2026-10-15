@@ -5,6 +5,8 @@ on:
     branches: [main]
     paths:
       - 'telegram_channel/video_approved/*.json'
+      - '.github/workflows/amarket-viral-15pro-video.yml'
+      - 'telegram_channel/video_publisher.py'
 
 permissions:
   contents: read
