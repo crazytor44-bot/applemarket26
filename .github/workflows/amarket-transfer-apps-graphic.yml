@@ -1,0 +1,29 @@
+name: AMarket transfer approved apps graphic
+on:
+  push:
+    paths:
+      - '.github/workflows/amarket-transfer-apps-graphic.yml'
+permissions:
+  contents: write
+jobs:
+  transfer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Save previously chosen A Market apps promo image (no Telegram post)
+        env:
+          IMAGE_URL: https://at.adobe.com/DOSV3JhYjufyQW8g
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p assets
+          curl --fail --silent --show-error --location --max-time 45 "$IMAGE_URL" --output assets/telegram-apps-transfer-approved.png
+          echo '07682241690aad5853ac2864d672bb1e748f31c71cc3071cdb0af7928340caee  assets/telegram-apps-transfer-approved.png' | sha256sum --check
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- assets/telegram-apps-transfer-approved.png
+          git commit -m 'Add A Market apps promo image for approved 15:00 Telegram post'
+          git pull --rebase origin main
+          git push origin HEAD:main
