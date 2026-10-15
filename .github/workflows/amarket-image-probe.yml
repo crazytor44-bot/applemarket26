@@ -1,24 +1,29 @@
-name: A Market Approved Image Probe
+name: A Market Approved Image Transfer
 on:
   push:
     paths:
       - '.github/workflows/amarket-image-probe.yml'
 permissions:
-  contents: read
+  contents: write
 jobs:
-  probe:
+  transfer:
     runs-on: ubuntu-latest
     steps:
-      - name: Probe approved image transfer only (no Telegram publishing)
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Save exact owner-approved AI post image to repository (no Telegram post)
         env:
           IMAGE_URL: https://at.adobe.com/LaMd3zM7XTPZ8TI2
         shell: bash
         run: |
-          set +e
-          curl --silent --show-error --location --max-time 35 --output /tmp/amarket-approved.png --write-out 'http_status=%{http_code} content_type=%{content_type} bytes=%{size_download}\n' "$IMAGE_URL"
-          file /tmp/amarket-approved.png
-          python3 - <<'PY'
-          from pathlib import Path
-          p=Path('/tmp/amarket-approved.png')
-          print('PNG_SIGNATURE_OK:',p.read_bytes().startswith(b'\x89PNG\r\n\x1a\n') if p.exists() else False)
-          PY
+          set -euo pipefail
+          mkdir -p assets
+          curl --fail --silent --show-error --location --max-time 45 "$IMAGE_URL" --output assets/telegram-ai-assistant-approved.png
+          echo '7a578dff2e30272a71011cd95bd4fb8e02c0f27815948542d2d69fa0331685e8  assets/telegram-ai-assistant-approved.png' | sha256sum --check
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- assets/telegram-ai-assistant-approved.png
+          git commit -m 'Add exact approved AI-assistant Telegram image'
+          git pull --rebase origin main
+          git push origin HEAD:main
