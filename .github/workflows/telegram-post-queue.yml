@@ -5,11 +5,13 @@ on:
     paths:
       - 'telegram_channel/post_queue/*.json'
       - 'telegram_channel/post_queue.py'
+      - 'telegram_channel/tests/test_post_queue.py'
       - '.github/workflows/telegram-post-queue.yml'
   schedule:
     # UTC; posts are released no earlier than their Europe/Moscow publish_at.
     # Recheck every 10 minutes during Moscow retail hours.
-    - cron: '3,13,23,33,43,53 5-17 * * *'
+    - cron: '0 6,12,17 * * *'  # 09:00, 15:00, 20:00 Moscow
+    - cron: '3,13,23,33,43,53 5-17 * * *'  # Fallback catch-up
   workflow_dispatch:
 
 permissions:
