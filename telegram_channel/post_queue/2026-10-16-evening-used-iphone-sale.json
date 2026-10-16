@@ -7,5 +7,6 @@
   "parse_mode": "plain",
   "pin": false,
   "photo_repository_path": "telegram_channel/media/iphone17-pro-max-512-orange-2026-10-16.jpg",
-  "photo_git_blob_sha": "eb153945f66865c5ce7e587af39404f5de6a599d"
+  "photo_git_blob_sha": "eb153945f66865c5ce7e587af39404f5de6a599d",
+  "manual_trigger_reason": "owner_requested_now_2026-10-16_18-50_moscow"
 }
