@@ -6,5 +6,6 @@
   "parse_mode": "plain",
   "pin": false,
   "photo_repository_path": "telegram_channel/media/iphone-used-5-checks-2026-10-16.jpg",
-  "photo_git_blob_sha": "0a51e98d4139c2869cc7d14a2a35c9586648f9b9"
+  "photo_git_blob_sha": "0a51e98d4139c2869cc7d14a2a35c9586648f9b9",
+  "manual_trigger_reason": "Владелец явно попросил запустить уже утверждённый пост после задержки GitHub Actions 16.10.2026 в 15:25 МСК; текст, время, фото без изменений."
 }
