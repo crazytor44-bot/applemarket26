@@ -82,6 +82,41 @@ class PostQueueTests(unittest.TestCase):
         with patch.object(app, "github", side_effect=[FileExistsError(), {"sha":"claimed"}]):
             self.assertIsNone(app.claim(self.path, self.post))
 
+    def test_text_post_without_image(self):
+        self.post.pop("photo_repository_path")
+        self.post.pop("photo_git_blob_sha")
+        self.post["kind"] = "text"
+        self.save()
+        post, due, media, mime = app.validate(self.path)
+        self.assertEqual(mime, "text")
+        self.assertEqual(media, b"")
+
+    def test_poll_requires_options(self):
+        self.post.pop("photo_repository_path")
+        self.post.pop("photo_git_blob_sha")
+        self.post["kind"] = "poll"
+        self.post["text"] = "Как часто чистишь фото?"
+        self.post["options"] = ["Раз в неделю", "Никогда", "Когда память кончается"]
+        self.save()
+        post, due, media, mime = app.validate(self.path)
+        self.assertEqual(mime, "poll")
+        self.post["options"] = ["Повтор", "Повтор"]
+        self.save()
+        with self.assertRaises(RuntimeError):
+            app.validate(self.path)
+
+    def test_text_disallows_photo_and_missing_approval(self):
+        self.post["kind"] = "text"
+        self.save()
+        with self.assertRaises(RuntimeError):
+            app.validate(self.path)
+        self.post.pop("photo_repository_path")
+        self.post.pop("photo_git_blob_sha")
+        self.post["approved"] = False
+        self.save()
+        with self.assertRaises(RuntimeError):
+            app.validate(self.path)
+
     def test_due_approved_post_sends_once(self):
         due = datetime.now(ZoneInfo("Europe/Moscow")) - timedelta(minutes=2)
         self.post["publish_at"] = due.isoformat()
