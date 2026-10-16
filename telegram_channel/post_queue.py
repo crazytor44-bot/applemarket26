@@ -33,13 +33,25 @@ def validate(path):
     post = json.loads(path.read_text(encoding="utf-8"))
     require(post.get("approved") is True and post.get("channel") == CHAT, "Нет утверждения владельца")
     require(post.get("pin") is False and post.get("parse_mode") == "plain", "Запрещено закрепление или HTML")
+    kind = post.get("kind", "photo")
+    require(kind in {"photo", "text", "poll"}, "Неизвестный формат публикации")
     caption = post.get("text")
-    require(isinstance(caption, str) and 0 < len(caption) <= 1024, "Подпись должна быть 1–1024 символа")
+    maxlen = 1024 if kind == "photo" else 300 if kind == "poll" else 4096
+    require(isinstance(caption, str) and 0 < len(caption) <= maxlen, "Некорректная длина текста")
     timestamp = post.get("publish_at")
     require(isinstance(timestamp, str), "Нет времени")
     due = datetime.fromisoformat(timestamp)
     require(due.tzinfo and due.utcoffset() == timedelta(hours=3), "Время должно содержать +03:00")
     require(due.strftime("%Y-%m-%d") == path.name[:10], "Разные даты в имени и содержимом")
+    if kind == "poll":
+        opts = post.get("options")
+        require(isinstance(opts, list) and 2 <= len(opts) <= 10
+                and all(isinstance(o, str) and 0 < len(o) <= 100 for o in opts)
+                and len(set(opts)) == len(opts), "Опрос должен иметь от 2 до 10 разных вариантов")
+    if kind in {"text", "poll"}:
+        require(not post.get("photo_repository_path") and not post.get("photo_git_blob_sha"),
+                "Текст и опрос не должны содержать вложений")
+        return post, due.astimezone(ZONE), b"", kind
     picture = post.get("photo_repository_path")
     require(isinstance(picture, str) and re.fullmatch(r"telegram_channel/media/[A-Za-z0-9_-]+\.(?:jpg|jpeg|png)", picture), "Нет подтверждённого изображения")
     raw = Path(picture).read_bytes()
@@ -116,6 +128,18 @@ def duplicate_on_public_feed(caption):
 
 
 def send(post, photo, mime):
+    if mime in ("text", "poll"):
+        # No image needed for useful tips and interactive native Telegram polls.
+        from publisher import telegram
+        if mime == "text":
+            result = telegram("sendMessage", {"chat_id": CHAT, "text": post["text"],
+                                             "link_preview_options": {"is_disabled": True}})
+        else:
+            result = telegram("sendPoll", {"chat_id": CHAT, "question": post["text"],
+                                          "options": [{"text": s} for s in post["options"]],
+                                          "is_anonymous": True,
+                                          "allows_multiple_answers": False})
+        return int(result["message_id"])
     token = os.getenv("AMARKET_TELEGRAM_BOT_TOKEN", "").strip()
     require(bool(token), "Отсутствует секрет бота")
     boundary = "amarket-post-" + secrets.token_hex(12)
