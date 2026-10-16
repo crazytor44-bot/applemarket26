@@ -43,9 +43,17 @@ for (const url of urls) {
     const data = JSON.parse(raw);
     assert.equal(data['@type'], 'BreadcrumbList');
     assert.equal(data.itemListElement.at(-1).item, url);
+    assert(html.includes('id="model-information"'), 'Missing static model info: ' + pathname);
+    assert(/<h2\b[^>]*>Купить [^<]+ в Ставрополе<\/h2>/i.test(html), 'Missing model purchase heading: ' + pathname);
+    assert(/href="\/(?:iphone|samsung)-[^/?]+\/"/.test(html), 'Missing clean related-model links: ' + pathname);
+    assert(!html.includes('Тухачевского, 16к10'), 'Inconsistent store address: ' + pathname);
   }
 }
 assert.equal(checkedModels, 15, 'Expected 15 optimized iPhone and Samsung model pages');
+const home = read('index.html');
+for (const model of ['iphone-17-pro', 'iphone-17-pro-max', 'iphone-18-pro', 'iphone-18-pro-max']) {
+  assert(home.includes('href="/' + model + '/"'), 'Missing direct model link from homepage: ' + model);
+}
 for (const pathname of ['index.html', 'contacts/index.html']) {
   const html = read(pathname);
   const schemas = Array.from(html.matchAll(/<script type="application\/ld\+json">([^<]+)<\/script>/g), m => JSON.parse(m[1]));
