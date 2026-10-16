@@ -16,6 +16,8 @@ const urls = Array.from(sitemap.matchAll(/<loc>([^<]+)<\/loc>/g), m => m[1]);
 assert(urls.length >= 24, 'Sitemap should contain all existing public pages');
 assert.equal(new Set(urls).size, urls.length, 'Sitemap cannot contain duplicate URLs');
 
+const catalog = read('catalog/index.html');
+assert(catalog.includes('id="catalog-model-links"'), 'Catalog should expose static navigation to model pages');
 const titles = new Set();
 let checkedModels = 0;
 for (const url of urls) {
@@ -44,6 +46,7 @@ for (const url of urls) {
     assert.equal(data['@type'], 'BreadcrumbList');
     assert.equal(data.itemListElement.at(-1).item, url);
     assert(html.includes('id="model-information"'), 'Missing static model info: ' + pathname);
+    assert(catalog.includes('href="' + pathname + '"'), 'Missing direct canonical model link from catalog: ' + pathname);
     assert(/<h2\b[^>]*>Купить [^<]+ в Ставрополе<\/h2>/i.test(html), 'Missing model purchase heading: ' + pathname);
     assert(/href="\/(?:iphone|samsung)-[^/?]+\/"/.test(html), 'Missing clean related-model links: ' + pathname);
     assert(!html.includes('Тухачевского, 16к10'), 'Inconsistent store address: ' + pathname);
