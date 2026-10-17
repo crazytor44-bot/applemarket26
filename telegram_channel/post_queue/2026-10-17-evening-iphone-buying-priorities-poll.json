@@ -11,5 +11,6 @@
     "💰 Выгодная цена"
   ],
   "parse_mode": "plain",
-  "pin": false
+  "pin": false,
+  "backup_trigger_date": "2026-10-17"
 }
