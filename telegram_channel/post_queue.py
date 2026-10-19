@@ -11,6 +11,7 @@ from pathlib import Path
 import re
 import secrets
 import sys
+import time
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 from zoneinfo import ZoneInfo
@@ -103,9 +104,12 @@ def claim(path, post):
         return None
 
 
-def update_receipt(path, sha, message_id):
-    info = {"status":"published", "post":str(path), "message_id":message_id,
-            "link":f"https://t.me/applemarket26/{message_id}", "published_at":datetime.now(ZONE).isoformat()}
+def update_receipt(path, sha, message_id, public_verified):
+    info = {"status":"verified_public" if public_verified else "published_unverified",
+            "post":str(path), "message_id":message_id,
+            "link":f"https://t.me/applemarket26/{message_id}",
+            "published_at":datetime.now(ZONE).isoformat(),
+            "public_verified":public_verified}
     req = {"branch":"main", "message":"Telegram post published "+str(message_id), "sha":sha,
            "content":base64.b64encode((json.dumps(info, ensure_ascii=False)+"\n").encode()).decode()}
     try:
@@ -125,6 +129,31 @@ def duplicate_on_public_feed(caption):
     except (OSError, ValueError):
         print("Public channel check unavailable; exclusive claim still guards duplicates.")
         return False
+
+
+def message_on_public_feed(message_id, caption):
+    """Confirm that the exact Telegram message is visible on the public channel page."""
+    try:
+        req = Request(f"https://t.me/s/applemarket26/{message_id}",
+                      headers={"User-Agent":"Mozilla/5.0"})
+        with urlopen(req, timeout=12) as res:
+            body = res.read(1_500_000).decode("utf-8", errors="replace")
+        marker = f'data-post="applemarket26/{message_id}"'
+        normalized = re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", body)))
+        headline = re.sub(r"\s+", " ", caption[:70]).strip()
+        return marker in body and headline in normalized
+    except (OSError, ValueError):
+        return False
+
+
+def verify_public_message(message_id, caption):
+    # Telegram's public preview can lag briefly behind a successful Bot API response.
+    for attempt in range(4):
+        if message_on_public_feed(message_id, caption):
+            return True
+        if attempt < 3:
+            time.sleep(4)
+    return False
 
 
 def send(post, photo, mime):
@@ -189,7 +218,10 @@ def main(check_only):
         message_id = send(post,photo,mime)
         url = f"https://t.me/applemarket26/{message_id}"
         print("PUBLISHED:",url,flush=True)
-        update_receipt(path,sha,message_id)
+        public_verified = verify_public_message(message_id, post["text"])
+        update_receipt(path,sha,message_id,public_verified)
+        if not public_verified:
+            raise RuntimeError("Сообщение отправлено, но не подтверждено на публичной странице: "+url)
         summary = os.getenv("GITHUB_STEP_SUMMARY")
         if summary:
             with open(summary,"a",encoding="utf-8") as output:

@@ -126,12 +126,29 @@ class PostQueueTests(unittest.TestCase):
         with patch.object(app, "verify") as verify, patch.object(app, "duplicate_on_public_feed", return_value=False), \
              patch.object(app, "claim", return_value="receiptsha") as claim, \
              patch.object(app, "send", return_value=66) as send, \
+             patch.object(app, "verify_public_message", return_value=True) as public_verify, \
              patch.object(app, "update_receipt") as receipt:
             app.main(False)
             verify.assert_called_once()
             claim.assert_called_once()
             send.assert_called_once()
-            receipt.assert_called_once_with(self.path, "receiptsha", 66)
+            public_verify.assert_called_once_with(66, self.post["text"])
+            receipt.assert_called_once_with(self.path, "receiptsha", 66, True)
+
+    def test_public_verification_failure_is_recorded_and_raised(self):
+        due = datetime.now(ZoneInfo("Europe/Moscow")) - timedelta(minutes=2)
+        self.post["publish_at"] = due.isoformat()
+        self.path.unlink()
+        self.path = Path("telegram_channel/post_queue/"+due.strftime("%Y-%m-%d")+"-verify-failure.json")
+        self.save()
+        with patch.object(app, "verify"), patch.object(app, "duplicate_on_public_feed", return_value=False), \
+             patch.object(app, "claim", return_value="receiptsha"), \
+             patch.object(app, "send", return_value=67), \
+             patch.object(app, "verify_public_message", return_value=False), \
+             patch.object(app, "update_receipt") as receipt:
+            with self.assertRaises(RuntimeError):
+                app.main(False)
+            receipt.assert_called_once_with(self.path, "receiptsha", 67, False)
 
 
 if __name__ == "__main__":
