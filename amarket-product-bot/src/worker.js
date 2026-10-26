@@ -119,13 +119,18 @@ async function sendFileToUser(request, env) {
   if (!allowedUser(env, auth.user?.id)) return json({ ok: false, error: `Нет доступа. Ваш Telegram ID: ${auth.user?.id || "не определён"}` }, 403);
   const image = dataUrlToBlob(body.imageDataUrl);
   if (!image) return json({ ok: false, error: "Не удалось подготовить изображение." }, 400);
-  const fileName = clean(body.fileName, 120).replace(/[^a-zA-Zа-яА-ЯёЁ0-9._-]+/g, "-") || "amarket-file.png";
+  const isPng = image.type === "image/png";
+  const fileName = isPng ? "amarket-price-tag.png" : "amarket-product.jpg";
   const form = new FormData();
   form.set("chat_id", String(auth.user.id));
   form.set("caption", "А Маркет · готовый файл");
   form.set("document", image, fileName);
-  await telegram(env, "sendDocument", form);
-  return json({ ok: true });
+  try {
+    await telegram(env, "sendDocument", form);
+    return json({ ok: true });
+  } catch (error) {
+    return json({ ok: false, error: `Telegram: ${clean(error?.message, 220) || "не удалось отправить файл"}` }, 502);
+  }
 }
 
 export default {
