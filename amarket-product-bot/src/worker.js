@@ -112,6 +112,22 @@ async function publishToTelegram(request, env) {
   return json({ ok: true });
 }
 
+async function sendFileToUser(request, env) {
+  const body = await request.json();
+  const auth = await verifyTelegramInitData(body.initData, env.TELEGRAM_BOT_TOKEN);
+  if (!auth.ok) return json({ ok: false, error: "Откройте приложение внутри Telegram ещё раз." }, 401);
+  if (!allowedUser(env, auth.user?.id)) return json({ ok: false, error: `Нет доступа. Ваш Telegram ID: ${auth.user?.id || "не определён"}` }, 403);
+  const image = dataUrlToBlob(body.imageDataUrl);
+  if (!image) return json({ ok: false, error: "Не удалось подготовить изображение." }, 400);
+  const fileName = clean(body.fileName, 120).replace(/[^a-zA-Zа-яА-ЯёЁ0-9._-]+/g, "-") || "amarket-file.png";
+  const form = new FormData();
+  form.set("chat_id", String(auth.user.id));
+  form.set("caption", "А Маркет · готовый файл");
+  form.set("document", image, fileName);
+  await telegram(env, "sendDocument", form);
+  return json({ ok: true });
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -121,6 +137,7 @@ export default {
     if (request.method === "GET" && url.pathname === "/health") return json({ ok: true, service: "amarket-product-bot" });
     if (request.method === "POST" && url.pathname === "/telegram/webhook") return handleWebhook(request, env);
     if (request.method === "POST" && url.pathname === "/api/publish/telegram") return publishToTelegram(request, env);
+    if (request.method === "POST" && url.pathname === "/api/send/file") return sendFileToUser(request, env);
     return new Response("Not found", { status: 404 });
   }
 };
