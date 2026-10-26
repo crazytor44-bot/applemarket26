@@ -34,13 +34,17 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          WEBHOOK_SECRET: ${{ secrets.WEBHOOK_SECRET }}
           ALLOWED_USER_IDS: ${{ secrets.ALLOWED_USER_IDS }}
-          CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
         run: |
-          for name in CLOUDFLARE_API_TOKEN CLOUDFLARE_ACCOUNT_ID TELEGRAM_BOT_TOKEN WEBHOOK_SECRET ALLOWED_USER_IDS CHANNEL_ID; do
+          for name in CLOUDFLARE_API_TOKEN CLOUDFLARE_ACCOUNT_ID TELEGRAM_BOT_TOKEN ALLOWED_USER_IDS; do
             test -n "${!name}" || { echo "::error::Missing GitHub secret: $name"; exit 1; }
           done
+
+      - name: Generate webhook secret
+        run: |
+          WEBHOOK_SECRET="$(openssl rand -hex 32)"
+          echo "::add-mask::$WEBHOOK_SECRET"
+          echo "WEBHOOK_SECRET=$WEBHOOK_SECRET" >> "$GITHUB_ENV"
 
       - name: Deploy Worker
         id: deploy
@@ -54,18 +58,16 @@ jobs:
             TELEGRAM_BOT_TOKEN
             WEBHOOK_SECRET
             ALLOWED_USER_IDS
-            CHANNEL_ID
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          WEBHOOK_SECRET: ${{ secrets.WEBHOOK_SECRET }}
+          WEBHOOK_SECRET: ${{ env.WEBHOOK_SECRET }}
           ALLOWED_USER_IDS: ${{ secrets.ALLOWED_USER_IDS }}
-          CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
 
       - name: Configure Telegram webhook and menu
         working-directory: amarket-product-bot
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          WEBHOOK_SECRET: ${{ secrets.WEBHOOK_SECRET }}
+          WEBHOOK_SECRET: ${{ env.WEBHOOK_SECRET }}
           WORKER_URL: ${{ steps.deploy.outputs.deployment-url }}
         run: |
           test -n "$WORKER_URL" || { echo "::error::Cloudflare did not return the Worker URL"; exit 1; }
