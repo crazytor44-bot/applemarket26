@@ -23,10 +23,9 @@
 npx wrangler secret put TELEGRAM_BOT_TOKEN
 npx wrangler secret put WEBHOOK_SECRET
 npx wrangler secret put ALLOWED_USER_IDS
-npx wrangler secret put CHANNEL_ID
 ```
 
-Для `CHANNEL_ID` укажите `@applemarket26`. `ALLOWED_USER_IDS` — цифровые Telegram ID владельца и продавца через запятую. Случайный человек не сможет публиковать товары.
+Канал `@applemarket26` уже указан в конфигурации. `ALLOWED_USER_IDS` — цифровые Telegram ID владельца и продавца через запятую. Случайный человек не сможет публиковать товары.
 
 5. Развернуть: `npm run deploy`.
 6. Не отправляя токен в чат, запустить локально настройку Telegram:
