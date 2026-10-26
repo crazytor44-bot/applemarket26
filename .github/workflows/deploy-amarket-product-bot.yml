@@ -1,0 +1,80 @@
+name: Deploy A Market Product Bot
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - cloudflare-bot-deploy
+    paths:
+      - "amarket-product-bot/**"
+      - ".github/workflows/deploy-amarket-product-bot.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Deploy bot to Cloudflare Workers
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout bot source
+        uses: actions/checkout@v4
+        with:
+          ref: cloudflare-bot-deploy
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: amarket-product-bot/package.json
+
+      - name: Install and test
+        working-directory: amarket-product-bot
+        run: |
+          npm install
+          npm test
+
+      - name: Check required secrets
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          ALLOWED_USER_IDS: ${{ secrets.ALLOWED_USER_IDS }}
+        run: |
+          for name in CLOUDFLARE_API_TOKEN CLOUDFLARE_ACCOUNT_ID TELEGRAM_BOT_TOKEN ALLOWED_USER_IDS; do
+            test -n "${!name}" || { echo "::error::Missing GitHub secret: $name"; exit 1; }
+          done
+
+      - name: Generate webhook secret
+        run: |
+          WEBHOOK_SECRET="$(openssl rand -hex 32)"
+          echo "::add-mask::$WEBHOOK_SECRET"
+          echo "WEBHOOK_SECRET=$WEBHOOK_SECRET" >> "$GITHUB_ENV"
+
+      - name: Deploy Worker
+        id: deploy
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: amarket-product-bot
+          command: deploy
+          secrets: |
+            TELEGRAM_BOT_TOKEN
+            WEBHOOK_SECRET
+            ALLOWED_USER_IDS
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          WEBHOOK_SECRET: ${{ env.WEBHOOK_SECRET }}
+          ALLOWED_USER_IDS: ${{ secrets.ALLOWED_USER_IDS }}
+
+      - name: Configure Telegram webhook and menu
+        working-directory: amarket-product-bot
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          WEBHOOK_SECRET: ${{ env.WEBHOOK_SECRET }}
+          WORKER_URL: ${{ steps.deploy.outputs.deployment-url }}
+        run: |
+          test -n "$WORKER_URL" || { echo "::error::Cloudflare did not return the Worker URL"; exit 1; }
+          npm run setup
