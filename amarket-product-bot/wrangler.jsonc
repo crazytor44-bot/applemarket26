@@ -4,12 +4,14 @@
   "main": "src/worker.js",
   "compatibility_date": "2026-10-26",
   "workers_dev": true,
+  "vars": {
+    "CHANNEL_ID": "@applemarket26"
+  },
   "secrets": {
     "required": [
       "TELEGRAM_BOT_TOKEN",
       "WEBHOOK_SECRET",
-      "ALLOWED_USER_IDS",
-      "CHANNEL_ID"
+      "ALLOWED_USER_IDS"
     ]
   }
 }
