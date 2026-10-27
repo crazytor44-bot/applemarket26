@@ -21,7 +21,7 @@ function safeEqual(left, right) {
   return result === 0;
 }
 
-export async function verifyTelegramInitData(initData, botToken, maxAgeSeconds = 900) {
+export async function verifyTelegramInitData(initData, botToken, maxAgeSeconds = 604800) {
   if (!initData || !botToken) return { ok: false, reason: "missing_data" };
   const params = new URLSearchParams(initData);
   const suppliedHash = params.get("hash") || "";
