@@ -98,15 +98,26 @@ async function publishToTelegram(request, env) {
   if (!auth.ok) return json({ ok: false, error: "Откройте приложение внутри Telegram ещё раз." }, 401);
   if (!allowedUser(env, auth.user?.id)) return json({ ok: false, error: `Нет доступа. Ваш Telegram ID: ${auth.user?.id || "не определён"}` }, 403);
   const caption = buildTelegramCaption(body.product);
-  const image = dataUrlToBlob(body.imageDataUrl);
-  if (image) {
+  const imageDataUrls = Array.isArray(body.imageDataUrls) ? body.imageDataUrls.slice(0, 3) : [body.imageDataUrl];
+  const images = imageDataUrls.map(dataUrlToBlob).filter(Boolean);
+  if (images.length > 1) {
+    const form = new FormData();
+    form.set("chat_id", env.CHANNEL_ID);
+    form.set("media", JSON.stringify(images.map((_, index) => ({
+      type: "photo",
+      media: `attach://photo${index}`,
+      ...(index === 0 ? { caption } : {})
+    }))));
+    images.forEach((image, index) => form.set(`photo${index}`, image, `product-${index + 1}.jpg`));
+    await telegram(env, "sendMediaGroup", form);
+  } else if (images.length === 1) {
     const form = new FormData();
     form.set("chat_id", env.CHANNEL_ID);
     form.set("caption", caption);
-    form.set("photo", image, "product.jpg");
+    form.set("photo", images[0], "product.jpg");
     await telegram(env, "sendPhoto", form);
   } else {
-    await telegram(env, "sendMessage", { chat_id: env.CHANNEL_ID, text: caption });
+    return json({ ok: false, error: "Добавьте хотя бы одно фото товара." }, 400);
   }
   return json({ ok: true });
 }
