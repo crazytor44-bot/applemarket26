@@ -26,7 +26,6 @@ export async function verifyTelegramInitData(initData, botToken, maxAgeSeconds =
   const params = new URLSearchParams(initData);
   const suppliedHash = params.get("hash") || "";
   params.delete("hash");
-  params.delete("signature");
   const dataCheckString = [...params.entries()].sort(([a], [b]) => a.localeCompare(b)).map(([key, value]) => `${key}=${value}`).join("\n");
   const secret = await hmac(encoder.encode("WebAppData"), botToken);
   const calculatedHash = toHex(await hmac(secret, dataCheckString));
