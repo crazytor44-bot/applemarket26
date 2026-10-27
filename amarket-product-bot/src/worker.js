@@ -48,7 +48,7 @@ const price = (value) => {
 export function buildTelegramCaption(product) {
   const p = Object.fromEntries(Object.entries(product || {}).map(([key, value]) => [key, clean(value, key === "notes" ? 300 : 160)]));
   const details = [p.storage, p.color, p.battery && `АКБ ${p.battery}`, p.sim].filter(Boolean).join(" · ");
-  return [`📱 ${p.model} ${p.storage}`.trim(), "", details, p.condition && `Состояние: ${p.condition}`, p.warranty && `Гарантия: ${p.warranty}`, p.notes, "", `💳 ${price(p.price)}`, "", "📍 А Маркет, Ставрополь, Тухачевского, 16", "🌐 https://applemarket26.ru"].filter((line) => line !== false && line !== undefined).join("\n").replace(/\n{3,}/g, "\n\n").trim().slice(0, 1024);
+  return [`📱 ${p.model} ${p.storage}`.trim(), "", details, p.condition && `Состояние: ${p.condition}`, p.warranty && `Гарантия: ${p.warranty}`, p.notes, "", `💳 ${price(p.price)}`, "", "📍 А Маркет, Ставрополь, Тухачевского, 16", "🌐 Сайт: https://applemarket26.ru", "💬 Написать в Telegram: https://t.me/+79383119888"].filter((line) => line !== false && line !== undefined).join("\n").replace(/\n{3,}/g, "\n\n").trim().slice(0, 1024);
 }
 
 async function telegram(env, method, payload) {

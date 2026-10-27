@@ -44,4 +44,5 @@ test("creates A Market caption", () => {
   assert.match(caption, /67.990 ₽/);
   assert.match(caption, /Тухачевского, 16/);
   assert.match(caption, /https:\/\/applemarket26\.ru/);
+  assert.match(caption, /https:\/\/t\.me\/\+79383119888/);
 });
