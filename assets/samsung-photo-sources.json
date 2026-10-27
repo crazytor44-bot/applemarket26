@@ -1,0 +1,222 @@
+{
+  "samsung-s25|IcyBlue": {
+    "model": "Samsung Galaxy S25",
+    "color": "IcyBlue",
+    "officialDescription": "Galaxy S25 Front Icyblue",
+    "images": {
+      "main": "https://images.samsung.com/is/image/samsung/p6pim/us/sm-s931ulbexau/gallery/us-galaxy-s25-s931-551170-551170-sm-s931ulbexau-548476052?wid=700&hei=700&fmt=png",
+      "back": "https://images.samsung.com/is/image/samsung/p6pim/us/sm-s931ulbexau/gallery/us-galaxy-s25-s931-551170-551170-sm-s931ulbexau-548476035?wid=700&hei=700&fmt=png"
+    },
+    "source": "https://www.samsung.com/us/smartphones/galaxy-s25/buy/"
+  },
+  "samsung-s25|Mint": {
+    "model": "Samsung Galaxy S25",
+    "color": "Mint",
+    "officialDescription": "Galaxy S25 Front Mint",
+    "images": {
+      "main": "https://images.samsung.com/is/image/samsung/p6pim/us/sm-s931ulgexau/gallery/us-galaxy-s25-s931-551170-551170-sm-s931ulgexau-548476223?wid=700&hei=700&fmt=png",
+      "back": "https://images.samsung.com/is/image/samsung/p6pim/us/sm-s931ulgexau/gallery/us-galaxy-s25-s931-551170-551170-sm-s931ulgexau-548476206?wid=700&hei=700&fmt=png"
+    },
+    "source": "https://www.samsung.com/us/smartphones/galaxy-s25/buy/"
+  },
+  "samsung-s25|Navy": {
+    "model": "Samsung Galaxy S25",
+    "color": "Navy",
+    "officialDescription": "Galaxy S25 Front Navy",
+    "images": {
+      "main": "https://images.samsung.com/is/image/samsung/p6pim/us/sm-s931udbexau/gallery/us-galaxy-s25-s931-551170-551170-sm-s931udbexau-548475879?wid=700&hei=700&fmt=png",
+      "back": "https://images.samsung.com/is/image/samsung/p6pim/us/sm-s931udbexau/gallery/us-galaxy-s25-s931-551170-551170-sm-s931udbexau-548475865?wid=700&hei=700&fmt=png"
+    },
+    "source": "https://www.samsung.com/us/smartphones/galaxy-s25/buy/"
+  },
+  "samsung-s25-ultra|Black": {
+    "model": "Samsung Galaxy S25 Ultra",
+    "color": "Black",
+    "officialDescription": "Galaxy S25 Ultra Front Titanium Black",
+    "images": {
+      "main": "https://images.samsung.com/is/image/samsung/p6pim/us/sm-s938uzkfxaa/gallery/us-galaxy-s25-s938-536276-sm-s938uzkfxaa-548618037?wid=700&hei=700&fmt=png",
+      "back": "https://images.samsung.com/is/image/samsung/p6pim/us/sm-s938uzkfxaa/gallery/us-galaxy-s25-s938-536276-sm-s938uzkfxaa-548618002?wid=700&hei=700&fmt=png"
+    },
+    "source": "https://www.samsung.com/us/smartphones/galaxy-s25-ultra/buy/"
+  },
+  "samsung-s25-ultra|Gray": {
+    "model": "Samsung Galaxy S25 Ultra",
+    "color": "Gray",
+    "officialDescription": "Galaxy S25 Ultra Front Titanium Gray",
+    "images": {
+      "main": "https://images.samsung.com/is/image/samsung/p6pim/us/sm-s938uztfxaa/gallery/us-galaxy-s25-s938-536276-sm-s938uztfxaa-548618778?wid=700&hei=700&fmt=png",
+      "back": "https://images.samsung.com/is/image/samsung/p6pim/us/sm-s938uztfxaa/gallery/us-galaxy-s25-s938-536276-sm-s938uztfxaa-548618743?wid=700&hei=700&fmt=png"
+    },
+    "source": "https://www.samsung.com/us/smartphones/galaxy-s25-ultra/buy/"
+  },
+  "samsung-s25-ultra|SilverBlue": {
+    "model": "Samsung Galaxy S25 Ultra",
+    "color": "SilverBlue",
+    "officialDescription": "Galaxy S25 Ultra Front Titanium Silverblue",
+    "images": {
+      "main": "https://images.samsung.com/is/image/samsung/p6pim/us/sm-s938uzbfxaa/gallery/us-galaxy-s25-s938-536276-sm-s938uzbfxaa-548617513?wid=700&hei=700&fmt=png",
+      "back": "https://images.samsung.com/is/image/samsung/p6pim/us/sm-s938uzbfxaa/gallery/us-galaxy-s25-s938-536276-sm-s938uzbfxaa-548617478?wid=700&hei=700&fmt=png"
+    },
+    "source": "https://www.samsung.com/us/smartphones/galaxy-s25-ultra/buy/"
+  },
+  "samsung-s25-ultra|WhiteSilver": {
+    "model": "Samsung Galaxy S25 Ultra",
+    "color": "WhiteSilver",
+    "officialDescription": "Galaxy S25 Ultra Front Titanium Whitesilver",
+    "images": {
+      "main": "https://images.samsung.com/is/image/samsung/p6pim/us/sm-s938uzsfxaa/gallery/us-galaxy-s25-s938-536276-sm-s938uzsfxaa-548618407?wid=700&hei=700&fmt=png",
+      "back": "https://images.samsung.com/is/image/samsung/p6pim/us/sm-s938uzsfxaa/gallery/us-galaxy-s25-s938-536276-sm-s938uzsfxaa-548618372?wid=700&hei=700&fmt=png"
+    },
+    "source": "https://www.samsung.com/us/smartphones/galaxy-s25-ultra/buy/"
+  },
+  "samsung-s26|Black": {
+    "model": "Samsung Galaxy S26",
+    "color": "Black",
+    "officialDescription": "Galaxy S26 Front Black",
+    "images": {
+      "main": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-s942-sm-s942uzkfxau-550995517?wid=700&hei=700&fmt=png",
+      "back": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-s942-sm-s942uzkfxau-550995500?wid=700&hei=700&fmt=png"
+    },
+    "source": "https://www.samsung.com/us/smartphones/galaxy-s26/buy/"
+  },
+  "samsung-s26|Cobalt Violet": {
+    "model": "Samsung Galaxy S26",
+    "color": "Cobalt Violet",
+    "officialDescription": "Galaxy S26 Front Cobalt Violet",
+    "images": {
+      "main": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-s942-sm-s942uzvfxau-550995707?wid=700&hei=700&fmt=png",
+      "back": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-s942-sm-s942uzvfxau-550995690?wid=700&hei=700&fmt=png"
+    },
+    "source": "https://www.samsung.com/us/smartphones/galaxy-s26/buy/"
+  },
+  "samsung-s26|PinkGold": {
+    "model": "Samsung Galaxy S26",
+    "color": "PinkGold",
+    "officialDescription": "Galaxy S26 Front Pink Gold",
+    "images": {
+      "main": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-s942-sm-s942uzdfxaa-550995365?wid=700&hei=700&fmt=png",
+      "back": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-s942-sm-s942uzdfxaa-550995348?wid=700&hei=700&fmt=png"
+    },
+    "source": "https://www.samsung.com/us/smartphones/galaxy-s26/buy/"
+  },
+  "samsung-s26|Silver Shadow": {
+    "model": "Samsung Galaxy S26",
+    "color": "Silver Shadow",
+    "officialDescription": "Galaxy S26 Front Silver Shadow",
+    "images": {
+      "main": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-s942-sm-s942uzsfxaa-550995555?wid=700&hei=700&fmt=png",
+      "back": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-s942-sm-s942uzsfxaa-550995538?wid=700&hei=700&fmt=png"
+    },
+    "source": "https://www.samsung.com/us/smartphones/galaxy-s26/buy/"
+  },
+  "samsung-s26|Sky Blue": {
+    "model": "Samsung Galaxy S26",
+    "color": "Sky Blue",
+    "officialDescription": "Galaxy S26 Front Sky Blue",
+    "images": {
+      "main": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-s942-sm-s942ulbfxaa-550995308?wid=700&hei=700&fmt=png",
+      "back": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-s942-sm-s942ulbfxaa-550995298?wid=700&hei=700&fmt=png"
+    },
+    "source": "https://www.samsung.com/us/smartphones/galaxy-s26/buy/"
+  },
+  "samsung-s26|White": {
+    "model": "Samsung Galaxy S26",
+    "color": "White",
+    "officialDescription": "Galaxy S26 Front White",
+    "images": {
+      "main": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-s942-sm-s942uzwfxaa-550995840?wid=700&hei=700&fmt=png",
+      "back": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-s942-sm-s942uzwfxaa-550995823?wid=700&hei=700&fmt=png"
+    },
+    "source": "https://www.samsung.com/us/smartphones/galaxy-s26/buy/"
+  },
+  "samsung-s26-plus|Black": {
+    "model": "Samsung Galaxy S26 Plus",
+    "color": "Black",
+    "officialDescription": "Galaxy S26+ Front Black",
+    "images": {
+      "main": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-s947-sm-s947uzkexau-550994842?wid=700&hei=700&fmt=png",
+      "back": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-s947-sm-s947uzkexau-550994825?wid=700&hei=700&fmt=png"
+    },
+    "source": "https://www.samsung.com/us/smartphones/galaxy-s26/buy/"
+  },
+  "samsung-s26-plus|Cobalt Violet": {
+    "model": "Samsung Galaxy S26 Plus",
+    "color": "Cobalt Violet",
+    "officialDescription": "Galaxy S26+ Front Cobalt Violet",
+    "images": {
+      "main": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-s947-sm-s947uzvexau-550995033?wid=700&hei=700&fmt=png",
+      "back": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-s947-sm-s947uzvexau-550995016?wid=700&hei=700&fmt=png"
+    },
+    "source": "https://www.samsung.com/us/smartphones/galaxy-s26/buy/"
+  },
+  "samsung-s26-plus|Sky Blue": {
+    "model": "Samsung Galaxy S26 Plus",
+    "color": "Sky Blue",
+    "officialDescription": "Galaxy S26+ Front Sky Blue",
+    "images": {
+      "main": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-s947-sm-s947ulbexau-550994652?wid=700&hei=700&fmt=png",
+      "back": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-s947-sm-s947ulbexau-550994635?wid=700&hei=700&fmt=png"
+    },
+    "source": "https://www.samsung.com/us/smartphones/galaxy-s26/buy/"
+  },
+  "samsung-s26-plus|White": {
+    "model": "Samsung Galaxy S26 Plus",
+    "color": "White",
+    "officialDescription": "Galaxy S26+ Front White",
+    "images": {
+      "main": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-s947-sm-s947uzwexau-550995186?wid=700&hei=700&fmt=png",
+      "back": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-s947-sm-s947uzwexau-550995169?wid=700&hei=700&fmt=png"
+    },
+    "source": "https://www.samsung.com/us/smartphones/galaxy-s26/buy/"
+  },
+  "samsung-s26-ultra|Black": {
+    "model": "Samsung Galaxy S26 Ultra",
+    "color": "Black",
+    "officialDescription": "Galaxy S26 Ultra Front Black",
+    "images": {
+      "main": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-ultra-s948-sm-s948uzkfxau-550993692?wid=700&hei=700&fmt=png",
+      "back": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-ultra-s948-sm-s948uzkfxau-550993657?wid=700&hei=700&fmt=png"
+    },
+    "source": "https://www.samsung.com/us/smartphones/galaxy-s26-ultra/buy/"
+  },
+  "samsung-s26-ultra|Cobalt Violet": {
+    "model": "Samsung Galaxy S26 Ultra",
+    "color": "Cobalt Violet",
+    "officialDescription": "Galaxy S26 Ultra Front Cobalt Violet",
+    "images": {
+      "main": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-ultra-s948-sm-s948uzvfxaa-550994157?wid=700&hei=700&fmt=png",
+      "back": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-ultra-s948-sm-s948uzvfxaa-550994122?wid=700&hei=700&fmt=png"
+    },
+    "source": "https://www.samsung.com/us/smartphones/galaxy-s26-ultra/buy/"
+  },
+  "samsung-s26-ultra|Sky Blue": {
+    "model": "Samsung Galaxy S26 Ultra",
+    "color": "Sky Blue",
+    "officialDescription": "Galaxy S26 Ultra Front Sky Blue",
+    "images": {
+      "main": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-ultra-s948-sm-s948ulbfxaa-550993137?wid=700&hei=700&fmt=png",
+      "back": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-ultra-s948-sm-s948ulbfxaa-550993102?wid=700&hei=700&fmt=png"
+    },
+    "source": "https://www.samsung.com/us/smartphones/galaxy-s26-ultra/buy/"
+  },
+  "samsung-s26-ultra|White": {
+    "model": "Samsung Galaxy S26 Ultra",
+    "color": "White",
+    "officialDescription": "Galaxy S26 Ultra Front White",
+    "images": {
+      "main": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-ultra-s948-sm-s948uzwfxaa-550994511?wid=700&hei=700&fmt=png",
+      "back": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-ultra-s948-sm-s948uzwfxaa-550994476?wid=700&hei=700&fmt=png"
+    },
+    "source": "https://www.samsung.com/us/smartphones/galaxy-s26-ultra/buy/"
+  },
+  "samsung-s26-ultra|Silver Shadow": {
+    "model": "Samsung Galaxy S26 Ultra",
+    "color": "Silver Shadow",
+    "officialDescription": "Galaxy S26 Ultra Front Silver Shadow",
+    "images": {
+      "main": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-ultra-s948-sm-s948uzsfxaa-550993823?wid=700&hei=700&fmt=png",
+      "back": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-ultra-s948-sm-s948uzsfxaa-550993788?wid=700&hei=700&fmt=png"
+    },
+    "source": "https://www.samsung.com/us/smartphones/galaxy-s26-ultra/buy/"
+  }
+}

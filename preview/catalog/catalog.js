@@ -1,0 +1,37 @@
+(() => {
+const products=JSON.parse(document.querySelector('#catalog-data').textContent);
+const form=document.querySelector('#catalog-filters');
+const fields={query:document.querySelector('#catalog-query'),model:document.querySelector('#catalog-model'),memory:document.querySelector('#catalog-memory'),min:document.querySelector('#catalog-min'),max:document.querySelector('#catalog-max')};
+const buttons=[...document.querySelectorAll('[data-category]')];
+const cards=new Map([...document.querySelectorAll('.catalog-item')].map(card=>[card.dataset.id,card]));
+const modelOptions=[...fields.model.options];
+let category=new URLSearchParams(location.search).get('category')||'';
+if(!buttons.some(b=>b.dataset.category===category))category='';
+function matching(p,filters){
+const q=filters.query.toLocaleLowerCase('ru').trim();
+const hasPrice=filters.min!==''||filters.max!=='';
+return (!filters.category||p.category===filters.category)
+&& (!filters.model||p.model===filters.model)
+&& (!filters.memory||p.memory===Number(filters.memory))
+&& (!q||p.name.toLocaleLowerCase('ru').includes(q))
+&& (!hasPrice||(p.price!==null&&p.price>=(filters.min===''?0:Number(filters.min))&&p.price<=(filters.max===''?Infinity:Number(filters.max))));
+}
+function apply(){
+const models=new Set(products.filter(p=>!category||p.category===category).map(p=>p.model));
+modelOptions.forEach(o=>{o.hidden=!!o.value&&!models.has(o.value);o.disabled=o.hidden;});
+if(fields.model.value&&!models.has(fields.model.value))fields.model.value='';
+buttons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.category===category)));
+const filters=Object.fromEntries(Object.entries(fields).map(([k,input])=>[k,input.value]));filters.category=category;
+const invalid=filters.min!==''&&filters.max!==''&&Number(filters.min)>Number(filters.max);
+document.querySelector('#range-error').hidden=!invalid;
+let count=0;products.forEach(p=>{const visible=!invalid&&matching(p,filters);cards.get(p.id).hidden=!visible;if(visible)count++;});
+document.querySelector('#catalog-count').textContent='Найдено вариантов: '+count;
+document.querySelector('#catalog-empty').hidden=count>0||invalid;
+}
+buttons.forEach(b=>b.addEventListener('click',()=>{category=b.dataset.category;apply();}));
+form.addEventListener('submit',e=>e.preventDefault());
+form.addEventListener('input',apply);form.addEventListener('change',apply);
+form.addEventListener('reset',()=>{category='';setTimeout(apply,0);});
+document.querySelector('#empty-reset').addEventListener('click',()=>form.reset());
+apply();
+})();

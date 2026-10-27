@@ -1,0 +1,58 @@
+/* А Маркет: scoped landing content for buyback — calculator and checkout untouched. */
+.trade-landing{margin:18px 0 0;min-width:0}
+.trade-landing-hero{
+  position:relative;display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);
+  min-height:343px;border:1px solid #42343d;border-radius:26px;
+  background:radial-gradient(circle at 100% 12%,rgba(134,79,108,.2),transparent 56%),#1b181e;
+  overflow:hidden;isolation:isolate;
+}
+.trade-landing-copy{padding:clamp(24px,3.8vw,43px);padding-right:14px;align-self:center;z-index:1}
+.trade-landing-kicker{color:#f4b8d2;font-size:12px;font-weight:850;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:15px}
+.trade-landing-hero h1{font-size:clamp(32px,4vw,51px);letter-spacing:-.044em;line-height:1.08;max-width:620px;margin:0 0 16px}
+.trade-landing-hero h1 span{color:#eab2cb}
+.trade-landing-desc{font-size:15px;line-height:1.63;color:#d7cbd3;max-width:565px;margin:0 0 20px}
+.trade-landing-benefits{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 21px}
+.trade-landing-benefits span{display:inline-flex;align-items:center;padding:7px 11px;border:1px solid #655160;color:#f5e5ef;background:#ffffff07;border-radius:99px;font-size:12px;font-weight:700;line-height:1.35}
+.trade-landing-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.trade-landing-actions .btn{min-height:52px;font-size:15px}
+.trade-landing-link{color:#e8c4d5;font-size:14px;font-weight:650;white-space:nowrap;text-decoration:underline;text-decoration-color:#785569;text-underline-offset:5px}
+.trade-landing-note{font-size:11px;line-height:1.5;color:#aba0aa;margin:14px 0 0}
+.trade-landing-photo{position:relative;min-height:100%;background:#050507;margin:0;overflow:hidden}
+.trade-landing-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block;filter:saturate(.87) contrast(1.05)}
+.trade-landing-photo:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,#1b181e 0%,transparent 21%,transparent 100%)}
+.trade-landing-process{margin:0 0 36px;scroll-margin-top:18px}
+.trade-landing-process .heading{margin-bottom:17px}
+.trade-landing-process h2{font-size:clamp(25px,3vw,35px)}
+.trade-landing-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.trade-landing-step{border:1px solid #393038;border-radius:17px;background:#1b191d;padding:22px 20px;min-width:0}
+.trade-landing-num{display:block;font-size:13px;color:#e9aeca;font-weight:850;letter-spacing:.12em;margin-bottom:15px}
+.trade-landing-step h3{font-size:17px;line-height:1.25;letter-spacing:-.02em;margin:0 0 10px}
+.trade-landing-step p{font-size:13px;line-height:1.63;color:#bcb1bb;margin:0}
+.trade-landing-contact{font-size:13px;color:#bfb4be;line-height:1.6;margin:17px 0 0}
+.trade-landing-contact a{color:#f1c5d7;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:950px){
+ .trade-landing-hero{grid-template-columns:minmax(0,1.13fr) minmax(0,.87fr)}
+ .trade-landing-copy{padding:25px 0 25px 24px}
+ .trade-landing-photo:after{background:linear-gradient(90deg,#1b181e,transparent 18%)}
+ .trade-landing-hero h1{font-size:clamp(30px,4.25vw,43px)}
+}
+@media(max-width:700px){
+ .trade-landing{margin-top:14px}
+ .trade-landing-hero{grid-template-columns:1fr;min-height:0;border-radius:21px}
+ .trade-landing-copy{padding:24px 19px 18px}
+ .trade-landing-hero h1{font-size:clamp(30px,8vw,39px);margin-bottom:13px}
+ .trade-landing-desc{font-size:14px;line-height:1.5;margin-bottom:16px}
+ .trade-landing-benefits{gap:6px;margin-bottom:18px}
+ .trade-landing-benefits span{font-size:11px;padding:6px 9px}
+ .trade-landing-actions{gap:13px}
+ .trade-landing-actions .btn{width:100%;padding:13px 14px;text-align:center}
+ .trade-landing-note{margin-top:12px}
+ .trade-landing-photo{height:194px;min-height:0}
+ .trade-landing-photo img{object-fit:cover;object-position:50% 50%}
+ .trade-landing-photo:after{background:linear-gradient(180deg,#1b181e 0,transparent 31%)}
+ .trade-landing-steps{grid-template-columns:1fr;gap:10px}
+ .trade-landing-step{padding:18px 18px}
+ .trade-landing-num{margin-bottom:8px}
+ .trade-landing-step h3{margin-bottom:6px}
+ .trade-landing-process{margin-bottom:25px}
+}

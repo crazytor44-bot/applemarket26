@@ -1,0 +1,41 @@
+name: A Market approved Telegram post queue
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'telegram_channel/post_queue/*.json'
+      - 'telegram_channel/post_queue.py'
+      - 'telegram_channel/tests/test_post_queue.py'
+      - '.github/workflows/telegram-post-queue.yml'
+  schedule:
+    # UTC; posts are released no earlier than their Europe/Moscow publish_at.
+    # Recheck every 10 minutes during Moscow retail hours.
+    - cron: '0 6,12,17 * * *'  # 09:00, 15:00, 20:00 Moscow
+    - cron: '3,13,23,33,43,53 5-17 * * *'  # Fallback catch-up
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: amarket-approved-post-queue
+  cancel-in-progress: false
+
+jobs:
+  publish-approved:
+    if: github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      AMARKET_TELEGRAM_BOT_TOKEN: ${{ secrets.AMARKET_TELEGRAM_BOT_TOKEN }}
+    steps:
+      - name: Checkout approved materials
+        uses: actions/checkout@v4
+      - name: Validate queue without posting
+        run: |
+          python3 -m py_compile telegram_channel/post_queue.py
+          python3 -m unittest discover -s telegram_channel/tests -p 'test_post_queue.py' -v
+          python3 telegram_channel/post_queue.py --check
+      - name: Publish approved due photo posts, with exclusive receipt
+        run: python3 telegram_channel/post_queue.py --publish

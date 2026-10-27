@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Cache-Control" content="no-store">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'self'; connect-src 'self' https:; base-uri 'none'; form-action 'none'; frame-ancestors 'none'">
+<title>Заказы — А Маркет</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+:root{color-scheme:dark;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;--panel:#1d1d25;--line:#37343c;--text:#f7f2f4;--muted:#aaa2ad;--accent:#e28ca9}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 95% 0%,#3a2130 0%,#101016 40%);color:var(--text)}
+.wrapper{width:min(1100px,100%);margin:0 auto;padding:clamp(19px,5vw,40px) 17px 80px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.brand{color:#fff;text-decoration:none;font-weight:850;font-size:20px;letter-spacing:-.025em}
+.top small{font-size:12px;color:#e5a3b9;border:1px solid #714154;padding:7px 10px;border-radius:999px}
+h1{font-size:clamp(34px,7vw,57px);margin:50px 0 8px;letter-spacing:-.045em}
+.lead{color:var(--muted);line-height:1.55;margin:0 0 26px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:23px;padding:clamp(20px,4vw,30px);box-shadow:0 15px 60px #0003}
+.login{max-width:500px}.login h2{margin:0 0 8px;font-size:22px}.login p{font-size:14px;color:var(--muted);line-height:1.55}
+label{display:block;font-size:14px;font-weight:700;margin:18px 0 8px}input{width:100%;min-height:49px;border-radius:13px;padding:12px 14px;border:1px solid #5a5360;background:#15151a;color:#fff;font:inherit}
+input:focus{outline:2px solid var(--accent);outline-offset:2px}
+button{border:0;font:inherit;cursor:pointer}button:disabled{opacity:.5;cursor:wait}
+.primary{border-radius:13px;background:var(--accent);color:#21151b;font-weight:800;padding:13px 18px;min-height:48px}
+.secondary{border-radius:12px;border:1px solid #71616b;background:#25212a;color:#fff;font-weight:650;padding:12px 16px}
+.actions{display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+.login .primary{width:100%;margin-top:14px}
+.message{min-height:20px;color:#e2a3b8;font-size:14px;margin:12px 0}
+[hidden]{display:none!important}
+.toolbar{display:flex;align-items:center;gap:12px;justify-content:space-between;flex-wrap:wrap;margin:0 0 17px}
+.toolbar h2{font-size:21px;margin:0}.toolbar p{margin:3px 0 0;color:var(--muted);font-size:13px}
+.search{max-width:350px;margin-bottom:17px}
+.orders{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(360px,100%),1fr));gap:14px}
+.order{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:22px;min-width:0}
+.row{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.order-id{font-size:12px;color:#bdb0b9;letter-spacing:.035em;font-weight:700}
+.badge{color:#f5bdd1;background:#4a2635;border-radius:99px;padding:6px 10px;font-size:11px;font-weight:750}
+.order-name{font-size:22px;letter-spacing:-.025em;margin:18px 0 4px}
+.phone{color:#e8b7c7;font-size:18px;text-decoration:none}
+.order-meta{margin:12px 0;color:var(--muted);font-size:13px;line-height:1.5}
+.line{display:flex;gap:16px;justify-content:space-between;border-top:1px solid #3b3740;padding:13px 0;font-size:14px}
+.line span{max-width:75%;overflow-wrap:anywhere}.line strong{white-space:nowrap}
+.sum{display:flex;justify-content:space-between;font-size:20px;padding-top:13px;border-top:1px solid #60525c;font-weight:750}
+.comment{font-size:13px;line-height:1.5;color:#c9c3ca;background:#2b2831;border-radius:12px;padding:12px;margin-top:14px;overflow-wrap:anywhere;white-space:pre-wrap}
+.empty{border:1px dashed #5c505b;border-radius:18px;padding:30px;text-align:center;color:#bdb3be}
+.foot{margin-top:28px;color:#8f8792;font-size:12px;line-height:1.5}
+@media(max-width:550px){h1{margin-top:32px}.top small{font-size:10px}.order{padding:18px}.toolbar{align-items:start;flex-direction:column}}
+</style>
+<script src="/assets/orders-admin.js?v=1" defer></script>
+</head>
+<body>
+<main class="wrapper">
+<div class="top"><a class="brand" href="/">◈ А Маркет</a><small>🔒 Только для владельца</small></div>
+<h1>Заявки покупателей</h1>
+<p class="lead">Заказы с сайта. Имена и телефоны отображаются только после проверки ключа доступа.</p>
+<section id="login" class="panel login">
+<h2>Вход в кабинет</h2>
+<p>Для просмотра заявок потребуется индивидуальный ключ администратора. Он создаётся при настройке сервера Яндекс Cloud и не сохраняется на сайте.</p>
+<label for="access-key">Ключ доступа</label>
+<input id="access-key" type="password" autocomplete="off" spellcheck="false" placeholder="Введите ключ">
+<button id="login-btn" type="button" class="primary">Открыть заявки</button>
+<p id="login-message" class="message" role="status" aria-live="polite"></p>
+</section>
+<section id="dashboard" hidden>
+<div class="toolbar">
+<div><h2>Последние заказы</h2><p id="count">Загружаем…</p></div>
+<div class="actions"><button id="reload-btn" type="button" class="secondary">↻ Обновить</button><button id="logout-btn" type="button" class="secondary">Выйти</button></div>
+</div>
+<input class="search" id="search" type="search" placeholder="Поиск по номеру, имени или модели" aria-label="Поиск по заявкам">
+<p id="dashboard-message" class="message" role="status" aria-live="polite"></p>
+<div id="orders" class="orders"></div>
+</section>
+<p class="foot">А Маркет · Ставрополь · Данные покупателей нельзя пересылать в сторонние сервисы или публиковать. При необходимости обращайтесь к владельцу сайта.</p>
+</main>
+</body>
+</html>

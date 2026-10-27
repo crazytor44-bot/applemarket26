@@ -1,0 +1,35 @@
+# Check dependencies for security and compatibility updates.
+# Dependabot only opens pull requests; it never merges or publishes changes.
+# Review and test Telegram price-sync updates before merging.
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "10:00"
+      timezone: "Europe/Moscow"
+    open-pull-requests-limit: 2
+    groups:
+      workflow-dependencies:
+        patterns:
+          - "*"
+
+  - package-ecosystem: "npm"
+    directory: "/tests"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "10:00"
+      timezone: "Europe/Moscow"
+    open-pull-requests-limit: 2
+
+  - package-ecosystem: "pip"
+    directory: "/backend/yandex-orders"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "10:00"
+      timezone: "Europe/Moscow"
+    open-pull-requests-limit: 2

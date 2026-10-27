@@ -1,0 +1,109 @@
+name: Telegram price sync
+on:
+  # Scheduled twice per local slot for reliability; forced 2026-10-26 23:03 MSK.
+  schedule:
+    - cron: '7 8,12,15,17,20 * * *'
+    - cron: '37 8,12,15,17,20 * * *'
+  push:
+    paths:
+      - '.github/workflows/telegram-price-sync.yml'
+      - 'automation/telegram_price_sync.py'
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: 'Опубликовать изменения после проверки'
+        required: true
+        type: boolean
+        default: false
+permissions:
+  contents: write
+concurrency:
+  group: telegram-price-sync
+  cancel-in-progress: false
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Check Telegram configuration
+        id: telegram_config
+        env:
+          TELEGRAM_API_ID: ${{ secrets.TELEGRAM_API_ID }}
+          TELEGRAM_API_HASH: ${{ secrets.TELEGRAM_API_HASH }}
+          TELEGRAM_SESSION: ${{ secrets.TELEGRAM_SESSION }}
+        run: |
+          if [[ -n "$TELEGRAM_API_ID" && -n "$TELEGRAM_API_HASH" && -n "$TELEGRAM_SESSION" ]]; then
+            echo 'ready=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'ready=false' >> "$GITHUB_OUTPUT"
+            echo '### Синхронизация пропущена' >> "$GITHUB_STEP_SUMMARY"
+            echo 'Добавьте секреты TELEGRAM_API_ID, TELEGRAM_API_HASH и TELEGRAM_SESSION.' >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - uses: actions/setup-python@v5
+        if: steps.telegram_config.outputs.ready == 'true'
+        with: {python-version: '3.12'}
+      - name: Install Telegram client
+        if: steps.telegram_config.outputs.ready == 'true'
+        run: python -m pip install --disable-pip-version-check 'telethon==1.45.0'
+      - name: Read Telegram price and update catalog
+        if: steps.telegram_config.outputs.ready == 'true'
+        env:
+          TELEGRAM_API_ID: ${{ secrets.TELEGRAM_API_ID }}
+          TELEGRAM_API_HASH: ${{ secrets.TELEGRAM_API_HASH }}
+          TELEGRAM_SESSION: ${{ secrets.TELEGRAM_SESSION }}
+          TELEGRAM_CHANNEL: iCenter Stavropol
+          MIN_PRICE_ITEMS: '20'
+        run: |
+          result="$(python automation/telegram_price_sync.py)"
+          echo "$result"
+          {
+            echo '### Результат проверки прайса'
+            echo '```json'
+            echo "$result"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Run safety tests
+        if: steps.telegram_config.outputs.ready == 'true'
+        run: python -m unittest discover -s automation -p 'test_*.py'
+      - name: Publish changed prices
+        if: steps.telegram_config.outputs.ready == 'true' && (github.event_name == 'schedule' || github.event_name == 'push' || inputs.publish == true)
+        env:
+          TELEGRAM_API_ID: ${{ secrets.TELEGRAM_API_ID }}
+          TELEGRAM_API_HASH: ${{ secrets.TELEGRAM_API_HASH }}
+          TELEGRAM_SESSION: ${{ secrets.TELEGRAM_SESSION }}
+          TELEGRAM_CHANNEL: iCenter Stavropol
+          MIN_PRICE_ITEMS: '20'
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+          commit_prices() {
+            git add index.html catalog/index.html yml.xml */index.html
+            if git diff --cached --quiet; then
+              echo 'Прайс не изменился.'
+              return 2
+            fi
+            git commit -m 'Автоматически обновить прайс из Telegram'
+          }
+
+          commit_prices || status=$?
+          if [[ "${status:-0}" == 2 ]]; then exit 0; fi
+
+          for attempt in 1 2 3; do
+            if git push origin HEAD:main; then exit 0; fi
+            if [[ "$attempt" == 3 ]]; then
+              echo 'Не удалось опубликовать прайс после трёх попыток.'
+              exit 1
+            fi
+
+            echo "Сайт изменился параллельно. Повторяю импорт на свежей версии (попытка $((attempt + 1))/3)."
+            git fetch origin main
+            git reset --hard origin/main
+            python automation/telegram_price_sync.py
+            python -m unittest discover -s automation -p 'test_*.py'
+            status=0
+            commit_prices || status=$?
+            if [[ "$status" == 2 ]]; then exit 0; fi
+          done
