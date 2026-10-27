@@ -16,7 +16,7 @@ async function sign(token, entries) {
 
 test("validates Telegram initData", async () => {
   const token = "123456:test-token";
-  const entries = [["auth_date", String(Math.floor(Date.now() / 1000))], ["query_id", "AAE"], ["user", JSON.stringify({ id: 42, first_name: "Эрик" })]];
+  const entries = [["auth_date", String(Math.floor(Date.now() / 1000))], ["query_id", "AAE"], ["signature", "new-telegram-signature"], ["user", JSON.stringify({ id: 42, first_name: "Эрик" })]];
   const result = await verifyTelegramInitData(await sign(token, entries), token);
   assert.equal(result.ok, true);
   assert.equal(result.user.id, 42);
