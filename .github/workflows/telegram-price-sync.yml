@@ -24,7 +24,7 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with: {fetch-depth: 0}
       - name: Check Telegram configuration
         id: telegram_config
@@ -40,7 +40,7 @@ jobs:
             echo '### Синхронизация пропущена' >> "$GITHUB_STEP_SUMMARY"
             echo 'Добавьте секреты TELEGRAM_API_ID, TELEGRAM_API_HASH и TELEGRAM_SESSION.' >> "$GITHUB_STEP_SUMMARY"
           fi
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         if: steps.telegram_config.outputs.ready == 'true'
         with: {python-version: '3.12'}
       - name: Install Telegram client
