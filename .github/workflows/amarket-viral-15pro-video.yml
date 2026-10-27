@@ -26,7 +26,7 @@ jobs:
       AMARKET_TELEGRAM_BOT_TOKEN: ${{ secrets.AMARKET_TELEGRAM_BOT_TOKEN }}
     steps:
       - name: Checkout repo including prior commit
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - name: Python syntax check (safe test)
@@ -53,7 +53,7 @@ jobs:
           fi
       - name: Download already prepared owner video from verified GitHub Actions artifact
         if: steps.approval.outputs.publish == 'true'
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: amarket-iphone-15-pro-telegram-ready
           run-id: 38703731281
