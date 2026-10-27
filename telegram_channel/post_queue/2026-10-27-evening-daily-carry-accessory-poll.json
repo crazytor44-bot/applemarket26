@@ -1,0 +1,17 @@
+{
+  "channel": "@applemarket26",
+  "approved": true,
+  "topic_id": "daily-carry-accessory-poll",
+  "kind": "poll",
+  "parse_mode": "plain",
+  "pin": false,
+  "publish_at": "2026-10-27T20:00:00+03:00",
+  "text": "🎒 Какой аксессуар чаще всего лежит у вас в сумке или рюкзаке?",
+  "options": [
+    "Внешний аккумулятор",
+    "Зарядный кабель",
+    "Наушники",
+    "Переходник или адаптер",
+    "Ничего — беру только iPhone"
+  ]
+}
