@@ -32,6 +32,13 @@ test("rejects modified initData", async () => {
   assert.equal(result.ok, false);
 });
 
+test("accepts a signed Telegram session several hours old", async () => {
+  const token = "123456:test-token";
+  const entries = [["auth_date", String(Math.floor(Date.now() / 1000) - 6 * 60 * 60)], ["user", JSON.stringify({ id: 42 })]];
+  const result = await verifyTelegramInitData(await sign(token, entries), token);
+  assert.equal(result.ok, true);
+});
+
 test("creates A Market caption", () => {
   const caption = buildTelegramCaption({ model: "iPhone 16 Pro Max", storage: "256 ГБ", color: "Чёрный", price: "67990", battery: "89%", sim: "SIM + eSIM", condition: "Отличное" });
   assert.match(caption, /67.990 ₽/);
