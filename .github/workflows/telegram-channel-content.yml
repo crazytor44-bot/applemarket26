@@ -1,25 +1,21 @@
-name: Remove unintended Telegram message 101
+name: Legacy A Market channel manager — check only
 
+# Archived after unintended channel branding/avatar changes on 2026-10-27.
+# Deliberately has no push or scheduled trigger and cannot publish or alter branding.
+# The active publishing path is telegram_channel/post_queue/*.json.
 on:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/telegram-channel-content.yml'
+  workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  remove-message-101:
-    if: github.run_attempt == 1
+  check-only:
     runs-on: ubuntu-latest
     env:
       AMARKET_TELEGRAM_BOT_TOKEN: ${{ secrets.AMARKET_TELEGRAM_BOT_TOKEN }}
     steps:
-      - name: Delete unintended repeated video
-        shell: bash
-        run: |
-          set -euo pipefail
-          test -n "$AMARKET_TELEGRAM_BOT_TOKEN"
-          response="$(curl --fail-with-body --silent --show-error             --request POST             --data-urlencode 'chat_id=@applemarket26'             --data-urlencode 'message_id=101'             "https://api.telegram.org/bot${AMARKET_TELEGRAM_BOT_TOKEN}/deleteMessage")"
-          python3 -c 'import json,sys; data=json.load(sys.stdin); assert data.get("ok") is True and data.get("result") is True, data; print("Deleted Telegram message 101")' <<<"$response"
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Check Telegram bot without changing the channel
+        run: python3 telegram_channel/publisher.py check
