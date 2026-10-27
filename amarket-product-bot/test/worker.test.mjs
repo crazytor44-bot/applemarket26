@@ -43,4 +43,5 @@ test("creates A Market caption", () => {
   const caption = buildTelegramCaption({ model: "iPhone 16 Pro Max", storage: "256 ГБ", color: "Чёрный", price: "67990", battery: "89%", sim: "SIM + eSIM", condition: "Отличное" });
   assert.match(caption, /67.990 ₽/);
   assert.match(caption, /Тухачевского, 16/);
+  assert.match(caption, /https:\/\/applemarket26\.ru/);
 });
