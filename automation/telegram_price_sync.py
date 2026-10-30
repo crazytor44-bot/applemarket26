@@ -519,6 +519,21 @@ def update_detail_pages(products: list[dict]) -> int:
     return changed_pages
 
 
+def yml_product_url(product: dict) -> str:
+    """Return an absolute product link supported by the site's catalog."""
+    origin = "https://applemarket26.ru"
+    page = product.get("page")
+    if isinstance(page, str) and page.strip():
+        url = urllib.parse.urljoin(origin + "/", page.strip())
+        parts = urllib.parse.urlsplit(url)
+        # /choose/ alone does not select a product. Use the searchable
+        # catalog URL instead so this offer opens its specific variant.
+        if (parts.scheme == "https" and parts.netloc == "applemarket26.ru"
+                and parts.path.rstrip("/") != "/choose"):
+            return url
+    return origin + "/catalog/?q=" + urllib.parse.quote(product["name"], safe="")
+
+
 def update_yml(products: list[dict], path: Path = YML_PATH) -> None:
     categories = {"iphone": ("1", "iPhone"), "samsung": ("2", "Samsung"), "mac": ("3", "Mac"),
                   "ipad": ("4", "iPad"), "watch": ("5", "Apple Watch"), "airpods": ("6", "AirPods"),
@@ -538,7 +553,7 @@ def update_yml(products: list[dict], path: Path = YML_PATH) -> None:
     for index, product in enumerate(products, 1000):
         category = product.get("category", "accessories"); category_id = categories.get(category, categories["accessories"])[0]
         offer = ET.SubElement(offers, "offer", {"id": str(index), "available": str(product.get("available", True)).lower()})
-        ET.SubElement(offer, "url").text = product.get("page") or f"https://applemarket26.ru/catalog/?q={urllib.parse.quote(product['name'])}"
+        ET.SubElement(offer, "url").text = yml_product_url(product)
         ET.SubElement(offer, "price").text = str(product["price"]); ET.SubElement(offer, "currencyId").text = "RUR"
         ET.SubElement(offer, "categoryId").text = category_id; ET.SubElement(offer, "name").text = product["name"]
         vendor = {"samsung": "Samsung", "gaming": "Sony", "xiaomi": "Xiaomi", "honor": "Honor",
