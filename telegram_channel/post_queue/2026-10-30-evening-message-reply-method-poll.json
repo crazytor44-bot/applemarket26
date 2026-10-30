@@ -1,0 +1,16 @@
+{
+  "channel": "@applemarket26",
+  "approved": true,
+  "topic_id": "message-reply-method-poll",
+  "kind": "poll",
+  "parse_mode": "plain",
+  "pin": false,
+  "publish_at": "2026-10-30T20:00:00+03:00",
+  "text": "💬 Как вы чаще всего отвечаете на сообщения с iPhone?",
+  "options": [
+    "Печатаю текст",
+    "Отправляю голосовые",
+    "Использую диктовку",
+    "Реакции, стикеры и эмодзи"
+  ]
+}
