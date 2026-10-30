@@ -46,3 +46,14 @@ test("creates A Market caption", () => {
   assert.match(caption, /https:\/\/applemarket26\.ru/);
   assert.match(caption, /https:\/\/t\.me\/\+79383119888/);
 });
+
+test("keeps each client's branding isolated", () => {
+  const caption = buildTelegramCaption(
+    { model: "iPhone 15", storage: "128 Gb", price: "35990", condition: "Отличное" },
+    { store_name: "Техно Дом", address: "Москва, Тверская, 1", website: "technodom.example", telegram_contact: "@technodom", active: 1 },
+  );
+  assert.match(caption, /Техно Дом/);
+  assert.match(caption, /https:\/\/technodom\.example/);
+  assert.match(caption, /https:\/\/t\.me\/technodom/);
+  assert.doesNotMatch(caption, /А Маркет|applemarket26|Тухачевского/);
+});
