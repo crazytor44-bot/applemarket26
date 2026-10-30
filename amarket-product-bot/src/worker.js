@@ -22,10 +22,11 @@ const clean = (value, limit = 160) => String(value || "").replace(/[<>]/g, "").t
 const price = (value) => { const number = Number(String(value || "").replace(/\D/g, "")); return number ? `${new Intl.NumberFormat("ru-RU").format(number)} ₽` : "Цена по запросу"; };
 const normalizeUrl = (value) => { const text = clean(value, 240); if (!text) return ""; if (/^https?:\/\//i.test(text)) return text; return `https://${text.replace(/^\/+/, "")}`; };
 const normalizeTelegram = (value) => { const text = clean(value, 240); if (!text) return ""; if (/^https?:\/\//i.test(text)) return text; if (text.startsWith("@")) return `https://t.me/${text.slice(1)}`; if (/^\+?\d{7,15}$/.test(text)) return `https://t.me/+${text.replace(/\D/g, "")}`; return normalizeUrl(text); };
+const normalizeLogo = (value) => { const text = typeof value === "string" ? value.trim() : ""; if (!text) return ""; if (text.length > 100_000 || !/^data:image\/(?:png|jpeg|webp);base64,[A-Za-z0-9+/=]+$/.test(text)) return ""; return text; };
 const adminIds = (env) => String(env.ALLOWED_USER_IDS || "").split(",").map((id) => id.trim()).filter(Boolean);
 const isAdmin = (env, userId) => adminIds(env).includes(String(userId));
 const canUse = (profile, admin = false) => admin || Boolean(profile?.active && (!profile.subscription_until || Date.parse(profile.subscription_until) > Date.now()));
-const publicProfile = (profile, admin = false) => ({ telegram_user_id: String(profile.telegram_user_id || ""), store_name: clean(profile.store_name, 80), legal_footer: clean(profile.legal_footer, 100), address: clean(profile.address, 160), website: normalizeUrl(profile.website), telegram_contact: normalizeTelegram(profile.telegram_contact), channel_id: clean(profile.channel_id, 100), active: Number(profile.active || 0), subscription_until: profile.subscription_until || null, is_admin: admin, can_use: canUse(profile, admin) });
+const publicProfile = (profile, admin = false) => ({ telegram_user_id: String(profile.telegram_user_id || ""), store_name: clean(profile.store_name, 80), legal_footer: clean(profile.legal_footer, 100), address: clean(profile.address, 160), website: normalizeUrl(profile.website), telegram_contact: normalizeTelegram(profile.telegram_contact), channel_id: clean(profile.channel_id, 100), logo_data_url: normalizeLogo(profile.logo_data_url), active: Number(profile.active || 0), subscription_until: profile.subscription_until || null, is_admin: admin, can_use: canUse(profile, admin) });
 
 const profileStub = (env, userId) => env.PROFILES.get(env.PROFILES.idFromName(String(userId)));
 async function readProfile(env, userId) { const response = await profileStub(env, userId).fetch("https://profiles.internal/profile"); return response.json(); }
@@ -94,7 +95,8 @@ async function saveProfile(request, env) {
   const context = await authenticatedBody(request, env); if (context.response) return context.response; if (!env.PROFILES) return json({ ok: false, error: "Хранилище профилей ещё не подключено." }, 503);
   const incoming = context.body.profile || {}; const channel = clean(incoming.channel_id, 100);
   if (channel && !/^@[A-Za-z0-9_]{5,}$/.test(channel) && !/^-100\d{6,}$/.test(channel)) return json({ ok: false, error: "Канал укажите как @username или числовой ID -100…" }, 400);
-  const values = { store_name: clean(incoming.store_name, 80) || "Мой магазин", legal_footer: clean(incoming.legal_footer, 100), address: clean(incoming.address, 160), website: normalizeUrl(incoming.website), telegram_contact: normalizeTelegram(incoming.telegram_contact), channel_id: channel };
+  const logo = normalizeLogo(incoming.logo_data_url); if (incoming.logo_data_url && !logo) return json({ ok: false, error: "Логотип слишком большой или имеет неподдерживаемый формат." }, 400);
+  const values = { store_name: clean(incoming.store_name, 80) || "Мой магазин", legal_footer: clean(incoming.legal_footer, 100), address: clean(incoming.address, 160), website: normalizeUrl(incoming.website), telegram_contact: normalizeTelegram(incoming.telegram_contact), channel_id: channel, logo_data_url: logo };
   await writeProfile(env, context.auth.user.id, values);
   return json({ ok: true, profile: await ensureProfile(env, context.auth.user.id) });
 }
