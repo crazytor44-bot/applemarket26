@@ -7,6 +7,20 @@
   "vars": {
     "CHANNEL_ID": "@applemarket26"
   },
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "PROFILES",
+        "class_name": "StoreProfile"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["StoreProfile"]
+    }
+  ],
   "secrets": {
     "required": [
       "TELEGRAM_BOT_TOKEN",

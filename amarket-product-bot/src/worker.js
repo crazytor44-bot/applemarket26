@@ -27,14 +27,30 @@ const isAdmin = (env, userId) => adminIds(env).includes(String(userId));
 const canUse = (profile, admin = false) => admin || Boolean(profile?.active && (!profile.subscription_until || Date.parse(profile.subscription_until) > Date.now()));
 const publicProfile = (profile, admin = false) => ({ telegram_user_id: String(profile.telegram_user_id || ""), store_name: clean(profile.store_name, 80), legal_footer: clean(profile.legal_footer, 100), address: clean(profile.address, 160), website: normalizeUrl(profile.website), telegram_contact: normalizeTelegram(profile.telegram_contact), channel_id: clean(profile.channel_id, 100), active: Number(profile.active || 0), subscription_until: profile.subscription_until || null, is_admin: admin, can_use: canUse(profile, admin) });
 
+const profileStub = (env, userId) => env.PROFILES.get(env.PROFILES.idFromName(String(userId)));
+async function readProfile(env, userId) { const response = await profileStub(env, userId).fetch("https://profiles.internal/profile"); return response.json(); }
+async function writeProfile(env, userId, values) { const response = await profileStub(env, userId).fetch("https://profiles.internal/profile", { method: "PUT", headers: { "content-type": "application/json" }, body: JSON.stringify(values) }); return response.json(); }
+
+export class StoreProfile {
+  constructor(state) { this.storage = state.storage; }
+  async fetch(request) {
+    if (request.method === "GET") return json(await this.storage.get("profile") || null);
+    if (request.method === "PUT") {
+      const incoming = await request.json(); const existing = await this.storage.get("profile") || {};
+      const profile = { ...existing, ...incoming, updated_at: new Date().toISOString() };
+      await this.storage.put("profile", profile); return json(profile);
+    }
+    return new Response("Not found", { status: 404 });
+  }
+}
+
 async function ensureProfile(env, userId) {
   const id = String(userId); const admin = isAdmin(env, id);
-  if (!env.DB) return publicProfile({ telegram_user_id: id, ...(admin ? AMARKET_PROFILE : {}) }, admin);
-  let profile = await env.DB.prepare("SELECT * FROM store_profiles WHERE telegram_user_id = ?").bind(id).first();
+  if (!env.PROFILES) return publicProfile({ telegram_user_id: id, ...(admin ? AMARKET_PROFILE : {}) }, admin);
+  let profile = await readProfile(env, id);
   if (!profile) {
     const seed = admin ? { ...AMARKET_PROFILE, channel_id: env.CHANNEL_ID || AMARKET_PROFILE.channel_id } : { store_name: "Мой магазин", legal_footer: "", address: "", website: "", telegram_contact: "", channel_id: "", active: 0, subscription_until: null };
-    await env.DB.prepare("INSERT INTO store_profiles (telegram_user_id, store_name, legal_footer, address, website, telegram_contact, channel_id, active, subscription_until) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)").bind(id, seed.store_name, seed.legal_footer, seed.address, seed.website, seed.telegram_contact, seed.channel_id, seed.active, seed.subscription_until).run();
-    profile = await env.DB.prepare("SELECT * FROM store_profiles WHERE telegram_user_id = ?").bind(id).first();
+    profile = await writeProfile(env, id, { telegram_user_id: id, ...seed, created_at: new Date().toISOString() });
   }
   return publicProfile(profile, admin);
 }
@@ -73,19 +89,20 @@ async function authenticatedBody(request, env, requireAccess = false) {
 async function getProfile(request, env) { const context = await authenticatedBody(request, env); if (context.response) return context.response; return json({ ok: true, profile: context.profile }); }
 
 async function saveProfile(request, env) {
-  const context = await authenticatedBody(request, env); if (context.response) return context.response; if (!env.DB) return json({ ok: false, error: "База профилей ещё не подключена." }, 503);
+  const context = await authenticatedBody(request, env); if (context.response) return context.response; if (!env.PROFILES) return json({ ok: false, error: "Хранилище профилей ещё не подключено." }, 503);
   const incoming = context.body.profile || {}; const channel = clean(incoming.channel_id, 100);
   if (channel && !/^@[A-Za-z0-9_]{5,}$/.test(channel) && !/^-100\d{6,}$/.test(channel)) return json({ ok: false, error: "Канал укажите как @username или числовой ID -100…" }, 400);
   const values = { store_name: clean(incoming.store_name, 80) || "Мой магазин", legal_footer: clean(incoming.legal_footer, 100), address: clean(incoming.address, 160), website: normalizeUrl(incoming.website), telegram_contact: normalizeTelegram(incoming.telegram_contact), channel_id: channel };
-  await env.DB.prepare("UPDATE store_profiles SET store_name = ?, legal_footer = ?, address = ?, website = ?, telegram_contact = ?, channel_id = ?, updated_at = CURRENT_TIMESTAMP WHERE telegram_user_id = ?").bind(values.store_name, values.legal_footer, values.address, values.website, values.telegram_contact, values.channel_id, String(context.auth.user.id)).run();
+  await writeProfile(env, context.auth.user.id, values);
   return json({ ok: true, profile: await ensureProfile(env, context.auth.user.id) });
 }
 
 async function activateClient(request, env) {
-  const context = await authenticatedBody(request, env); if (context.response) return context.response; if (!context.profile.is_admin) return json({ ok: false, error: "Только владелец сервиса может активировать клиентов." }, 403); if (!env.DB) return json({ ok: false, error: "База профилей ещё не подключена." }, 503);
+  const context = await authenticatedBody(request, env); if (context.response) return context.response; if (!context.profile.is_admin) return json({ ok: false, error: "Только владелец сервиса может активировать клиентов." }, 403); if (!env.PROFILES) return json({ ok: false, error: "Хранилище профилей ещё не подключено." }, 503);
   const clientId = clean(context.body.clientUserId, 30); const days = Math.max(1, Math.min(366, Number(context.body.days) || 30)); const storeName = clean(context.body.storeName, 80) || "Мой магазин";
   if (!/^\d{4,20}$/.test(clientId)) return json({ ok: false, error: "Введите корректный Telegram ID клиента." }, 400); const until = new Date(Date.now() + days * 86400000).toISOString();
-  await env.DB.prepare("INSERT INTO store_profiles (telegram_user_id, store_name, active, subscription_until) VALUES (?, ?, 1, ?) ON CONFLICT(telegram_user_id) DO UPDATE SET store_name = CASE WHEN store_profiles.store_name = '' OR store_profiles.store_name = 'Мой магазин' THEN excluded.store_name ELSE store_profiles.store_name END, active = 1, subscription_until = excluded.subscription_until, updated_at = CURRENT_TIMESTAMP").bind(clientId, storeName, until).run();
+  const existing = await readProfile(env, clientId); const preservedName = existing?.store_name && existing.store_name !== "Мой магазин" ? existing.store_name : storeName;
+  await writeProfile(env, clientId, { telegram_user_id: clientId, store_name: preservedName, active: 1, subscription_until: until, created_at: existing?.created_at || new Date().toISOString() });
   return json({ ok: true, clientUserId: clientId, subscription_until: until });
 }
 
@@ -108,7 +125,7 @@ async function sendFileToUser(request, env) {
 export default { async fetch(request, env) {
   const url = new URL(request.url);
   if (request.method === "GET" && (url.pathname === "/" || url.pathname === "/app")) return new Response(APP_HTML, { headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store", "content-security-policy": "default-src 'self'; script-src 'self' 'unsafe-inline' https://telegram.org; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; connect-src 'self'; frame-ancestors https://web.telegram.org https://*.telegram.org" } });
-  if (request.method === "GET" && url.pathname === "/health") return json({ ok: true, service: "amarket-product-bot", profiles: Boolean(env.DB) });
+  if (request.method === "GET" && url.pathname === "/health") return json({ ok: true, service: "amarket-product-bot", profiles: Boolean(env.PROFILES) });
   if (request.method === "POST" && url.pathname === "/telegram/webhook") return handleWebhook(request, env);
   if (request.method === "POST" && url.pathname === "/api/profile/get") return getProfile(request, env);
   if (request.method === "POST" && url.pathname === "/api/profile/save") return saveProfile(request, env);
