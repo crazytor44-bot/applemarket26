@@ -1,6 +1,7 @@
 import copy, tempfile, unittest
+import xml.etree.ElementTree as ET
 from pathlib import Path
-from telegram_price_sync import category_for, markup_for, merge_products, normal_key, parse_price_text, update_home_prices
+from telegram_price_sync import category_for, markup_for, merge_products, normal_key, parse_price_text, update_home_prices, update_yml, yml_product_url
 
 class PriceSyncTests(unittest.TestCase):
     def setUp(self):
@@ -107,5 +108,35 @@ class PriceSyncTests(unittest.TestCase):
         dualsense = next(x for x in merged if x["id"] == "ps5")
         self.assertTrue(dualsense["available"])
         self.assertEqual(stats["unavailable"], 0)
+
+
+    def test_yml_uses_absolute_product_links_and_preserves_prices(self):
+        items = [
+            {"name": "Samsung Galaxy A17 4/128GB Black", "category": "samsung",
+             "page": "/choose/", "price": 15500, "available": True},
+            {"name": "18 Pro Max 1TB Silver", "category": "iphone",
+             "page": "/iphone-18-pro-max/", "price": 186000, "available": True},
+            {"name": "Mi 17T Pro 12/256GB Violet", "category": "xiaomi",
+             "price": 58500, "available": False},
+            {"name": "Untrusted external page", "category": "accessories",
+             "page": "https://elsewhere.example/item", "price": 1500, "available": True},
+        ]
+        with tempfile.TemporaryDirectory() as folder:
+            path = Path(folder) / "yml.xml"
+            update_yml(items, path)
+            offers = ET.parse(path).getroot().findall("./shop/offers/offer")
+        self.assertEqual(len(offers), len(items))
+        self.assertEqual([x.findtext("price") for x in offers],
+                         ["15500", "186000", "58500", "1500"])
+        self.assertEqual(offers[0].findtext("url"),
+                         "https://applemarket26.ru/catalog/?q=Samsung%20Galaxy%20A17%204%2F128GB%20Black")
+        self.assertEqual(offers[1].findtext("url"),
+                         "https://applemarket26.ru/iphone-18-pro-max/")
+        self.assertEqual(offers[2].findtext("url"),
+                         "https://applemarket26.ru/catalog/?q=Mi%2017T%20Pro%2012%2F256GB%20Violet")
+        self.assertEqual(offers[2].get("available"), "false")
+        self.assertTrue(offers[3].findtext("url").startswith("https://applemarket26.ru/catalog/?q="))
+        self.assertTrue(all(x.findtext("url").startswith("https://applemarket26.ru/")
+                            for x in offers))
 
 if __name__ == "__main__": unittest.main()
