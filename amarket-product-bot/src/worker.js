@@ -56,9 +56,11 @@ async function ensureProfile(env, userId) {
 }
 
 export function buildTelegramCaption(product, profile = AMARKET_PROFILE) {
-  const p = Object.fromEntries(Object.entries(product || {}).map(([key, value]) => [key, clean(value, key === "notes" ? 300 : 160)])); const shop = publicProfile(profile);
-  const details = [p.storage, p.color, p.battery && `АКБ ${p.battery}`, p.sim].filter(Boolean).join(" · ");
-  return [`📱 ${p.model} ${p.storage}`.trim(), "", details, p.condition && `Состояние: ${p.condition}`, p.warranty && `Гарантия: ${p.warranty}`, p.notes, "", `💳 ${price(p.price)}`, "", shop.store_name && `🏪 ${shop.store_name}`, shop.address && `📍 ${shop.address}`, shop.website && `🌐 Сайт: ${shop.website}`, shop.telegram_contact && `💬 Написать в Telegram: ${shop.telegram_contact}`].filter((line) => line !== false && line !== undefined && line !== null).join("\n").replace(/\n{3,}/g, "\n\n").trim().slice(0, 1024);
+  const raw = product || {}; const p = Object.fromEntries(Object.entries(raw).filter(([, value]) => !Array.isArray(value) && typeof value !== "object").map(([key, value]) => [key, clean(value, key === "notes" ? 300 : 160)])); const shop = publicProfile(profile);
+  const attributes = Array.isArray(raw.attributes) ? raw.attributes.slice(0, 6).map((item) => ({ label: clean(item?.label, 50), value: clean(item?.value, 100) })).filter((item) => item.value) : [];
+  const details = attributes.length ? attributes.map((item) => `${item.label}: ${item.value}`).join(" · ") : [p.storage, p.color, p.battery && `АКБ ${p.battery}`, p.sim].filter(Boolean).join(" · ");
+  const icon = p.category === "iphone" || p.category === "android" ? "📱" : p.category === "laptop" ? "💻" : p.category === "fashion" ? "👟" : "📦";
+  return [`${icon} ${p.model} ${attributes.length ? "" : p.storage || ""}`.trim(), "", details, p.condition && `Состояние: ${p.condition}`, p.warranty && `Гарантия: ${p.warranty}`, p.notes, "", `💳 ${price(p.price)}`, "", shop.store_name && `🏪 ${shop.store_name}`, shop.address && `📍 ${shop.address}`, shop.website && `🌐 Сайт: ${shop.website}`, shop.telegram_contact && `💬 Написать в Telegram: ${shop.telegram_contact}`].filter((line) => line !== false && line !== undefined && line !== null).join("\n").replace(/\n{3,}/g, "\n\n").trim().slice(0, 1024);
 }
 
 async function telegram(env, method, payload) {

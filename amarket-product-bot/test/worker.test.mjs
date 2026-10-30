@@ -57,3 +57,21 @@ test("keeps each client's branding isolated", () => {
   assert.match(caption, /https:\/\/t\.me\/technodom/);
   assert.doesNotMatch(caption, /А Маркет|applemarket26|Тухачевского/);
 });
+
+test("creates a universal laptop caption", () => {
+  const caption = buildTelegramCaption({
+    category: "laptop",
+    model: "Lenovo ThinkPad T14",
+    price: "84990",
+    condition: "Новое",
+    attributes: [
+      { label: "Процессор", value: "Intel Core Ultra 7" },
+      { label: "ОЗУ", value: "32 Gb" },
+      { label: "Накопитель", value: "1 Tb" },
+    ],
+  }, { store_name: "Ноут Маркет", active: 1 });
+  assert.match(caption, /💻 Lenovo ThinkPad T14/);
+  assert.match(caption, /Процессор: Intel Core Ultra 7/);
+  assert.match(caption, /Накопитель: 1 Tb/);
+  assert.doesNotMatch(caption, /АКБ|SIM|А Маркет/);
+});
