@@ -1,0 +1,12 @@
+{
+  "channel": "@applemarket26",
+  "approved": true,
+  "topic_id": "airpods-pro-ear-tip-fit-test",
+  "kind": "photo",
+  "parse_mode": "plain",
+  "pin": false,
+  "publish_at": "2026-10-31T09:00:00+03:00",
+  "photo_repository_path": "telegram_channel/media/pool-airpods-pro-2.png",
+  "photo_git_blob_sha": "41c577e06d681b7645eae56faa2acfd20a6b5322",
+  "text": "🎧 AirPods Pro сидят неплотно или шумоподавление кажется слабым?\n\nНа iPhone можно проверить, подходят ли амбушюры. Наденьте подключённые AirPods Pro, откройте «Настройки» → Bluetooth, нажмите «i» рядом с наушниками и выберите «Проверка прилегания к ушам».\n\nТест подскажет, удалось ли получить хорошую герметичность. Если нет — поправьте посадку или попробуйте амбушюры другого размера. Для левого и правого уха размеры могут отличаться — главное, чтобы было удобно и плотно."
+}
