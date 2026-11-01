@@ -1,0 +1,16 @@
+{
+  "channel": "@applemarket26",
+  "approved": true,
+  "topic_id": "internet-away-from-home-poll",
+  "kind": "poll",
+  "parse_mode": "plain",
+  "pin": false,
+  "publish_at": "2026-11-01T20:00:00+03:00",
+  "text": "📡 Как вы чаще выходите в интернет с iPhone вне дома?",
+  "options": [
+    "Использую мобильный интернет",
+    "Подключаюсь к Wi‑Fi",
+    "Раздаю интернет с другого телефона",
+    "Стараюсь работать офлайн"
+  ]
+}
