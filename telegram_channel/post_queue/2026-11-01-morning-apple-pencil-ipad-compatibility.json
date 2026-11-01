@@ -1,0 +1,12 @@
+{
+  "channel": "@applemarket26",
+  "approved": true,
+  "topic_id": "apple-pencil-ipad-compatibility",
+  "kind": "photo",
+  "parse_mode": "plain",
+  "pin": false,
+  "publish_at": "2026-11-01T09:00:00+03:00",
+  "photo_repository_path": "telegram_channel/media/pool-pencil-usbc.jpg",
+  "photo_git_blob_sha": "435d4737b75f560d6ed50a6466198a9532535616",
+  "text": "✏️ Apple Pencil: сначала совместимость, потом покупка\n\nApple Pencil Pro, Apple Pencil (USB‑C), модели 1‑го и 2‑го поколения подходят к разным iPad — внешнего сходства недостаточно.\n\nПеред выбором откройте на iPad «Настройки» → «Основные» → «Об этом устройстве» и посмотрите название модели. Затем сверьте её с официальным списком совместимости Apple для нужного Pencil.\n\nТак можно заранее избежать ситуации, когда стилус не подключается к конкретному iPad."
+}
