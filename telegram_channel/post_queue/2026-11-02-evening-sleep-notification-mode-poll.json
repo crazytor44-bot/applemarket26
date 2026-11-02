@@ -1,0 +1,16 @@
+{
+  "channel": "@applemarket26",
+  "approved": true,
+  "topic_id": "sleep-notification-mode-poll",
+  "kind": "poll",
+  "parse_mode": "plain",
+  "pin": false,
+  "publish_at": "2026-11-02T20:00:00+03:00",
+  "text": "🌙 Как вы защищаете сон от уведомлений iPhone?",
+  "options": [
+    "Включаю фокусирование «Сон»",
+    "Использую «Не беспокоить»",
+    "Перевожу в беззвучный режим",
+    "Ничего не меняю"
+  ]
+}
