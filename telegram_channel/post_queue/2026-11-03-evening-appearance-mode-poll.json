@@ -1,0 +1,16 @@
+{
+  "channel": "@applemarket26",
+  "approved": true,
+  "topic_id": "appearance-mode-poll",
+  "kind": "poll",
+  "parse_mode": "plain",
+  "pin": false,
+  "publish_at": "2026-11-03T20:00:00+03:00",
+  "text": "🌓 Какое оформление iPhone вам удобнее?",
+  "options": [
+    "Светлая тема",
+    "Тёмная тема",
+    "Автоматическая смена",
+    "Не обращаю внимания"
+  ]
+}
