@@ -54,8 +54,11 @@ for (const url of urls) {
 }
 assert.equal(checkedModels, 15, 'Expected 15 optimized iPhone and Samsung model pages');
 const home = read('index.html');
-for (const model of ['iphone-17-pro', 'iphone-17-pro-max', 'iphone-18-pro', 'iphone-18-pro-max']) {
-  assert(home.includes('href="/' + model + '/"'), 'Missing direct model link from homepage: ' + model);
+for (const url of urls) {
+  const pathname = new URL(url).pathname;
+  if (/^\/(?:iphone|samsung)-[^/]+\/$/.test(pathname)) {
+    assert(home.includes('href="' + pathname + '"'), 'Missing direct model link from homepage: ' + pathname);
+  }
 }
 for (const pathname of ['index.html', 'contacts/index.html']) {
   const html = read(pathname);
