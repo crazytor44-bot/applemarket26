@@ -1,0 +1,12 @@
+{
+  "channel": "@applemarket26",
+  "approved": true,
+  "topic_id": "ipad-external-keyboard-shortcuts",
+  "kind": "photo",
+  "parse_mode": "plain",
+  "pin": false,
+  "publish_at": "2026-11-03T09:00:00+03:00",
+  "photo_repository_path": "telegram_channel/media/pool-keyboard-folio.jpg",
+  "photo_git_blob_sha": "0aec8c6180b3b1629784d50b5898cd30e9edaac1",
+  "text": "⌨️ Две команды, которые ускоряют работу на iPad\n\nЕсли к iPad подключена внешняя клавиатура, попробуйте:\n\n• Command + пробел — открыть поиск;\n• удерживать Command и нажимать Tab — переключаться между приложениями.\n\nВ большинстве сочетаний на iPad используется клавиша Command, как на Mac. Чтобы увидеть доступные команды для открытого приложения, нажмите и удерживайте Command — iPad покажет поддерживаемые сочетания.\n\nУдобно, когда часто работаете с текстом, почтой или документами."
+}
