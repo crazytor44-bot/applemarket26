@@ -11,5 +11,7 @@ CREATE TABLE orders (
     items_json Utf8,
     declared_total Uint64,
     status Utf8,
+    consent_version Utf8,
+    consent_at Utf8,
     PRIMARY KEY (id)
 );
