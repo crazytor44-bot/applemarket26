@@ -136,7 +136,7 @@ def _db_pool():
             credentials=ydb.iam.MetadataUrlCredentials(),
         )
         _driver.wait(fail_fast=True, timeout=7)
-        _pool = ydb.SessionPool(_driver)
+        _pool = ydb.QuerySessionPool(_driver)
     return _pool
 
 
@@ -171,10 +171,7 @@ def _save_order(record):
         for k, v in record.items()
     }
 
-    def write(session):
-        session.transaction().execute(query, params, commit_tx=True)
-
-    _db_pool().retry_operation_sync(write)
+    _db_pool().execute_with_retries(query, params)
 
 
 def _telegram_notice(order_id, items_count, total):
@@ -204,10 +201,7 @@ def _list_orders():
     LIMIT 100;
     """
 
-    def read(session):
-        return session.transaction().execute(query, commit_tx=True)
-
-    result_sets = _db_pool().retry_operation_sync(read)
+    result_sets = _db_pool().execute_with_retries(query)
     orders = []
     for result in result_sets:
         for row in result.rows:
