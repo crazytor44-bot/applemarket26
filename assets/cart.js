@@ -426,7 +426,7 @@ function init(){
   window.visualViewport.addEventListener("scroll",syncCheckoutMobileState);
  }
  if(typeof window.addEventListener==="function")window.addEventListener("resize",syncCheckoutMobileState);
- setupAddButtons();setupChooseButton();draw();
+ setupAddButtons();setupChooseButton();setupCaptcha();draw();
 }
 if(typeof fetch==="function")fetch("/assets/orders-config.json",{cache:"no-store"}).then(r=>r.ok?r.json():{}).then(c=>{
  if(typeof c.apiUrl==="string"&&/^https:\/\//.test(c.apiUrl))ORDER_API_URL=c.apiUrl;
