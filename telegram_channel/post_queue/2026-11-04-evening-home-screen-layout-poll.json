@@ -1,0 +1,16 @@
+{
+  "channel": "@applemarket26",
+  "approved": true,
+  "topic_id": "home-screen-layout-poll",
+  "kind": "poll",
+  "parse_mode": "plain",
+  "pin": false,
+  "publish_at": "2026-11-04T20:00:00+03:00",
+  "text": "📱 Как устроен ваш домашний экран iPhone?",
+  "options": [
+    "Всё на одном экране",
+    "Разложено по папкам",
+    "Главное — виджеты",
+    "Открываю через Библиотеку приложений"
+  ]
+}
