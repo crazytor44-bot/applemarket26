@@ -161,7 +161,15 @@ def _save_order(record):
       ($id, $created_at, $customer_name, $phone, $city, $preferred_contact,
        $comment, $items_json, $declared_total, $status, $consent_version, $consent_at);
     """
-    params = {"$" + k: v for k, v in record.items()}
+    params = {
+        "$" + k: (
+            v,
+            ydb.PrimitiveType.Uint64
+            if k == "declared_total"
+            else ydb.PrimitiveType.Utf8,
+        )
+        for k, v in record.items()
+    }
 
     def write(session):
         session.transaction().execute(query, params, commit_tx=True)
