@@ -63,7 +63,7 @@ class OrdersHandlerTests(unittest.TestCase):
         self.assertEqual(result["statusCode"], 201)
         data = json.loads(result["body"])
         self.assertTrue(data["ok"])
-        self.assertRegex(data["order_id"], r"^\\d{8}-[A-F0-9]{10}$")
+        self.assertRegex(data["order_id"], r"^[0-9]{8}-[A-F0-9]{10}$")
         record = save.call_args.args[0]
         self.assertEqual(record["phone"], "+70000000000")
         self.assertEqual(record["declared_total"], 1)
