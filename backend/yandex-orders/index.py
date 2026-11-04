@@ -1,7 +1,7 @@
 """А Маркет: HTTPS-приём заявок. Yandex Cloud Functions (index.handler).
 
 Персональные данные сохраняются только в YDB в российском регионе.
-Токен Telegram и данные сервисного аккаунта никогда не передаются в браузер.
+Секреты передаются функции только из Yandex Lockbox.
 """
 import base64
 import datetime
@@ -15,8 +15,10 @@ from urllib import parse, request
 import ydb
 
 ALLOWED_ORIGINS = {"https://applemarket26.ru", "https://www.applemarket26.ru"}
+ALLOWED_CAPTCHA_HOSTS = {"applemarket26.ru", "www.applemarket26.ru"}
 MAX_REQUEST_SIZE = 16000
 PHONE_RE = re.compile(r"^[+0-9()\s-]{7,25}$")
+POLICY_VERSION = "2026-11-04"
 _driver = None
 _pool = None
 
@@ -56,16 +58,20 @@ def _parse(event):
     data = json.loads(body)
     if not isinstance(data, dict):
         raise ValueError("Некорректные данные")
-    # Поле-ловушка для простых автоматических отправок.
     if data.get("website"):
         raise ValueError("Некорректные данные")
+    if data.get("consent") is not True:
+        raise ValueError("Требуется согласие")
     name = _clean_string(data, "name", 80)
     phone = _clean_string(data, "phone", 25)
     city = _clean_string(data, "city", 100)
     contact = _clean_string(data, "contact", 40)
     comment = _clean_string(data, "comment", 1000)
+    captcha_token = _clean_string(data, "captcha_token", 8192)
     if len(name) < 2 or not PHONE_RE.fullmatch(phone):
         raise ValueError("Проверьте имя и номер телефона")
+    if os.environ.get("CAPTCHA_REQUIRED", "1") != "0" and len(captcha_token) < 10:
+        raise ValueError("Требуется проверка")
     items = data.get("items")
     if not isinstance(items, list) or not 1 <= len(items) <= 25:
         raise ValueError("Корзина пуста или содержит слишком много товаров")
@@ -83,7 +89,42 @@ def _parse(event):
         clean_items.append({"id": item_id, "name": item_name,
                             "qty": qty, "price": price})
     total = sum(x["price"] * x["qty"] for x in clean_items)
-    return name, phone, city, contact, comment, clean_items, total
+    return name, phone, city, contact, comment, clean_items, total, captcha_token
+
+
+def _source_ip(event):
+    context = event.get("requestContext") or {}
+    identity = context.get("identity") or {}
+    value = identity.get("sourceIp") or ""
+    if not value:
+        headers = {k.lower(): v for k, v in (event.get("headers") or {}).items()}
+        value = (headers.get("x-forwarded-for") or "").split(",", 1)[0].strip()
+    return value if isinstance(value, str) and len(value) <= 64 else ""
+
+
+def _captcha_ok(event, token):
+    if os.environ.get("CAPTCHA_REQUIRED", "1") == "0":
+        return True
+    secret = os.environ.get("SMARTCAPTCHA_SERVER_KEY", "")
+    if not secret or not token:
+        return False
+    data = {"secret": secret, "token": token}
+    source_ip = _source_ip(event)
+    if source_ip:
+        data["ip"] = source_ip
+    req = request.Request(
+        "https://smartcaptcha.cloud.yandex.ru/validate",
+        data=parse.urlencode(data).encode("utf-8"),
+        method="POST",
+        headers={"Content-Type": "application/x-www-form-urlencoded"},
+    )
+    try:
+        with request.urlopen(req, timeout=4) as response:
+            result = json.loads(response.read(4096).decode("utf-8"))
+    except Exception:
+        return False
+    return (result.get("status") == "ok"
+            and result.get("host") in ALLOWED_CAPTCHA_HOSTS)
 
 
 def _db_pool():
@@ -111,12 +152,14 @@ def _save_order(record):
     DECLARE $items_json AS Utf8;
     DECLARE $declared_total AS Uint64;
     DECLARE $status AS Utf8;
+    DECLARE $consent_version AS Utf8;
+    DECLARE $consent_at AS Utf8;
     UPSERT INTO orders
       (id, created_at, customer_name, phone, city, preferred_contact,
-       comment, items_json, declared_total, status)
+       comment, items_json, declared_total, status, consent_version, consent_at)
     VALUES
       ($id, $created_at, $customer_name, $phone, $city, $preferred_contact,
-       $comment, $items_json, $declared_total, $status);
+       $comment, $items_json, $declared_total, $status, $consent_version, $consent_at);
     """
     params = {"$" + k: v for k, v in record.items()}
 
@@ -131,7 +174,6 @@ def _telegram_notice(order_id, items_count, total):
     chat_id = os.environ.get("TELEGRAM_CHAT_ID", "")
     if not token or not chat_id:
         return
-    # В Telegram НЕ отправляем имя, телефон, комментарий или ссылку с ПДн.
     msg = (f"🛒 А Маркет — новая заявка с сайта № {order_id}\n"
            f"Товарных позиций: {items_count}\n"
            "Контактные данные покупателя доступны только в закрытом кабинете:\n"
@@ -141,12 +183,11 @@ def _telegram_notice(order_id, items_count, total):
         request.Request("https://api.telegram.org/bot" + token + "/sendMessage",
                         data=data, method="POST"),
         timeout=5,
-    ) as r:
-        r.read(1024)
+    ) as response:
+        response.read(1024)
 
 
 def _list_orders():
-    # Последние 100 заявок; полные данные доступны только после проверки ключа.
     query = """
     SELECT id, created_at, customer_name, phone, city, preferred_contact,
            comment, items_json, declared_total, status
@@ -191,7 +232,6 @@ def handler(event, context):
     if method == "OPTIONS":
         return _response(204, {}, origin)
     if method == "GET":
-        # Доступ только по длинному случайному ключу из защищённых настроек функции.
         configured = os.environ.get("ADMIN_ACCESS_TOKEN", "")
         header = headers.get("authorization", "")
         provided = header.removeprefix("Bearer ") if header.startswith("Bearer ") else ""
@@ -200,21 +240,24 @@ def handler(event, context):
         try:
             return _response(200, {"ok": True, "orders": _list_orders()}, origin)
         except Exception:
-            # Не раскрываем конфигурацию базы или персональные данные.
             return _response(503, {"error": "Не удалось загрузить заявки"}, origin)
     if method != "POST":
         return _response(405, {"error": "Используйте GET или POST"}, origin)
 
     try:
-        name, phone, city, contact, comment, items, total = _parse(event)
+        name, phone, city, contact, comment, items, total, captcha_token = _parse(event)
     except (ValueError, TypeError, json.JSONDecodeError, UnicodeDecodeError,
             base64.binascii.Error):
         return _response(400, {"error": "Проверьте данные заказа"}, origin)
 
-    order_id = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%d") + "-" + uuid.uuid4().hex[:10].upper()
+    if not _captcha_ok(event, captcha_token):
+        return _response(403, {"error": "Не пройдена проверка безопасности"}, origin)
+
+    now = datetime.datetime.now(datetime.timezone.utc)
+    order_id = now.strftime("%Y%m%d") + "-" + uuid.uuid4().hex[:10].upper()
     record = {
         "id": order_id,
-        "created_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+        "created_at": now.isoformat(),
         "customer_name": name,
         "phone": phone,
         "city": city,
@@ -223,16 +266,16 @@ def handler(event, context):
         "items_json": json.dumps(items, ensure_ascii=False),
         "declared_total": total,
         "status": "new",
+        "consent_version": POLICY_VERSION,
+        "consent_at": now.isoformat(),
     }
     try:
         _save_order(record)
     except Exception:
-        # Не логируем тело запроса или ПДн клиента.
         return _response(503, {"error": "Не удалось сохранить заявку. Попробуйте позднее."}, origin)
 
     try:
         _telegram_notice(order_id, len(items), total)
     except Exception:
-        # Заявка уже сохранена: ошибка Telegram не должна вводить клиента в заблуждение.
         pass
     return _response(201, {"ok": True, "order_id": order_id}, origin)
