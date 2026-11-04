@@ -132,7 +132,8 @@ def _telegram_notice(order_id, items_count, total):
     if not token or not chat_id:
         return
     # В Telegram НЕ отправляем имя, телефон, комментарий или ссылку с ПДн.
-    msg = ("🛒 А Маркет — новая заявка с сайта!\n"
+    msg = (f"🛒 А Маркет — новая заявка с сайта № {order_id}\n"
+           f"Товарных позиций: {items_count}\n"
            "Контактные данные покупателя доступны только в закрытом кабинете:\n"
            "https://applemarket26.ru/orders-admin/")
     data = parse.urlencode({"chat_id": chat_id, "text": msg}).encode("utf-8")
