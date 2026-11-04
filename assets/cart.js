@@ -2,7 +2,9 @@
 "use strict";
 const KEY="amarket_cart";
 const WA="79383119888";
+const SMARTCAPTCHA_SITEKEY="ysc1_ZqKg27ARdZY2KshLOtOY5Zgf7VIHQGezoaDUNM8U6b746f40";
 let ORDER_API_URL="", step="cart", previousFocus=null, submitting=false;
+let captchaWidgetId=null,captchaToken="";
 const cartIcon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h8.8a2 2 0 0 0 2-1.6L21 7H6"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>';
 const bagIcon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l1.1 12H3.9L5 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg>';
 const deviceIcon='<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="19" y="4" width="26" height="56" rx="6"/><path d="M28 9h8M29 54h6"/></svg>';
@@ -203,6 +205,33 @@ async function refreshCartPrices(){
 }
 function CSSescape(s){return String(s).replace(/["\\]/g,"");}
 
+function setupCaptcha(){
+ const box=document.querySelector("#am-captcha");
+ if(!box)return;
+ if(!ORDER_API_URL){box.hidden=true;return;}
+ box.hidden=false;
+ window.amarketCaptchaReady=()=>{
+  if(!window.smartCaptcha||captchaWidgetId!==null)return;
+  captchaWidgetId=window.smartCaptcha.render(box,{
+   sitekey:SMARTCAPTCHA_SITEKEY,
+   hl:"ru",
+   callback:token=>{captchaToken=String(token||"");}
+  });
+ };
+ if(window.smartCaptcha){window.amarketCaptchaReady();return;}
+ if(document.querySelector('script[data-am-captcha]'))return;
+ const script=document.createElement("script");
+ script.src="https://smartcaptcha.cloud.yandex.ru/captcha.js?render=onload&onload=amarketCaptchaReady";
+ script.defer=true;script.dataset.amCaptcha="1";
+ document.head.appendChild(script);
+}
+function resetCaptcha(){
+ captchaToken="";
+ if(captchaWidgetId!==null&&window.smartCaptcha&&typeof window.smartCaptcha.reset==="function"){
+  window.smartCaptcha.reset(captchaWidgetId);
+ }
+}
+
 async function submit(){
  if(submitting)return;
  try{
@@ -217,22 +246,25 @@ async function submit(){
  const city=document.querySelector("#am-city").value;
  const contact=document.querySelector("#am-contact").value;
  const comment=document.querySelector("#am-comment").value.trim();
+ const consent=document.querySelector("#am-consent")?.checked===true;
  if(!name||!phone){alert("Введите имя и номер телефона");return;}
+ if(!consent){alert("Подтвердите согласие на обработку персональных данных");return;}
  if(!/^[+0-9()\s-]{7,25}$/.test(phone)){alert("Проверьте номер телефона");return;}
  const total=items.reduce((n,x)=>n+x.price*x.qty,0);
  const lines=items.map(x=>"• "+x.name+" — "+money(x.price)+" × "+x.qty);
  const msg=["Здравствуйте! Хочу оформить заказ:","",...lines,"","Итого: "+money(total),"","Имя: "+name,"Телефон: "+phone,city?"Город: "+city:"",contact?"Связаться: "+contact:"",comment?"Комментарий: "+comment:""].filter(Boolean).join("\n");
  const btn=document.querySelector(".am-cart-order");
  if(ORDER_API_URL){
+  if(!captchaToken){alert("Подтвердите, что вы не робот");return;}
   submitting=true;btn.disabled=true;btn.textContent="Отправляем заявку…";
   try{
-   const response=await fetch(ORDER_API_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name,phone,city,contact,comment,items:items.map(x=>({id:String(x.id),name:String(x.name),price:Math.round(x.price),qty:x.qty})),website:""})});
+   const response=await fetch(ORDER_API_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name,phone,city,contact,comment,items:items.map(x=>({id:String(x.id),name:String(x.name),price:Math.round(x.price),qty:x.qty})),website:"",consent:true,captcha_token:captchaToken})});
    const result=await response.json().catch(()=>({}));
    if(!response.ok||!result.ok||!result.order_id)throw Error(result.error||"Не удалось подтвердить сохранение заявки");
    save([]);close();alert("Спасибо! Ваша заявка №"+result.order_id+" принята. Мы свяжемся с вами, чтобы подтвердить наличие и цену.");
   }catch{
    alert("Не удалось подтвердить отправку заказа. Позвоните нам: +7 938 311-98-88. Если связь прервалась, сначала уточните, не поступила ли заявка.");
-  }finally{submitting=false;btn.disabled=false;renderStep();}
+  }finally{resetCaptcha();submitting=false;btn.disabled=false;renderStep();}
   return;
  }
  window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(msg),"_blank");
@@ -356,7 +388,7 @@ function init(){
       '<label>Город<select id="am-city"><option value="">Не указывать</option><option>Ставрополь</option><option>Другой город</option></select></label>'+
       '<label>Как связаться?<select id="am-contact"><option value="">Как удобно</option><option>WhatsApp</option><option>Позвонить</option><option>Telegram</option></select></label>'+
      '</div></div>'+
-     '<div class="am-cart-section-card"><h3>02 / Пожелания к заказу</h3><label>Комментарий<textarea id="am-comment" maxlength="1000" placeholder="Например: интересует доставка или рассрочка"></textarea></label><p class="am-cart-privacy">Ваши данные используются для ответа по заказу. <a href="/privacy/" target="_blank" rel="noopener noreferrer">Политика обработки персональных данных ↗</a></p></div>'+
+     '<div class="am-cart-section-card"><h3>02 / Пожелания к заказу</h3><label>Комментарий<textarea id="am-comment" maxlength="1000" placeholder="Например: интересует доставка или рассрочка"></textarea></label><label class="am-cart-consent"><input id="am-consent" type="checkbox"><span>Я даю <a href="/consent/" target="_blank" rel="noopener noreferrer">согласие на обработку персональных данных ↗</a> и ознакомлен(а) с <a href="/privacy/" target="_blank" rel="noopener noreferrer">политикой ↗</a></span></label><div id="am-captcha" class="am-cart-captcha" hidden></div><p class="am-cart-privacy">Данные используются только для обработки заявки и связи по заказу.</p></div>'+
     '</section>'+
    '</div>'+
    '<div class="am-cart-foot"><div class="am-cart-cost-row"><span class="am-cart-summary-count">Товары</span><b class="am-cart-subtotal">0 ₽</b></div><div class="am-cart-total-row"><span>Итого</span><strong class="am-cart-total">0 ₽</strong></div><div class="am-cart-foot-note am-cart-method-note">Без оплаты на сайте · Наличие подтвердим</div><button class="am-cart-primary am-cart-next" type="button">Перейти к оформлению <span>→</span></button><button class="am-cart-primary am-cart-order" type="button" hidden>Перейти в WhatsApp ↗</button><p class="am-cart-note">Цена и наличие подтверждаются при оформлении</p></div>'+
@@ -398,7 +430,7 @@ function init(){
 }
 if(typeof fetch==="function")fetch("/assets/orders-config.json",{cache:"no-store"}).then(r=>r.ok?r.json():{}).then(c=>{
  if(typeof c.apiUrl==="string"&&/^https:\/\//.test(c.apiUrl))ORDER_API_URL=c.apiUrl;
- renderStep();
+ setupCaptcha();renderStep();
 }).catch(()=>{});
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
 window.AMarketCart={add,open};
