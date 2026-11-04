@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 3
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Verify script and exact approved picture without posting
         shell: bash
         run: |
@@ -47,7 +47,7 @@ jobs:
       AMARKET_TELEGRAM_BOT_TOKEN: ${{ secrets.AMARKET_TELEGRAM_BOT_TOKEN }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       - name: Validate one-time publication code
         run: python3 -m py_compile telegram_channel/tradein_publisher.py
       - name: Post owner's approved Trade-in photo and caption once
