@@ -8,7 +8,6 @@ import types
 import unittest
 from unittest import mock
 
-# Import the handler without installing or connecting to the real YDB SDK.
 sys.modules.setdefault("ydb", types.ModuleType("ydb"))
 module_path = pathlib.Path(__file__).with_name("index.py")
 spec = importlib.util.spec_from_file_location("amarket_order_handler_under_test", module_path)
@@ -34,6 +33,8 @@ def sample_order():
         "city": "Ставрополь",
         "contact": "phone",
         "comment": "Тестовая заявка — никаких реальных данных",
+        "consent": True,
+        "captcha_token": "test-captcha-token",
         "items": [{"id": "test-iphone", "name": "Тестовый товар", "qty": 1, "price": 1}],
     }
 
@@ -49,6 +50,14 @@ class OrdersHandlerTests(unittest.TestCase):
         self.assertEqual(result["statusCode"], 204)
         self.assertEqual(result["headers"]["Access-Control-Allow-Origin"], ORIGIN)
 
+    def test_missing_consent_is_not_saved(self):
+        invalid = sample_order()
+        invalid["consent"] = False
+        with mock.patch.object(orders, "_save_order") as save:
+            result = orders.handler(event(data=invalid), None)
+        self.assertEqual(result["statusCode"], 400)
+        save.assert_not_called()
+
     def test_invalid_contact_is_not_saved(self):
         invalid = sample_order()
         invalid["phone"] = "not a phone"
@@ -57,8 +66,17 @@ class OrdersHandlerTests(unittest.TestCase):
         self.assertEqual(result["statusCode"], 400)
         save.assert_not_called()
 
+    def test_failed_captcha_is_not_saved(self):
+        with mock.patch.object(orders, "_captcha_ok", return_value=False), \
+                mock.patch.object(orders, "_save_order") as save:
+            result = orders.handler(event(data=sample_order()), None)
+        self.assertEqual(result["statusCode"], 403)
+        save.assert_not_called()
+
     def test_valid_order_is_saved_and_acknowledged(self):
-        with mock.patch.object(orders, "_save_order") as save, mock.patch.object(orders, "_telegram_notice") as notify:
+        with mock.patch.object(orders, "_captcha_ok", return_value=True), \
+                mock.patch.object(orders, "_save_order") as save, \
+                mock.patch.object(orders, "_telegram_notice") as notify:
             result = orders.handler(event(data=sample_order()), None)
         self.assertEqual(result["statusCode"], 201)
         data = json.loads(result["body"])
@@ -67,6 +85,8 @@ class OrdersHandlerTests(unittest.TestCase):
         record = save.call_args.args[0]
         self.assertEqual(record["phone"], "+70000000000")
         self.assertEqual(record["declared_total"], 1)
+        self.assertEqual(record["consent_version"], orders.POLICY_VERSION)
+        self.assertTrue(record["consent_at"])
         self.assertEqual(notify.call_args.args[0], data["order_id"])
         self.assertNotIn("+70000000000", result["body"])
 
@@ -81,16 +101,21 @@ class OrdersHandlerTests(unittest.TestCase):
 
     def test_telegram_notice_contains_no_personal_data(self):
         called = {}
+
         class FakeResponse:
             def __enter__(self):
                 return self
+
             def __exit__(self, *args):
                 return False
+
             def read(self, count):
                 return b'{"ok":true}'
+
         def fake_urlopen(req, timeout):
             called["payload"] = req.data.decode("utf-8")
             return FakeResponse()
+
         with mock.patch.dict(os.environ, {"TELEGRAM_BOT_TOKEN": "dummy", "TELEGRAM_CHAT_ID": "123"}):
             with mock.patch.object(orders.request, "urlopen", side_effect=fake_urlopen):
                 orders._telegram_notice("TEST-ORDER-1", 1, 1)
