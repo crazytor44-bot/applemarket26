@@ -162,7 +162,7 @@ def _save_order(record):
        $comment, $items_json, $declared_total, $status, $consent_version, $consent_at);
     """
     params = {
-        "$" + k: (
+        "$" + k: ydb.TypedValue(
             v,
             ydb.PrimitiveType.Uint64
             if k == "declared_total"
