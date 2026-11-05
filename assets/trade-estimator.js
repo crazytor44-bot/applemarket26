@@ -64,7 +64,7 @@
         "Ориентир на основе цены магазина." :
         "Автоматический ориентир по модели и памяти, рассчитанный на основе цен магазина.") +
         (quote.discountAmount > 0 ? " Учтено снижение на " + engine.money(quote.discountAmount) + " за состояние, АКБ и ремонт." : "") +
-        " WhatsApp для просмотра цены не нужен. Итог после осмотра.";
+        " Переписка для просмотра цены не нужна. Итог после осмотра.";
     } else {
       out.amount.textContent = "Сумма после проверки";
       out.details.textContent = "Сейчас не получается рассчитать стоимость автоматически. Можно запросить индивидуальную оценку.";
@@ -133,7 +133,7 @@
     }
     document.getElementById("request")?.scrollIntoView({ behavior: "smooth", block: "start" });
     const note = document.getElementById("am-est-prefilled");
-    if (note) { note.hidden = false; note.textContent = "Готово! Мы заполнили заявку. Проверьте информацию и нажмите кнопку WhatsApp, чтобы отправить её в магазин."; }
+    if (note) { note.hidden = false; note.textContent = "Готово! Предварительная оценка рассчитана. Позвоните в магазин, чтобы согласовать осмотр."; }
   });
 
   fetch("/assets/trade-estimates.json", { cache: "no-store" })
