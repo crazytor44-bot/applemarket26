@@ -1,0 +1,17 @@
+{
+  "channel": "@applemarket26",
+  "approved": true,
+  "topic_id": "safari-tab-count-poll",
+  "kind": "poll",
+  "parse_mode": "plain",
+  "pin": false,
+  "publish_at": "2026-11-05T20:00:00+03:00",
+  "text": "🧭 Сколько вкладок обычно открыто у вас в Safari?",
+  "options": [
+    "До 5 — держу порядок",
+    "От 6 до 20",
+    "От 21 до 50",
+    "Больше 50",
+    "Не считаю вообще"
+  ]
+}
