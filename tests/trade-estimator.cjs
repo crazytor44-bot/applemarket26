@@ -106,14 +106,14 @@ for (const phrase of [
 ]) assert(html.includes(phrase), "Missing Trade-in integration: " + phrase);
 assert(html.includes("без регистрации") || html.includes("Без регистрации"));
 const form = read("assets/trade-request.js");
-assert(form.includes("https://wa.me/79383119888"),
-  "The original optional WhatsApp form must remain");
+assert(form.includes("tel:+79383119888") && !form.includes("wa.me"),
+  "Trade-in contact must use a phone call without WhatsApp data transfer");
 const ui = read("assets/trade-estimator.js");
 assert(ui.includes("quote.range.text") && ui.includes('out.reset.addEventListener'));
 assert(ui.includes('out.cta.addEventListener') && ui.includes('scrollIntoView'));
 assert(!ui.includes('method: "POST"') && !ui.includes("localStorage"),
   "Appraisal does not store customer data");
-// Conversion landing must preserve the existing calculator, lead form and optional WhatsApp.
+// Conversion landing must preserve the existing calculator and lead form without external messenger transfer.
 const landingCss = read("assets/trade-landing.css");
 for (const phrase of [
   'class="trade-landing-hero"', 'id="trade-landing-title"',
