@@ -1,0 +1,12 @@
+{
+  "channel": "@applemarket26",
+  "approved": true,
+  "topic_id": "trackpad-three-finger-drag",
+  "kind": "photo",
+  "parse_mode": "plain",
+  "pin": false,
+  "publish_at": "2026-11-05T09:00:00+03:00",
+  "photo_repository_path": "telegram_channel/media/pool-trackpad-white.jpg",
+  "photo_git_blob_sha": "30ebc41a69766accf4af8dc03887401cac823bd3",
+  "text": "🖐 Перетягивайте объекты на Mac тремя пальцами\n\nЕсли трекпад поддерживает Force Touch, включите жест:  → «Системные настройки» → «Универсальный доступ» → «Управление указателем» → «Параметры трекпада» → «Использовать трекпад для перетягивания» → «Перетягивание тремя пальцами».\n\nПосле этого объект можно перемещать тремя пальцами, а отпустить — подняв их. Названия отдельных пунктов могут отличаться в зависимости от версии macOS."
+}
