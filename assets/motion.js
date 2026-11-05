@@ -30,7 +30,7 @@ function decodeHref(href){
  try{return decodeURIComponent(String(href||'').replace(/\+/g,' '));}catch(e){return String(href||'');}
 }
 document.addEventListener('click',event=>{
- const link=event.target.closest&&event.target.closest('a[href*="wa.me/"]');
+ const link=event.target.closest&&event.target.closest('a[href^="tel:"]');
  if(!link)return;
  const raw=decodeHref(link.getAttribute('href')||link.href),label=(link.textContent||'').trim();
  const text=(raw+' '+label).toLowerCase();
