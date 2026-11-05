@@ -1,7 +1,6 @@
 (()=>{
 "use strict";
 const KEY="amarket_cart";
-const WA="79383119888";
 const SMARTCAPTCHA_SITEKEY="ysc1_ZqKg27ARdZY2KshLOtOY5Zgf7VIHQGezoaDUNM8U6b746f40";
 let ORDER_API_URL="", step="cart", previousFocus=null, submitting=false;
 let captchaWidgetId=null,captchaToken="";
@@ -113,9 +112,9 @@ function renderStep(){
  const foot=document.querySelector(".am-cart-foot");
  if(foot)foot.hidden=get().length===0;
  const note=document.querySelector(".am-cart-method-note");
- if(note)note.textContent=ORDER_API_URL?"Без оплаты на сайте · Мы подтвердим наличие и цену":"Без оплаты на сайте · Завершение заявки в WhatsApp";
+ if(note)note.textContent=ORDER_API_URL?"Без оплаты на сайте · Мы подтвердим наличие и цену":"Онлайн-заказ пока не подключён · Реальные данные не отправляются";
  const btn=document.querySelector(".am-cart-order");
- if(btn&&!submitting)btn.textContent=ORDER_API_URL?"Отправить заявку →":"Перейти в WhatsApp ↗";
+ if(btn&&!submitting)btn.textContent=ORDER_API_URL?"Отправить заявку →":"Онлайн-заказ пока недоступен";
  syncCheckoutMobileState();
 }
 let idleCartViewportHeight=0;
@@ -251,8 +250,6 @@ async function submit(){
  if(!consent){alert("Подтвердите согласие на обработку персональных данных");return;}
  if(!/^[+0-9()\s-]{7,25}$/.test(phone)){alert("Проверьте номер телефона");return;}
  const total=items.reduce((n,x)=>n+x.price*x.qty,0);
- const lines=items.map(x=>"• "+x.name+" — "+money(x.price)+" × "+x.qty);
- const msg=["Здравствуйте! Хочу оформить заказ:","",...lines,"","Итого: "+money(total),"","Имя: "+name,"Телефон: "+phone,city?"Город: "+city:"",contact?"Связаться: "+contact:"",comment?"Комментарий: "+comment:""].filter(Boolean).join("\n");
  const btn=document.querySelector(".am-cart-order");
  if(ORDER_API_URL){
   if(!captchaToken){alert("Подтвердите, что вы не робот");return;}
@@ -267,7 +264,7 @@ async function submit(){
   }finally{resetCaptcha();submitting=false;btn.disabled=false;renderStep();}
   return;
  }
- window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(msg),"_blank");
+ alert("Онлайн-заказ пока не подключён. Позвоните нам: +7 938 311-98-88 или напишите в Telegram.");
 }
 function imageForCurrentPage(){
  const img=document.querySelector("#product-photo, .choose-photo img, .model-gallery img, .product-gallery img, .product-photo img");
@@ -386,12 +383,12 @@ function init(){
       '<label>Ваше имя <em>*</em><input id="am-name" autocomplete="name" maxlength="80" placeholder="Как к вам обращаться?"></label>'+
       '<label>Телефон <em>*</em><input id="am-phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="25" placeholder="+7 (___) ___-__-__"></label>'+
       '<label>Город<select id="am-city"><option value="">Не указывать</option><option>Ставрополь</option><option>Другой город</option></select></label>'+
-      '<label>Как связаться?<select id="am-contact"><option value="">Как удобно</option><option>WhatsApp</option><option>Позвонить</option><option>Telegram</option></select></label>'+
+      '<label>Как связаться?<select id="am-contact"><option value="">Как удобно</option><option>Позвонить</option><option>Telegram</option></select></label>'+
      '</div></div>'+
      '<div class="am-cart-section-card"><h3>02 / Пожелания к заказу</h3><label>Комментарий<textarea id="am-comment" maxlength="1000" placeholder="Например: интересует доставка или рассрочка"></textarea></label><label class="am-cart-consent"><input id="am-consent" type="checkbox"><span>Я даю <a href="/consent/" target="_blank" rel="noopener noreferrer">согласие на обработку персональных данных ↗</a> и ознакомлен(а) с <a href="/privacy/" target="_blank" rel="noopener noreferrer">политикой ↗</a></span></label><div id="am-captcha" class="am-cart-captcha" hidden></div><p class="am-cart-privacy">Данные используются только для обработки заявки и связи по заказу.</p></div>'+
     '</section>'+
    '</div>'+
-   '<div class="am-cart-foot"><div class="am-cart-cost-row"><span class="am-cart-summary-count">Товары</span><b class="am-cart-subtotal">0 ₽</b></div><div class="am-cart-total-row"><span>Итого</span><strong class="am-cart-total">0 ₽</strong></div><div class="am-cart-foot-note am-cart-method-note">Без оплаты на сайте · Наличие подтвердим</div><button class="am-cart-primary am-cart-next" type="button">Перейти к оформлению <span>→</span></button><button class="am-cart-primary am-cart-order" type="button" hidden>Перейти в WhatsApp ↗</button><p class="am-cart-note">Цена и наличие подтверждаются при оформлении</p></div>'+
+   '<div class="am-cart-foot"><div class="am-cart-cost-row"><span class="am-cart-summary-count">Товары</span><b class="am-cart-subtotal">0 ₽</b></div><div class="am-cart-total-row"><span>Итого</span><strong class="am-cart-total">0 ₽</strong></div><div class="am-cart-foot-note am-cart-method-note">Без оплаты на сайте · Наличие подтвердим</div><button class="am-cart-primary am-cart-next" type="button">Перейти к оформлению <span>→</span></button><button class="am-cart-primary am-cart-order" type="button" hidden>Онлайн-заказ пока недоступен</button><p class="am-cart-note">Цена и наличие подтверждаются при оформлении</p></div>'+
   '</aside>'
  );
  mountCartLauncher();
