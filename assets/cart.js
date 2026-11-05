@@ -264,7 +264,7 @@ async function submit(){
   }finally{resetCaptcha();submitting=false;btn.disabled=false;renderStep();}
   return;
  }
- alert("Онлайн-заказ пока не подключён. Позвоните нам: +7 938 311-98-88 или напишите в Telegram.");
+ alert("Онлайн-заказ пока не подключён. Позвоните нам: +7 938 311-98-88.");
 }
 function imageForCurrentPage(){
  const img=document.querySelector("#product-photo, .choose-photo img, .model-gallery img, .product-gallery img, .product-photo img");
@@ -383,7 +383,7 @@ function init(){
       '<label>Ваше имя <em>*</em><input id="am-name" autocomplete="name" maxlength="80" placeholder="Как к вам обращаться?"></label>'+
       '<label>Телефон <em>*</em><input id="am-phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="25" placeholder="+7 (___) ___-__-__"></label>'+
       '<label>Город<select id="am-city"><option value="">Не указывать</option><option>Ставрополь</option><option>Другой город</option></select></label>'+
-      '<label>Как связаться?<select id="am-contact"><option value="">Как удобно</option><option>Позвонить</option><option>Telegram</option></select></label>'+
+      '<label>Как связаться?<select id="am-contact"><option value="">Как удобно</option><option>Позвонить</option></select></label>'+
      '</div></div>'+
      '<div class="am-cart-section-card"><h3>02 / Пожелания к заказу</h3><label>Комментарий<textarea id="am-comment" maxlength="1000" placeholder="Например: интересует доставка или рассрочка"></textarea></label><label class="am-cart-consent"><input id="am-consent" type="checkbox"><span>Я даю <a href="/consent/" target="_blank" rel="noopener noreferrer">согласие на обработку персональных данных ↗</a> и ознакомлен(а) с <a href="/privacy/" target="_blank" rel="noopener noreferrer">политикой ↗</a></span></label><div id="am-captcha" class="am-cart-captcha" hidden></div><p class="am-cart-privacy">Данные используются только для обработки заявки и связи по заказу.</p></div>'+
     '</section>'+
