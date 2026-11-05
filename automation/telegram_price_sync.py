@@ -235,11 +235,9 @@ def group_key_for(name: str, category: str, model: str) -> str:
     return f"{category}-{base}" if base else f"{category}-other"
 
 
-def whatsapp_url(name: str, price: int, available: bool) -> str:
-    formatted = f"{price:,}".replace(",", " ")
-    ending = "Есть в наличии?" if available else "Когда ожидается поступление?"
-    text = f"Здравствуйте! Интересует {name} за {formatted} ₽. {ending}"
-    return f"https://wa.me/{PHONE}?" + urllib.parse.urlencode({"text": text})
+def phone_url(name: str, price: int, available: bool) -> str:
+    # Product links use a regular phone call; no customer data is sent to an external messenger.
+    return f"tel:+{PHONE}"
 
 
 def new_product(entry: PriceEntry) -> dict:
@@ -250,7 +248,7 @@ def new_product(entry: PriceEntry) -> dict:
     product = {"id": product_id, "name": entry.name, "category": category, "model": model,
                "memory": memory_for(entry.name), "price": price, "preorder": False, "notes": "", "transit": entry.transit,
                "available": True, "source": "icenter", "meta": ("В пути" if entry.transit else "В наличии · Цена обновляется автоматически"),
-               "groupKey": group_key_for(entry.name, category, model), "url": whatsapp_url(entry.name, price, True)}
+               "groupKey": group_key_for(entry.name, category, model), "url": phone_url(entry.name, price, True)}
     # New supplier iPhone variants must point at their model detail page.
     if category == "iphone":
         slug = group_key_for(entry.name, category, model).removeprefix("iphone-")
@@ -298,7 +296,7 @@ def merge_products(products: list[dict], entries: list[PriceEntry]) -> tuple[lis
             product.update(price=price, available=True, transit=entry.transit, source="icenter", category=category, model=model,
                            groupKey=(group_key_for(entry.name, category, model) if force_group_key else (product.get("groupKey") or group_key_for(entry.name, category, model))),
                            meta=("В пути" if entry.transit else "В наличии · Цена обновляется автоматически"),
-                           url=whatsapp_url(product["name"], price, True))
+                           url=phone_url(product["name"], price, True))
             # Existing supplier items may have a legacy null memory even when
             # their names clearly include 1TB/2TB/256GB. Refresh it on each sync.
             parsed_memory = memory_for(entry.name)
@@ -338,7 +336,7 @@ def merge_products(products: list[dict], entries: list[PriceEntry]) -> tuple[lis
                 or product.get("category") not in represented_categories):
             continue
         product.update(available=False, meta="Нет в наличии",
-                       url=whatsapp_url(product["name"], int(product["price"]), False))
+                       url=phone_url(product["name"], int(product["price"]), False))
         stats["unavailable"] += 1
     # Repair legacy supplier variants even if they were not present in today's
     # Telegram batch; leave devices with genuinely unknown memory untouched.
