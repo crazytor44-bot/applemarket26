@@ -99,6 +99,36 @@ class OrdersHandlerTests(unittest.TestCase):
         self.assertEqual(good["statusCode"], 200)
         self.assertEqual(json.loads(good["body"])["orders"], [])
 
+    def test_admin_list_orders_uses_primary_key_order(self):
+        captured = {}
+
+        class Row:
+            id = "20261105-TEST"
+            created_at = "2026-11-05T14:23:00+00:00"
+            customer_name = "Тестовый клиент"
+            phone = "+70000000000"
+            city = "Ставрополь"
+            preferred_contact = "phone"
+            comment = "Тестовая заявка"
+            items_json = "[]"
+            declared_total = 1
+            status = "new"
+
+        class Result:
+            rows = [Row()]
+
+        class Pool:
+            def execute_with_retries(self, query):
+                captured["query"] = query
+                return [Result()]
+
+        with mock.patch.object(orders, "_db_pool", return_value=Pool()):
+            result = orders._list_orders()
+
+        self.assertIn("ORDER BY id DESC", captured["query"])
+        self.assertNotIn("ORDER BY created_at", captured["query"])
+        self.assertEqual(result[0]["id"], "20261105-TEST")
+
     def test_telegram_notice_contains_no_personal_data(self):
         called = {}
 
