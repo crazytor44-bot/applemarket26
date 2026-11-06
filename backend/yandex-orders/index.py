@@ -177,6 +177,13 @@ def _save_order(record):
 def _telegram_notice(order_id, items_count, total):
     relay_url = os.environ.get("TELEGRAM_RELAY_URL", "").strip()
     relay_secret = os.environ.get("TELEGRAM_RELAY_SECRET", "")
+    token = os.environ.get("TELEGRAM_BOT_TOKEN", "")
+    if relay_url and len(relay_secret) < 32 and token:
+        relay_secret = hmac.new(
+            token.encode("utf-8"),
+            b"amarket-order-relay-v1",
+            digestmod="sha256",
+        ).hexdigest()
     if relay_url and len(relay_secret) >= 32:
         payload = json.dumps({
             "order_id": order_id,
@@ -194,7 +201,6 @@ def _telegram_notice(order_id, items_count, total):
         with request.urlopen(req, timeout=5) as response:
             response.read(1024)
         return
-    token = os.environ.get("TELEGRAM_BOT_TOKEN", "")
     chat_id = os.environ.get("TELEGRAM_CHAT_ID", "")
     if not token or not chat_id:
         return
