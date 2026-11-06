@@ -42,7 +42,7 @@ async function config(){
 }
 async function load(){
   msg("dashboard-message","Загружаем заявки…");
-  const response=await fetch(apiUrl,{method:"GET",headers:{"Authorization":"Bearer "+accessKey},cache:"no-store"});
+  const response=await fetch(apiUrl,{method:"GET",headers:{"X-Admin-Token":accessKey},cache:"no-store"});
   let data={};try{data=await response.json()}catch{}
   if(response.status===401){accessKey="";throw new Error("Неверный ключ доступа. Проверьте его и попробуйте снова.");}
   if(!response.ok||!data.ok||!Array.isArray(data.orders)){const detail=(data.diagnostic?" ["+data.diagnostic+"]":"")+" [HTTP "+response.status+"]";throw new Error((data.error||"Не удалось загрузить заявки")+detail);}
