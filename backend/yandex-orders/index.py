@@ -6,6 +6,7 @@
 import base64
 import datetime
 import json
+import hashlib
 import hmac
 import os
 import re
@@ -179,10 +180,8 @@ def _telegram_notice(order_id, items_count, total):
     relay_secret = os.environ.get("TELEGRAM_RELAY_SECRET", "")
     token = os.environ.get("TELEGRAM_BOT_TOKEN", "")
     if relay_url and len(relay_secret) < 32 and token:
-        relay_secret = hmac.new(
-            token.encode("utf-8"),
-            b"amarket-order-relay-v1",
-            digestmod="sha256",
+        relay_secret = hashlib.sha256(
+            ("amarket-order-relay-v1:" + token).encode("utf-8")
         ).hexdigest()
     if relay_url and len(relay_secret) >= 32:
         payload = json.dumps({
