@@ -69,6 +69,35 @@ async function telegram(env, method, payload) {
   const result = await response.json(); if (!result.ok) throw new Error(result.description || `Telegram ${method} failed`); return result.result;
 }
 
+async function handleOrderNotice(request, env) {
+  const configured = String(env.ORDER_NOTICE_SECRET || "");
+  const supplied = request.headers.get("x-order-notice-secret") || "";
+  if (configured.length < 32 || !safeEqual(configured, supplied)) return json({ ok: false }, 403);
+  const raw = await request.text();
+  if (raw.length > 4096) return json({ ok: false, error: "Payload too large" }, 413);
+  let body;
+  try { body = JSON.parse(raw); } catch { return json({ ok: false, error: "Invalid JSON" }, 400); }
+  const orderId = clean(body?.order_id, 40);
+  const itemsCount = Number(body?.items_count);
+  if (!/^[A-Z0-9-]{6,40}$/.test(orderId) || !Number.isInteger(itemsCount) || itemsCount < 0 || itemsCount > 25) {
+    return json({ ok: false, error: "Invalid notice" }, 400);
+  }
+  const recipients = adminIds(env);
+  if (!recipients.length) return json({ ok: false, error: "No recipients" }, 503);
+  const text = [
+    `🛒 А Маркет — новая заявка с сайта № ${orderId}`,
+    `Товарных позиций: ${itemsCount}`,
+    "Контактные данные покупателя доступны только в закрытом кабинете:",
+    "https://applemarket26.ru/orders-admin/",
+  ].join("\n");
+  await Promise.all(recipients.map((chatId) => telegram(env, "sendMessage", {
+    chat_id: chatId,
+    text,
+    disable_web_page_preview: true,
+  })));
+  return json({ ok: true });
+}
+
 async function handleWebhook(request, env) {
   if (env.WEBHOOK_SECRET && request.headers.get("x-telegram-bot-api-secret-token") !== env.WEBHOOK_SECRET) return json({ ok: false }, 403);
   const update = await request.json(); const message = update.message; if (!message?.chat?.id) return json({ ok: true });
@@ -131,6 +160,7 @@ export default { async fetch(request, env) {
   if (request.method === "GET" && (url.pathname === "/" || url.pathname === "/app")) return new Response(APP_HTML, { headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store", "content-security-policy": "default-src 'self'; script-src 'self' 'unsafe-inline' https://telegram.org; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; connect-src 'self'; frame-ancestors https://web.telegram.org https://*.telegram.org" } });
   if (request.method === "GET" && url.pathname === "/health") return json({ ok: true, service: "amarket-product-bot", profiles: Boolean(env.PROFILES) });
   if (request.method === "POST" && url.pathname === "/telegram/webhook") return handleWebhook(request, env);
+  if (request.method === "POST" && url.pathname === "/api/order-notice") return handleOrderNotice(request, env);
   if (request.method === "POST" && url.pathname === "/api/profile/get") return getProfile(request, env);
   if (request.method === "POST" && url.pathname === "/api/profile/save") return saveProfile(request, env);
   if (request.method === "POST" && url.pathname === "/api/admin/activate") return activateClient(request, env);
@@ -138,3 +168,4 @@ export default { async fetch(request, env) {
   if (request.method === "POST" && url.pathname === "/api/send/file") return sendFileToUser(request, env);
   return new Response("Not found", { status: 404 });
 } };
+
