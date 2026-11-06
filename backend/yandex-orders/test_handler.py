@@ -152,6 +152,39 @@ class OrdersHandlerTests(unittest.TestCase):
         self.assertIn("TEST-ORDER-1", called["payload"])
         self.assertNotIn("+70000000000", called["payload"])
 
+    def test_telegram_notice_uses_protected_relay(self):
+        called = {}
+
+        class FakeResponse:
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *args):
+                return False
+
+            def read(self, count):
+                return b'{"ok":true}'
+
+        def fake_urlopen(req, timeout):
+            called["url"] = req.full_url
+            called["secret"] = req.headers.get("X-order-notice-secret")
+            called["payload"] = json.loads(req.data.decode("utf-8"))
+            return FakeResponse()
+
+        env = {
+            "TELEGRAM_RELAY_URL": "https://bot.example/api/order-notice",
+            "TELEGRAM_RELAY_SECRET": "r" * 48,
+        }
+        with mock.patch.dict(os.environ, env, clear=False):
+            with mock.patch.object(orders.request, "urlopen", side_effect=fake_urlopen):
+                orders._telegram_notice("TEST-ORDER-2", 2, 999)
+        self.assertEqual(called["url"], env["TELEGRAM_RELAY_URL"])
+        self.assertEqual(called["secret"], env["TELEGRAM_RELAY_SECRET"])
+        self.assertEqual(called["payload"], {"order_id": "TEST-ORDER-2", "items_count": 2})
+        self.assertNotIn("name", called["payload"])
+        self.assertNotIn("phone", called["payload"])
+
 
 if __name__ == "__main__":
     unittest.main()
+
