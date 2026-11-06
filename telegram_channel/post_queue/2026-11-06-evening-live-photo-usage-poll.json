@@ -1,0 +1,17 @@
+{
+  "channel": "@applemarket26",
+  "approved": true,
+  "topic_id": "live-photo-usage-poll",
+  "kind": "poll",
+  "parse_mode": "plain",
+  "pin": false,
+  "publish_at": "2026-11-06T20:00:00+03:00",
+  "text": "📸 Как вы обычно пользуетесь Live Photo на iPhone?",
+  "options": [
+    "Всегда оставляю включённой",
+    "Включаю для важных моментов",
+    "Почти всегда выключаю",
+    "Не пользуюсь этой функцией",
+    "Не знаю, что это"
+  ]
+}
