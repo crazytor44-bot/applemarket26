@@ -95,7 +95,7 @@ class OrdersHandlerTests(unittest.TestCase):
             bad = orders.handler(event(method="GET"), None)
             self.assertEqual(bad["statusCode"], 401)
             with mock.patch.object(orders, "_list_orders", return_value=[]):
-                good = orders.handler(event(method="GET", headers={"Authorization": "Bearer " + "s" * 48}), None)
+                good = orders.handler(event(method="GET", headers={"X-Admin-Token": "s" * 48}), None)
         self.assertEqual(good["statusCode"], 200)
         self.assertEqual(json.loads(good["body"])["orders"], [])
 
