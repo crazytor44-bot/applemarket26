@@ -1,0 +1,12 @@
+{
+  "channel": "@applemarket26",
+  "approved": true,
+  "topic_id": "airpods-4-stem-playback-controls",
+  "kind": "photo",
+  "parse_mode": "plain",
+  "pin": false,
+  "publish_at": "2026-11-06T09:00:00+03:00",
+  "photo_repository_path": "telegram_channel/media/pool-airpods-4.jpg",
+  "photo_git_blob_sha": "736250dd40fee0fa916e218b95e788b89158ca2a",
+  "text": "🎧 AirPods 4: музыка управляется нажатием на ножку\n\nОдин раз — воспроизвести или поставить на паузу.\nДва раза — перейти к следующему треку.\nТри раза — вернуться к предыдущему.\n\nКоманды работают на ножке любого наушника — доставать iPhone из кармана не нужно."
+}
