@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { buildTelegramCaption, verifyTelegramInitData } from "../src/worker.js";
+import worker, { buildTelegramCaption, verifyTelegramInitData } from "../src/worker.js";
 
 const enc = new TextEncoder();
 async function sign(token, entries) {
@@ -75,3 +75,38 @@ test("creates a universal laptop caption", () => {
   assert.match(caption, /Накопитель: 1 Tb/);
   assert.doesNotMatch(caption, /АКБ|SIM|А Маркет/);
 });
+
+test("order notice relay requires its secret and sends no personal data", async () => {
+  const originalFetch = globalThis.fetch;
+  const calls = [];
+  globalThis.fetch = async (url, options) => {
+    calls.push({ url: String(url), body: JSON.parse(options.body) });
+    return new Response(JSON.stringify({ ok: true, result: {} }), { headers: { "content-type": "application/json" } });
+  };
+  try {
+    const env = {
+      ORDER_NOTICE_SECRET: "s".repeat(48),
+      ALLOWED_USER_IDS: "12345",
+      TELEGRAM_BOT_TOKEN: "dummy",
+    };
+    const denied = await worker.fetch(new Request("https://bot.example/api/order-notice", {
+      method: "POST",
+      headers: { "content-type": "application/json", "x-order-notice-secret": "wrong" },
+      body: JSON.stringify({ order_id: "TEST-ORDER-3", items_count: 1 }),
+    }), env);
+    assert.equal(denied.status, 403);
+    const accepted = await worker.fetch(new Request("https://bot.example/api/order-notice", {
+      method: "POST",
+      headers: { "content-type": "application/json", "x-order-notice-secret": env.ORDER_NOTICE_SECRET },
+      body: JSON.stringify({ order_id: "TEST-ORDER-3", items_count: 1 }),
+    }), env);
+    assert.equal(accepted.status, 200);
+    assert.equal(calls.length, 1);
+    assert.equal(calls[0].body.chat_id, "12345");
+    assert.match(calls[0].body.text, /TEST-ORDER-3/);
+    assert.doesNotMatch(calls[0].body.text, /phone|телефон|имя/i);
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
