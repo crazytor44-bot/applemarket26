@@ -175,6 +175,25 @@ def _save_order(record):
 
 
 def _telegram_notice(order_id, items_count, total):
+    relay_url = os.environ.get("TELEGRAM_RELAY_URL", "").strip()
+    relay_secret = os.environ.get("TELEGRAM_RELAY_SECRET", "")
+    if relay_url and len(relay_secret) >= 32:
+        payload = json.dumps({
+            "order_id": order_id,
+            "items_count": items_count,
+        }).encode("utf-8")
+        req = request.Request(
+            relay_url,
+            data=payload,
+            method="POST",
+            headers={
+                "Content-Type": "application/json",
+                "X-Order-Notice-Secret": relay_secret,
+            },
+        )
+        with request.urlopen(req, timeout=5) as response:
+            response.read(1024)
+        return
     token = os.environ.get("TELEGRAM_BOT_TOKEN", "")
     chat_id = os.environ.get("TELEGRAM_CHAT_ID", "")
     if not token or not chat_id:
@@ -300,3 +319,4 @@ def handler(event, context):
     except Exception:
         pass
     return _response(201, {"ok": True, "order_id": order_id}, origin)
+
