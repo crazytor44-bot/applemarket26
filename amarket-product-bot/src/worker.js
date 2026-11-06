@@ -69,8 +69,20 @@ async function telegram(env, method, payload) {
   const result = await response.json(); if (!result.ok) throw new Error(result.description || `Telegram ${method} failed`); return result.result;
 }
 
-async function handleOrderNotice(request, env) {
+async function orderNoticeSecret(env) {
   const configured = String(env.ORDER_NOTICE_SECRET || "");
+  if (configured.length >= 32) return configured;
+  const token = String(env.TELEGRAM_BOT_TOKEN || "");
+  if (!token) return "";
+  const digest = await crypto.subtle.digest(
+    "SHA-256",
+    encoder.encode("amarket-order-relay-v1:" + token),
+  );
+  return toHex(new Uint8Array(digest));
+}
+
+async function handleOrderNotice(request, env) {
+  const configured = await orderNoticeSecret(env);
   const supplied = request.headers.get("x-order-notice-secret") || "";
   if (configured.length < 32 || !safeEqual(configured, supplied)) return json({ ok: false }, 403);
   const raw = await request.text();
