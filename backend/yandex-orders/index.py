@@ -33,7 +33,7 @@ def _response(status, payload, origin=""):
         headers["Access-Control-Allow-Origin"] = origin
         headers["Vary"] = "Origin"
         headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
-        headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
+        headers["Access-Control-Allow-Headers"] = "Content-Type, X-Admin-Token"
         headers["Access-Control-Max-Age"] = "600"
     return {"statusCode": status, "headers": headers,
             "body": json.dumps(payload, ensure_ascii=False)}
@@ -248,8 +248,7 @@ def handler(event, context):
         return _response(204, {}, origin)
     if method == "GET":
         configured = os.environ.get("ADMIN_ACCESS_TOKEN", "")
-        header = headers.get("authorization", "")
-        provided = header.removeprefix("Bearer ") if header.startswith("Bearer ") else ""
+        provided = headers.get("x-admin-token", "")
         if len(configured) < 32 or not hmac.compare_digest(provided, configured):
             return _response(401, {"error": "Доступ запрещён"}, origin)
         try:
