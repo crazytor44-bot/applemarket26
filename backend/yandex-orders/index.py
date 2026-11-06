@@ -192,6 +192,19 @@ def _telegram_notice(order_id, items_count, total):
         response.read(1024)
 
 
+
+def _row_value(row, name, default=""):
+    """Read a YDB result value across SDK row representations."""
+    try:
+        value = getattr(row, name)
+    except (AttributeError, KeyError):
+        try:
+            value = row[name]
+        except (KeyError, TypeError, IndexError):
+            return default
+    return default if value is None else value
+
+
 def _list_orders():
     query = """
     SELECT id, created_at, customer_name, phone, city, preferred_contact,
@@ -206,20 +219,20 @@ def _list_orders():
     for result in result_sets:
         for row in result.rows:
             try:
-                items = json.loads(row.items_json or "[]")
+                items = json.loads(_row_value(row, "items_json", "[]"))
             except (ValueError, TypeError):
                 items = []
             orders.append({
-                "id": row.id,
-                "created_at": row.created_at,
-                "name": row.customer_name,
-                "phone": row.phone,
-                "city": row.city,
-                "contact": row.preferred_contact,
-                "comment": row.comment,
+                "id": _row_value(row, "id"),
+                "created_at": _row_value(row, "created_at"),
+                "name": _row_value(row, "customer_name"),
+                "phone": _row_value(row, "phone"),
+                "city": _row_value(row, "city"),
+                "contact": _row_value(row, "preferred_contact"),
+                "comment": _row_value(row, "comment"),
                 "items": items,
-                "total": int(row.declared_total or 0),
-                "status": row.status,
+                "total": int(_row_value(row, "declared_total", 0)),
+                "status": _row_value(row, "status"),
             })
     return orders
 
@@ -241,8 +254,15 @@ def handler(event, context):
             return _response(401, {"error": "Доступ запрещён"}, origin)
         try:
             return _response(200, {"ok": True, "orders": _list_orders()}, origin)
-        except Exception:
-            return _response(503, {"error": "Не удалось загрузить заявки"}, origin)
+        except Exception as exc:
+            return _response(
+                503,
+                {
+                    "error": "Не удалось загрузить заявки",
+                    "diagnostic": type(exc).__name__,
+                },
+                origin,
+            )
     if method != "POST":
         return _response(405, {"error": "Используйте GET или POST"}, origin)
 
