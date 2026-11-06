@@ -45,7 +45,7 @@ async function load(){
   const response=await fetch(apiUrl,{method:"GET",headers:{"Authorization":"Bearer "+accessKey},cache:"no-store"});
   let data={};try{data=await response.json()}catch{}
   if(response.status===401){accessKey="";throw new Error("Неверный ключ доступа. Проверьте его и попробуйте снова.");}
-  if(!response.ok||!data.ok||!Array.isArray(data.orders))throw new Error(data.error||"Не удалось загрузить заявки");
+  if(!response.ok||!data.ok||!Array.isArray(data.orders)){const detail=data.diagnostic?" ["+data.diagnostic+"]":"";throw new Error((data.error||"Не удалось загрузить заявки")+detail);}
   allOrders=data.orders;applySearch();msg("dashboard-message","");
 }
 async function login(){
