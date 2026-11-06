@@ -25,7 +25,9 @@
     "required": [
       "TELEGRAM_BOT_TOKEN",
       "WEBHOOK_SECRET",
-      "ALLOWED_USER_IDS"
+      "ALLOWED_USER_IDS",
+      "ORDER_NOTICE_SECRET"
     ]
   }
 }
+
