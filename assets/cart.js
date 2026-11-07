@@ -258,6 +258,12 @@ async function submit(){
    const response=await fetch(ORDER_API_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name,phone,city,contact,comment,items:items.map(x=>({id:String(x.id),name:String(x.name),price:Math.round(x.price),qty:x.qty})),website:"",consent:true,captcha_token:captchaToken})});
    const result=await response.json().catch(()=>({}));
    if(!response.ok||!result.ok||!result.order_id)throw Error(result.error||"Не удалось подтвердить сохранение заявки");
+   const notice=result.telegram_notice;
+   if(notice&&typeof notice.url==="string"&&/^https:\/\//.test(notice.url)){
+    try{
+     await fetch(notice.url,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({order_id:String(notice.order_id||result.order_id),items_count:Number(notice.items_count||items.length),expires:Number(notice.expires),signature:String(notice.signature||"")})});
+    }catch{}
+   }
    save([]);close();alert("Спасибо! Ваша заявка №"+result.order_id+" принята. Мы свяжемся с вами, чтобы подтвердить наличие и цену.");
   }catch{
    alert("Не удалось подтвердить отправку заказа. Позвоните нам: +7 938 311-98-88. Если связь прервалась, сначала уточните, не поступила ли заявка.");
