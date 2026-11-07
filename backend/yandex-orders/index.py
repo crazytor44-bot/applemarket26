@@ -175,14 +175,19 @@ def _save_order(record):
     _db_pool().execute_with_retries(query, params)
 
 
-def _telegram_notice(order_id, items_count, total):
-    relay_url = os.environ.get("TELEGRAM_RELAY_URL", "").strip()
-    relay_secret = os.environ.get("TELEGRAM_RELAY_SECRET", "")
-    token = os.environ.get("TELEGRAM_BOT_TOKEN", "")
-    if relay_url and len(relay_secret) < 32 and token:
+def _relay_secret():
+    relay_secret = os.environ.get("TELEGRAM_RELAY_SECRET", "").strip()
+    token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
+    if len(relay_secret) < 32 and token:
         relay_secret = hashlib.sha256(
             ("amarket-order-relay-v1:" + token).encode("utf-8")
         ).hexdigest()
+    return relay_secret
+
+
+def _telegram_notice(order_id, items_count, total):
+    relay_url = os.environ.get("TELEGRAM_RELAY_URL", "").strip()
+    relay_secret = _relay_secret()
     if relay_url and len(relay_secret) >= 32:
         payload = json.dumps({
             "order_id": order_id,
@@ -194,15 +199,18 @@ def _telegram_notice(order_id, items_count, total):
             method="POST",
             headers={
                 "Content-Type": "application/json",
+                "User-Agent": "AMarket-Orders/1.0",
                 "X-Order-Notice-Secret": relay_secret,
             },
         )
         with request.urlopen(req, timeout=5) as response:
             response.read(1024)
-        return
-    chat_id = os.environ.get("TELEGRAM_CHAT_ID", "")
+        return True
+
+    token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
+    chat_id = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
     if not token or not chat_id:
-        return
+        return False
     msg = (f"🛒 А Маркет — новая заявка с сайта № {order_id}\n"
            f"Товарных позиций: {items_count}\n"
            "Контактные данные покупателя доступны только в закрытом кабинете:\n"
@@ -214,8 +222,26 @@ def _telegram_notice(order_id, items_count, total):
         timeout=5,
     ) as response:
         response.read(1024)
+    return True
 
 
+def _signed_notice_fallback(order_id, items_count):
+    relay_url = os.environ.get("TELEGRAM_RELAY_URL", "").strip()
+    relay_secret = _relay_secret()
+    if not relay_url or len(relay_secret) < 32:
+        return None
+    expires = int(datetime.datetime.now(datetime.timezone.utc).timestamp()) + 180
+    message = f"{order_id}\n{items_count}\n{expires}".encode("utf-8")
+    signature = hmac.new(
+        relay_secret.encode("utf-8"), message, hashlib.sha256
+    ).hexdigest()
+    return {
+        "url": relay_url,
+        "order_id": order_id,
+        "items_count": items_count,
+        "expires": expires,
+        "signature": signature,
+    }
 
 def _row_value(row, name, default=""):
     """Read a YDB result value across SDK row representations."""
@@ -319,9 +345,16 @@ def handler(event, context):
     except Exception:
         return _response(503, {"error": "Не удалось сохранить заявку. Попробуйте позднее."}, origin)
 
+    response_payload = {"ok": True, "order_id": order_id}
+    notice_sent = False
     try:
-        _telegram_notice(order_id, len(items), total)
-    except Exception:
-        pass
-    return _response(201, {"ok": True, "order_id": order_id}, origin)
+        notice_sent = _telegram_notice(order_id, len(items), total)
+    except Exception as exc:
+        print("telegram_notice_failed:", type(exc).__name__)
+
+    if not notice_sent:
+        fallback = _signed_notice_fallback(order_id, len(items))
+        if fallback:
+            response_payload["telegram_notice"] = fallback
+    return _response(201, response_payload, origin)
 
