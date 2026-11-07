@@ -1,0 +1,12 @@
+{
+  "channel": "@applemarket26",
+  "approved": true,
+  "topic_id": "assistivetouch-custom-menu",
+  "kind": "photo",
+  "parse_mode": "plain",
+  "pin": false,
+  "publish_at": "2026-11-07T09:00:00+03:00",
+  "photo_repository_path": "telegram_channel/media/pool-iphone-16-pro.png",
+  "photo_git_blob_sha": "7b9a34273cedb2c0e0a89dfdce5ba0e7ee035a54",
+  "text": "♿ Частые команды iPhone — в одной экранной кнопке\n\nОткройте «Настройки» → «Универсальный доступ» → «Прикосновение» → AssistiveTouch. После включения на экране появится плавающая кнопка.\n\nВ разделе «Меню верхнего уровня» можно изменить действия и оставить только нужные команды. Для самой кнопки также настраиваются одно касание, двойное касание и долгое нажатие.\n\nПолезно, если физическими кнопками пользоваться неудобно."
+}
