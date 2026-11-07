@@ -99,7 +99,7 @@ class OrdersHandlerTests(unittest.TestCase):
         self.assertEqual(good["statusCode"], 200)
         self.assertEqual(json.loads(good["body"])["orders"], [])
 
-    def test_admin_list_orders_uses_primary_key_order(self):
+    def test_admin_list_orders_uses_newest_creation_time(self):
         captured = {}
 
         class Row:
@@ -125,7 +125,7 @@ class OrdersHandlerTests(unittest.TestCase):
         with mock.patch.object(orders, "_db_pool", return_value=Pool()):
             result = orders._list_orders()
 
-        self.assertIn("ORDER BY id DESC", captured["query"])
+        self.assertIn("ORDER BY created_at DESC, id DESC", captured["query"])
         self.assertNotIn("ORDER BY created_at", captured["query"])
         self.assertEqual(result[0]["id"], "20261105-TEST")
 
