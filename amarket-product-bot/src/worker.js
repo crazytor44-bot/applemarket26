@@ -1,12 +1,18 @@
 import { APP_HTML } from "./app-page.js";
 
-const json = (body, status = 200) => new Response(JSON.stringify(body), { status, headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" } });
+const json = (body, status = 200, extraHeaders = {}) => new Response(JSON.stringify(body), { status, headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store", ...extraHeaders } });
 const encoder = new TextEncoder();
 const AMARKET_PROFILE = Object.freeze({ store_name: "А Маркет", legal_footer: "ИП Мкртичян Эрик Генадьевич", address: "Ставрополь, Тухачевского, 16", website: "https://applemarket26.ru", telegram_contact: "https://t.me/+79383119888", channel_id: "@applemarket26", active: 1, subscription_until: null });
 
 async function hmac(keyBytes, value) { const key = await crypto.subtle.importKey("raw", keyBytes, { name: "HMAC", hash: "SHA-256" }, false, ["sign"]); return new Uint8Array(await crypto.subtle.sign("HMAC", key, encoder.encode(value))); }
 const toHex = (bytes) => [...bytes].map((byte) => byte.toString(16).padStart(2, "0")).join("");
 function safeEqual(left, right) { if (left.length !== right.length) return false; let result = 0; for (let i = 0; i < left.length; i += 1) result |= left.charCodeAt(i) ^ right.charCodeAt(i); return result === 0; }
+const ORDER_NOTICE_ORIGINS = new Set(["https://applemarket26.ru", "https://www.applemarket26.ru"]);
+function orderNoticeCors(request) {
+  const origin = request.headers.get("origin") || "";
+  return ORDER_NOTICE_ORIGINS.has(origin) ? { "access-control-allow-origin": origin, "access-control-allow-methods": "POST, OPTIONS", "access-control-allow-headers": "content-type", "access-control-max-age": "600", vary: "Origin" } : {};
+}
+
 
 export async function verifyTelegramInitData(initData, botToken, maxAgeSeconds = 604800) {
   if (!initData || !botToken) return { ok: false, reason: "missing_data" };
@@ -82,20 +88,31 @@ async function orderNoticeSecret(env) {
 }
 
 async function handleOrderNotice(request, env) {
+  const cors = orderNoticeCors(request);
+  const raw = await request.text();
+  if (raw.length > 4096) return json({ ok: false, error: "Payload too large" }, 413, cors);
+  let body;
+  try { body = JSON.parse(raw); } catch { return json({ ok: false, error: "Invalid JSON" }, 400, cors); }
+
   const configured = await orderNoticeSecret(env);
   const supplied = request.headers.get("x-order-notice-secret") || "";
-  if (configured.length < 32 || !safeEqual(configured, supplied)) return json({ ok: false }, 403);
-  const raw = await request.text();
-  if (raw.length > 4096) return json({ ok: false, error: "Payload too large" }, 413);
-  let body;
-  try { body = JSON.parse(raw); } catch { return json({ ok: false, error: "Invalid JSON" }, 400); }
   const orderId = clean(body?.order_id, 40);
   const itemsCount = Number(body?.items_count);
-  if (!/^[A-Z0-9-]{6,40}$/.test(orderId) || !Number.isInteger(itemsCount) || itemsCount < 0 || itemsCount > 25) {
-    return json({ ok: false, error: "Invalid notice" }, 400);
+  const expires = Number(body?.expires);
+  const signature = String(body?.signature || "");
+  let authorized = configured.length >= 32 && safeEqual(configured, supplied);
+
+  if (!authorized && configured.length >= 32 && Number.isInteger(expires) && Math.abs(Date.now() / 1000 - expires) <= 180 && /^[a-f0-9]{64}$/i.test(signature)) {
+    const expected = toHex(await hmac(encoder.encode(configured), `${orderId}\n${itemsCount}\n${expires}`));
+    authorized = safeEqual(expected, signature);
   }
+  if (!authorized) return json({ ok: false }, 403, cors);
+  if (!/^[A-Z0-9-]{6,40}$/.test(orderId) || !Number.isInteger(itemsCount) || itemsCount < 0 || itemsCount > 25) {
+    return json({ ok: false, error: "Invalid notice" }, 400, cors);
+  }
+
   const recipients = adminIds(env);
-  if (!recipients.length) return json({ ok: false, error: "No recipients" }, 503);
+  if (!recipients.length) return json({ ok: false, error: "No recipients" }, 503, cors);
   const text = [
     `🛒 А Маркет — новая заявка с сайта № ${orderId}`,
     `Товарных позиций: ${itemsCount}`,
@@ -107,7 +124,7 @@ async function handleOrderNotice(request, env) {
     text,
     disable_web_page_preview: true,
   })));
-  return json({ ok: true });
+  return json({ ok: true }, 200, cors);
 }
 
 async function handleWebhook(request, env) {
@@ -171,6 +188,10 @@ export default { async fetch(request, env) {
   const url = new URL(request.url);
   if (request.method === "GET" && (url.pathname === "/" || url.pathname === "/app")) return new Response(APP_HTML, { headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store", "content-security-policy": "default-src 'self'; script-src 'self' 'unsafe-inline' https://telegram.org; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; connect-src 'self'; frame-ancestors https://web.telegram.org https://*.telegram.org" } });
   if (request.method === "GET" && url.pathname === "/health") return json({ ok: true, service: "amarket-product-bot", profiles: Boolean(env.PROFILES) });
+  if (request.method === "OPTIONS" && url.pathname === "/api/order-notice") {
+    const cors = orderNoticeCors(request);
+    return Object.keys(cors).length ? new Response(null, { status: 204, headers: cors }) : json({ ok: false }, 403);
+  }
   if (request.method === "POST" && url.pathname === "/telegram/webhook") return handleWebhook(request, env);
   if (request.method === "POST" && url.pathname === "/api/order-notice") return handleOrderNotice(request, env);
   if (request.method === "POST" && url.pathname === "/api/profile/get") return getProfile(request, env);
