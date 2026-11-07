@@ -1,0 +1,17 @@
+{
+  "channel": "@applemarket26",
+  "approved": true,
+  "topic_id": "service-choice-priority-poll",
+  "kind": "poll",
+  "parse_mode": "plain",
+  "pin": false,
+  "publish_at": "2026-11-07T20:00:00+03:00",
+  "text": "🛠 Что для вас важнее всего при выборе сервисного центра?",
+  "options": [
+    "Понятная диагностика",
+    "Сохранность данных",
+    "Скорость работы",
+    "Цена",
+    "Удобная связь с мастером"
+  ]
+}
