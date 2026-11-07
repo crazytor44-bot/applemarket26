@@ -110,3 +110,38 @@ test("order notice relay requires its secret and sends no personal data", async 
   }
 });
 
+
+
+test("accepts a short-lived signed order notice from the checkout fallback", async () => {
+  const originalFetch = globalThis.fetch;
+  const calls = [];
+  globalThis.fetch = async (url, options) => {
+    calls.push({ url: String(url), body: JSON.parse(options.body) });
+    return new Response(JSON.stringify({ ok: true, result: {} }), { headers: { "content-type": "application/json" } });
+  };
+  try {
+    const env = {
+      ORDER_NOTICE_SECRET: "k".repeat(48),
+      ALLOWED_USER_IDS: "12345",
+      TELEGRAM_BOT_TOKEN: "dummy",
+    };
+    const orderId = "20261107-SIGNED01";
+    const itemsCount = 1;
+    const expires = Math.floor(Date.now() / 1000) + 120;
+    const key = await crypto.subtle.importKey("raw", enc.encode(env.ORDER_NOTICE_SECRET), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
+    const bytes = new Uint8Array(await crypto.subtle.sign("HMAC", key, enc.encode(`${orderId}\n${itemsCount}\n${expires}`)));
+    const signature = [...bytes].map((b) => b.toString(16).padStart(2, "0")).join("");
+    const response = await worker.fetch(new Request("https://bot.example/api/order-notice", {
+      method: "POST",
+      headers: { "content-type": "application/json", origin: "https://applemarket26.ru" },
+      body: JSON.stringify({ order_id: orderId, items_count: itemsCount, expires, signature }),
+    }), env);
+    assert.equal(response.status, 200);
+    assert.equal(response.headers.get("access-control-allow-origin"), "https://applemarket26.ru");
+    assert.equal(calls.length, 1);
+    assert.match(calls[0].body.text, /20261107-SIGNED01/);
+    assert.doesNotMatch(calls[0].body.text, /phone|телефон|имя/i);
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
