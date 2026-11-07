@@ -126,7 +126,6 @@ class OrdersHandlerTests(unittest.TestCase):
             result = orders._list_orders()
 
         self.assertIn("ORDER BY created_at DESC, id DESC", captured["query"])
-        self.assertNotIn("ORDER BY created_at", captured["query"])
         self.assertEqual(result[0]["id"], "20261105-TEST")
 
     def test_telegram_notice_contains_no_personal_data(self):
