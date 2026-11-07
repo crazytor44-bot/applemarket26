@@ -260,7 +260,7 @@ def _list_orders():
     SELECT id, created_at, customer_name, phone, city, preferred_contact,
            comment, items_json, declared_total, status
     FROM orders
-    ORDER BY id DESC
+    ORDER BY created_at DESC, id DESC
     LIMIT 100;
     """
 
