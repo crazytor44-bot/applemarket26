@@ -46,7 +46,11 @@ async function load(){
   let data={};try{data=await response.json()}catch{}
   if(response.status===401){accessKey="";throw new Error("Неверный ключ доступа. Проверьте его и попробуйте снова.");}
   if(!response.ok||!data.ok||!Array.isArray(data.orders)){const detail=(data.diagnostic?" ["+data.diagnostic+"]":"")+" [HTTP "+response.status+"]";throw new Error((data.error||"Не удалось загрузить заявки")+detail);}
-  allOrders=data.orders;applySearch();msg("dashboard-message","");
+  allOrders=data.orders.slice().sort((left,right)=>{
+    const leftTime=Date.parse(left.created_at||""),rightTime=Date.parse(right.created_at||"");
+    if(Number.isFinite(leftTime)&&Number.isFinite(rightTime)&&leftTime!==rightTime)return rightTime-leftTime;
+    return String(right.id||"").localeCompare(String(left.id||""),"ru");
+  });applySearch();msg("dashboard-message","");
 }
 async function login(){
   const btn=el("login-btn"),input=el("access-key");
