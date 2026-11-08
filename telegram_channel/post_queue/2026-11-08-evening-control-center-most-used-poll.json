@@ -1,0 +1,17 @@
+{
+  "channel": "@applemarket26",
+  "approved": true,
+  "topic_id": "control-center-most-used-poll",
+  "kind": "poll",
+  "parse_mode": "plain",
+  "pin": false,
+  "publish_at": "2026-11-08T20:00:00+03:00",
+  "text": "🎛 Что вы чаще всего открываете в Пункте управления iPhone?",
+  "options": [
+    "Фонарик",
+    "Камеру",
+    "Калькулятор",
+    "Таймер",
+    "Музыку и громкость"
+  ]
+}
