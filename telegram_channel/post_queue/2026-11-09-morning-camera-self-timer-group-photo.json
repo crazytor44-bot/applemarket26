@@ -1,0 +1,12 @@
+{
+  "channel": "@applemarket26",
+  "approved": true,
+  "topic_id": "camera-self-timer-group-photo",
+  "kind": "photo",
+  "parse_mode": "plain",
+  "pin": false,
+  "publish_at": "2026-11-09T09:00:00+03:00",
+  "photo_repository_path": "telegram_channel/media/editorial-auto-2026-11-09-camera-self-timer-group-photo.jpg",
+  "photo_git_blob_sha": "2270212b3552021d7821d74acc39a10a07808093",
+  "text": "📸 Общее фото — без лишнего человека за камерой\n\nПоставьте iPhone устойчиво, откройте «Камеру» и покажите элементы управления — кнопкой над видоискателем или свайпом вверх от режимов съёмки. Выберите «Таймер», задайте интервал и нажмите затвор.\n\nОстанется занять место в кадре до окончания отсчёта. Полезно для общих снимков, когда фотографировать больше некому."
+}
