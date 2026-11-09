@@ -1,0 +1,17 @@
+{
+  "channel": "@applemarket26",
+  "approved": true,
+  "topic_id": "siri-usage-frequency-poll",
+  "kind": "poll",
+  "parse_mode": "plain",
+  "pin": false,
+  "publish_at": "2026-11-09T20:00:00+03:00",
+  "text": "🗣 Как часто вы обращаетесь к Siri на iPhone?",
+  "options": [
+    "Каждый день",
+    "Несколько раз в неделю",
+    "Несколько раз в месяц",
+    "Почти никогда",
+    "Не пользуюсь"
+  ]
+}
