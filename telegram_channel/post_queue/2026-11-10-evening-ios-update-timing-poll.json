@@ -1,0 +1,17 @@
+{
+  "channel": "@applemarket26",
+  "approved": true,
+  "topic_id": "ios-update-timing-poll",
+  "kind": "poll",
+  "parse_mode": "plain",
+  "pin": false,
+  "publish_at": "2026-11-10T20:00:00+03:00",
+  "text": "🔄 Когда вы обычно устанавливаете обновления iOS?",
+  "options": [
+    "В день выхода",
+    "Через несколько дней",
+    "Когда напоминает iPhone",
+    "Если нужна новая функция",
+    "Почти не обновляю"
+  ]
+}
