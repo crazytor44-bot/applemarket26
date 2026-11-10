@@ -53,6 +53,20 @@ for (const url of urls) {
   }
 }
 assert.equal(checkedModels, 15, 'Expected 15 optimized iPhone and Samsung model pages');
+
+// Important model landing pages need useful, crawlable guidance, not just interchangeable descriptions.
+const priorityModels = [
+  'iphone-16-pro', 'iphone-17', 'iphone-17-pro', 'iphone-17-pro-max',
+  'iphone-18-pro', 'iphone-18-pro-max'
+];
+for (const model of priorityModels) {
+  const html = read(model + '/index.html');
+  const guide = html.match(/<div id="model-buying-guide"[^>]*>([\s\S]*?)<\/div>/)?.[1];
+  assert(guide, 'Missing server-rendered buying guide on ' + model);
+  assert((guide.match(/<h3>/g) || []).length >= 3, 'Buying guide should answer multiple specific buying questions: ' + model);
+  assert(guide.includes('href="/') || guide.includes('href="tel:'), 'Buying guide should help shoppers navigate: ' + model);
+}
+
 const home = read('index.html');
 for (const url of urls) {
   const pathname = new URL(url).pathname;
