@@ -1,0 +1,12 @@
+{
+  "channel": "@applemarket26",
+  "approved": true,
+  "topic_id": "voice-memos-quick-recording",
+  "kind": "photo",
+  "parse_mode": "plain",
+  "pin": false,
+  "publish_at": "2026-11-10T09:00:00+03:00",
+  "photo_repository_path": "telegram_channel/media/editorial-auto-2026-11-09-voice-memos-quick-recording.jpg",
+  "photo_git_blob_sha": "f4b91b2a33b96d992bae2b88c8a7ded647a9017c",
+  "text": "🎙 Мысль пришла на ходу? Запишите её голосом\n\nОткройте «Диктофон» и коснитесь кнопки записи. Чтобы настроить уровень громкости, можно приблизить iPhone к источнику звука или немного отодвинуть его. Когда закончите, нажмите «Стоп».\n\nТак удобно сохранять идеи и короткие заметки, когда печатать некогда."
+}
