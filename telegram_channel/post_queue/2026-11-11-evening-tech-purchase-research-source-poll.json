@@ -1,0 +1,17 @@
+{
+  "channel": "@applemarket26",
+  "approved": true,
+  "topic_id": "tech-purchase-research-source-poll",
+  "kind": "poll",
+  "parse_mode": "plain",
+  "pin": false,
+  "publish_at": "2026-11-11T20:00:00+03:00",
+  "text": "🔎 Где вы обычно проверяете информацию перед покупкой техники?",
+  "options": [
+    "Обзоры и сравнения",
+    "Советы знакомых",
+    "Консультация в магазине",
+    "Характеристики на сайтах",
+    "Уже знаю, что хочу"
+  ]
+}
