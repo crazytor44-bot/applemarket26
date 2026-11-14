@@ -1,0 +1,17 @@
+{
+  "channel": "@applemarket26",
+  "approved": true,
+  "topic_id": "smartphone-replacement-cycle-poll",
+  "kind": "poll",
+  "parse_mode": "plain",
+  "pin": false,
+  "publish_at": "2026-11-14T20:00:00+03:00",
+  "text": "📱 Сколько лет вы обычно пользуетесь одним смартфоном?",
+  "options": [
+    "Меньше года",
+    "1–2 года",
+    "2–3 года",
+    "3–4 года",
+    "Больше 4 лет"
+  ]
+}
