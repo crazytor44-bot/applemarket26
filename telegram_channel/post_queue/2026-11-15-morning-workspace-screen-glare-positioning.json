@@ -1,0 +1,12 @@
+{
+  "channel": "@applemarket26",
+  "approved": true,
+  "topic_id": "workspace-screen-glare-positioning",
+  "kind": "photo",
+  "parse_mode": "plain",
+  "pin": false,
+  "publish_at": "2026-11-15T09:00:00+03:00",
+  "photo_repository_path": "telegram_channel/media/editorial-auto-2026-11-14-workspace-screen-glare-positioning.jpg",
+  "photo_git_blob_sha": "2083a2d34c2f17c619ac95a13fe29f5e235c49ca",
+  "text": "💻 Блики на экране? Начните с положения стола\n\nПопробуйте поставить ноутбук боком к окну и развернуть экран так, чтобы в нём не отражался источник света. В солнечный день поможет полупрозрачная штора: она смягчит прямой свет, сохранив рабочее место освещённым.\n\nСначала уберите блики положением экрана и светом, а уже потом повышайте яркость. Так изображение останется читаемым без максимальной подсветки."
+}
