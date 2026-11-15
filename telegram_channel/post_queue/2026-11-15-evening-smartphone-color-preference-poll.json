@@ -1,0 +1,17 @@
+{
+  "channel": "@applemarket26",
+  "approved": true,
+  "topic_id": "smartphone-color-preference-poll",
+  "kind": "poll",
+  "parse_mode": "plain",
+  "pin": false,
+  "publish_at": "2026-11-15T20:00:00+03:00",
+  "text": "🎨 Какой цвет смартфона вы выбираете чаще всего?",
+  "options": [
+    "Чёрный или графитовый",
+    "Белый или серебристый",
+    "Яркий цвет",
+    "Зависит от модели",
+    "Цвет не важен"
+  ]
+}
