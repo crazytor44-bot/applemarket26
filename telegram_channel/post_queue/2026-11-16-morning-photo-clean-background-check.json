@@ -1,0 +1,12 @@
+{
+  "channel": "@applemarket26",
+  "approved": true,
+  "topic_id": "photo-clean-background-check",
+  "kind": "photo",
+  "parse_mode": "plain",
+  "pin": false,
+  "publish_at": "2026-11-16T09:00:00+03:00",
+  "photo_repository_path": "telegram_channel/media/editorial-auto-2026-11-16-photo-clean-background-check.jpg",
+  "photo_git_blob_sha": "4a97b19b1a9ba6bac535346ae7b27704345ca701",
+  "text": "📸 Перед снимком проверьте фон\n\nЯркая упаковка, провод или край стула на фоне часто замечаются уже после съёмки. Перед тем как нажать кнопку, пройдитесь взглядом по краям кадра и уберите всё, что спорит с главным объектом.\n\nЕсли предмет нельзя убрать, измените точку съёмки или подойдите ближе. Спокойный фон делает кадр понятнее — без фильтров и сложной обработки."
+}
