@@ -1,0 +1,17 @@
+{
+  "channel": "@applemarket26",
+  "approved": true,
+  "topic_id": "morning-phone-first-action-poll",
+  "kind": "poll",
+  "parse_mode": "plain",
+  "pin": false,
+  "publish_at": "2026-11-16T20:00:00+03:00",
+  "text": "🌅 Что вы первым делом открываете на смартфоне утром?",
+  "options": [
+    "Мессенджеры",
+    "Соцсети",
+    "Погоду или календарь",
+    "Почту и рабочие приложения",
+    "Ничего до завтрака"
+  ]
+}
