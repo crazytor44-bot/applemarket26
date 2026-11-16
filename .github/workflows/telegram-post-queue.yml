@@ -31,7 +31,7 @@ jobs:
       AMARKET_TELEGRAM_BOT_TOKEN: ${{ secrets.AMARKET_TELEGRAM_BOT_TOKEN }}
     steps:
       - name: Checkout approved materials
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       - name: Validate queue without posting
         run: |
           python3 -m py_compile telegram_channel/post_queue.py

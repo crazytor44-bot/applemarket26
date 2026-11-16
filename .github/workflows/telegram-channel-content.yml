@@ -16,6 +16,6 @@ jobs:
       AMARKET_TELEGRAM_BOT_TOKEN: ${{ secrets.AMARKET_TELEGRAM_BOT_TOKEN }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       - name: Check Telegram bot without changing the channel
         run: python3 telegram_channel/publisher.py check
