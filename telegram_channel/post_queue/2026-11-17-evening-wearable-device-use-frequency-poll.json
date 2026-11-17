@@ -1,0 +1,17 @@
+{
+  "channel": "@applemarket26",
+  "approved": true,
+  "topic_id": "wearable-device-use-frequency-poll",
+  "kind": "poll",
+  "parse_mode": "plain",
+  "pin": false,
+  "publish_at": "2026-11-17T20:00:00+03:00",
+  "text": "⌚ Как часто вы пользуетесь умными часами или фитнес‑браслетом?",
+  "options": [
+    "Каждый день",
+    "Только для спорта",
+    "Время от времени",
+    "Пока выбираю",
+    "Не пользуюсь"
+  ]
+}
