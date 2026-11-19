@@ -1,0 +1,17 @@
+{
+  "channel": "@applemarket26",
+  "approved": true,
+  "topic_id": "smartphone-navigation-frequency-poll",
+  "kind": "poll",
+  "parse_mode": "plain",
+  "pin": false,
+  "publish_at": "2026-11-19T20:00:00+03:00",
+  "text": "🧭 Как часто вы используете смартфон как навигатор?",
+  "options": [
+    "Почти каждый день",
+    "Несколько раз в неделю",
+    "В основном в поездках",
+    "Редко — маршрут обычно знаком",
+    "Не пользуюсь навигацией"
+  ]
+}
