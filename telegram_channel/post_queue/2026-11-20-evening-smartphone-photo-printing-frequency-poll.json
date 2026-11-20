@@ -1,0 +1,16 @@
+{
+  "channel": "@applemarket26",
+  "approved": true,
+  "topic_id": "smartphone-photo-printing-frequency-poll",
+  "kind": "poll",
+  "parse_mode": "plain",
+  "pin": false,
+  "publish_at": "2026-11-20T20:00:00+03:00",
+  "text": "🖼 Как часто вы печатаете фотографии со смартфона?",
+  "options": [
+    "Регулярно — люблю бумажные снимки",
+    "Иногда — для альбома или подарка",
+    "Очень редко",
+    "Никогда не печатаю"
+  ]
+}
