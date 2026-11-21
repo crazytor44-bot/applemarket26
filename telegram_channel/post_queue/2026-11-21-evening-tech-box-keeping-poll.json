@@ -1,0 +1,16 @@
+{
+  "channel": "@applemarket26",
+  "approved": true,
+  "topic_id": "tech-box-keeping-poll",
+  "kind": "poll",
+  "parse_mode": "plain",
+  "pin": false,
+  "publish_at": "2026-11-21T20:00:00+03:00",
+  "text": "📦 Сохраняете ли вы коробки от техники?",
+  "options": [
+    "Да, храню все",
+    "Только от дорогих устройств",
+    "До конца гарантии",
+    "Нет, сразу выбрасываю"
+  ]
+}
