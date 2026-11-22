@@ -1,0 +1,17 @@
+{
+  "channel": "@applemarket26",
+  "approved": true,
+  "topic_id": "ticket-storage-method-poll",
+  "kind": "poll",
+  "parse_mode": "plain",
+  "pin": false,
+  "publish_at": "2026-11-22T20:00:00+03:00",
+  "text": "🎫 Как вы обычно храните билеты и посадочные талоны на смартфоне?",
+  "options": [
+    "В приложении Wallet",
+    "В приложении сервиса",
+    "Сохраняю скриншот",
+    "Открываю из почты",
+    "Предпочитаю бумажный вариант"
+  ]
+}
