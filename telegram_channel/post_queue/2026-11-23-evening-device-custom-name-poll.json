@@ -1,0 +1,16 @@
+{
+  "channel": "@applemarket26",
+  "approved": true,
+  "topic_id": "device-custom-name-poll",
+  "kind": "poll",
+  "parse_mode": "plain",
+  "pin": false,
+  "publish_at": "2026-11-23T20:00:00+03:00",
+  "text": "🏷 Переименовываете ли вы свои устройства — iPhone, AirPods или Mac?",
+  "options": [
+    "Да, всем даю свои имена",
+    "Только чтобы не путать устройства",
+    "Оставляю название по умолчанию",
+    "Не знал(а), что их можно переименовать"
+  ]
+}
