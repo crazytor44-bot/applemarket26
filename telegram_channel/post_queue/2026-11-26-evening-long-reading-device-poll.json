@@ -1,0 +1,17 @@
+{
+  "channel": "@applemarket26",
+  "approved": true,
+  "topic_id": "long-reading-device-poll",
+  "kind": "poll",
+  "parse_mode": "plain",
+  "pin": false,
+  "publish_at": "2026-11-26T20:00:00+03:00",
+  "text": "📚 На чём вы чаще читаете длинные тексты?",
+  "options": [
+    "На смартфоне",
+    "На планшете",
+    "На компьютере",
+    "На электронной книге",
+    "Предпочитаю бумагу"
+  ]
+}
