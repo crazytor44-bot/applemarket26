@@ -1,0 +1,12 @@
+{
+  "channel": "@applemarket26",
+  "approved": true,
+  "topic_id": "lock-app-faceid",
+  "kind": "photo",
+  "parse_mode": "plain",
+  "pin": false,
+  "publish_at": "2026-11-26T09:00:00+03:00",
+  "photo_repository_path": "telegram_channel/media/editorial-auto-2026-11-26-lock-app-faceid.jpg",
+  "photo_git_blob_sha": "f64c1fdbcdde2221ebcf59ce43d8b96eaefdcef6",
+  "text": "🔐 Отдельное приложение — под Face ID\n\nЕсли вы даёте разблокированный iPhone другому человеку, доступ к выбранному приложению можно закрыть отдельно. Нажмите и удерживайте значок на экране «Домой», выберите «Требовать Face ID» — либо Touch ID или код‑пароль — и подтвердите действие.\n\nПосле закрытия приложение снова блокируется автоматически. Его данные также не показываются в предварительном просмотре уведомлений, поиске и предложениях Siri.\n\n📍 А Маркет, Ставрополь, Тухачевского, 16"
+}
