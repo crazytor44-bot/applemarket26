@@ -1,0 +1,17 @@
+{
+  "channel": "@applemarket26",
+  "approved": true,
+  "topic_id": "screen-time-check-frequency-poll",
+  "kind": "poll",
+  "parse_mode": "plain",
+  "pin": false,
+  "publish_at": "2026-11-27T20:00:00+03:00",
+  "text": "⏱ Как часто вы смотрите статистику «Экранного времени»?",
+  "options": [
+    "Каждый день",
+    "Раз в неделю",
+    "Когда приходит отчёт",
+    "Только если долго сижу в телефоне",
+    "Никогда не проверяю"
+  ]
+}
